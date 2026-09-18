@@ -16,6 +16,15 @@
       "accent": "teal",
       "badge": "Docs",
       "cta": "Open"
+    },
+    {
+      "title": "Nano Defender",
+      "href": "ledger_game/",
+      "desc": "An arcade shooter: pilot a Nano S Plus and shoot down voltage glitches, laser fault injection and side-channel probes.",
+      "icon": "gamepad",
+      "accent": "violet",
+      "badge": "Game",
+      "cta": "Play"
     }
   ]
 }

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nano Defender</title>
+  <meta name="description" content="An arcade shooter where you pilot a Nano S Plus and shoot down hardware attacks: voltage glitches, laser fault injection, side-channel probes and a decapsulation rig.">
+  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="bg-grid"></div>
+
+  <div class="layout">
+    <header>
+      <div class="header-left">
+        <img class="header-logo" src="../assets/logo_ledger.png" alt="Ledger">
+        <div class="header-sep"></div>
+        <span class="header-label">Nano Defender</span>
+      </div>
+      <div class="env-pill">
+        <span class="pulse-dot"></span>
+        <span>Wave <span id="hud-wave">1</span></span>
+      </div>
+    </header>
+
+    <main class="game">
+
+      <a class="back-link" href="../">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+        All projects
+      </a>
+
+      <!-- one status region for the whole game, so nothing is announced twice -->
+      <div class="sr-only" id="live" role="status" aria-live="polite" aria-atomic="true"></div>
+
+      <div class="hud is-hidden" id="hud">
+        <div class="hud-cell">
+          <span class="hud-k">Score</span>
+          <span class="hud-v" id="hud-score">0</span>
+        </div>
+        <div class="hud-cell hud-grow">
+          <span class="hud-k">Countermeasures</span>
+          <span class="hud-buffs" id="hud-buffs"></span>
+        </div>
+        <div class="hud-cell hud-shield" id="hud-shield" hidden>
+          <span class="hud-k">Bus encryption</span>
+          <span class="pips" id="hud-shield-pips"></span>
+        </div>
+        <div class="hud-cell">
+          <span class="hud-k">Integrity</span>
+          <span class="pips" id="hud-lives" role="img" aria-label="3 lives left"></span>
+        </div>
+      </div>
+
+      <div class="stage-wrap">
+        <canvas id="stage" width="460" height="700"
+                aria-label="Game playfield. Keyboard controls are described below."></canvas>
+
+        <div class="toast" id="toast" hidden></div>
+        <div class="veil" id="paused-veil" hidden>Paused &middot; press P</div>
+
+        <!-- ------------------------------------------------------- menu -->
+        <section class="panel overlay" id="panel-menu">
+          <p class="eyebrow">Arcade</p>
+          <h1>Nano Defender</h1>
+          <p class="lede">You are a Nano S Plus. Everything coming down the screen is a
+          real attack on a secure element. Shoot it before it reaches the die.</p>
+
+          <div class="legend" id="legend"></div>
+
+          <p class="note warn-leak">The side-channel probe never shoots back &mdash; but if it
+          reaches the bottom it has heard enough, and you lose a life. Shoot those first.</p>
+
+          <button class="btn btn-start" id="btn-start" type="button">Start</button>
+          <p class="eyebrow controls">&larr; &rarr; move &middot; Space fires &middot; P pauses
+          &middot; or just hold your finger on the playfield</p>
+        </section>
+
+        <!-- -------------------------------------------------- game over -->
+        <section class="panel overlay is-hidden" id="panel-over">
+          <p class="eyebrow">Run over</p>
+          <h1 id="over-title">Device compromised</h1>
+          <p class="lede" id="over-line"></p>
+          <div class="stats" id="over-stats"></div>
+          <button class="btn btn-start" id="btn-again" type="button">Play again</button>
+          <p class="eyebrow controls">Press R or Enter to restart</p>
+        </section>
+      </div>
+
+    </main>
+
+    <footer>
+      <span class="footer-copy">&copy; Ledger 2026 &mdash; Inside-out &amp; Outside-in</span>
+      <div class="footer-meta">
+        <span id="foot-high">High 0</span>
+        <div class="footer-meta-sep"></div>
+        <span>v1</span>
+      </div>
+    </footer>
+  </div>
+
+<script src="waves.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
