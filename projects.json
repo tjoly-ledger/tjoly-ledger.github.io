@@ -9,15 +9,6 @@
   },
   "projects": [
     {
-      "title": "LVGL Secure",
-      "href": "lvgl_secure/",
-      "desc": "LVGL Secure with fuzzing, codechecker, stress test, benchmark...",
-      "icon": "shield",
-      "accent": "teal",
-      "badge": "Docs",
-      "cta": "Open"
-    },
-    {
       "title": "Nano Defender",
       "href": "ledger_game/",
       "desc": "An arcade shooter: pilot a Nano S Plus and shoot down voltage glitches, laser fault injection and side-channel probes.",
