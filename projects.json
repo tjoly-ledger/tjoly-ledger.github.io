@@ -1,9 +1,9 @@
 {
   "site": {
-    "title": "Firmware",
-    "label": "Firmware Engineering",
+    "title": "Fw - TJO",
+    "label": "Inside-out & Outside-in",
     "env": "Production",
-    "footer": "© Ledger 2026 — Firmware Engineering",
+    "footer": "© Ledger 2026 — Inside-out & Outside-in",
     "meta": "tjoly-ledger.github.io",
     "version": "v1"
   },

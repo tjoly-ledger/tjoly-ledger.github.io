@@ -1,1 +1,276 @@
-TODO
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LVGL Secure</title>
+  <meta name="description" content="How a security-maintained fork of LVGL v9.5.0 is fuzzed, statically analysed, render-checked and benchmarked.">
+  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="bg-grid"></div>
+
+  <div class="layout">
+    <header>
+      <div class="header-left">
+        <img class="header-logo" src="../assets/logo_ledger.png" alt="Ledger">
+        <div class="header-sep"></div>
+        <span class="header-label">LVGL Secure</span>
+      </div>
+      <div class="env-pill">
+        <span class="pulse-dot"></span>
+        <span>v9.5.0 &middot; 50 patches</span>
+      </div>
+    </header>
+
+    <main class="report">
+      <nav class="toc" aria-label="Contents">
+        <div class="toc-title">Contents</div>
+        <a href="#surface"><span class="toc-n">01</span>Attack surface</a>
+        <a href="#fuzzing"><span class="toc-n">02</span>Fuzzing</a>
+        <a href="#findings"><span class="toc-n">03</span>Findings</a>
+        <a href="#static"><span class="toc-n">04</span>Static analysis</a>
+        <a href="#render"><span class="toc-n">05</span>Render regression</a>
+        <a href="#perf"><span class="toc-n">06</span>Performance</a>
+        <a href="#coverage"><span class="toc-n">07</span>Coverage</a>
+        <a href="#ci"><span class="toc-n">08</span>Every change</a>
+      </nav>
+
+      <div class="body">
+
+      <a class="back-link" href="../">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+        All projects
+      </a>
+
+      <div class="hero">
+        <h1>Hardening LVGL</h1>
+        <p>A security-maintained fork of LVGL v9.5.0. A UI library parses
+        attacker-chosen data, so this one is fuzzed, statically analysed, pixel-checked and
+        benchmarked on every change.</p>
+        <div class="stats">
+          <div class="stat"><b>50</b><span>memory-safety patches</span></div>
+          <div class="stat"><b>21</b><span>files hardened</span></div>
+          <div class="stat"><b>13</b><span>fuzz harnesses</span></div>
+          <div class="stat"><b>30 925</b><span>corpus inputs</span></div>
+          <div class="stat"><b>39</b><span>crash regressions</span></div>
+          <div class="stat"><b>+1.4 %</b><span>CPU cost</span></div>
+        </div>
+      </div>
+
+      <section id="surface">
+        <p class="eyebrow">scope</p>
+        <h2>Attack surface</h2>
+        <p>Everything the library renders comes from outside: images, bitmap fonts, SVG, text
+        in arbitrary UTF-8, input events. A parser bug there is memory corruption on the device.</p>
+        <p>Every tool below works on one defined attack surface &mdash; <strong>the LVGL sources
+        actually used, not the whole library</strong>. That is
+        <strong>143 C files</strong> (102 082 lines) out of 463
+        upstream. Fuzzing, coverage and static analysis all share that list.</p>
+      </section>
+
+      <section id="fuzzing">
+        <p class="eyebrow">libfuzzer &middot; asan + ubsan</p>
+        <h2>Fuzzing</h2>
+        <p>13 harnesses drive the decoders, the text engine, the software renderer, the
+        layout engines, the input layer and the widget library. They build against the patched
+        tree under AddressSanitizer and UndefinedBehaviorSanitizer.</p>
+        <p>Corpora and crash files are committed and replayed on every CI run, so <strong>all
+        39 crashes ever found stay in the build as regression tests</strong> &mdash;
+        an upstream bump cannot quietly reopen one.</p>
+        <p class="chart-unit">corpus inputs per harness</p>
+<div class="bars">
+<div class="bar-row"><div class="bar-label"><code>svg_render</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:100.00%" title="svg_render: 7 132"></div></div><div class="bar-value">7 132</div><div class="bar-note">9 crashes</div></div>
+<div class="bar-row"><div class="bar-label"><code>img_raw</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:80.75%" title="img_raw: 5 759"></div></div><div class="bar-value">5 759</div><div class="bar-note">6 crashes</div></div>
+<div class="bar-row"><div class="bar-label"><code>svg</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:69.13%" title="svg: 4 930"></div></div><div class="bar-value">4 930</div><div class="bar-note">7 crashes</div></div>
+<div class="bar-row"><div class="bar-label"><code>draw</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:56.49%" title="draw: 4 029"></div></div><div class="bar-value">4 029</div><div class="bar-note">1 crash</div></div>
+<div class="bar-row"><div class="bar-label"><code>indev</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:23.49%" title="indev: 1 675"></div></div><div class="bar-value">1 675</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label"><code>arc</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:23.04%" title="arc: 1 643"></div></div><div class="bar-value">1 643</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label"><code>text</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:22.11%" title="text: 1 577"></div></div><div class="bar-value">1 577</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label"><code>widget</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:18.63%" title="widget: 1 329"></div></div><div class="bar-value">1 329</div><div class="bar-note">7 crashes</div></div>
+<div class="bar-row"><div class="bar-label"><code>font_fmt</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:11.43%" title="font_fmt: 815"></div></div><div class="bar-value">815</div><div class="bar-note">6 crashes</div></div>
+<div class="bar-row"><div class="bar-label"><code>chart_scale</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:9.84%" title="chart_scale: 702"></div></div><div class="bar-value">702</div><div class="bar-note">3 crashes</div></div>
+<div class="bar-row"><div class="bar-label"><code>scroll</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:9.18%" title="scroll: 655"></div></div><div class="bar-value">655</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label"><code>layout</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:8.78%" title="layout: 626"></div></div><div class="bar-value">626</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label"><code>iter</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:0.80%" title="iter: 53"></div></div><div class="bar-value">53</div><div class="bar-note"></div></div>
+</div>
+      </section>
+
+      <section id="findings">
+        <p class="eyebrow">50 patches</p>
+        <h2>Findings</h2>
+        <p>Every patch is a memory-safety or undefined-behaviour fix. No build glue, no
+        configuration &mdash; the stack reads as one thing: the delta between upstream and what
+        is shippable.</p>
+        <p class="chart-unit">patches per bug class</p>
+<div class="bars no-notes">
+<div class="bar-row"><div class="bar-label">out-of-bounds read</div><div class="bar-track"><div class="bar-fill v-a" style="width:100.00%" title="out-of-bounds read: 15"></div></div><div class="bar-value">15</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label">signed / unsigned integer overflow</div><div class="bar-track"><div class="bar-fill v-a" style="width:60.00%" title="signed / unsigned integer overflow: 9"></div></div><div class="bar-value">9</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label">null pointer dereference</div><div class="bar-track"><div class="bar-fill v-a" style="width:46.67%" title="null pointer dereference: 7"></div></div><div class="bar-value">7</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label">unbounded allocation or recursion</div><div class="bar-track"><div class="bar-fill v-a" style="width:33.33%" title="unbounded allocation or recursion: 5"></div></div><div class="bar-value">5</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label">memory leak</div><div class="bar-track"><div class="bar-fill v-a" style="width:20.00%" title="memory leak: 3"></div></div><div class="bar-value">3</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label">float-to-integer conversion UB</div><div class="bar-track"><div class="bar-fill v-a" style="width:20.00%" title="float-to-integer conversion UB: 3"></div></div><div class="bar-value">3</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label">division by zero</div><div class="bar-track"><div class="bar-fill v-a" style="width:20.00%" title="division by zero: 3"></div></div><div class="bar-value">3</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label">function-pointer type mismatch</div><div class="bar-track"><div class="bar-fill v-a" style="width:13.33%" title="function-pointer type mismatch: 2"></div></div><div class="bar-value">2</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label">dangling stack reference</div><div class="bar-track"><div class="bar-fill v-a" style="width:6.67%" title="dangling stack reference: 1"></div></div><div class="bar-value">1</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label">out-of-bounds write</div><div class="bar-track"><div class="bar-fill v-a" style="width:6.67%" title="out-of-bounds write: 1"></div></div><div class="bar-value">1</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label">uninitialised read</div><div class="bar-track"><div class="bar-fill v-a" style="width:6.67%" title="uninitialised read: 1"></div></div><div class="bar-value">1</div><div class="bar-note"></div></div>
+</div>
+        <h3>Origin</h3>
+        <div class="split" role="img" aria-label="42 patches from fuzzing, 8 from static analysis">
+          <div class="v-a" style="flex:42"></div>
+          <div class="v-b" style="flex:8"></div>
+        </div>
+        <div class="legend">
+          <span><i class="swatch v-a"></i>fuzzing &mdash; 42</span>
+          <span><i class="swatch v-b"></i>static analysis &mdash; 8</span>
+        </div>
+        <p>Barely any overlap, which is why both run. Fuzzing finds what
+        an input can reach; static analysis finds the division by zero on a path no corpus took.</p>
+        <h3>Concentration</h3>
+        <p class="chart-unit">patches per file, files with more than one</p>
+<div class="bars no-notes">
+<div class="bar-row"><div class="bar-label"><code>lv_svg_render.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:100.00%" title="lv_svg_render.c: 11"></div></div><div class="bar-value">11</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_svg_parser.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:54.55%" title="lv_svg_parser.c: 6"></div></div><div class="bar-value">6</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_font_fmt_txt.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:54.55%" title="lv_font_fmt_txt.c: 6"></div></div><div class="bar-value">6</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_chart.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:54.55%" title="lv_chart.c: 6"></div></div><div class="bar-value">6</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_bin_decoder.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:36.36%" title="lv_bin_decoder.c: 4"></div></div><div class="bar-value">4</div><div class="bar-note"></div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_arc.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:18.18%" title="lv_arc.c: 2"></div></div><div class="bar-value">2</div><div class="bar-note"></div></div>
+</div>
+        <p>6 files hold 35 of the 50 patches; the other
+        15 carry one each.</p>
+      </section>
+
+      <section id="static">
+        <p class="eyebrow">clangsa &middot; clang-tidy &middot; cppcheck</p>
+        <h2>Static analysis</h2>
+        <p>Three analysers run in one pass over the same 143 files, clang-tidy with 21
+        checkers on an explicit allowlist. The step asserts it produced
+        143&nbsp;&times;&nbsp;3 result files, so a drifting scope fails loudly instead
+        of quietly analysing less.</p>
+        <p>Suppressions are not inline pragmas. Each is a rule keyed by report hash with a
+        written justification &mdash; <strong>26</strong> of them: 10 false
+        positives, 15 intentional, 1 confirmed.</p>
+        <div class="note">
+          <p><strong>The confirmed one is a real defect, still open.</strong> An integer division
+          in the arc widget's rate limiter; closing it means reworking the limiter, not patching
+          the expression. It stays visible rather than suppressed.</p>
+          <p>The stage is <strong>reporting-only</strong> &mdash; it fails on a tool error, never
+          on a finding count.</p>
+        </div>
+        <p>It earned its place anyway: 8 of the 50 patches
+        came from it, including an out-of-bounds write through a 4-byte allocation in the grid
+        layout.</p>
+      </section>
+
+      <section id="render">
+        <p class="eyebrow">pixel-exact</p>
+        <h2>Render regression</h2>
+        <p>Hardening code that draws pixels is only safe if it still draws the same pixels. A
+        stress demo runs 6 rounds on a simulated 480&times;272 display under ASan, UBSan and LSan.</p>
+        <ul class="checks">
+          <li><span class="pill gate">gate</span><div><strong>No sanitizer report.</strong></div></li>
+          <li><span class="pill gate">gate</span><div><strong>Heap leak &le; 100 bytes</strong> over the whole run.</div></li>
+          <li><span class="pill gate">gate</span><div><strong>32 reference frames, byte for byte.</strong> One differing byte fails the build.</div></li>
+          <li><span class="pill info">logged</span><div>Heap fragmentation is printed, with no threshold on it.</div></li>
+        </ul>
+        <p>References are generated on the <em>unpatched</em> tree. That
+        is what makes the check mean something: 50 patches, not one pixel moved.</p>
+        <figure class="figure"><img src="stress.gif" width="480" height="272" loading="lazy" alt="Animation of the 32 reference frames: the stress demo creating, styling, animating and deleting widgets."><figcaption>the 32 reference frames, animated &mdash; every build must reproduce them byte for byte</figcaption></figure>
+      </section>
+
+      <section id="perf">
+        <p class="eyebrow">cpu budget</p>
+        <h2>Performance</h2>
+        <p>Bounds checks are not free and the budget is real. 16 benchmark scenes,
+        69&#8239;000&nbsp;ms of simulated time, process CPU time measured. Each run measures the
+        <strong>unpatched</strong> tree first, in the same job on the same machine, so hardware
+        speed cancels out of the delta.</p>
+        <p class="chart-unit">CPU time added by the patch stack, percent</p>
+<div class="bars">
+<div class="bar-row"><div class="bar-label">measured</div><div class="bar-track"><div class="bar-fill v-a" style="width:21.00%" title="measured: 2.1 %"></div></div><div class="bar-value">2.1 %</div><div class="bar-note">worst of 7 runs</div></div>
+<div class="bar-row"><div class="bar-label">threshold</div><div class="bar-track"><div class="bar-fill v-a" style="width:100.00%" title="threshold: 10.0 %"></div></div><div class="bar-value">10.0 %</div><div class="bar-note">fails the build</div></div>
+</div>
+        <p>Between <strong>+0.8 % and +2.1 %</strong> across seven
+        runs, median around +1.4 %, against a +10 % budget.</p>
+      </section>
+
+      <section id="coverage">
+        <p class="eyebrow">llvm-cov</p>
+        <h2>Coverage</h2>
+        <p>Replaying every corpus and every crash covers 122 of the 143
+        in-scope files. The 21 others are not reachable from this build at all &mdash;
+        accelerator blob, fonts and allocator are replaced by the fuzzing configuration.</p>
+        <div class="bars"><div class="bar-row"><div class="bar-label">functions</div><div class="bar-track"><div class="bar-fill v-a" style="width:64.16%"></div></div><div class="bar-value">64.16 %</div><div class="bar-note">1 672 / 2 606</div></div>
+<div class="bar-row"><div class="bar-label">lines</div><div class="bar-track"><div class="bar-fill v-a" style="width:68.08%"></div></div><div class="bar-value">68.08 %</div><div class="bar-note">34 108 / 50 102</div></div>
+<div class="bar-row"><div class="bar-label">regions</div><div class="bar-track"><div class="bar-fill v-a" style="width:59.52%"></div></div><div class="bar-value">59.52 %</div><div class="bar-note">31 644 / 53 167</div></div>
+<div class="bar-row"><div class="bar-label">branches</div><div class="bar-track"><div class="bar-fill v-a" style="width:56.61%"></div></div><div class="bar-value">56.61 %</div><div class="bar-note">15 892 / 28 073</div></div></div>
+        <div class="note">
+          <p>The generated report titles itself <em>read per-file; TOTAL is not a KPI</em>. An
+          aggregate over 122 files rewards covering easy code; the per-file number on the
+          parsers is what decides where the next harness goes.</p>
+        </div>
+        <h3>Line coverage on the files carrying the patches</h3>
+        <div class="bars"><div class="bar-row"><div class="bar-label"><code>lv_svg_parser.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:99.26%"></div></div><div class="bar-value">99.26 %</div><div class="bar-note">6 patches</div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_svg_token.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:98.30%"></div></div><div class="bar-value">98.30 %</div><div class="bar-note">1 patch</div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_font_fmt_txt.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:89.70%"></div></div><div class="bar-value">89.70 %</div><div class="bar-note">6 patches</div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_svg_render.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:87.42%"></div></div><div class="bar-value">87.42 %</div><div class="bar-note">11 patches</div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_arc.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:73.04%"></div></div><div class="bar-value">73.04 %</div><div class="bar-note">2 patches</div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_chart.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:65.44%"></div></div><div class="bar-value">65.44 %</div><div class="bar-note">6 patches</div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_bin_decoder.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:64.78%"></div></div><div class="bar-value">64.78 %</div><div class="bar-note">4 patches</div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_draw_sw_img.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:57.35%"></div></div><div class="bar-value">57.35 %</div><div class="bar-note">1 patch</div></div>
+<div class="bar-row"><div class="bar-label"><code>lv_svg_decoder.c</code></div><div class="bar-track"><div class="bar-fill v-a" style="width:36.72%"></div></div><div class="bar-value">36.72 %</div><div class="bar-note">0 patches</div></div></div>
+        <p>It reads the right way round: the files the fuzzers reach hardest gave up the most
+        bugs. <code>lv_svg_decoder.c</code> at the bottom is the gap, and the next target.</p>
+      </section>
+
+      <section id="ci">
+        <p class="eyebrow">pipeline</p>
+        <h2>Every change</h2>
+        <p>Six steps. Only the patch stack aborts the pipeline; the rest report without blocking
+        it, so a failure marks the build red but every stage still produces its result.</p>
+        <ul class="checks">
+          <li><span class="pill info">baseline</span><div><strong>Benchmark baseline</strong> on the unpatched tree.</div></li>
+          <li><span class="pill gate">gate</span><div><strong>Patch stack</strong> &mdash; all 50 patches must apply cleanly, or nothing downstream means anything.</div></li>
+          <li><span class="pill info">parallel</span><div><strong>Unit tests</strong> &mdash; upstream's own suite, 142 case files, on the patched tree.</div></li>
+          <li><span class="pill info">parallel</span><div><strong>Fuzz coverage</strong> &mdash; replay 30 925 inputs and 39 crashes.</div></li>
+          <li><span class="pill warn">parallel</span><div><strong>Static analysis</strong> &mdash; three analysers, reporting only.</div></li>
+          <li><span class="pill info">parallel</span><div><strong>Stress</strong> &mdash; sanitizers, leak budget, 32-frame pixel comparison.</div></li>
+          <li><span class="pill info">final</span><div><strong>Benchmark</strong> against the baseline from the same job.</div></li>
+        </ul>
+        <p>The upstream tree is kept verbatim and never edited. Every
+        change is a patch carrying its defect site, trigger condition and reproducer. Upgrading
+        upstream is one replacement plus a rebase of the stack &mdash; and the 39
+        reproducers decide whether that rebase was correct.</p>
+      </section>
+
+      <p class="stamp">Generated 2026-09-18 from LVGL v9.5.0 with 50 patches applied.</p>
+
+      </div>
+    </main>
+
+    <footer>
+      <span class="footer-copy">&copy; Ledger 2026 &mdash; Inside-out &amp; Outside-in</span>
+      <div class="footer-meta">
+        <span>LVGL v9.5.0</span>
+        <div class="footer-meta-sep"></div>
+        <span>50 patches</span>
+      </div>
+    </footer>
+  </div>
+
+<script src="../assets/toc.js"></script>
+</body>
+</html>
