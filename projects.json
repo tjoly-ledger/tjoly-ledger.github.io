@@ -1,0 +1,21 @@
+{
+  "site": {
+    "title": "Firmware",
+    "label": "Firmware Engineering",
+    "env": "Production",
+    "footer": "© Ledger 2026 — Firmware Engineering",
+    "meta": "tjoly-ledger.github.io",
+    "version": "v1"
+  },
+  "projects": [
+    {
+      "title": "LVGL Secure",
+      "href": "lvgl_secure/",
+      "desc": "LVGL Secure with fuzzing, codechecker, stress test, benchmark...",
+      "icon": "shield",
+      "accent": "teal",
+      "badge": "Docs",
+      "cta": "Open"
+    }
+  ]
+}
