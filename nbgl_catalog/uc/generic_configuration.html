@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nbgl_useCaseGenericConfiguration &mdash; NBGL use cases</title>
+<meta name="description" content="A titled set of configuration pages built from any mix of content types: switches, radio choices, touchable bars, infos.">
+<link rel="stylesheet" href="../plain.css">
+</head>
+<body>
+
+<div class="layout">
+  <header>
+    <div class="header-left">
+      <span class="header-label">NBGL use cases</span>
+    </div>
+    <div class="env-pill">26 use cases</div>
+  </header>
+
+  <main class="report">
+<nav class="toc" aria-label="Variants">
+  <div class="toc-title">Variants</div>
+  <a href="#plain"><span class="toc-n">01</span><span class="toc-label">Choices and bars</span></a>
+</nav>
+
+<div class="body">
+  <a class="back-link" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    All use cases
+  </a>
+
+  <div class="hero">
+    <h1>nbgl_useCaseGenericConfiguration</h1>
+    <p>A titled set of configuration pages built from any mix of content types: switches, radio choices, touchable bars, infos.</p>
+  </div>
+
+  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseGenericConfiguration</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span>                   *title,
+                                      <span class="c-type">uint8_t</span>                       initPage,
+                                      <span class="c-keyword">const</span> <span class="c-type">nbgl_genericContents_t</span> *contents,
+                                      <span class="c-type">nbgl_callback_t</span>               quitCallback);</code></pre>
+
+  <details class="variant" id="plain" open>
+    <summary>
+      <span class="variant-title">Choices and bars</span>
+      <span class="variant-tally">2 screens</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-keyword">static</span> <span class="c-type">nbgl_content_t</span>         config_contents[<span class="c-number">2</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_genericContents_t</span> config_generic_contents;
+
+
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">NETWORK_NAMES</span>[] = {<span class="c-string">&quot;Mainnet&quot;</span>, <span class="c-string">&quot;Testnet&quot;</span>, <span class="c-string">&quot;Devnet&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">BAR_TEXTS</span>[] = {<span class="c-string">&quot;Derivation path&quot;</span>, <span class="c-string">&quot;Custom node&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-type">uint8_t</span>     <span class="c-const">BAR_TOKENS</span>[] = {<span class="c-const">FIRST_USER_TOKEN</span> + <span class="c-number">10</span>, <span class="c-const">FIRST_USER_TOKEN</span> + <span class="c-number">11</span>};
+
+<span class="c-comment">// A titled set of configuration pages, built from any mix of content</span>
+<span class="c-comment">// types: here a radio choice list, then a list of touchable bars.</span>
+memset(config_contents, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(config_contents));
+
+config_contents[<span class="c-number">0</span>].type = <span class="c-const">CHOICES_LIST</span>;
+config_contents[<span class="c-number">0</span>].content.choicesList.names = <span class="c-const">NETWORK_NAMES</span>;
+config_contents[<span class="c-number">0</span>].content.choicesList.nbChoices = <span class="c-const">ARRAYLEN</span>(<span class="c-const">NETWORK_NAMES</span>);
+config_contents[<span class="c-number">0</span>].content.choicesList.initChoice = <span class="c-number">0</span>;
+config_contents[<span class="c-number">0</span>].content.choicesList.token = <span class="c-const">FIRST_USER_TOKEN</span>;
+
+config_contents[<span class="c-number">1</span>].type = <span class="c-const">BARS_LIST</span>;
+config_contents[<span class="c-number">1</span>].content.barsList.barTexts = <span class="c-const">BAR_TEXTS</span>;
+config_contents[<span class="c-number">1</span>].content.barsList.tokens = <span class="c-const">BAR_TOKENS</span>;
+config_contents[<span class="c-number">1</span>].content.barsList.nbBars = <span class="c-const">ARRAYLEN</span>(<span class="c-const">BAR_TEXTS</span>);
+
+config_generic_contents.callbackCallNeeded = <span class="c-keyword">false</span>;
+config_generic_contents.contentsList = config_contents;
+config_generic_contents.nbContents = <span class="c-const">ARRAYLEN</span>(config_contents);
+
+<span class="c-usecase">nbgl_useCaseGenericConfiguration</span>(
+    <span class="c-string">&quot;Network&quot;</span>, <span class="c-number">0</span>, &amp;config_generic_contents, catalog_on_quit);</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/generic_configuration/plain/00.png" title="Open at full size">
+          <img src="../screens/flex/generic_configuration/plain/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericConfiguration, Choices and bars, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/generic_configuration/plain/01.png" title="Open at full size">
+          <img src="../screens/flex/generic_configuration/plain/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericConfiguration, Choices and bars, Flex, screen 2">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/generic_configuration/plain/00.png" title="Open at full size">
+          <img src="../screens/apex_p/generic_configuration/plain/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericConfiguration, Choices and bars, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/generic_configuration/plain/01.png" title="Open at full size">
+          <img src="../screens/apex_p/generic_configuration/plain/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericConfiguration, Choices and bars, Apex P, screen 2">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/generic_configuration/plain/00.png" title="Open at full size">
+          <img src="../screens/stax/generic_configuration/plain/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericConfiguration, Choices and bars, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/generic_configuration/plain/01.png" title="Open at full size">
+          <img src="../screens/stax/generic_configuration/plain/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericConfiguration, Choices and bars, Stax, screen 2">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="stamp">Generated 2026-09-22T15:06:27+00:00.</p>
+</div>
+  </main>
+
+  <footer>
+    <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
+    <span>2026-09-22T15:06:27+00:00</span>
+  </footer>
+</div>
+
+<script>
+/* Highlights the entry in view in the contents, the way the showcase theme's
+   toc.js does, so both outputs behave the same. */
+(function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+    if (!links.length) { return; }
+    var targets = links.map(function (a) {
+        return document.getElementById(a.getAttribute("href").slice(1));
+    });
+
+    function sync() {
+        var active = 0;
+        targets.forEach(function (el, i) {
+            if (el && !el.hidden && el.getBoundingClientRect().top <= 140) {
+                active = i;
+            }
+        });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === active); });
+    }
+
+    addEventListener("scroll", sync, { passive: true });
+    addEventListener("resize", sync);
+    sync();
+}());
+</script>
+<script>
+(function () {
+    // A collapsed variant must open when the contents jump to it, otherwise
+    // the link would scroll to a closed block.
+    Array.prototype.slice.call(document.querySelectorAll(".toc a")).forEach(
+        function (link) {
+            link.addEventListener("click", function () {
+                var target = document.getElementById(
+                    link.getAttribute("href").slice(1)
+                );
+                if (target) { target.open = true; }
+            });
+        }
+    );
+}());
+</script>
+</body>
+</html>

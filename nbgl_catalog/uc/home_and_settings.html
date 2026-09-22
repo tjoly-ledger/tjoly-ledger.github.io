@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nbgl_useCaseHomeAndSettings &mdash; NBGL use cases</title>
+<meta name="description" content="The app home page, with its optional action button, plus the auto-paginated settings and info pages reached through the top-right gear.">
+<link rel="stylesheet" href="../plain.css">
+</head>
+<body>
+
+<div class="layout">
+  <header>
+    <div class="header-left">
+      <span class="header-label">NBGL use cases</span>
+    </div>
+    <div class="env-pill">26 use cases</div>
+  </header>
+
+  <main class="report">
+<nav class="toc" aria-label="Variants">
+  <div class="toc-title">Variants</div>
+  <a href="#default_tagline"><span class="toc-n">01</span><span class="toc-label">Default tagline</span></a>
+  <a href="#custom_tagline"><span class="toc-n">02</span><span class="toc-label">Custom tagline</span></a>
+  <a href="#action"><span class="toc-n">03</span><span class="toc-label">With an action button</span></a>
+  <a href="#init_on_settings"><span class="toc-n">04</span><span class="toc-label">Opened on the settings</span></a>
+</nav>
+
+<div class="body">
+  <a class="back-link" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    All use cases
+  </a>
+
+  <div class="hero">
+    <h1>nbgl_useCaseHomeAndSettings</h1>
+    <p>The app home page, with its optional action button, plus the auto-paginated settings and info pages reached through the top-right gear.</p>
+  </div>
+
+  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseHomeAndSettings</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span>                   *appName,
+                                 <span class="c-keyword">const</span> <span class="c-type">nbgl_icon_details_t</span>    *appIcon,
+                                 <span class="c-keyword">const</span> <span class="c-keyword">char</span>                   *tagline,
+                                 <span class="c-keyword">const</span> <span class="c-type">uint8_t</span>                 initSettingPage,
+                                 <span class="c-keyword">const</span> <span class="c-type">nbgl_genericContents_t</span> *settingContents,
+                                 <span class="c-keyword">const</span> <span class="c-type">nbgl_contentInfoList_t</span> *infosList,
+                                 <span class="c-keyword">const</span> <span class="c-type">nbgl_homeAction_t</span>      *action,
+                                 <span class="c-type">nbgl_callback_t</span>               quitCallback);</code></pre>
+
+  <details class="variant" id="default_tagline" open>
+    <summary>
+      <span class="variant-title">Default tagline</span>
+      <span class="variant-tally">3 screens</span>
+    </summary>
+
+<p class="variant-note">A NULL tagline makes the SDK build the default one from the app name.</p>
+    <pre class="code"><code><span class="c-pp">#define SWITCH_BLIND_SIGNING 0</span>
+<span class="c-pp">#define SWITCH_NONCE         1</span>
+<span class="c-pp">#define SWITCHES_NB          2</span>
+
+<span class="c-pp">#define FIRST_SWITCH_TOKEN FIRST_USER_TOKEN</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentSwitch_t</span>     switches[<span class="c-const">SWITCHES_NB</span>];
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span>        <span class="c-const">INFO_TYPES</span>[] = {<span class="c-string">&quot;Version&quot;</span>, <span class="c-string">&quot;Developer&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span>        <span class="c-const">INFO_CONTENTS</span>[] = {<span class="c-const">APPVERSION</span>, <span class="c-string">&quot;Ledger&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-type">nbgl_contentInfoList_t</span> info_list = {
+    .nbInfos = <span class="c-const">ARRAYLEN</span>(<span class="c-const">INFO_TYPES</span>),
+    .infoTypes = <span class="c-const">INFO_TYPES</span>,
+    .infoContents = <span class="c-const">INFO_CONTENTS</span>,
+};
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_content_t</span>         setting_contents[<span class="c-number">1</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_genericContents_t</span> setting_generic_contents;
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> settings_controls_callback(<span class="c-keyword">int</span> token, <span class="c-type">uint8_t</span> index, <span class="c-keyword">int</span> page) {
+    <span class="c-const">UNUSED</span>(index);
+    <span class="c-const">UNUSED</span>(page);
+
+    <span class="c-keyword">if</span> (token == <span class="c-const">FIRST_SWITCH_TOKEN</span>) {
+        switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState
+            = (switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState == <span class="c-const">ON_STATE</span>) ? <span class="c-const">OFF_STATE</span> : <span class="c-const">ON_STATE</span>;
+    }
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> build_settings(<span class="c-keyword">void</span>) {
+    memset(switches, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(switches));
+
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].text = <span class="c-string">&quot;Blind signing&quot;</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].subText = <span class="c-string">&quot;Allow transactions\nthat cannot be decoded&quot;</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState = <span class="c-const">OFF_STATE</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].token = <span class="c-const">FIRST_SWITCH_TOKEN</span>;
+
+    switches[<span class="c-const">SWITCH_NONCE</span>].text = <span class="c-string">&quot;Display nonce&quot;</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].subText = <span class="c-string">&quot;Show the nonce\nin transactions&quot;</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].initState = <span class="c-const">ON_STATE</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].token = <span class="c-const">FIRST_SWITCH_TOKEN</span> + <span class="c-number">1</span>;
+
+    memset(setting_contents, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(setting_contents));
+    setting_contents[<span class="c-number">0</span>].type = <span class="c-const">SWITCHES_LIST</span>;
+    setting_contents[<span class="c-number">0</span>].content.switchesList.nbSwitches = <span class="c-const">SWITCHES_NB</span>;
+    setting_contents[<span class="c-number">0</span>].content.switchesList.switches = switches;
+    setting_contents[<span class="c-number">0</span>].contentActionCallback = settings_controls_callback;
+
+    setting_generic_contents.callbackCallNeeded = <span class="c-keyword">false</span>;
+    setting_generic_contents.contentsList = setting_contents;
+    setting_generic_contents.nbContents = <span class="c-const">ARRAYLEN</span>(setting_contents);
+}
+
+<span class="c-comment">// A NULL tagline makes the SDK build the default one from the app name:</span>
+<span class="c-comment">// &quot;This app enables signing transactions on the &lt;appName&gt; network.&quot;</span>
+<span class="c-usecase">nbgl_useCaseHomeAndSettings</span>(<span class="c-const">APPNAME</span>,
+                            &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                            <span class="c-const">NULL</span>,
+                            <span class="c-const">INIT_HOME_PAGE</span>,
+                            &amp;setting_generic_contents,
+                            &amp;info_list,
+                            <span class="c-const">NULL</span>,
+                            catalog_on_quit);</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/home_and_settings/default_tagline/00.png" title="Open at full size">
+          <img src="../screens/flex/home_and_settings/default_tagline/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Default tagline, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/flex/home_and_settings/default_tagline/01.png" title="Open at full size">
+          <img src="../screens/flex/home_and_settings/default_tagline/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Default tagline, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/home_and_settings/default_tagline/02.png" title="Open at full size">
+          <img src="../screens/flex/home_and_settings/default_tagline/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Default tagline, Flex, screen 3">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/home_and_settings/default_tagline/00.png" title="Open at full size">
+          <img src="../screens/apex_p/home_and_settings/default_tagline/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Default tagline, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/apex_p/home_and_settings/default_tagline/01.png" title="Open at full size">
+          <img src="../screens/apex_p/home_and_settings/default_tagline/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Default tagline, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/home_and_settings/default_tagline/02.png" title="Open at full size">
+          <img src="../screens/apex_p/home_and_settings/default_tagline/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Default tagline, Apex P, screen 3">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/home_and_settings/default_tagline/00.png" title="Open at full size">
+          <img src="../screens/stax/home_and_settings/default_tagline/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Default tagline, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/stax/home_and_settings/default_tagline/01.png" title="Open at full size">
+          <img src="../screens/stax/home_and_settings/default_tagline/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Default tagline, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/home_and_settings/default_tagline/02.png" title="Open at full size">
+          <img src="../screens/stax/home_and_settings/default_tagline/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Default tagline, Stax, screen 3">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="custom_tagline" open>
+    <summary>
+      <span class="variant-title">Custom tagline</span>
+      <span class="variant-tally">3 screens</span>
+    </summary>
+
+<p class="variant-note">The app provides its own tagline.</p>
+    <pre class="code"><code><span class="c-pp">#define SWITCH_BLIND_SIGNING 0</span>
+<span class="c-pp">#define SWITCH_NONCE         1</span>
+<span class="c-pp">#define SWITCHES_NB          2</span>
+
+<span class="c-pp">#define FIRST_SWITCH_TOKEN FIRST_USER_TOKEN</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentSwitch_t</span>     switches[<span class="c-const">SWITCHES_NB</span>];
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span>        <span class="c-const">INFO_TYPES</span>[] = {<span class="c-string">&quot;Version&quot;</span>, <span class="c-string">&quot;Developer&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span>        <span class="c-const">INFO_CONTENTS</span>[] = {<span class="c-const">APPVERSION</span>, <span class="c-string">&quot;Ledger&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-type">nbgl_contentInfoList_t</span> info_list = {
+    .nbInfos = <span class="c-const">ARRAYLEN</span>(<span class="c-const">INFO_TYPES</span>),
+    .infoTypes = <span class="c-const">INFO_TYPES</span>,
+    .infoContents = <span class="c-const">INFO_CONTENTS</span>,
+};
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_content_t</span>         setting_contents[<span class="c-number">1</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_genericContents_t</span> setting_generic_contents;
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> settings_controls_callback(<span class="c-keyword">int</span> token, <span class="c-type">uint8_t</span> index, <span class="c-keyword">int</span> page) {
+    <span class="c-const">UNUSED</span>(index);
+    <span class="c-const">UNUSED</span>(page);
+
+    <span class="c-keyword">if</span> (token == <span class="c-const">FIRST_SWITCH_TOKEN</span>) {
+        switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState
+            = (switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState == <span class="c-const">ON_STATE</span>) ? <span class="c-const">OFF_STATE</span> : <span class="c-const">ON_STATE</span>;
+    }
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> build_settings(<span class="c-keyword">void</span>) {
+    memset(switches, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(switches));
+
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].text = <span class="c-string">&quot;Blind signing&quot;</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].subText = <span class="c-string">&quot;Allow transactions\nthat cannot be decoded&quot;</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState = <span class="c-const">OFF_STATE</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].token = <span class="c-const">FIRST_SWITCH_TOKEN</span>;
+
+    switches[<span class="c-const">SWITCH_NONCE</span>].text = <span class="c-string">&quot;Display nonce&quot;</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].subText = <span class="c-string">&quot;Show the nonce\nin transactions&quot;</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].initState = <span class="c-const">ON_STATE</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].token = <span class="c-const">FIRST_SWITCH_TOKEN</span> + <span class="c-number">1</span>;
+
+    memset(setting_contents, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(setting_contents));
+    setting_contents[<span class="c-number">0</span>].type = <span class="c-const">SWITCHES_LIST</span>;
+    setting_contents[<span class="c-number">0</span>].content.switchesList.nbSwitches = <span class="c-const">SWITCHES_NB</span>;
+    setting_contents[<span class="c-number">0</span>].content.switchesList.switches = switches;
+    setting_contents[<span class="c-number">0</span>].contentActionCallback = settings_controls_callback;
+
+    setting_generic_contents.callbackCallNeeded = <span class="c-keyword">false</span>;
+    setting_generic_contents.contentsList = setting_contents;
+    setting_generic_contents.nbContents = <span class="c-const">ARRAYLEN</span>(setting_contents);
+}
+
+<span class="c-usecase">nbgl_useCaseHomeAndSettings</span>(<span class="c-const">APPNAME</span>,
+                            &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                            <span class="c-string">&quot;Send and receive BOL&quot;</span>,
+                            <span class="c-const">INIT_HOME_PAGE</span>,
+                            &amp;setting_generic_contents,
+                            &amp;info_list,
+                            <span class="c-const">NULL</span>,
+                            catalog_on_quit);</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/home_and_settings/custom_tagline/00.png" title="Open at full size">
+          <img src="../screens/flex/home_and_settings/custom_tagline/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Custom tagline, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/flex/home_and_settings/custom_tagline/01.png" title="Open at full size">
+          <img src="../screens/flex/home_and_settings/custom_tagline/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Custom tagline, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/home_and_settings/custom_tagline/02.png" title="Open at full size">
+          <img src="../screens/flex/home_and_settings/custom_tagline/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Custom tagline, Flex, screen 3">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/home_and_settings/custom_tagline/00.png" title="Open at full size">
+          <img src="../screens/apex_p/home_and_settings/custom_tagline/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Custom tagline, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/apex_p/home_and_settings/custom_tagline/01.png" title="Open at full size">
+          <img src="../screens/apex_p/home_and_settings/custom_tagline/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Custom tagline, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/home_and_settings/custom_tagline/02.png" title="Open at full size">
+          <img src="../screens/apex_p/home_and_settings/custom_tagline/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Custom tagline, Apex P, screen 3">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/home_and_settings/custom_tagline/00.png" title="Open at full size">
+          <img src="../screens/stax/home_and_settings/custom_tagline/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Custom tagline, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/stax/home_and_settings/custom_tagline/01.png" title="Open at full size">
+          <img src="../screens/stax/home_and_settings/custom_tagline/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Custom tagline, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/home_and_settings/custom_tagline/02.png" title="Open at full size">
+          <img src="../screens/stax/home_and_settings/custom_tagline/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Custom tagline, Stax, screen 3">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="action" open>
+    <summary>
+      <span class="variant-title">With an action button</span>
+      <span class="variant-tally">3 screens</span>
+    </summary>
+
+<p class="variant-note">A STRONG_HOME_ACTION button is added above the quit footer, for the main action of the app.</p>
+    <pre class="code"><code><span class="c-pp">#define SWITCH_BLIND_SIGNING 0</span>
+<span class="c-pp">#define SWITCH_NONCE         1</span>
+<span class="c-pp">#define SWITCHES_NB          2</span>
+
+<span class="c-pp">#define FIRST_SWITCH_TOKEN FIRST_USER_TOKEN</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentSwitch_t</span>     switches[<span class="c-const">SWITCHES_NB</span>];
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span>        <span class="c-const">INFO_TYPES</span>[] = {<span class="c-string">&quot;Version&quot;</span>, <span class="c-string">&quot;Developer&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span>        <span class="c-const">INFO_CONTENTS</span>[] = {<span class="c-const">APPVERSION</span>, <span class="c-string">&quot;Ledger&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-type">nbgl_contentInfoList_t</span> info_list = {
+    .nbInfos = <span class="c-const">ARRAYLEN</span>(<span class="c-const">INFO_TYPES</span>),
+    .infoTypes = <span class="c-const">INFO_TYPES</span>,
+    .infoContents = <span class="c-const">INFO_CONTENTS</span>,
+};
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_content_t</span>         setting_contents[<span class="c-number">1</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_genericContents_t</span> setting_generic_contents;
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> settings_controls_callback(<span class="c-keyword">int</span> token, <span class="c-type">uint8_t</span> index, <span class="c-keyword">int</span> page) {
+    <span class="c-const">UNUSED</span>(index);
+    <span class="c-const">UNUSED</span>(page);
+
+    <span class="c-keyword">if</span> (token == <span class="c-const">FIRST_SWITCH_TOKEN</span>) {
+        switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState
+            = (switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState == <span class="c-const">ON_STATE</span>) ? <span class="c-const">OFF_STATE</span> : <span class="c-const">ON_STATE</span>;
+    }
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> build_settings(<span class="c-keyword">void</span>) {
+    memset(switches, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(switches));
+
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].text = <span class="c-string">&quot;Blind signing&quot;</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].subText = <span class="c-string">&quot;Allow transactions\nthat cannot be decoded&quot;</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState = <span class="c-const">OFF_STATE</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].token = <span class="c-const">FIRST_SWITCH_TOKEN</span>;
+
+    switches[<span class="c-const">SWITCH_NONCE</span>].text = <span class="c-string">&quot;Display nonce&quot;</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].subText = <span class="c-string">&quot;Show the nonce\nin transactions&quot;</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].initState = <span class="c-const">ON_STATE</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].token = <span class="c-const">FIRST_SWITCH_TOKEN</span> + <span class="c-number">1</span>;
+
+    memset(setting_contents, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(setting_contents));
+    setting_contents[<span class="c-number">0</span>].type = <span class="c-const">SWITCHES_LIST</span>;
+    setting_contents[<span class="c-number">0</span>].content.switchesList.nbSwitches = <span class="c-const">SWITCHES_NB</span>;
+    setting_contents[<span class="c-number">0</span>].content.switchesList.switches = switches;
+    setting_contents[<span class="c-number">0</span>].contentActionCallback = settings_controls_callback;
+
+    setting_generic_contents.callbackCallNeeded = <span class="c-keyword">false</span>;
+    setting_generic_contents.contentsList = setting_contents;
+    setting_generic_contents.nbContents = <span class="c-const">ARRAYLEN</span>(setting_contents);
+}
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_homeAction_t</span> home_action;
+
+<span class="c-comment">// An action button is added above the quit footer. STRONG_HOME_ACTION</span>
+<span class="c-comment">// draws it black, SOFT_HOME_ACTION white.</span>
+home_action.text = <span class="c-string">&quot;Receive&quot;</span>;
+home_action.icon = <span class="c-const">NULL</span>;
+home_action.callback = catalog_on_quit;
+home_action.style = <span class="c-const">STRONG_HOME_ACTION</span>;
+
+<span class="c-usecase">nbgl_useCaseHomeAndSettings</span>(<span class="c-const">APPNAME</span>,
+                            &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                            <span class="c-string">&quot;Send and receive BOL&quot;</span>,
+                            <span class="c-const">INIT_HOME_PAGE</span>,
+                            &amp;setting_generic_contents,
+                            &amp;info_list,
+                            &amp;home_action,
+                            catalog_on_quit);</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/home_and_settings/action/00.png" title="Open at full size">
+          <img src="../screens/flex/home_and_settings/action/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, With an action button, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/flex/home_and_settings/action/01.png" title="Open at full size">
+          <img src="../screens/flex/home_and_settings/action/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, With an action button, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/home_and_settings/action/02.png" title="Open at full size">
+          <img src="../screens/flex/home_and_settings/action/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, With an action button, Flex, screen 3">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/home_and_settings/action/00.png" title="Open at full size">
+          <img src="../screens/apex_p/home_and_settings/action/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, With an action button, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/apex_p/home_and_settings/action/01.png" title="Open at full size">
+          <img src="../screens/apex_p/home_and_settings/action/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, With an action button, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/home_and_settings/action/02.png" title="Open at full size">
+          <img src="../screens/apex_p/home_and_settings/action/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, With an action button, Apex P, screen 3">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/home_and_settings/action/00.png" title="Open at full size">
+          <img src="../screens/stax/home_and_settings/action/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, With an action button, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/stax/home_and_settings/action/01.png" title="Open at full size">
+          <img src="../screens/stax/home_and_settings/action/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, With an action button, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/home_and_settings/action/02.png" title="Open at full size">
+          <img src="../screens/stax/home_and_settings/action/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, With an action button, Stax, screen 3">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="init_on_settings" open>
+    <summary>
+      <span class="variant-title">Opened on the settings</span>
+      <span class="variant-tally">3 screens</span>
+    </summary>
+
+<p class="variant-note">Passing a page index instead of INIT_HOME_PAGE opens the use case directly on that settings page.</p>
+    <pre class="code"><code><span class="c-pp">#define SWITCH_BLIND_SIGNING 0</span>
+<span class="c-pp">#define SWITCH_NONCE         1</span>
+<span class="c-pp">#define SWITCHES_NB          2</span>
+
+<span class="c-pp">#define FIRST_SWITCH_TOKEN FIRST_USER_TOKEN</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentSwitch_t</span>     switches[<span class="c-const">SWITCHES_NB</span>];
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span>        <span class="c-const">INFO_TYPES</span>[] = {<span class="c-string">&quot;Version&quot;</span>, <span class="c-string">&quot;Developer&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span>        <span class="c-const">INFO_CONTENTS</span>[] = {<span class="c-const">APPVERSION</span>, <span class="c-string">&quot;Ledger&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-type">nbgl_contentInfoList_t</span> info_list = {
+    .nbInfos = <span class="c-const">ARRAYLEN</span>(<span class="c-const">INFO_TYPES</span>),
+    .infoTypes = <span class="c-const">INFO_TYPES</span>,
+    .infoContents = <span class="c-const">INFO_CONTENTS</span>,
+};
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_content_t</span>         setting_contents[<span class="c-number">1</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_genericContents_t</span> setting_generic_contents;
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> settings_controls_callback(<span class="c-keyword">int</span> token, <span class="c-type">uint8_t</span> index, <span class="c-keyword">int</span> page) {
+    <span class="c-const">UNUSED</span>(index);
+    <span class="c-const">UNUSED</span>(page);
+
+    <span class="c-keyword">if</span> (token == <span class="c-const">FIRST_SWITCH_TOKEN</span>) {
+        switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState
+            = (switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState == <span class="c-const">ON_STATE</span>) ? <span class="c-const">OFF_STATE</span> : <span class="c-const">ON_STATE</span>;
+    }
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> build_settings(<span class="c-keyword">void</span>) {
+    memset(switches, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(switches));
+
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].text = <span class="c-string">&quot;Blind signing&quot;</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].subText = <span class="c-string">&quot;Allow transactions\nthat cannot be decoded&quot;</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState = <span class="c-const">OFF_STATE</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].token = <span class="c-const">FIRST_SWITCH_TOKEN</span>;
+
+    switches[<span class="c-const">SWITCH_NONCE</span>].text = <span class="c-string">&quot;Display nonce&quot;</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].subText = <span class="c-string">&quot;Show the nonce\nin transactions&quot;</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].initState = <span class="c-const">ON_STATE</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].token = <span class="c-const">FIRST_SWITCH_TOKEN</span> + <span class="c-number">1</span>;
+
+    memset(setting_contents, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(setting_contents));
+    setting_contents[<span class="c-number">0</span>].type = <span class="c-const">SWITCHES_LIST</span>;
+    setting_contents[<span class="c-number">0</span>].content.switchesList.nbSwitches = <span class="c-const">SWITCHES_NB</span>;
+    setting_contents[<span class="c-number">0</span>].content.switchesList.switches = switches;
+    setting_contents[<span class="c-number">0</span>].contentActionCallback = settings_controls_callback;
+
+    setting_generic_contents.callbackCallNeeded = <span class="c-keyword">false</span>;
+    setting_generic_contents.contentsList = setting_contents;
+    setting_generic_contents.nbContents = <span class="c-const">ARRAYLEN</span>(setting_contents);
+}
+
+<span class="c-comment">// Passing a page index instead of INIT_HOME_PAGE opens the use case</span>
+<span class="c-comment">// directly on that settings page, which is how an app comes back from a</span>
+<span class="c-comment">// sub-page of its own settings.</span>
+<span class="c-usecase">nbgl_useCaseHomeAndSettings</span>(<span class="c-const">APPNAME</span>,
+                            &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                            <span class="c-string">&quot;Send and receive BOL&quot;</span>,
+                            <span class="c-number">0</span>,
+                            &amp;setting_generic_contents,
+                            &amp;info_list,
+                            <span class="c-const">NULL</span>,
+                            catalog_on_quit);</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/home_and_settings/init_on_settings/00.png" title="Open at full size">
+          <img src="../screens/flex/home_and_settings/init_on_settings/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Opened on the settings, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/home_and_settings/init_on_settings/01.png" title="Open at full size">
+          <img src="../screens/flex/home_and_settings/init_on_settings/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Opened on the settings, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/flex/home_and_settings/init_on_settings/02.png" title="Open at full size">
+          <img src="../screens/flex/home_and_settings/init_on_settings/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Opened on the settings, Flex, screen 3">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/home_and_settings/init_on_settings/00.png" title="Open at full size">
+          <img src="../screens/apex_p/home_and_settings/init_on_settings/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Opened on the settings, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/home_and_settings/init_on_settings/01.png" title="Open at full size">
+          <img src="../screens/apex_p/home_and_settings/init_on_settings/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Opened on the settings, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/apex_p/home_and_settings/init_on_settings/02.png" title="Open at full size">
+          <img src="../screens/apex_p/home_and_settings/init_on_settings/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Opened on the settings, Apex P, screen 3">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/home_and_settings/init_on_settings/00.png" title="Open at full size">
+          <img src="../screens/stax/home_and_settings/init_on_settings/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Opened on the settings, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/home_and_settings/init_on_settings/01.png" title="Open at full size">
+          <img src="../screens/stax/home_and_settings/init_on_settings/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Opened on the settings, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/stax/home_and_settings/init_on_settings/02.png" title="Open at full size">
+          <img src="../screens/stax/home_and_settings/init_on_settings/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseHomeAndSettings, Opened on the settings, Stax, screen 3">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="stamp">Generated 2026-09-22T15:06:27+00:00.</p>
+</div>
+  </main>
+
+  <footer>
+    <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
+    <span>2026-09-22T15:06:27+00:00</span>
+  </footer>
+</div>
+
+<script>
+/* Highlights the entry in view in the contents, the way the showcase theme's
+   toc.js does, so both outputs behave the same. */
+(function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+    if (!links.length) { return; }
+    var targets = links.map(function (a) {
+        return document.getElementById(a.getAttribute("href").slice(1));
+    });
+
+    function sync() {
+        var active = 0;
+        targets.forEach(function (el, i) {
+            if (el && !el.hidden && el.getBoundingClientRect().top <= 140) {
+                active = i;
+            }
+        });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === active); });
+    }
+
+    addEventListener("scroll", sync, { passive: true });
+    addEventListener("resize", sync);
+    sync();
+}());
+</script>
+<script>
+(function () {
+    // A collapsed variant must open when the contents jump to it, otherwise
+    // the link would scroll to a closed block.
+    Array.prototype.slice.call(document.querySelectorAll(".toc a")).forEach(
+        function (link) {
+            link.addEventListener("click", function () {
+                var target = document.getElementById(
+                    link.getAttribute("href").slice(1)
+                );
+                if (target) { target.open = true; }
+            });
+        }
+    );
+}());
+</script>
+</body>
+</html>

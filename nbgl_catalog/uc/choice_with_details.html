@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nbgl_useCaseChoiceWithDetails &mdash; NBGL use cases</title>
+<meta name="description" content="The same choice page, plus a top-right button opening a details modal: either one centered page, or a list of bars drilling down into sub-pages.">
+<link rel="stylesheet" href="../plain.css">
+</head>
+<body>
+
+<div class="layout">
+  <header>
+    <div class="header-left">
+      <span class="header-label">NBGL use cases</span>
+    </div>
+    <div class="env-pill">26 use cases</div>
+  </header>
+
+  <main class="report">
+<nav class="toc" aria-label="Variants">
+  <div class="toc-title">Variants</div>
+  <a href="#centered"><span class="toc-n">01</span><span class="toc-label">Centered details</span></a>
+  <a href="#bar_list"><span class="toc-n">02</span><span class="toc-label">Bar list details</span></a>
+</nav>
+
+<div class="body">
+  <a class="back-link" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    All use cases
+  </a>
+
+  <div class="hero">
+    <h1>nbgl_useCaseChoiceWithDetails</h1>
+    <p>The same choice page, plus a top-right button opening a details modal: either one centered page, or a list of bars drilling down into sub-pages.</p>
+  </div>
+
+  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseChoiceWithDetails</span>(<span class="c-keyword">const</span> <span class="c-type">nbgl_icon_details_t</span> *icon,
+                                   <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *message,
+                                   <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *subMessage,
+                                   <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *confirmText,
+                                   <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *cancelText,
+                                   <span class="c-type">nbgl_warningDetails_t</span>     *details,
+                                   <span class="c-type">nbgl_choiceCallback_t</span>      callback);</code></pre>
+
+  <details class="variant" id="centered" open>
+    <summary>
+      <span class="variant-title">Centered details</span>
+      <span class="variant-tally">2 screens</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-keyword">static</span> <span class="c-type">nbgl_genericDetails_t</span> details;
+
+<span class="c-comment">// Details shown as a single centered page, reached by the top-right button</span>
+details.title = <span class="c-string">&quot;Blind signing&quot;</span>;
+details.type = <span class="c-const">CENTERED_INFO_WARNING</span>;
+details.centeredInfo.icon = &amp;<span class="c-const">LARGE_WARNING_ICON</span>;
+details.centeredInfo.title = <span class="c-string">&quot;Blind signing&quot;</span>;
+details.centeredInfo.description
+    = <span class="c-string">&quot;The app cannot decode this transaction, so it cannot show you what &quot;</span>
+      <span class="c-string">&quot;you are about to sign.&quot;</span>;
+details.centeredInfo.subText = <span class="c-string">&quot;Only continue if you trust the source.&quot;</span>;
+
+<span class="c-usecase">nbgl_useCaseChoiceWithDetails</span>(&amp;<span class="c-const">LARGE_WARNING_ICON</span>,
+                              <span class="c-string">&quot;Allow blind signing?&quot;</span>,
+                              <span class="c-string">&quot;Transactions will be signed\nwithout being displayed.&quot;</span>,
+                              <span class="c-string">&quot;I understand, confirm&quot;</span>,
+                              <span class="c-string">&quot;Cancel&quot;</span>,
+                              &amp;details,
+                              catalog_on_choice);</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/choice_with_details/centered/00.png" title="Open at full size">
+          <img src="../screens/flex/choice_with_details/centered/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Centered details, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/flex/choice_with_details/centered/01.png" title="Open at full size">
+          <img src="../screens/flex/choice_with_details/centered/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Centered details, Flex, screen 2">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/choice_with_details/centered/00.png" title="Open at full size">
+          <img src="../screens/apex_p/choice_with_details/centered/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Centered details, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/apex_p/choice_with_details/centered/01.png" title="Open at full size">
+          <img src="../screens/apex_p/choice_with_details/centered/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Centered details, Apex P, screen 2">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/choice_with_details/centered/00.png" title="Open at full size">
+          <img src="../screens/stax/choice_with_details/centered/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Centered details, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/stax/choice_with_details/centered/01.png" title="Open at full size">
+          <img src="../screens/stax/choice_with_details/centered/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Centered details, Stax, screen 2">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="bar_list" open>
+    <summary>
+      <span class="variant-title">Bar list details</span>
+      <span class="variant-tally">5 screens</span>
+    </summary>
+
+<p class="variant-note">Each bar opens its own sub-page, reachable from the details modal.</p>
+    <pre class="code"><code><span class="c-keyword">static</span> <span class="c-type">nbgl_genericDetails_t</span> details;
+
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> bar_texts[] = {<span class="c-string">&quot;What is blind signing?&quot;</span>, <span class="c-string">&quot;Who is the provider?&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> bar_sub_texts[] = {<span class="c-string">&quot;Signing without seeing&quot;</span>, <span class="c-string">&quot;Blockaid&quot;</span>};
+
+<span class="c-comment">// Details shown as touchable bars, each one leading to its own sub-page</span>
+sub_details[<span class="c-number">0</span>].title = bar_texts[<span class="c-number">0</span>];
+sub_details[<span class="c-number">0</span>].type = <span class="c-const">CENTERED_INFO_WARNING</span>;
+sub_details[<span class="c-number">0</span>].centeredInfo.icon = &amp;<span class="c-const">LARGE_WARNING_ICON</span>;
+sub_details[<span class="c-number">0</span>].centeredInfo.title = <span class="c-string">&quot;Blind signing&quot;</span>;
+sub_details[<span class="c-number">0</span>].centeredInfo.description
+    = <span class="c-string">&quot;The transaction cannot be decoded, so its content cannot be shown.&quot;</span>;
+
+sub_details[<span class="c-number">1</span>].title = bar_texts[<span class="c-number">1</span>];
+sub_details[<span class="c-number">1</span>].type = <span class="c-const">CENTERED_INFO_WARNING</span>;
+sub_details[<span class="c-number">1</span>].centeredInfo.icon = &amp;<span class="c-const">LARGE_SECURITY_SHIELD_ICON</span>;
+sub_details[<span class="c-number">1</span>].centeredInfo.title = <span class="c-string">&quot;Blockaid&quot;</span>;
+sub_details[<span class="c-number">1</span>].centeredInfo.description = <span class="c-string">&quot;The security report comes from Blockaid.&quot;</span>;
+
+details.title = <span class="c-string">&quot;Blind signing&quot;</span>;
+details.type = <span class="c-const">BAR_LIST_WARNING</span>;
+details.barList.nbBars = <span class="c-const">ARRAYLEN</span>(bar_texts);
+details.barList.texts = bar_texts;
+details.barList.subTexts = bar_sub_texts;
+details.barList.icons = <span class="c-const">NULL</span>;
+details.barList.details = sub_details;
+
+<span class="c-usecase">nbgl_useCaseChoiceWithDetails</span>(&amp;<span class="c-const">LARGE_WARNING_ICON</span>,
+                              <span class="c-string">&quot;Allow blind signing?&quot;</span>,
+                              <span class="c-string">&quot;Transactions will be signed\nwithout being displayed.&quot;</span>,
+                              <span class="c-string">&quot;I understand, confirm&quot;</span>,
+                              <span class="c-string">&quot;Cancel&quot;</span>,
+                              &amp;details,
+                              catalog_on_choice);</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/choice_with_details/bar_list/00.png" title="Open at full size">
+          <img src="../screens/flex/choice_with_details/bar_list/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/flex/choice_with_details/bar_list/01.png" title="Open at full size">
+          <img src="../screens/flex/choice_with_details/bar_list/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “What is blind signing?”</span>
+          <a href="../screens/flex/choice_with_details/bar_list/02.png" title="Open at full size">
+          <img src="../screens/flex/choice_with_details/bar_list/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/flex/choice_with_details/bar_list/03.png" title="Open at full size">
+          <img src="../screens/flex/choice_with_details/bar_list/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Who is the provider?”</span>
+          <a href="../screens/flex/choice_with_details/bar_list/04.png" title="Open at full size">
+          <img src="../screens/flex/choice_with_details/bar_list/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Flex, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/choice_with_details/bar_list/00.png" title="Open at full size">
+          <img src="../screens/apex_p/choice_with_details/bar_list/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/apex_p/choice_with_details/bar_list/01.png" title="Open at full size">
+          <img src="../screens/apex_p/choice_with_details/bar_list/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “What is blind signing?”</span>
+          <a href="../screens/apex_p/choice_with_details/bar_list/02.png" title="Open at full size">
+          <img src="../screens/apex_p/choice_with_details/bar_list/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/apex_p/choice_with_details/bar_list/03.png" title="Open at full size">
+          <img src="../screens/apex_p/choice_with_details/bar_list/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Who is the provider?”</span>
+          <a href="../screens/apex_p/choice_with_details/bar_list/04.png" title="Open at full size">
+          <img src="../screens/apex_p/choice_with_details/bar_list/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Apex P, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/choice_with_details/bar_list/00.png" title="Open at full size">
+          <img src="../screens/stax/choice_with_details/bar_list/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/stax/choice_with_details/bar_list/01.png" title="Open at full size">
+          <img src="../screens/stax/choice_with_details/bar_list/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “What is blind signing?”</span>
+          <a href="../screens/stax/choice_with_details/bar_list/02.png" title="Open at full size">
+          <img src="../screens/stax/choice_with_details/bar_list/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/stax/choice_with_details/bar_list/03.png" title="Open at full size">
+          <img src="../screens/stax/choice_with_details/bar_list/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Who is the provider?”</span>
+          <a href="../screens/stax/choice_with_details/bar_list/04.png" title="Open at full size">
+          <img src="../screens/stax/choice_with_details/bar_list/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseChoiceWithDetails, Bar list details, Stax, screen 5">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="stamp">Generated 2026-09-22T15:06:27+00:00.</p>
+</div>
+  </main>
+
+  <footer>
+    <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
+    <span>2026-09-22T15:06:27+00:00</span>
+  </footer>
+</div>
+
+<script>
+/* Highlights the entry in view in the contents, the way the showcase theme's
+   toc.js does, so both outputs behave the same. */
+(function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+    if (!links.length) { return; }
+    var targets = links.map(function (a) {
+        return document.getElementById(a.getAttribute("href").slice(1));
+    });
+
+    function sync() {
+        var active = 0;
+        targets.forEach(function (el, i) {
+            if (el && !el.hidden && el.getBoundingClientRect().top <= 140) {
+                active = i;
+            }
+        });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === active); });
+    }
+
+    addEventListener("scroll", sync, { passive: true });
+    addEventListener("resize", sync);
+    sync();
+}());
+</script>
+<script>
+(function () {
+    // A collapsed variant must open when the contents jump to it, otherwise
+    // the link would scroll to a closed block.
+    Array.prototype.slice.call(document.querySelectorAll(".toc a")).forEach(
+        function (link) {
+            link.addEventListener("click", function () {
+                var target = document.getElementById(
+                    link.getAttribute("href").slice(1)
+                );
+                if (target) { target.open = true; }
+            });
+        }
+    );
+}());
+</script>
+</body>
+</html>

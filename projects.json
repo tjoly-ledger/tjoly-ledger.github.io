@@ -16,6 +16,15 @@
       "accent": "violet",
       "badge": "Game",
       "cta": "Play"
+    },
+    {
+      "title": "NBGL Use Cases",
+      "href": "nbgl_catalog/",
+      "desc": "Every screen the NBGL library draws, with the code that produces it and its rendering on Flex, Apex and Stax. Captured from a real app run in Speculos, not mocked up.",
+      "icon": "monitor",
+      "accent": "teal",
+      "badge": "Docs",
+      "cta": "Browse"
     }
   ]
 }

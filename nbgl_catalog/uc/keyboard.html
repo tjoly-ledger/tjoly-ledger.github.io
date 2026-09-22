@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nbgl_useCaseKeyboard &mdash; NBGL use cases</title>
+<meta name="description" content="A text entry page, with either a confirmation button or dynamic suggestion buttons.">
+<link rel="stylesheet" href="../plain.css">
+</head>
+<body>
+
+<div class="layout">
+  <header>
+    <div class="header-left">
+      <span class="header-label">NBGL use cases</span>
+    </div>
+    <div class="env-pill">26 use cases</div>
+  </header>
+
+  <main class="report">
+<nav class="toc" aria-label="Variants">
+  <div class="toc-title">Variants</div>
+  <a href="#with_button"><span class="toc-n">01</span><span class="toc-label">With a confirmation button</span></a>
+  <a href="#with_suggestions"><span class="toc-n">02</span><span class="toc-label">With suggestion buttons</span></a>
+</nav>
+
+<div class="body">
+  <a class="back-link" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    All use cases
+  </a>
+
+  <div class="hero">
+    <h1>nbgl_useCaseKeyboard</h1>
+    <p>A text entry page, with either a confirmation button or dynamic suggestion buttons.</p>
+    <p class="flags">
+      Needs
+<code>ENABLE_NBGL_KEYBOARD = 1</code>      in the app Makefile.
+    </p>
+  </div>
+
+  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseKeyboard</span>(<span class="c-keyword">const</span> <span class="c-type">nbgl_keyboardParams_t</span> *params, <span class="c-type">nbgl_callback_t</span> backCallback);</code></pre>
+
+  <details class="variant" id="with_button" open>
+    <summary>
+      <span class="variant-title">With a confirmation button</span>
+      <span class="variant-tally">1 screen</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_keyboardParams_t</span> keyboard_params;
+
+<span class="c-comment">/** The app owns the buffer the keyboard writes into. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">char</span> entry_buffer[<span class="c-const">ENTRY_MAX_LEN</span> + <span class="c-number">1</span>];
+
+<span class="c-comment">// A confirmation button sits under the entry area; the keyboard starts in</span>
+<span class="c-comment">// letters mode and `casing` decides how the first letter is capitalised.</span>
+keyboard_params.type = <span class="c-const">KEYBOARD_WITH_BUTTON</span>;
+keyboard_params.title = <span class="c-string">&quot;Enter the account name&quot;</span>;
+keyboard_params.entryBuffer = entry_buffer;
+keyboard_params.entryMaxLen = <span class="c-const">ENTRY_MAX_LEN</span>;
+keyboard_params.mode = <span class="c-const">MODE_LETTERS</span>;
+keyboard_params.lettersOnly = <span class="c-keyword">false</span>;
+keyboard_params.casing = <span class="c-const">LOCKED_UPPER_CASE</span>;
+keyboard_params.confirmationParams.buttonText = <span class="c-string">&quot;Confirm&quot;</span>;
+keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
+
+<span class="c-usecase">nbgl_useCaseKeyboard</span>(&amp;keyboard_params, catalog_on_quit);</code></pre>
+
+    <div class="shot-rows compact">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/keyboard/with_button/00.png" title="Open at full size">
+          <img src="../screens/flex/keyboard/with_button/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseKeyboard, With a confirmation button, Flex, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/keyboard/with_button/00.png" title="Open at full size">
+          <img src="../screens/apex_p/keyboard/with_button/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseKeyboard, With a confirmation button, Apex P, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/keyboard/with_button/00.png" title="Open at full size">
+          <img src="../screens/stax/keyboard/with_button/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseKeyboard, With a confirmation button, Stax, screen 1">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="with_suggestions" open>
+    <summary>
+      <span class="variant-title">With suggestion buttons</span>
+      <span class="variant-tally">1 screen</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_keyboardParams_t</span> keyboard_params;
+
+<span class="c-comment">/** The app owns the buffer the keyboard writes into. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">char</span> entry_buffer[<span class="c-const">ENTRY_MAX_LEN</span> + <span class="c-number">1</span>];
+
+<span class="c-comment">// Suggestion buttons replace the confirmation button; the update callback</span>
+<span class="c-comment">// is called on every key press, to refresh them and to grey out the keys</span>
+<span class="c-comment">// that cannot lead to a word.</span>
+suggestions[<span class="c-number">0</span>] = <span class="c-string">&quot;abandon&quot;</span>;
+suggestions[<span class="c-number">1</span>] = <span class="c-string">&quot;ability&quot;</span>;
+suggestions[<span class="c-number">2</span>] = <span class="c-string">&quot;able&quot;</span>;
+suggestions[<span class="c-number">3</span>] = <span class="c-string">&quot;about&quot;</span>;
+
+keyboard_params.type = <span class="c-const">KEYBOARD_WITH_SUGGESTIONS</span>;
+keyboard_params.title = <span class="c-string">&quot;Enter word no. 1&quot;</span>;
+keyboard_params.entryBuffer = entry_buffer;
+keyboard_params.entryMaxLen = <span class="c-const">ENTRY_MAX_LEN</span>;
+keyboard_params.mode = <span class="c-const">MODE_LETTERS</span>;
+keyboard_params.lettersOnly = <span class="c-keyword">true</span>;
+keyboard_params.numbered = <span class="c-keyword">true</span>;
+keyboard_params.number = <span class="c-number">1</span>;
+keyboard_params.casing = <span class="c-const">LOWER_CASE</span>;
+keyboard_params.suggestionParams.buttons = suggestions;
+keyboard_params.suggestionParams.firstButtonToken = <span class="c-const">FIRST_USER_TOKEN</span>;
+keyboard_params.suggestionParams.onButtonCallback = uc_keyboard_on_suggestion;
+keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_suggestions;
+
+<span class="c-usecase">nbgl_useCaseKeyboard</span>(&amp;keyboard_params, catalog_on_quit);</code></pre>
+
+    <div class="shot-rows compact">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/keyboard/with_suggestions/00.png" title="Open at full size">
+          <img src="../screens/flex/keyboard/with_suggestions/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseKeyboard, With suggestion buttons, Flex, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/keyboard/with_suggestions/00.png" title="Open at full size">
+          <img src="../screens/apex_p/keyboard/with_suggestions/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseKeyboard, With suggestion buttons, Apex P, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/keyboard/with_suggestions/00.png" title="Open at full size">
+          <img src="../screens/stax/keyboard/with_suggestions/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseKeyboard, With suggestion buttons, Stax, screen 1">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="stamp">Generated 2026-09-22T15:06:27+00:00.</p>
+</div>
+  </main>
+
+  <footer>
+    <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
+    <span>2026-09-22T15:06:27+00:00</span>
+  </footer>
+</div>
+
+<script>
+/* Highlights the entry in view in the contents, the way the showcase theme's
+   toc.js does, so both outputs behave the same. */
+(function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+    if (!links.length) { return; }
+    var targets = links.map(function (a) {
+        return document.getElementById(a.getAttribute("href").slice(1));
+    });
+
+    function sync() {
+        var active = 0;
+        targets.forEach(function (el, i) {
+            if (el && !el.hidden && el.getBoundingClientRect().top <= 140) {
+                active = i;
+            }
+        });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === active); });
+    }
+
+    addEventListener("scroll", sync, { passive: true });
+    addEventListener("resize", sync);
+    sync();
+}());
+</script>
+<script>
+(function () {
+    // A collapsed variant must open when the contents jump to it, otherwise
+    // the link would scroll to a closed block.
+    Array.prototype.slice.call(document.querySelectorAll(".toc a")).forEach(
+        function (link) {
+            link.addEventListener("click", function () {
+                var target = document.getElementById(
+                    link.getAttribute("href").slice(1)
+                );
+                if (target) { target.open = true; }
+            });
+        }
+    );
+}());
+</script>
+</body>
+</html>

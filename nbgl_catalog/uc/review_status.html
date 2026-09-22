@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nbgl_useCaseReviewStatus &mdash; NBGL use cases</title>
+<meta name="description" content="The same transient page, pre-worded for each of the eight values of nbgl_reviewStatusType_t.">
+<link rel="stylesheet" href="../plain.css">
+</head>
+<body>
+
+<div class="layout">
+  <header>
+    <div class="header-left">
+      <span class="header-label">NBGL use cases</span>
+    </div>
+    <div class="env-pill">26 use cases</div>
+  </header>
+
+  <main class="report">
+<nav class="toc" aria-label="Variants">
+  <div class="toc-title">Variants</div>
+  <a href="#transaction_signed"><span class="toc-n">01</span><span class="toc-label">STATUS_TYPE_TRANSACTION_SIGNED</span></a>
+  <a href="#transaction_rejected"><span class="toc-n">02</span><span class="toc-label">STATUS_TYPE_TRANSACTION_REJECTED</span></a>
+  <a href="#message_signed"><span class="toc-n">03</span><span class="toc-label">STATUS_TYPE_MESSAGE_SIGNED</span></a>
+  <a href="#message_rejected"><span class="toc-n">04</span><span class="toc-label">STATUS_TYPE_MESSAGE_REJECTED</span></a>
+  <a href="#operation_signed"><span class="toc-n">05</span><span class="toc-label">STATUS_TYPE_OPERATION_SIGNED</span></a>
+  <a href="#operation_rejected"><span class="toc-n">06</span><span class="toc-label">STATUS_TYPE_OPERATION_REJECTED</span></a>
+  <a href="#address_verified"><span class="toc-n">07</span><span class="toc-label">STATUS_TYPE_ADDRESS_VERIFIED</span></a>
+  <a href="#address_rejected"><span class="toc-n">08</span><span class="toc-label">STATUS_TYPE_ADDRESS_REJECTED</span></a>
+</nav>
+
+<div class="body">
+  <a class="back-link" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    All use cases
+  </a>
+
+  <div class="hero">
+    <h1>nbgl_useCaseReviewStatus</h1>
+    <p>The same transient page, pre-worded for each of the eight values of nbgl_reviewStatusType_t.</p>
+  </div>
+
+  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-type">nbgl_reviewStatusType_t</span> reviewStatusType,
+                              <span class="c-type">nbgl_callback_t</span>         quitCallback);</code></pre>
+
+  <details class="variant" id="transaction_signed" open>
+    <summary>
+      <span class="variant-title">STATUS_TYPE_TRANSACTION_SIGNED</span>
+      <span class="variant-tally">1 screen</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);</code></pre>
+
+    <div class="shot-rows compact">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_status/transaction_signed/00.png" title="Open at full size">
+          <img src="../screens/flex/review_status/transaction_signed/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_SIGNED, Flex, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_status/transaction_signed/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_status/transaction_signed/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_SIGNED, Apex P, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_status/transaction_signed/00.png" title="Open at full size">
+          <img src="../screens/stax/review_status/transaction_signed/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_SIGNED, Stax, screen 1">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="transaction_rejected" open>
+    <summary>
+      <span class="variant-title">STATUS_TYPE_TRANSACTION_REJECTED</span>
+      <span class="variant-tally">1 screen</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>, catalog_on_quit);</code></pre>
+
+    <div class="shot-rows compact">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_status/transaction_rejected/00.png" title="Open at full size">
+          <img src="../screens/flex/review_status/transaction_rejected/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_REJECTED, Flex, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_status/transaction_rejected/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_status/transaction_rejected/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_REJECTED, Apex P, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_status/transaction_rejected/00.png" title="Open at full size">
+          <img src="../screens/stax/review_status/transaction_rejected/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_REJECTED, Stax, screen 1">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="message_signed" open>
+    <summary>
+      <span class="variant-title">STATUS_TYPE_MESSAGE_SIGNED</span>
+      <span class="variant-tally">1 screen</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_MESSAGE_SIGNED</span>, catalog_on_quit);</code></pre>
+
+    <div class="shot-rows compact">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_status/message_signed/00.png" title="Open at full size">
+          <img src="../screens/flex/review_status/message_signed/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_SIGNED, Flex, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_status/message_signed/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_status/message_signed/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_SIGNED, Apex P, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_status/message_signed/00.png" title="Open at full size">
+          <img src="../screens/stax/review_status/message_signed/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_SIGNED, Stax, screen 1">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="message_rejected" open>
+    <summary>
+      <span class="variant-title">STATUS_TYPE_MESSAGE_REJECTED</span>
+      <span class="variant-tally">1 screen</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_MESSAGE_REJECTED</span>, catalog_on_quit);</code></pre>
+
+    <div class="shot-rows compact">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_status/message_rejected/00.png" title="Open at full size">
+          <img src="../screens/flex/review_status/message_rejected/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_REJECTED, Flex, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_status/message_rejected/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_status/message_rejected/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_REJECTED, Apex P, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_status/message_rejected/00.png" title="Open at full size">
+          <img src="../screens/stax/review_status/message_rejected/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_REJECTED, Stax, screen 1">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="operation_signed" open>
+    <summary>
+      <span class="variant-title">STATUS_TYPE_OPERATION_SIGNED</span>
+      <span class="variant-tally">1 screen</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_OPERATION_SIGNED</span>, catalog_on_quit);</code></pre>
+
+    <div class="shot-rows compact">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_status/operation_signed/00.png" title="Open at full size">
+          <img src="../screens/flex/review_status/operation_signed/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_SIGNED, Flex, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_status/operation_signed/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_status/operation_signed/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_SIGNED, Apex P, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_status/operation_signed/00.png" title="Open at full size">
+          <img src="../screens/stax/review_status/operation_signed/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_SIGNED, Stax, screen 1">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="operation_rejected" open>
+    <summary>
+      <span class="variant-title">STATUS_TYPE_OPERATION_REJECTED</span>
+      <span class="variant-tally">1 screen</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_OPERATION_REJECTED</span>, catalog_on_quit);</code></pre>
+
+    <div class="shot-rows compact">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_status/operation_rejected/00.png" title="Open at full size">
+          <img src="../screens/flex/review_status/operation_rejected/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_REJECTED, Flex, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_status/operation_rejected/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_status/operation_rejected/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_REJECTED, Apex P, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_status/operation_rejected/00.png" title="Open at full size">
+          <img src="../screens/stax/review_status/operation_rejected/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_REJECTED, Stax, screen 1">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="address_verified" open>
+    <summary>
+      <span class="variant-title">STATUS_TYPE_ADDRESS_VERIFIED</span>
+      <span class="variant-tally">1 screen</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_ADDRESS_VERIFIED</span>, catalog_on_quit);</code></pre>
+
+    <div class="shot-rows compact">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_status/address_verified/00.png" title="Open at full size">
+          <img src="../screens/flex/review_status/address_verified/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_VERIFIED, Flex, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_status/address_verified/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_status/address_verified/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_VERIFIED, Apex P, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_status/address_verified/00.png" title="Open at full size">
+          <img src="../screens/stax/review_status/address_verified/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_VERIFIED, Stax, screen 1">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="address_rejected" open>
+    <summary>
+      <span class="variant-title">STATUS_TYPE_ADDRESS_REJECTED</span>
+      <span class="variant-tally">1 screen</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);</code></pre>
+
+    <div class="shot-rows compact">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_status/address_rejected/00.png" title="Open at full size">
+          <img src="../screens/flex/review_status/address_rejected/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_REJECTED, Flex, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_status/address_rejected/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_status/address_rejected/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_REJECTED, Apex P, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_status/address_rejected/00.png" title="Open at full size">
+          <img src="../screens/stax/review_status/address_rejected/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_REJECTED, Stax, screen 1">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="stamp">Generated 2026-09-22T15:06:27+00:00.</p>
+</div>
+  </main>
+
+  <footer>
+    <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
+    <span>2026-09-22T15:06:27+00:00</span>
+  </footer>
+</div>
+
+<script>
+/* Highlights the entry in view in the contents, the way the showcase theme's
+   toc.js does, so both outputs behave the same. */
+(function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+    if (!links.length) { return; }
+    var targets = links.map(function (a) {
+        return document.getElementById(a.getAttribute("href").slice(1));
+    });
+
+    function sync() {
+        var active = 0;
+        targets.forEach(function (el, i) {
+            if (el && !el.hidden && el.getBoundingClientRect().top <= 140) {
+                active = i;
+            }
+        });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === active); });
+    }
+
+    addEventListener("scroll", sync, { passive: true });
+    addEventListener("resize", sync);
+    sync();
+}());
+</script>
+<script>
+(function () {
+    // A collapsed variant must open when the contents jump to it, otherwise
+    // the link would scroll to a closed block.
+    Array.prototype.slice.call(document.querySelectorAll(".toc a")).forEach(
+        function (link) {
+            link.addEventListener("click", function () {
+                var target = document.getElementById(
+                    link.getAttribute("href").slice(1)
+                );
+                if (target) { target.open = true; }
+            });
+        }
+    );
+}());
+</script>
+</body>
+</html>

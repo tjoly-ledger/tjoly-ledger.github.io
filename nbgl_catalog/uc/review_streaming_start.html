@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nbgl_useCaseReviewStreamingStart &mdash; NBGL use cases</title>
+<meta name="description" content="Opens a review whose pairs are not all known yet: it draws the cover page, then the app calls Continue() for every chunk it parses and ends with Finish().">
+<link rel="stylesheet" href="../plain.css">
+</head>
+<body>
+
+<div class="layout">
+  <header>
+    <div class="header-left">
+      <span class="header-label">NBGL use cases</span>
+    </div>
+    <div class="env-pill">26 use cases</div>
+  </header>
+
+  <main class="report">
+<nav class="toc" aria-label="Variants">
+  <div class="toc-title">Variants</div>
+  <a href="#transaction"><span class="toc-n">01</span><span class="toc-label">TYPE_TRANSACTION</span></a>
+  <a href="#message"><span class="toc-n">02</span><span class="toc-label">TYPE_MESSAGE</span></a>
+</nav>
+
+<div class="body">
+  <a class="back-link" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    All use cases
+  </a>
+
+  <div class="hero">
+    <h1>nbgl_useCaseReviewStreamingStart</h1>
+    <p>Opens a review whose pairs are not all known yet: it draws the cover page, then the app calls Continue() for every chunk it parses and ends with Finish().</p>
+  </div>
+
+  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseReviewStreamingStart</span>(<span class="c-type">nbgl_operationType_t</span>       operationType,
+                                      <span class="c-keyword">const</span> <span class="c-type">nbgl_icon_details_t</span> *icon,
+                                      <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *reviewTitle,
+                                      <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *reviewSubTitle,
+                                      <span class="c-type">nbgl_choiceCallback_t</span>      choiceCallback);</code></pre>
+
+  <details class="variant" id="transaction" open>
+    <summary>
+      <span class="variant-title">TYPE_TRANSACTION</span>
+      <span class="variant-tally">5 screens</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_warning_t</span>             warning;
+
+<span class="c-comment">/** Index of the chunk the chain is currently showing. */</span>
+<span class="c-keyword">static</span> <span class="c-type">uint8_t</span> chunk;
+<span class="c-comment">/** Whether the chain uses nbgl_useCaseReviewStreamingContinueExt(). */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">bool</span> skippable;
+
+<span class="c-pp">#define NB_CHUNKS 2</span>
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_chunk(<span class="c-type">uint8_t</span> index) {
+    memset(pairs, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(pairs));
+    memset(&amp;pairList, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(pairList));
+
+    <span class="c-keyword">if</span> (index == <span class="c-number">0</span>) {
+        pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+        pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+        pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+        pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    } <span class="c-keyword">else</span> {
+        pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Memo&quot;</span>;
+        pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;Payment for invoice 2026-0142&quot;</span>;
+        pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+        pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+    }
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">2</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> on_finish(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
+        confirm ? <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span> : <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>,
+        catalog_on_quit);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> on_skip(<span class="c-keyword">void</span>);
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> on_chunk(<span class="c-keyword">bool</span> confirm);
+
+<span class="c-comment">/**
+ * Draw the next chunk, or the signing page once they are all shown. This is
+ * the loop an app runs while it streams: one Continue() per parsed chunk.
+ */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> show_next_chunk(<span class="c-keyword">void</span>) {
+    <span class="c-keyword">if</span> (chunk &gt;= <span class="c-const">NB_CHUNKS</span>) {
+        <span class="c-usecase">nbgl_useCaseReviewStreamingFinish</span>(<span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>, on_finish);
+        <span class="c-keyword">return</span>;
+    }
+
+    fill_chunk(chunk);
+    chunk++;
+
+    <span class="c-keyword">if</span> (skippable) {
+        <span class="c-comment">// The Ext flavour adds a &quot;Skip&quot; button, whose callback is expected to</span>
+        <span class="c-comment">// jump straight to the signing page.</span>
+        <span class="c-usecase">nbgl_useCaseReviewStreamingContinueExt</span>(&amp;pairList, on_chunk, on_skip);
+    } <span class="c-keyword">else</span> {
+        <span class="c-usecase">nbgl_useCaseReviewStreamingContinue</span>(&amp;pairList, on_chunk);
+    }
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> on_chunk(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-keyword">if</span> (!confirm) {
+        on_finish(<span class="c-keyword">false</span>);
+        <span class="c-keyword">return</span>;
+    }
+    show_next_chunk();
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> on_skip(<span class="c-keyword">void</span>) {
+    chunk = <span class="c-const">NB_CHUNKS</span>;
+    show_next_chunk();
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_streaming_start_transaction(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// The cover page only; the app then streams its chunks with Continue().</span>
+    chunk = <span class="c-number">0</span>;
+    skippable = <span class="c-keyword">false</span>;
+
+    <span class="c-usecase">nbgl_useCaseReviewStreamingStart</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+                                     &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                                     <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                                     <span class="c-const">NULL</span>,
+                                     on_chunk);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_streaming_start/transaction/00.png" title="Open at full size">
+          <img src="../screens/flex/review_streaming_start/transaction/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_streaming_start/transaction/01.png" title="Open at full size">
+          <img src="../screens/flex/review_streaming_start/transaction/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_streaming_start/transaction/02.png" title="Open at full size">
+          <img src="../screens/flex/review_streaming_start/transaction/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_streaming_start/transaction/03.png" title="Open at full size">
+          <img src="../screens/flex/review_streaming_start/transaction/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/flex/review_streaming_start/transaction/04.png" title="Open at full size">
+          <img src="../screens/flex/review_streaming_start/transaction/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Flex, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_streaming_start/transaction/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_streaming_start/transaction/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_streaming_start/transaction/01.png" title="Open at full size">
+          <img src="../screens/apex_p/review_streaming_start/transaction/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_streaming_start/transaction/02.png" title="Open at full size">
+          <img src="../screens/apex_p/review_streaming_start/transaction/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_streaming_start/transaction/03.png" title="Open at full size">
+          <img src="../screens/apex_p/review_streaming_start/transaction/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/apex_p/review_streaming_start/transaction/04.png" title="Open at full size">
+          <img src="../screens/apex_p/review_streaming_start/transaction/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Apex P, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_streaming_start/transaction/00.png" title="Open at full size">
+          <img src="../screens/stax/review_streaming_start/transaction/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_streaming_start/transaction/01.png" title="Open at full size">
+          <img src="../screens/stax/review_streaming_start/transaction/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_streaming_start/transaction/02.png" title="Open at full size">
+          <img src="../screens/stax/review_streaming_start/transaction/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_streaming_start/transaction/03.png" title="Open at full size">
+          <img src="../screens/stax/review_streaming_start/transaction/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/stax/review_streaming_start/transaction/04.png" title="Open at full size">
+          <img src="../screens/stax/review_streaming_start/transaction/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_TRANSACTION, Stax, screen 5">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="message" open>
+    <summary>
+      <span class="variant-title">TYPE_MESSAGE</span>
+      <span class="variant-tally">5 screens</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_warning_t</span>             warning;
+
+<span class="c-comment">/** Index of the chunk the chain is currently showing. */</span>
+<span class="c-keyword">static</span> <span class="c-type">uint8_t</span> chunk;
+<span class="c-comment">/** Whether the chain uses nbgl_useCaseReviewStreamingContinueExt(). */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">bool</span> skippable;
+
+<span class="c-pp">#define NB_CHUNKS 2</span>
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_chunk(<span class="c-type">uint8_t</span> index) {
+    memset(pairs, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(pairs));
+    memset(&amp;pairList, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(pairList));
+
+    <span class="c-keyword">if</span> (index == <span class="c-number">0</span>) {
+        pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+        pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+        pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+        pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    } <span class="c-keyword">else</span> {
+        pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Memo&quot;</span>;
+        pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;Payment for invoice 2026-0142&quot;</span>;
+        pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+        pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+    }
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">2</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> on_finish(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
+        confirm ? <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span> : <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>,
+        catalog_on_quit);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> on_skip(<span class="c-keyword">void</span>);
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> on_chunk(<span class="c-keyword">bool</span> confirm);
+
+<span class="c-comment">/**
+ * Draw the next chunk, or the signing page once they are all shown. This is
+ * the loop an app runs while it streams: one Continue() per parsed chunk.
+ */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> show_next_chunk(<span class="c-keyword">void</span>) {
+    <span class="c-keyword">if</span> (chunk &gt;= <span class="c-const">NB_CHUNKS</span>) {
+        <span class="c-usecase">nbgl_useCaseReviewStreamingFinish</span>(<span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>, on_finish);
+        <span class="c-keyword">return</span>;
+    }
+
+    fill_chunk(chunk);
+    chunk++;
+
+    <span class="c-keyword">if</span> (skippable) {
+        <span class="c-comment">// The Ext flavour adds a &quot;Skip&quot; button, whose callback is expected to</span>
+        <span class="c-comment">// jump straight to the signing page.</span>
+        <span class="c-usecase">nbgl_useCaseReviewStreamingContinueExt</span>(&amp;pairList, on_chunk, on_skip);
+    } <span class="c-keyword">else</span> {
+        <span class="c-usecase">nbgl_useCaseReviewStreamingContinue</span>(&amp;pairList, on_chunk);
+    }
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> on_chunk(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-keyword">if</span> (!confirm) {
+        on_finish(<span class="c-keyword">false</span>);
+        <span class="c-keyword">return</span>;
+    }
+    show_next_chunk();
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> on_skip(<span class="c-keyword">void</span>) {
+    chunk = <span class="c-const">NB_CHUNKS</span>;
+    show_next_chunk();
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_streaming_start_message(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// `operationType` takes the same base types and modifier flags as</span>
+    <span class="c-comment">// nbgl_useCaseReview(); TYPE_MESSAGE changes the reject wordings.</span>
+    chunk = <span class="c-number">0</span>;
+    skippable = <span class="c-keyword">false</span>;
+
+    <span class="c-usecase">nbgl_useCaseReviewStreamingStart</span>(<span class="c-const">TYPE_MESSAGE</span>,
+                                     &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                                     <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                                     <span class="c-const">NULL</span>,
+                                     on_chunk);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_streaming_start/message/00.png" title="Open at full size">
+          <img src="../screens/flex/review_streaming_start/message/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_streaming_start/message/01.png" title="Open at full size">
+          <img src="../screens/flex/review_streaming_start/message/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_streaming_start/message/02.png" title="Open at full size">
+          <img src="../screens/flex/review_streaming_start/message/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_streaming_start/message/03.png" title="Open at full size">
+          <img src="../screens/flex/review_streaming_start/message/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/flex/review_streaming_start/message/04.png" title="Open at full size">
+          <img src="../screens/flex/review_streaming_start/message/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Flex, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_streaming_start/message/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_streaming_start/message/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_streaming_start/message/01.png" title="Open at full size">
+          <img src="../screens/apex_p/review_streaming_start/message/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_streaming_start/message/02.png" title="Open at full size">
+          <img src="../screens/apex_p/review_streaming_start/message/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_streaming_start/message/03.png" title="Open at full size">
+          <img src="../screens/apex_p/review_streaming_start/message/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/apex_p/review_streaming_start/message/04.png" title="Open at full size">
+          <img src="../screens/apex_p/review_streaming_start/message/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Apex P, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_streaming_start/message/00.png" title="Open at full size">
+          <img src="../screens/stax/review_streaming_start/message/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_streaming_start/message/01.png" title="Open at full size">
+          <img src="../screens/stax/review_streaming_start/message/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_streaming_start/message/02.png" title="Open at full size">
+          <img src="../screens/stax/review_streaming_start/message/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_streaming_start/message/03.png" title="Open at full size">
+          <img src="../screens/stax/review_streaming_start/message/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/stax/review_streaming_start/message/04.png" title="Open at full size">
+          <img src="../screens/stax/review_streaming_start/message/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReviewStreamingStart, TYPE_MESSAGE, Stax, screen 5">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="stamp">Generated 2026-09-22T15:06:27+00:00.</p>
+</div>
+  </main>
+
+  <footer>
+    <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
+    <span>2026-09-22T15:06:27+00:00</span>
+  </footer>
+</div>
+
+<script>
+/* Highlights the entry in view in the contents, the way the showcase theme's
+   toc.js does, so both outputs behave the same. */
+(function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+    if (!links.length) { return; }
+    var targets = links.map(function (a) {
+        return document.getElementById(a.getAttribute("href").slice(1));
+    });
+
+    function sync() {
+        var active = 0;
+        targets.forEach(function (el, i) {
+            if (el && !el.hidden && el.getBoundingClientRect().top <= 140) {
+                active = i;
+            }
+        });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === active); });
+    }
+
+    addEventListener("scroll", sync, { passive: true });
+    addEventListener("resize", sync);
+    sync();
+}());
+</script>
+<script>
+(function () {
+    // A collapsed variant must open when the contents jump to it, otherwise
+    // the link would scroll to a closed block.
+    Array.prototype.slice.call(document.querySelectorAll(".toc a")).forEach(
+        function (link) {
+            link.addEventListener("click", function () {
+                var target = document.getElementById(
+                    link.getAttribute("href").slice(1)
+                );
+                if (target) { target.open = true; }
+            });
+        }
+    );
+}());
+</script>
+</body>
+</html>

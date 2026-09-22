@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nbgl_useCaseAdvancedReview &mdash; NBGL use cases</title>
+<meta name="description" content="The configurable review: a bitfield of predefined warnings drives the intro pages, and the top-right button of the first and last pages opens the matching details.">
+<link rel="stylesheet" href="../plain.css">
+</head>
+<body>
+
+<div class="layout">
+  <header>
+    <div class="header-left">
+      <span class="header-label">NBGL use cases</span>
+    </div>
+    <div class="env-pill">26 use cases</div>
+  </header>
+
+  <main class="report">
+<nav class="toc" aria-label="Variants">
+  <div class="toc-title">Variants</div>
+  <a href="#blind_signing"><span class="toc-n">01</span><span class="toc-label">BLIND_SIGNING_WARN</span></a>
+  <a href="#w3c_threat"><span class="toc-n">02</span><span class="toc-label">W3C_THREAT_DETECTED_WARN</span></a>
+  <a href="#w3c_risk"><span class="toc-n">03</span><span class="toc-label">W3C_RISK_DETECTED_WARN</span></a>
+  <a href="#w3c_no_threat"><span class="toc-n">04</span><span class="toc-label">W3C_NO_THREAT_WARN</span></a>
+  <a href="#w3c_issue"><span class="toc-n">05</span><span class="toc-label">W3C_ISSUE_WARN</span></a>
+  <a href="#gated_signing"><span class="toc-n">06</span><span class="toc-label">GATED_SIGNING_WARN</span></a>
+  <a href="#tip_box"><span class="toc-n">07</span><span class="toc-label">No warning, custom tip-box</span></a>
+</nav>
+
+<div class="body">
+  <a class="back-link" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    All use cases
+  </a>
+
+  <div class="hero">
+    <h1>nbgl_useCaseAdvancedReview</h1>
+    <p>The configurable review: a bitfield of predefined warnings drives the intro pages, and the top-right button of the first and last pages opens the matching details.</p>
+    <p class="flags">
+      Needs
+<code>ENABLE_NBGL_QRCODE = 1</code>      in the app Makefile.
+    </p>
+  </div>
+
+  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseAdvancedReview</span>(<span class="c-type">nbgl_operationType_t</span>              operationType,
+                                <span class="c-keyword">const</span> <span class="c-type">nbgl_contentTagValueList_t</span> *tagValueList,
+                                <span class="c-keyword">const</span> <span class="c-type">nbgl_icon_details_t</span>        *icon,
+                                <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *reviewTitle,
+                                <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *reviewSubTitle,
+                                <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *finishTitle,
+                                <span class="c-keyword">const</span> <span class="c-type">nbgl_tipBox_t</span>              *tipBox,
+                                <span class="c-keyword">const</span> <span class="c-type">nbgl_warning_t</span>             *warning,
+                                <span class="c-type">nbgl_choiceCallback_t</span>             choiceCallback);</code></pre>
+
+  <details class="variant" id="blind_signing" open>
+    <summary>
+      <span class="variant-title">BLIND_SIGNING_WARN</span>
+      <span class="variant-tally">6 screens</span>
+    </summary>
+
+<p class="variant-note">The transaction cannot be decoded.</p>
+    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+
+<span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_advanced_review_blind_signing(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// The transaction cannot be decoded.</span>
+    <span class="c-comment">// The BLIND_OPERATION flag of `operationType` is what puts the top-right</span>
+    <span class="c-comment">// button on the review pages; the bit of `predefinedSet` is what builds</span>
+    <span class="c-comment">// the intro page and the details behind that button.</span>
+    <span class="c-comment">// This warning quotes no provider, so dAppProvider / reportProvider /</span>
+    <span class="c-comment">// reportUrl are left unset: see the Web3 Checks variants for those.</span>
+    fill_transfer_pairs();
+    signed_status = <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    warning.predefinedSet = <span class="c-number">1</span> &lt;&lt; <span class="c-const">BLIND_SIGNING_WARN</span>;
+
+    <span class="c-usecase">nbgl_useCaseAdvancedReview</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">BLIND_OPERATION</span>,
+                               &amp;pairList,
+                               &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                               <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               &amp;warning,
+                               uc_review_choice);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/advanced_review/blind_signing/00.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/blind_signing/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/blind_signing/01.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/blind_signing/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/flex/advanced_review/blind_signing/02.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/blind_signing/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/blind_signing/03.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/blind_signing/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/blind_signing/04.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/blind_signing/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Flex, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/flex/advanced_review/blind_signing/05.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/blind_signing/05.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Flex, screen 6">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/advanced_review/blind_signing/00.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/blind_signing/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/blind_signing/01.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/blind_signing/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/apex_p/advanced_review/blind_signing/02.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/blind_signing/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/blind_signing/03.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/blind_signing/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/blind_signing/04.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/blind_signing/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Apex P, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/apex_p/advanced_review/blind_signing/05.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/blind_signing/05.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Apex P, screen 6">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/advanced_review/blind_signing/00.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/blind_signing/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/blind_signing/01.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/blind_signing/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/stax/advanced_review/blind_signing/02.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/blind_signing/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/blind_signing/03.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/blind_signing/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/blind_signing/04.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/blind_signing/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Stax, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/stax/advanced_review/blind_signing/05.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/blind_signing/05.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, BLIND_SIGNING_WARN, Stax, screen 6">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="w3c_threat" open>
+    <summary>
+      <span class="variant-title">W3C_THREAT_DETECTED_WARN</span>
+      <span class="variant-tally">7 screens</span>
+    </summary>
+
+<p class="variant-note">Web3 Checks found a threat.</p>
+    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+
+<span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
+}
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_warning_t</span> warning;
+
+<span class="c-comment">/**
+ * The provider strings the Web3 Checks warnings quote. `reportProvider` names
+ * the scanner on the intro page and titles the report, `reportUrl` is the
+ * address of the full report, shown as a QR code one level into the security
+ * report. `nbgl_warning_t` also has a `dAppProvider` field, which the SDK
+ * declares but never reads, so setting it would change nothing.
+ */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_warning_providers(<span class="c-keyword">void</span>) {
+    warning.reportProvider = <span class="c-string">&quot;Blockaid&quot;</span>;
+    warning.reportUrl = <span class="c-string">&quot;url.com/od24xz&quot;</span>;
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_advanced_review_w3c_threat(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// Web3 Checks found a threat.</span>
+    <span class="c-comment">// The RISKY_OPERATION flag of `operationType` is what puts the top-right</span>
+    <span class="c-comment">// button on the review pages; the bit of `predefinedSet` is what builds</span>
+    <span class="c-comment">// the intro page and the details behind that button.</span>
+    fill_transfer_pairs();
+    fill_warning_providers();
+    signed_status = <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    warning.predefinedSet = <span class="c-number">1</span> &lt;&lt; <span class="c-const">W3C_THREAT_DETECTED_WARN</span>;
+
+    <span class="c-usecase">nbgl_useCaseAdvancedReview</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">RISKY_OPERATION</span>,
+                               &amp;pairList,
+                               &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                               <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               &amp;warning,
+                               uc_review_choice);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/advanced_review/w3c_threat/00.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_threat/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/w3c_threat/01.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_threat/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/flex/advanced_review/w3c_threat/02.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_threat/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Critical threat”</span>
+          <a href="../screens/flex/advanced_review/w3c_threat/03.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_threat/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/w3c_threat/04.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_threat/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Flex, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/w3c_threat/05.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_threat/05.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Flex, screen 6">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/flex/advanced_review/w3c_threat/06.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_threat/06.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Flex, screen 7">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/advanced_review/w3c_threat/00.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_threat/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/w3c_threat/01.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_threat/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/apex_p/advanced_review/w3c_threat/02.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_threat/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Critical threat”</span>
+          <a href="../screens/apex_p/advanced_review/w3c_threat/03.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_threat/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/w3c_threat/04.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_threat/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Apex P, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/w3c_threat/05.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_threat/05.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Apex P, screen 6">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/apex_p/advanced_review/w3c_threat/06.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_threat/06.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Apex P, screen 7">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/advanced_review/w3c_threat/00.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_threat/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/w3c_threat/01.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_threat/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/stax/advanced_review/w3c_threat/02.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_threat/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Critical threat”</span>
+          <a href="../screens/stax/advanced_review/w3c_threat/03.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_threat/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/w3c_threat/04.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_threat/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Stax, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/w3c_threat/05.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_threat/05.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Stax, screen 6">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/stax/advanced_review/w3c_threat/06.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_threat/06.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_THREAT_DETECTED_WARN, Stax, screen 7">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="w3c_risk" open>
+    <summary>
+      <span class="variant-title">W3C_RISK_DETECTED_WARN</span>
+      <span class="variant-tally">7 screens</span>
+    </summary>
+
+<p class="variant-note">Web3 Checks found a risk.</p>
+    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+
+<span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
+}
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_warning_t</span> warning;
+
+<span class="c-comment">/**
+ * The provider strings the Web3 Checks warnings quote. `reportProvider` names
+ * the scanner on the intro page and titles the report, `reportUrl` is the
+ * address of the full report, shown as a QR code one level into the security
+ * report. `nbgl_warning_t` also has a `dAppProvider` field, which the SDK
+ * declares but never reads, so setting it would change nothing.
+ */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_warning_providers(<span class="c-keyword">void</span>) {
+    warning.reportProvider = <span class="c-string">&quot;Blockaid&quot;</span>;
+    warning.reportUrl = <span class="c-string">&quot;url.com/od24xz&quot;</span>;
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_advanced_review_w3c_risk(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// Web3 Checks found a risk.</span>
+    <span class="c-comment">// The RISKY_OPERATION flag of `operationType` is what puts the top-right</span>
+    <span class="c-comment">// button on the review pages; the bit of `predefinedSet` is what builds</span>
+    <span class="c-comment">// the intro page and the details behind that button.</span>
+    fill_transfer_pairs();
+    fill_warning_providers();
+    signed_status = <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    warning.predefinedSet = <span class="c-number">1</span> &lt;&lt; <span class="c-const">W3C_RISK_DETECTED_WARN</span>;
+
+    <span class="c-usecase">nbgl_useCaseAdvancedReview</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">RISKY_OPERATION</span>,
+                               &amp;pairList,
+                               &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                               <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               &amp;warning,
+                               uc_review_choice);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/advanced_review/w3c_risk/00.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_risk/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/w3c_risk/01.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_risk/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/flex/advanced_review/w3c_risk/02.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_risk/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Risk detected”</span>
+          <a href="../screens/flex/advanced_review/w3c_risk/03.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_risk/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/w3c_risk/04.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_risk/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Flex, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/w3c_risk/05.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_risk/05.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Flex, screen 6">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/flex/advanced_review/w3c_risk/06.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_risk/06.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Flex, screen 7">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/advanced_review/w3c_risk/00.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_risk/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/w3c_risk/01.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_risk/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/apex_p/advanced_review/w3c_risk/02.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_risk/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Risk detected”</span>
+          <a href="../screens/apex_p/advanced_review/w3c_risk/03.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_risk/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/w3c_risk/04.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_risk/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Apex P, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/w3c_risk/05.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_risk/05.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Apex P, screen 6">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/apex_p/advanced_review/w3c_risk/06.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_risk/06.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Apex P, screen 7">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/advanced_review/w3c_risk/00.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_risk/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/w3c_risk/01.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_risk/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/stax/advanced_review/w3c_risk/02.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_risk/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Risk detected”</span>
+          <a href="../screens/stax/advanced_review/w3c_risk/03.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_risk/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/w3c_risk/04.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_risk/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Stax, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/w3c_risk/05.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_risk/05.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Stax, screen 6">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/stax/advanced_review/w3c_risk/06.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_risk/06.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_RISK_DETECTED_WARN, Stax, screen 7">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="w3c_no_threat" open>
+    <summary>
+      <span class="variant-title">W3C_NO_THREAT_WARN</span>
+      <span class="variant-tally">5 screens</span>
+    </summary>
+
+<p class="variant-note">Web3 Checks found nothing.</p>
+    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+
+<span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_advanced_review_w3c_no_threat(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// Web3 Checks found nothing.</span>
+    <span class="c-comment">// The NO_THREAT_OPERATION flag of `operationType` is what puts the top-right</span>
+    <span class="c-comment">// button on the review pages; the bit of `predefinedSet` is what builds</span>
+    <span class="c-comment">// the intro page and the details behind that button.</span>
+    <span class="c-comment">// This warning quotes no provider and its report has no second level, so</span>
+    <span class="c-comment">// reportProvider / reportUrl are left unset: see W3C_THREAT_DETECTED_WARN.</span>
+    fill_transfer_pairs();
+    signed_status = <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    warning.predefinedSet = <span class="c-number">1</span> &lt;&lt; <span class="c-const">W3C_NO_THREAT_WARN</span>;
+
+    <span class="c-usecase">nbgl_useCaseAdvancedReview</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">NO_THREAT_OPERATION</span>,
+                               &amp;pairList,
+                               &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                               <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               &amp;warning,
+                               uc_review_choice);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/advanced_review/w3c_no_threat/00.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_no_threat/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/flex/advanced_review/w3c_no_threat/01.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_no_threat/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/w3c_no_threat/02.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_no_threat/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/w3c_no_threat/03.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_no_threat/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/flex/advanced_review/w3c_no_threat/04.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_no_threat/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Flex, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/advanced_review/w3c_no_threat/00.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_no_threat/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/apex_p/advanced_review/w3c_no_threat/01.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_no_threat/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/w3c_no_threat/02.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_no_threat/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/w3c_no_threat/03.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_no_threat/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/apex_p/advanced_review/w3c_no_threat/04.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_no_threat/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Apex P, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/advanced_review/w3c_no_threat/00.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_no_threat/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/stax/advanced_review/w3c_no_threat/01.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_no_threat/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/w3c_no_threat/02.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_no_threat/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/w3c_no_threat/03.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_no_threat/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/stax/advanced_review/w3c_no_threat/04.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_no_threat/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_NO_THREAT_WARN, Stax, screen 5">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="w3c_issue" open>
+    <summary>
+      <span class="variant-title">W3C_ISSUE_WARN</span>
+      <span class="variant-tally">5 screens</span>
+    </summary>
+
+<p class="variant-note">Web3 Checks could not run.</p>
+    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+
+<span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_advanced_review_w3c_issue(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// Web3 Checks could not run.</span>
+    <span class="c-comment">// The RISKY_OPERATION flag of `operationType` is what puts the top-right</span>
+    <span class="c-comment">// button on the review pages; the bit of `predefinedSet` is what builds</span>
+    <span class="c-comment">// the intro page and the details behind that button.</span>
+    <span class="c-comment">// This warning quotes no provider and its report has no second level, so</span>
+    <span class="c-comment">// reportProvider / reportUrl are left unset: see W3C_THREAT_DETECTED_WARN.</span>
+    fill_transfer_pairs();
+    signed_status = <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    warning.predefinedSet = <span class="c-number">1</span> &lt;&lt; <span class="c-const">W3C_ISSUE_WARN</span>;
+
+    <span class="c-usecase">nbgl_useCaseAdvancedReview</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">RISKY_OPERATION</span>,
+                               &amp;pairList,
+                               &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                               <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               &amp;warning,
+                               uc_review_choice);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/advanced_review/w3c_issue/00.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_issue/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/flex/advanced_review/w3c_issue/01.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_issue/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/w3c_issue/02.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_issue/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/w3c_issue/03.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_issue/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/flex/advanced_review/w3c_issue/04.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/w3c_issue/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Flex, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/advanced_review/w3c_issue/00.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_issue/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/apex_p/advanced_review/w3c_issue/01.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_issue/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/w3c_issue/02.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_issue/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/w3c_issue/03.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_issue/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/apex_p/advanced_review/w3c_issue/04.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/w3c_issue/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Apex P, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/advanced_review/w3c_issue/00.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_issue/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/stax/advanced_review/w3c_issue/01.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_issue/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/w3c_issue/02.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_issue/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/w3c_issue/03.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_issue/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/stax/advanced_review/w3c_issue/04.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/w3c_issue/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, W3C_ISSUE_WARN, Stax, screen 5">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="gated_signing" open>
+    <summary>
+      <span class="variant-title">GATED_SIGNING_WARN</span>
+      <span class="variant-tally">5 screens</span>
+    </summary>
+
+<p class="variant-note">Signing is gated.</p>
+    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+
+<span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_advanced_review_gated_signing(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// Signing is gated.</span>
+    <span class="c-comment">// The BLIND_OPERATION flag of `operationType` is what puts the top-right</span>
+    <span class="c-comment">// button on the review pages; the bit of `predefinedSet` is what builds</span>
+    <span class="c-comment">// the intro page and the details behind that button.</span>
+    <span class="c-comment">// This warning quotes no provider, so dAppProvider / reportProvider /</span>
+    <span class="c-comment">// reportUrl are left unset: see the Web3 Checks variants for those.</span>
+    fill_transfer_pairs();
+    signed_status = <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    warning.predefinedSet = <span class="c-number">1</span> &lt;&lt; <span class="c-const">GATED_SIGNING_WARN</span>;
+
+    <span class="c-usecase">nbgl_useCaseAdvancedReview</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">BLIND_OPERATION</span>,
+                               &amp;pairList,
+                               &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                               <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               &amp;warning,
+                               uc_review_choice);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/advanced_review/gated_signing/00.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/gated_signing/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/flex/advanced_review/gated_signing/01.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/gated_signing/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/gated_signing/02.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/gated_signing/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/gated_signing/03.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/gated_signing/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/flex/advanced_review/gated_signing/04.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/gated_signing/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Flex, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/advanced_review/gated_signing/00.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/gated_signing/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/apex_p/advanced_review/gated_signing/01.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/gated_signing/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/gated_signing/02.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/gated_signing/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/gated_signing/03.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/gated_signing/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/apex_p/advanced_review/gated_signing/04.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/gated_signing/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Apex P, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/advanced_review/gated_signing/00.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/gated_signing/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Top-right button</span>
+          <a href="../screens/stax/advanced_review/gated_signing/01.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/gated_signing/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/gated_signing/02.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/gated_signing/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/gated_signing/03.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/gated_signing/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/stax/advanced_review/gated_signing/04.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/gated_signing/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, GATED_SIGNING_WARN, Stax, screen 5">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="tip_box" open>
+    <summary>
+      <span class="variant-title">No warning, custom tip-box</span>
+      <span class="variant-tally">6 screens</span>
+    </summary>
+
+<p class="variant-note">With an empty predefinedSet there is no warning page, and the tip-box the app provides is the one displayed at the bottom of the first page; touching it opens its modal. This is the only way to a custom tip-box, since a predefined warning tip takes priority over the caller&#39;s.</p>
+    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+
+<span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
+}
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_tipBox_t</span> tip_box;
+
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">TIP_INFO_TYPES</span>[] = {<span class="c-string">&quot;Raw data&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">TIP_INFO_CONTENTS</span>[] = {<span class="c-string">&quot;0x9f0a1b2c3d4e5f60&quot;</span>};
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_advanced_review_tip_box(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// With an empty predefinedSet there is no predefined warning, so the</span>
+    <span class="c-comment">// tip-box the app provides is the one displayed: touching it opens a modal</span>
+    <span class="c-comment">// built from these infos. That is the only path to a custom tip-box, as</span>
+    <span class="c-comment">// initWarningTipBox() (nbgl_use_case.c:2919) gives a predefined warning</span>
+    <span class="c-comment">// tip priority over the caller&#x27;s.</span>
+    fill_transfer_pairs();
+    signed_status = <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+
+    tip_box.text = <span class="c-string">&quot;Raw transaction data&quot;</span>;
+    tip_box.icon = &amp;<span class="c-const">SMALL_INFO_CIRCLE_ICON</span>;
+    tip_box.modalTitle = <span class="c-string">&quot;Raw transaction data&quot;</span>;
+    tip_box.type = <span class="c-const">INFOS_LIST</span>;
+    tip_box.infos.nbInfos = <span class="c-const">ARRAYLEN</span>(<span class="c-const">TIP_INFO_TYPES</span>);
+    tip_box.infos.infoTypes = <span class="c-const">TIP_INFO_TYPES</span>;
+    tip_box.infos.infoContents = <span class="c-const">TIP_INFO_CONTENTS</span>;
+
+    warning.predefinedSet = <span class="c-number">0</span>;
+
+    <span class="c-usecase">nbgl_useCaseAdvancedReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+                               &amp;pairList,
+                               &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                               <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                               <span class="c-const">NULL</span>,
+                               <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                               &amp;tip_box,
+                               &amp;warning,
+                               uc_review_choice);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/advanced_review/tip_box/00.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/tip_box/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Raw transaction data”</span>
+          <a href="../screens/flex/advanced_review/tip_box/01.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/tip_box/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/flex/advanced_review/tip_box/02.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/tip_box/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/tip_box/03.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/tip_box/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/advanced_review/tip_box/04.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/tip_box/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Flex, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/flex/advanced_review/tip_box/05.png" title="Open at full size">
+          <img src="../screens/flex/advanced_review/tip_box/05.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Flex, screen 6">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/advanced_review/tip_box/00.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/tip_box/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Raw transaction data”</span>
+          <a href="../screens/apex_p/advanced_review/tip_box/01.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/tip_box/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/apex_p/advanced_review/tip_box/02.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/tip_box/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/tip_box/03.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/tip_box/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/advanced_review/tip_box/04.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/tip_box/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Apex P, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/apex_p/advanced_review/tip_box/05.png" title="Open at full size">
+          <img src="../screens/apex_p/advanced_review/tip_box/05.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Apex P, screen 6">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/advanced_review/tip_box/00.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/tip_box/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Raw transaction data”</span>
+          <a href="../screens/stax/advanced_review/tip_box/01.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/tip_box/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/stax/advanced_review/tip_box/02.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/tip_box/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/tip_box/03.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/tip_box/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/advanced_review/tip_box/04.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/tip_box/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Stax, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/stax/advanced_review/tip_box/05.png" title="Open at full size">
+          <img src="../screens/stax/advanced_review/tip_box/05.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAdvancedReview, No warning, custom tip-box, Stax, screen 6">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="stamp">Generated 2026-09-22T15:06:27+00:00.</p>
+</div>
+  </main>
+
+  <footer>
+    <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
+    <span>2026-09-22T15:06:27+00:00</span>
+  </footer>
+</div>
+
+<script>
+/* Highlights the entry in view in the contents, the way the showcase theme's
+   toc.js does, so both outputs behave the same. */
+(function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+    if (!links.length) { return; }
+    var targets = links.map(function (a) {
+        return document.getElementById(a.getAttribute("href").slice(1));
+    });
+
+    function sync() {
+        var active = 0;
+        targets.forEach(function (el, i) {
+            if (el && !el.hidden && el.getBoundingClientRect().top <= 140) {
+                active = i;
+            }
+        });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === active); });
+    }
+
+    addEventListener("scroll", sync, { passive: true });
+    addEventListener("resize", sync);
+    sync();
+}());
+</script>
+<script>
+(function () {
+    // A collapsed variant must open when the contents jump to it, otherwise
+    // the link would scroll to a closed block.
+    Array.prototype.slice.call(document.querySelectorAll(".toc a")).forEach(
+        function (link) {
+            link.addEventListener("click", function () {
+                var target = document.getElementById(
+                    link.getAttribute("href").slice(1)
+                );
+                if (target) { target.open = true; }
+            });
+        }
+    );
+}());
+</script>
+</body>
+</html>

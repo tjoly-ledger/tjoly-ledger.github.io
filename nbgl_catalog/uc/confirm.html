@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nbgl_useCaseConfirm &mdash; NBGL use cases</title>
+<meta name="description" content="A modal page drawn on top of the current screen, to confirm a decision. The review behind it is only there to give the modal the page an app would have.">
+<link rel="stylesheet" href="../plain.css">
+</head>
+<body>
+
+<div class="layout">
+  <header>
+    <div class="header-left">
+      <span class="header-label">NBGL use cases</span>
+    </div>
+    <div class="env-pill">26 use cases</div>
+  </header>
+
+  <main class="report">
+<nav class="toc" aria-label="Variants">
+  <div class="toc-title">Variants</div>
+  <a href="#reject"><span class="toc-n">01</span><span class="toc-label">Rejecting a transaction</span></a>
+  <a href="#sub_message"><span class="toc-n">02</span><span class="toc-label">With a sub-message</span></a>
+</nav>
+
+<div class="body">
+  <a class="back-link" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    All use cases
+  </a>
+
+  <div class="hero">
+    <h1>nbgl_useCaseConfirm</h1>
+    <p>A modal page drawn on top of the current screen, to confirm a decision. The review behind it is only there to give the modal the page an app would have.</p>
+  </div>
+
+  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseConfirm</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span>     *message,
+                         <span class="c-keyword">const</span> <span class="c-keyword">char</span>     *subMessage,
+                         <span class="c-keyword">const</span> <span class="c-keyword">char</span>     *confirmText,
+                         <span class="c-keyword">const</span> <span class="c-keyword">char</span>     *rejectText,
+                         <span class="c-type">nbgl_callback_t</span> callback);</code></pre>
+
+  <details class="variant" id="reject" open>
+    <summary>
+      <span class="variant-title">Rejecting a transaction</span>
+      <span class="variant-tally">1 screen</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-usecase">nbgl_useCaseConfirm</span>(<span class="c-string">&quot;Reject transaction?&quot;</span>,
+                    <span class="c-const">NULL</span>,
+                    <span class="c-string">&quot;Yes, reject&quot;</span>,
+                    <span class="c-string">&quot;Go back to transaction&quot;</span>,
+                    catalog_on_quit);</code></pre>
+
+    <div class="shot-rows compact">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/confirm/reject/00.png" title="Open at full size">
+          <img src="../screens/flex/confirm/reject/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseConfirm, Rejecting a transaction, Flex, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/confirm/reject/00.png" title="Open at full size">
+          <img src="../screens/apex_p/confirm/reject/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseConfirm, Rejecting a transaction, Apex P, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/confirm/reject/00.png" title="Open at full size">
+          <img src="../screens/stax/confirm/reject/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseConfirm, Rejecting a transaction, Stax, screen 1">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="sub_message" open>
+    <summary>
+      <span class="variant-title">With a sub-message</span>
+      <span class="variant-tally">1 screen</span>
+    </summary>
+
+
+    <pre class="code"><code><span class="c-usecase">nbgl_useCaseConfirm</span>(<span class="c-string">&quot;Delete this account?&quot;</span>,
+                    <span class="c-string">&quot;Its keys will no longer be\nderived by this app.&quot;</span>,
+                    <span class="c-string">&quot;Yes, delete&quot;</span>,
+                    <span class="c-string">&quot;Cancel&quot;</span>,
+                    catalog_on_quit);</code></pre>
+
+    <div class="shot-rows compact">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/confirm/sub_message/00.png" title="Open at full size">
+          <img src="../screens/flex/confirm/sub_message/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseConfirm, With a sub-message, Flex, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/confirm/sub_message/00.png" title="Open at full size">
+          <img src="../screens/apex_p/confirm/sub_message/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseConfirm, With a sub-message, Apex P, screen 1">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/confirm/sub_message/00.png" title="Open at full size">
+          <img src="../screens/stax/confirm/sub_message/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseConfirm, With a sub-message, Stax, screen 1">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="stamp">Generated 2026-09-22T15:06:27+00:00.</p>
+</div>
+  </main>
+
+  <footer>
+    <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
+    <span>2026-09-22T15:06:27+00:00</span>
+  </footer>
+</div>
+
+<script>
+/* Highlights the entry in view in the contents, the way the showcase theme's
+   toc.js does, so both outputs behave the same. */
+(function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+    if (!links.length) { return; }
+    var targets = links.map(function (a) {
+        return document.getElementById(a.getAttribute("href").slice(1));
+    });
+
+    function sync() {
+        var active = 0;
+        targets.forEach(function (el, i) {
+            if (el && !el.hidden && el.getBoundingClientRect().top <= 140) {
+                active = i;
+            }
+        });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === active); });
+    }
+
+    addEventListener("scroll", sync, { passive: true });
+    addEventListener("resize", sync);
+    sync();
+}());
+</script>
+<script>
+(function () {
+    // A collapsed variant must open when the contents jump to it, otherwise
+    // the link would scroll to a closed block.
+    Array.prototype.slice.call(document.querySelectorAll(".toc a")).forEach(
+        function (link) {
+            link.addEventListener("click", function () {
+                var target = document.getElementById(
+                    link.getAttribute("href").slice(1)
+                );
+                if (target) { target.open = true; }
+            });
+        }
+    );
+}());
+</script>
+</body>
+</html>

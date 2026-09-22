@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NBGL use case catalog</title>
+<meta name="description" content="Every nbgl_useCase* screen of the Ledger NBGL library, rendered on Flex, Apex and Stax from a real app run in Speculos.">
+<link rel="stylesheet" href="plain.css">
+</head>
+<body>
+
+<div class="layout">
+  <header>
+    <div class="header-left">
+      <span class="header-label">NBGL use cases</span>
+    </div>
+    <div class="env-pill">26 use cases</div>
+  </header>
+
+  <main class="report">
+<nav class="toc" aria-label="Categories">
+  <div class="toc-title">Categories</div>
+  <a href="#group-home-settings"><span class="toc-n">01</span><span class="toc-label">Home &amp; settings</span></a>
+  <a href="#group-review"><span class="toc-n">02</span><span class="toc-label">Review</span></a>
+  <a href="#group-streaming-review"><span class="toc-n">03</span><span class="toc-label">Streaming review</span></a>
+  <a href="#group-address"><span class="toc-n">04</span><span class="toc-label">Address</span></a>
+  <a href="#group-status-choice-confirm"><span class="toc-n">05</span><span class="toc-label">Status, choice &amp; confirm</span></a>
+  <a href="#group-keypad-keyboard"><span class="toc-n">06</span><span class="toc-label">Keypad &amp; keyboard</span></a>
+  <a href="#group-spinner"><span class="toc-n">07</span><span class="toc-label">Spinner</span></a>
+</nav>
+
+<div class="body">
+  <a class="back-link" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    All projects
+  </a>
+
+  <div class="hero">
+    <h1>NBGL use case catalog</h1>
+    <p>
+      Every <code>nbgl_useCase*</code> screen the SDK draws, with the code that
+      produces it and the rendering it gives on each product. Nothing here is a
+      mock-up: the app is built against the SDK, run in Speculos and driven
+      through its REST API.
+    </p>
+    <div class="stats">
+      <div class="stat"><b>26</b><span>use cases</span></div>
+      <div class="stat"><b>56</b><span>variants</span></div>
+      <div class="stat"><b>548</b><span>screens</span></div>
+      <div class="stat"><b>3</b><span>products</span></div>
+    </div>
+  </div>
+
+  <input id="filter" class="uc-filter" type="search" autocomplete="off"
+         placeholder="Filter by name or by what a screen says, for example &quot;keypad&quot; or &quot;Hold to sign&quot;">
+
+  <section id="group-home-settings">
+    <p class="eyebrow">4 use cases</p>
+    <h2>Home &amp; settings</h2>
+    <div class="uc-list">
+      <a class="uc-card" href="uc/home_and_settings.html"
+         data-name="nbgl_usecasehomeandsettings | home_and_settings | the app home page, with its optional action button, plus the auto-paginated settings and info pages reached through the top-right gear. | default tagline | boilerplate | this app enables signing | transactions on the boilerplate | network. | quit app | blind signing | allow transactions | that cannot be decoded | display nonce | show the nonce | in transactions | version | 2.3.2 | developer | ledger | custom tagline | send and receive bol | with an action button | receive | opened on the settings">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseHomeAndSettings</span>
+          <span class="uc-tally">
+            4 variants
+          </span>
+        </span>
+        <span class="uc-desc">The app home page, with its optional action button, plus the auto-paginated settings and info pages reached through the top-right gear.</span>
+      </a>
+      <a class="uc-card" href="uc/generic_settings.html"
+         data-name="nbgl_usecasegenericsettings | generic_settings | the settings and info pages of nbgl_usecasehomeandsettings(), without the home page, for an app that draws its own. | switches and infos | boilerplate | blind signing | allow transactions | that cannot be decoded | display nonce | show the nonce | in transactions | version | 2.3.2 | developer | ledger">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseGenericSettings</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">The settings and info pages of nbgl_useCaseHomeAndSettings(), without the home page, for an app that draws its own.</span>
+      </a>
+      <a class="uc-card" href="uc/generic_configuration.html"
+         data-name="nbgl_usecasegenericconfiguration | generic_configuration | a titled set of configuration pages built from any mix of content types: switches, radio choices, touchable bars, infos. | choices and bars | network | mainnet | testnet | devnet | derivation path | custom node">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseGenericConfiguration</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">A titled set of configuration pages built from any mix of content types: switches, radio choices, touchable bars, infos.</span>
+      </a>
+      <a class="uc-card" href="uc/navigable_content.html"
+         data-name="nbgl_usecasenavigablecontent | navigable_content | one level of generic pages with a touchable header, where the app fills each page on demand through a navigation callback. | three centered pages | help | first page | this use case lets the app fill | each page on demand. | second page | the navigation bar and the | back arrow come for free. | third page | return false from the callback | to end the navigation.">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseNavigableContent</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">One level of generic pages with a touchable header, where the app fills each page on demand through a navigation callback.</span>
+      </a>
+    </div>
+  </section>
+  <section id="group-review">
+    <p class="eyebrow">5 use cases</p>
+    <h2>Review</h2>
+    <div class="uc-list">
+      <a class="uc-card" href="uc/review.html"
+         data-name="nbgl_usecasereview | review | full review of an operation whose tag/value pairs are all known upfront: a cover page, as many auto-paginated pair pages as needed, then a long-press page to sign. | type_transaction | review transaction | to send bol | swipe to review | reject | 1 of 3 | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | fees | 0.00012 bol | 2 of 3 | sign transaction | to send bol? | 3 of 3 | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b | type_message | review message | message | sign in to ledger | boilerplate | domain | boilerplate.ledger.com | sign message? | message signed | type_operation | review operation | sign operation? | operation signed | | skippable_operation | 1 of 4 | skip | 2 of 4 | memo | payment for invoice | 2026-0142, thanks for | your business | 3 of 4 | 4 of 4 | | address_book_operation | cancel">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseReview</span>
+          <span class="uc-tally">
+            5 variants
+          </span>
+        </span>
+        <span class="uc-desc">Full review of an operation whose tag/value pairs are all known upfront: a cover page, as many auto-paginated pair pages as needed, then a long-press page to sign.</span>
+      </a>
+      <a class="uc-card" href="uc/review_blind_signing.html"
+         data-name="nbgl_usecasereviewblindsigning | review_blind_signing | the same review, preceded by a blind signing warning page. it also takes a tip-box, but never displays it: see the tip-box variant of nbgl_usecaseadvancedreview() for that. | warning page | blind signing ahead | this transaction&#39;s details are | not fully verifiable. if you sign, | you could lose all your assets. | continue anyway | back to safety | review transaction | to send bol | reject | 1 of 3 | blind signing required. | security report | blind signing required | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | fees | 0.00012 bol | 2 of 3 | sign transaction | to send bol? | 3 of 3 | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseReviewBlindSigning</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">The same review, preceded by a blind signing warning page. It also takes a tip-box, but never displays it: see the tip-box variant of nbgl_useCaseAdvancedReview() for that.</span>
+      </a>
+      <a class="uc-card" href="uc/advanced_review.html"
+         data-name="nbgl_usecaseadvancedreview | advanced_review | the configurable review: a bitfield of predefined warnings drives the intro pages, and the top-right button of the first and last pages opens the matching details. | blind_signing_warn | blind signing ahead | this transaction&#39;s details are | not fully verifiable. if you sign, | you could lose all your assets. | continue anyway | back to safety | review transaction | to send bol | reject | 1 of 3 | blind signing required. | this transaction cannot | be clear signed | this transaction or message | cannot be decoded fully. if you | choose to sign, you could be | authorizing malicious actions | that can drain your wallet. | learn more: ledger.com/e8 | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | fees | 0.00012 bol | 2 of 3 | sign transaction | to send bol? | 3 of 3 | hold to sign | transaction signed | this transaction | cannot be clear | signed | cannot be decoded fully. if | you choose to sign, you could | be authorizing malicious | actions that can drain your | wallet. | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b | w3c_threat_detected_warn | critical threat | detected by blockaid | unidentified threat | accept threat and continue | critical threat detected. | security report | this transaction was scanned | as malicious by web3 checks. | blockaid report | url.com/od24xz | scan to view full report | w3c_risk_detected_warn | potential risk | unidentified risk | accept risk and continue | potential risk detected. | risk detected | as risky by web3 checks. | w3c_no_threat_warn | no threat detected by | transaction check. | no threat detected | transaction check didn&#39;t find | any threat, but always review | transaction details carefully. | w3c_issue_warn | transaction check unavailable | transaction check | unavailable | gated_signing_warn | swipe to review | no warning, custom tip-box | raw transaction data | raw transaction | data | raw data | 0x9f0a1b2c3d4e5f60">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseAdvancedReview</span>
+          <span class="uc-tally">
+<span class="uc-flag">ENABLE_NBGL_QRCODE</span>            7 variants
+          </span>
+        </span>
+        <span class="uc-desc">The configurable review: a bitfield of predefined warnings drives the intro pages, and the top-right button of the first and last pages opens the matching details.</span>
+      </a>
+      <a class="uc-card" href="uc/review_light.html"
+         data-name="nbgl_usecasereviewlight | review_light | the same flow as nbgl_usecasereview(), but the last page validates with a simple button instead of a long press. | button instead of long press | review operation | swipe to review | reject | 1 of 3 | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | fees | 0.00012 bol | 2 of 3 | confirm operation? | 3 of 3 | approve | operation signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseReviewLight</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">The same flow as nbgl_useCaseReview(), but the last page validates with a simple button instead of a long press.</span>
+      </a>
+      <a class="uc-card" href="uc/generic_review.html"
+         data-name="nbgl_usecasegenericreview | generic_review | any mix of content types paginated as a review, with a reject footer, when the predefined reviews do not fit. | pairs then long press | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | fees | 0.00012 bol | reject | 1 of 2 | sign transaction | to send bol? | 2 of 2 | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseGenericReview</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">Any mix of content types paginated as a review, with a reject footer, when the predefined reviews do not fit.</span>
+      </a>
+    </div>
+  </section>
+  <section id="group-streaming-review">
+    <p class="eyebrow">6 use cases</p>
+    <h2>Streaming review</h2>
+    <div class="uc-list">
+      <a class="uc-card" href="uc/review_streaming_start.html"
+         data-name="nbgl_usecasereviewstreamingstart | review_streaming_start | opens a review whose pairs are not all known yet: it draws the cover page, then the app calls continue() for every chunk it parses and ends with finish(). | type_transaction | review transaction | to send bol | swipe to review | reject | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | memo | payment for invoice | 2026-0142 | fees | 0.00012 bol | sign transaction | to send bol? | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b | type_message">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseReviewStreamingStart</span>
+          <span class="uc-tally">
+            2 variants
+          </span>
+        </span>
+        <span class="uc-desc">Opens a review whose pairs are not all known yet: it draws the cover page, then the app calls Continue() for every chunk it parses and ends with Finish().</span>
+      </a>
+      <a class="uc-card" href="uc/review_streaming_blind_signing_start.html"
+         data-name="nbgl_usecasereviewstreamingblindsigningstart | review_streaming_blind_signing_start | the streaming cover page preceded by a blind signing warning page. | warning then cover | blind signing ahead | this transaction&#39;s details are | not fully verifiable. if you sign, | you could lose all your assets. | continue anyway | back to safety | review transaction | to send bol | reject | blind signing required. | security report | blind signing required | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | memo | payment for invoice | 2026-0142 | fees | 0.00012 bol | sign transaction | to send bol? | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseReviewStreamingBlindSigningStart</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">The streaming cover page preceded by a blind signing warning page.</span>
+      </a>
+      <a class="uc-card" href="uc/advanced_review_streaming_start.html"
+         data-name="nbgl_usecaseadvancedreviewstreamingstart | advanced_review_streaming_start | the configurable streaming start: the same warning bitfield as nbgl_usecaseadvancedreview(). | w3c_threat_detected_warn | critical threat | detected by blockaid | transaction checked by | blockaid. | accept threat and continue | back to safety | review transaction | to send bol | reject | critical threat detected. | security report | blockaid report | url.com/od24xz | scan to view full report | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | memo | payment for invoice | 2026-0142 | fees | 0.00012 bol | sign transaction | to send bol? | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b | w3c_no_threat_warn | no threat detected by | transaction check. | no threat detected | transaction check didn&#39;t find | any threat, but always review | transaction details carefully.">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseAdvancedReviewStreamingStart</span>
+          <span class="uc-tally">
+<span class="uc-flag">ENABLE_NBGL_QRCODE</span>            2 variants
+          </span>
+        </span>
+        <span class="uc-desc">The configurable streaming start: the same warning bitfield as nbgl_useCaseAdvancedReview().</span>
+      </a>
+      <a class="uc-card" href="uc/review_streaming_continue.html"
+         data-name="nbgl_usecasereviewstreamingcontinue | review_streaming_continue | draws the pages of the chunk the app has just parsed. it only renders inside a chain, so the whole chain is played here. | two chunks | review transaction | to send bol | swipe to review | reject | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | memo | payment for invoice | 2026-0142 | fees | 0.00012 bol | sign transaction | to send bol? | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseReviewStreamingContinue</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">Draws the pages of the chunk the app has just parsed. It only renders inside a chain, so the whole chain is played here.</span>
+      </a>
+      <a class="uc-card" href="uc/review_streaming_continue_ext.html"
+         data-name="nbgl_usecasereviewstreamingcontinueext | review_streaming_continue_ext | the same as continue(), plus a skip button whose callback is expected to jump straight to the signing page. needs skippable_operation on the start. | with the skip button | review transaction | to send bol | swipe to review | reject | skip | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | memo | payment for invoice | 2026-0142 | fees | 0.00012 bol | sign transaction | to send bol? | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseReviewStreamingContinueExt</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">The same as Continue(), plus a Skip button whose callback is expected to jump straight to the signing page. Needs SKIPPABLE_OPERATION on the start.</span>
+      </a>
+      <a class="uc-card" href="uc/review_streaming_finish.html"
+         data-name="nbgl_usecasereviewstreamingfinish | review_streaming_finish | closes a streaming review with the long-press signing page. shown here at the end of the whole chain. | end of the chain | review transaction | to send bol | swipe to review | reject | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | memo | payment for invoice | 2026-0142 | fees | 0.00012 bol | sign transaction | to send bol? | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseReviewStreamingFinish</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">Closes a streaming review with the long-press signing page. Shown here at the end of the whole chain.</span>
+      </a>
+    </div>
+  </section>
+  <section id="group-address">
+    <p class="eyebrow">1 use case</p>
+    <h2>Address</h2>
+    <div class="uc-list">
+      <a class="uc-card" href="uc/address_review.html"
+         data-name="nbgl_usecaseaddressreview | address_review | shows an address for the user to check against their wallet, with optional extra pairs. the address page also carries a button to display it as a qr code, which is not captured here: it is an icon with no label, so it cannot be located the same way on every product. | address only | verify bol address | swipe to continue | cancel | 1 of 2 | address | bc1qar0srrr7xfkvy5l64 | 3lydnw9re59gtzzwf5m | dq | 2 of 2 | confirm | address verified | bc1qar0srrr7xfkvy5l6 | 43lydnw9re59gtzzwf5 | mdq | 3lydnw9re59gtzzwf5 | with extra pairs | make sure it matches the one | in your wallet. | 1 of 3 | show as qr | 2 of 3 | account | main account | derivation path | m/44&#39;/0&#39;/0&#39;/0/0 | 3 of 3">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseAddressReview</span>
+          <span class="uc-tally">
+<span class="uc-flag">ENABLE_NBGL_QRCODE</span>            2 variants
+          </span>
+        </span>
+        <span class="uc-desc">Shows an address for the user to check against their wallet, with optional extra pairs. The address page also carries a button to display it as a QR code, which is not captured here: it is an icon with no label, so it cannot be located the same way on every product.</span>
+      </a>
+    </div>
+  </section>
+  <section id="group-status-choice-confirm">
+    <p class="eyebrow">7 use cases</p>
+    <h2>Status, choice &amp; confirm</h2>
+    <div class="uc-list">
+      <a class="uc-card" href="uc/status.html"
+         data-name="nbgl_usecasestatus | status | a transient page with a free text, closing on its own after 3 seconds. the emulated time is frozen here so it can be captured. | success | address verified | failure | transaction rejected">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseStatus</span>
+          <span class="uc-tally">
+            2 variants
+          </span>
+        </span>
+        <span class="uc-desc">A transient page with a free text, closing on its own after 3 seconds. The emulated time is frozen here so it can be captured.</span>
+      </a>
+      <a class="uc-card" href="uc/review_status.html"
+         data-name="nbgl_usecasereviewstatus | review_status | the same transient page, pre-worded for each of the eight values of nbgl_reviewstatustype_t. | status_type_transaction_signed | transaction signed | status_type_transaction_rejected | transaction rejected | status_type_message_signed | message signed | status_type_message_rejected | message rejected | status_type_operation_signed | operation signed | status_type_operation_rejected | operation rejected | status_type_address_verified | address verified | status_type_address_rejected | address verification | cancelled">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseReviewStatus</span>
+          <span class="uc-tally">
+            8 variants
+          </span>
+        </span>
+        <span class="uc-desc">The same transient page, pre-worded for each of the eight values of nbgl_reviewStatusType_t.</span>
+      </a>
+      <a class="uc-card" href="uc/choice.html"
+         data-name="nbgl_usecasechoice | choice | a centered info page with a black confirm button and a footer to decline. | with a sub-message | allow blind signing? | transactions will be signed | without being displayed. | cancel | i understand, confirm | without a sub-message | remove this account? | keep it | remove">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseChoice</span>
+          <span class="uc-tally">
+            2 variants
+          </span>
+        </span>
+        <span class="uc-desc">A centered info page with a black confirm button and a footer to decline.</span>
+      </a>
+      <a class="uc-card" href="uc/choice_with_details.html"
+         data-name="nbgl_usecasechoicewithdetails | choice_with_details | the same choice page, plus a top-right button opening a details modal: either one centered page, or a list of bars drilling down into sub-pages. | centered details | allow blind signing? | transactions will be signed | without being displayed. | cancel | i understand, confirm | blind signing | the app cannot decode this | transaction, so it cannot show | you what you are about to | sign. | only continue if you trust the | source. | bar list details | what is blind signing? | signing without seeing | who is the provider? | blockaid | what is blind | signing? | the transaction cannot be | decoded, so its content cannot | be shown. | who is the | provider? | the security report comes | from blockaid. | decoded, so its content | cannot be shown.">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseChoiceWithDetails</span>
+          <span class="uc-tally">
+            2 variants
+          </span>
+        </span>
+        <span class="uc-desc">The same choice page, plus a top-right button opening a details modal: either one centered page, or a list of bars drilling down into sub-pages.</span>
+      </a>
+      <a class="uc-card" href="uc/advanced_choice_with_details.html"
+         data-name="nbgl_usecaseadvancedchoicewithdetails | advanced_choice_with_details | the choice page with a title line and a header icon on top of the centered one, plus the details modal. | title and header icon | web3 checks | enable web3 checks? | transactions will be checked | before being signed. | not now | enable | transactions are checked | against known threats before | you sign them.">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseAdvancedChoiceWithDetails</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">The choice page with a title line and a header icon on top of the centered one, plus the details modal.</span>
+      </a>
+      <a class="uc-card" href="uc/confirm.html"
+         data-name="nbgl_usecaseconfirm | confirm | a modal page drawn on top of the current screen, to confirm a decision. the review behind it is only there to give the modal the page an app would have. | rejecting a transaction | review transaction | to send bol | swipe to review | reject | 1 of 3 | reject transaction? | go back to transaction | yes, reject | with a sub-message | delete this account? | its keys will no longer be | derived by this app. | cancel | yes, delete">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseConfirm</span>
+          <span class="uc-tally">
+            2 variants
+          </span>
+        </span>
+        <span class="uc-desc">A modal page drawn on top of the current screen, to confirm a decision. The review behind it is only there to give the modal the page an app would have.</span>
+      </a>
+      <a class="uc-card" href="uc/action.html"
+         data-name="nbgl_usecaseaction | action | a centered info page with a single action button. | one action | this app is not | genuine | update the app">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseAction</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">A centered info page with a single action button.</span>
+      </a>
+    </div>
+  </section>
+  <section id="group-keypad-keyboard">
+    <p class="eyebrow">2 use cases</p>
+    <h2>Keypad &amp; keyboard</h2>
+    <div class="uc-list">
+      <a class="uc-card" href="uc/keypad.html"
+         data-name="nbgl_usecasekeypad | keypad | a pin entry page. the digits can be hidden and the key layout shuffled. | visible digits | enter your pin | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 12 | 123 | 1234 | hidden digits | shuffled and hidden">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseKeypad</span>
+          <span class="uc-tally">
+<span class="uc-flag">ENABLE_NBGL_KEYPAD</span>            3 variants
+          </span>
+        </span>
+        <span class="uc-desc">A PIN entry page. The digits can be hidden and the key layout shuffled.</span>
+      </a>
+      <a class="uc-card" href="uc/keyboard.html"
+         data-name="nbgl_usecasekeyboard | keyboard | a text entry page, with either a confirmation button or dynamic suggestion buttons. | with a confirmation button | enter the account name | confirm | q | w | e | r | t | y | u | i | o | p | a | s | d | f | g | h | j | k | l | z | x | c | v | b | n | m | .?123 | with suggestion buttons | enter word no. 1 | 1. | abandon | ability | able | about">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseKeyboard</span>
+          <span class="uc-tally">
+<span class="uc-flag">ENABLE_NBGL_KEYBOARD</span>            2 variants
+          </span>
+        </span>
+        <span class="uc-desc">A text entry page, with either a confirmation button or dynamic suggestion buttons.</span>
+      </a>
+    </div>
+  </section>
+  <section id="group-spinner">
+    <p class="eyebrow">1 use case</p>
+    <h2>Spinner</h2>
+    <div class="uc-list">
+      <a class="uc-card" href="uc/spinner.html"
+         data-name="nbgl_usecasespinner | spinner | a waiting page with no control, whose spinner turns on its own every 800 ms. the emulated time is frozen here, so the capture is deterministic. | waiting | signing transaction">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseSpinner</span>
+          <span class="uc-tally">
+            1 variant
+          </span>
+        </span>
+        <span class="uc-desc">A waiting page with no control, whose spinner turns on its own every 800 ms. The emulated time is frozen here, so the capture is deterministic.</span>
+      </a>
+    </div>
+  </section>
+
+  <p id="noresult" class="uc-empty" hidden>No use case matches this filter.</p>
+  <p class="stamp">Generated 2026-09-22T15:06:27+00:00.</p>
+</div>
+  </main>
+
+  <footer>
+    <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
+    <span>2026-09-22T15:06:27+00:00</span>
+  </footer>
+</div>
+
+<script>
+/* Highlights the entry in view in the contents, the way the showcase theme's
+   toc.js does, so both outputs behave the same. */
+(function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+    if (!links.length) { return; }
+    var targets = links.map(function (a) {
+        return document.getElementById(a.getAttribute("href").slice(1));
+    });
+
+    function sync() {
+        var active = 0;
+        targets.forEach(function (el, i) {
+            if (el && !el.hidden && el.getBoundingClientRect().top <= 140) {
+                active = i;
+            }
+        });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === active); });
+    }
+
+    addEventListener("scroll", sync, { passive: true });
+    addEventListener("resize", sync);
+    sync();
+}());
+</script>
+<script>
+(function () {
+    var input = document.getElementById("filter");
+    var cards = Array.prototype.slice.call(document.querySelectorAll(".uc-card"));
+    var sections = Array.prototype.slice.call(document.querySelectorAll(".body section"));
+    var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+    var noresult = document.getElementById("noresult");
+
+    function apply() {
+        var needle = input.value.trim().toLowerCase();
+        var shown = 0;
+        cards.forEach(function (card) {
+            var hit = !needle || card.dataset.name.indexOf(needle) !== -1;
+            card.hidden = !hit;
+            if (hit) { shown += 1; }
+        });
+        sections.forEach(function (section, index) {
+            var visible = section.querySelectorAll(".uc-card:not([hidden])").length;
+            section.hidden = visible === 0;
+            // A category the filter emptied has nothing to jump to.
+            if (links[index]) { links[index].hidden = section.hidden; }
+        });
+        noresult.hidden = shown !== 0;
+    }
+
+    input.addEventListener("input", apply);
+    apply();
+}());
+</script>
+</body>
+</html>
