@@ -14,14 +14,15 @@
     <div class="header-left">
       <span class="header-label">NBGL use cases</span>
     </div>
-    <div class="env-pill">26 use cases</div>
+    <div class="env-pill">28 use cases</div>
   </header>
 
   <main class="report">
 <nav class="toc" aria-label="Variants">
   <div class="toc-title">Variants</div>
   <a href="#plain"><span class="toc-n">01</span><span class="toc-label">Address only</span></a>
-  <a href="#with_pairs"><span class="toc-n">02</span><span class="toc-label">With extra pairs</span></a>
+  <a href="#reject"><span class="toc-n">02</span><span class="toc-label">Declining it</span></a>
+  <a href="#with_pairs"><span class="toc-n">03</span><span class="toc-label">With extra pairs</span></a>
 </nav>
 
 <div class="body">
@@ -164,6 +165,99 @@
       </div>
     </div>
   </details>
+  <details class="variant" id="reject" open>
+    <summary>
+      <span class="variant-title">Declining it</span>
+      <span class="variant-tally">2 screens</span>
+    </summary>
+
+<p class="variant-note">The same example followed to its other end: declining the address.</p>
+    <pre class="code"><code><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-comment">/** The status page an app shows once the user has answered. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_address_review_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
+        confirm ? <span class="c-const">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
+}
+
+<span class="c-comment">// The address page carries a button to show the same address as a QR code,</span>
+<span class="c-comment">// which needs the app to be built with ENABLE_NBGL_QRCODE = 1.</span>
+<span class="c-usecase">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
+                          <span class="c-const">NULL</span>,
+                          &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                          <span class="c-string">&quot;Verify BOL address&quot;</span>,
+                          <span class="c-const">NULL</span>,
+                          uc_address_review_choice);</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 1 of Address only">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Tap “Cancel”</span>
+          <a href="../screens/flex/address_review/reject/01.png" title="Open at full size">
+          <img src="../screens/flex/address_review/reject/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseAddressReview, Declining it, Flex, screen 2">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 1 of Address only">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Tap “Cancel”</span>
+          <a href="../screens/apex_p/address_review/reject/01.png" title="Open at full size">
+          <img src="../screens/apex_p/address_review/reject/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseAddressReview, Declining it, Apex P, screen 2">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 1 of Address only">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Tap “Cancel”</span>
+          <a href="../screens/stax/address_review/reject/01.png" title="Open at full size">
+          <img src="../screens/stax/address_review/reject/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseAddressReview, Declining it, Stax, screen 2">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
   <details class="variant" id="with_pairs" open>
     <summary>
       <span class="variant-title">With extra pairs</span>
@@ -226,12 +320,12 @@ pairList.wrapping = <span class="c-keyword">true</span>;
                alt="nbgl_useCaseAddressReview, With extra pairs, Flex, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
-          <a href="../screens/flex/address_review/with_pairs/03.png" title="Open at full size">
-          <img src="../screens/flex/address_review/with_pairs/03.png" width="480"
-               height="600"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Flex, screen 4">
-          </a>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 3 of Address only">
+            id. 3
+          </span>
         </div>
       </div>
       <div class="shot-row">
@@ -261,12 +355,12 @@ pairList.wrapping = <span class="c-keyword">true</span>;
                alt="nbgl_useCaseAddressReview, With extra pairs, Apex P, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
-          <a href="../screens/apex_p/address_review/with_pairs/03.png" title="Open at full size">
-          <img src="../screens/apex_p/address_review/with_pairs/03.png" width="300"
-               height="400"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Apex P, screen 4">
-          </a>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 3 of Address only">
+            id. 3
+          </span>
         </div>
       </div>
       <div class="shot-row">
@@ -289,24 +383,24 @@ pairList.wrapping = <span class="c-keyword">true</span>;
                alt="nbgl_useCaseAddressReview, With extra pairs, Stax, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
-          <a href="../screens/stax/address_review/with_pairs/02.png" title="Open at full size">
-          <img src="../screens/stax/address_review/with_pairs/02.png" width="400"
-               height="672"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Stax, screen 3">
-          </a>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 3 of Address only">
+            id. 3
+          </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T08:43:32+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T08:43:32+00:00</span>
+    <span>2026-09-23T10:18:27+00:00</span>
   </footer>
 </div>
 

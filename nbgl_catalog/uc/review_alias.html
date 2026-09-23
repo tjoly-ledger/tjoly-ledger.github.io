@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nbgl_useCaseReview &mdash; NBGL use cases</title>
+<meta name="description" content="A tag/value pair whose value is an alias: the review shows the short name with a chevron, and the page behind it justifies the alias. The aliasType of nbgl_contentValueExt_t picks that page.">
+<link rel="stylesheet" href="../plain.css">
+</head>
+<body>
+
+<div class="layout">
+  <header>
+    <div class="header-left">
+      <span class="header-label">NBGL use cases</span>
+    </div>
+    <div class="env-pill">28 use cases</div>
+  </header>
+
+  <main class="report">
+<nav class="toc" aria-label="Variants">
+  <div class="toc-title">Variants</div>
+  <a href="#ens"><span class="toc-n">01</span><span class="toc-label">ENS_ALIAS</span></a>
+  <a href="#address_book"><span class="toc-n">02</span><span class="toc-label">ADDRESS_BOOK_ALIAS</span></a>
+  <a href="#qr_code"><span class="toc-n">03</span><span class="toc-label">QR_CODE_ALIAS</span></a>
+  <a href="#info_list"><span class="toc-n">04</span><span class="toc-label">INFO_LIST_ALIAS</span></a>
+  <a href="#tag_value_list"><span class="toc-n">05</span><span class="toc-label">TAG_VALUE_LIST_ALIAS</span></a>
+</nav>
+
+<div class="body">
+  <a class="back-link" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    All use cases
+  </a>
+
+  <div class="hero">
+    <h1>nbgl_useCaseReview</h1>
+    <p>A tag/value pair whose value is an alias: the review shows the short name with a chevron, and the page behind it justifies the alias. The aliasType of nbgl_contentValueExt_t picks that page.</p>
+    <p class="flags">
+      Needs
+<code>ENABLE_NBGL_QRCODE = 1</code>      in the app Makefile.
+    </p>
+  </div>
+
+  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-type">nbgl_operationType_t</span>              operationType,
+                        <span class="c-keyword">const</span> <span class="c-type">nbgl_contentTagValueList_t</span> *tagValueList,
+                        <span class="c-keyword">const</span> <span class="c-type">nbgl_icon_details_t</span>        *icon,
+                        <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *reviewTitle,
+                        <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *reviewSubTitle,
+                        <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *finishTitle,
+                        <span class="c-type">nbgl_choiceCallback_t</span>             choiceCallback);</code></pre>
+
+  <details class="variant" id="ens" open>
+    <summary>
+      <span class="variant-title">ENS_ALIAS</span>
+      <span class="variant-tally">6 screens</span>
+    </summary>
+
+<p class="variant-note">A domain name resolved by the Ledger backend, which the SDK says itself under the full address.</p>
+    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-comment">/** What the page behind the chevron of an alias is built from. */</span>
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentValueExt_t</span> extension;
+
+<span class="c-comment">/** The status page shown once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
+        confirm ? <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span> : <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>,
+        catalog_on_quit);
+}
+
+<span class="c-comment">/**
+ * A plain transfer whose recipient is an alias: `aliasValue` is what puts the
+ * chevron next to the value, and `extension` what the page behind it shows.
+ * Every variant below only changes that extension.
+ */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_alias_pairs(<span class="c-keyword">const</span> <span class="c-keyword">char</span> *alias) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = alias;
+    pairs[<span class="c-number">1</span>].aliasValue = <span class="c-number">1</span>;
+    pairs[<span class="c-number">1</span>].extension = &amp;extension;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The review itself is the ordinary one: only the pairs carry the alias. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_review(<span class="c-keyword">void</span>) {
+    <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+                       &amp;pairList,
+                       &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                       <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                       <span class="c-const">NULL</span>,
+                       <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       uc_pairs_choice);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_alias_ens(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// ENS_ALIAS: the page repeats the alias as its title, then the full</span>
+    <span class="c-comment">// address, under a sentence the SDK writes itself (&quot;ENS names are</span>
+    <span class="c-comment">// resolved by Ledger backend.&quot;), so `explanation` is not used here.</span>
+    fill_alias_pairs(<span class="c-string">&quot;vitalik.eth&quot;</span>);
+
+    extension.aliasType = <span class="c-const">ENS_ALIAS</span>;
+    extension.fullValue = <span class="c-const">RECIPIENT</span>;
+
+    uc_pairs_review();
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_alias/ens/00.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/ens/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_alias/ens/01.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/ens/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “vitalik.eth”</span>
+          <a href="../screens/flex/review_alias/ens/02.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/ens/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/flex/review_alias/ens/03.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/ens/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_alias/ens/04.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/ens/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Flex, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/flex/review_alias/ens/05.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/ens/05.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Flex, screen 6">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_alias/ens/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/ens/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_alias/ens/01.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/ens/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “vitalik.eth”</span>
+          <a href="../screens/apex_p/review_alias/ens/02.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/ens/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/apex_p/review_alias/ens/03.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/ens/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_alias/ens/04.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/ens/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Apex P, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/apex_p/review_alias/ens/05.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/ens/05.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Apex P, screen 6">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_alias/ens/00.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/ens/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_alias/ens/01.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/ens/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “vitalik.eth”</span>
+          <a href="../screens/stax/review_alias/ens/02.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/ens/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/stax/review_alias/ens/03.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/ens/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_alias/ens/04.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/ens/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Stax, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/stax/review_alias/ens/05.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/ens/05.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ENS_ALIAS, Stax, screen 6">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="address_book" open>
+    <summary>
+      <span class="variant-title">ADDRESS_BOOK_ALIAS</span>
+      <span class="variant-tally">6 screens</span>
+    </summary>
+
+<p class="variant-note">An entry of the user&#39;s Address Book, with its sub-name under the alias and, here, a trusted name as well.</p>
+    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-comment">/** What the page behind the chevron of an alias is built from. */</span>
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentValueExt_t</span> extension;
+
+<span class="c-comment">/** The status page shown once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
+        confirm ? <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span> : <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>,
+        catalog_on_quit);
+}
+
+<span class="c-comment">/**
+ * A plain transfer whose recipient is an alias: `aliasValue` is what puts the
+ * chevron next to the value, and `extension` what the page behind it shows.
+ * Every variant below only changes that extension.
+ */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_alias_pairs(<span class="c-keyword">const</span> <span class="c-keyword">char</span> *alias) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = alias;
+    pairs[<span class="c-number">1</span>].aliasValue = <span class="c-number">1</span>;
+    pairs[<span class="c-number">1</span>].extension = &amp;extension;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The review itself is the ordinary one: only the pairs carry the alias. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_review(<span class="c-keyword">void</span>) {
+    <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+                       &amp;pairList,
+                       &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                       <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                       <span class="c-const">NULL</span>,
+                       <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       uc_pairs_choice);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_alias_address_book(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// ADDRESS_BOOK_ALIAS: `aliasSubName` is shown under the alias both on the</span>
+    <span class="c-comment">// review page and on the page behind the chevron. `explanation` is only</span>
+    <span class="c-comment">// read for this type when the entry also carries a trusted name, and is</span>
+    <span class="c-comment">// then appended under the address.</span>
+    fill_alias_pairs(<span class="c-string">&quot;Alice&quot;</span>);
+
+    extension.aliasType = <span class="c-const">ADDRESS_BOOK_ALIAS</span>;
+    extension.fullValue = <span class="c-const">RECIPIENT</span>;
+    extension.aliasSubName = <span class="c-string">&quot;Saved in your Address Book&quot;</span>;
+    extension.explanation = <span class="c-string">&quot;Trusted name from Ledger&quot;</span>;
+
+    uc_pairs_review();
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 1 of ENS_ALIAS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_alias/address_book/01.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/address_book/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Alice”</span>
+          <a href="../screens/flex/review_alias/address_book/02.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/address_book/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/flex/review_alias/address_book/03.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/address_book/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 5 of ENS_ALIAS">
+            id. 5
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 6 of ENS_ALIAS">
+            id. 6
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 1 of ENS_ALIAS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_alias/address_book/01.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/address_book/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Alice”</span>
+          <a href="../screens/apex_p/review_alias/address_book/02.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/address_book/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/apex_p/review_alias/address_book/03.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/address_book/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 5 of ENS_ALIAS">
+            id. 5
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 6 of ENS_ALIAS">
+            id. 6
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 1 of ENS_ALIAS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_alias/address_book/01.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/address_book/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Alice”</span>
+          <a href="../screens/stax/review_alias/address_book/02.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/address_book/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/stax/review_alias/address_book/03.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/address_book/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 5 of ENS_ALIAS">
+            id. 5
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 6 of ENS_ALIAS">
+            id. 6
+          </span>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="qr_code" open>
+    <summary>
+      <span class="variant-title">QR_CODE_ALIAS</span>
+      <span class="variant-tally">6 screens</span>
+    </summary>
+
+<p class="variant-note">The full value as a QR code, so it can be checked against another device.</p>
+    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-comment">/** What the page behind the chevron of an alias is built from. */</span>
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentValueExt_t</span> extension;
+
+<span class="c-comment">/** The status page shown once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
+        confirm ? <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span> : <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>,
+        catalog_on_quit);
+}
+
+<span class="c-comment">/**
+ * A plain transfer whose recipient is an alias: `aliasValue` is what puts the
+ * chevron next to the value, and `extension` what the page behind it shows.
+ * Every variant below only changes that extension.
+ */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_alias_pairs(<span class="c-keyword">const</span> <span class="c-keyword">char</span> *alias) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = alias;
+    pairs[<span class="c-number">1</span>].aliasValue = <span class="c-number">1</span>;
+    pairs[<span class="c-number">1</span>].extension = &amp;extension;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The review itself is the ordinary one: only the pairs carry the alias. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_review(<span class="c-keyword">void</span>) {
+    <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+                       &amp;pairList,
+                       &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                       <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                       <span class="c-const">NULL</span>,
+                       <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       uc_pairs_choice);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_alias_qr_code(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// QR_CODE_ALIAS: the page behind the chevron is a QR code of `fullValue`,</span>
+    <span class="c-comment">// titled by `title` and explained by `explanation`. It needs the app to</span>
+    <span class="c-comment">// be built with ENABLE_NBGL_QRCODE = 1.</span>
+    fill_alias_pairs(<span class="c-string">&quot;Recipient address&quot;</span>);
+
+    extension.aliasType = <span class="c-const">QR_CODE_ALIAS</span>;
+    extension.fullValue = <span class="c-const">RECIPIENT</span>;
+    extension.title = <span class="c-string">&quot;Recipient address&quot;</span>;
+    extension.explanation = <span class="c-string">&quot;Scan it to check it in your wallet.&quot;</span>;
+
+    uc_pairs_review();
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 1 of ENS_ALIAS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_alias/qr_code/01.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/qr_code/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, QR_CODE_ALIAS, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Recipient address”</span>
+          <a href="../screens/flex/review_alias/qr_code/02.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/qr_code/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, QR_CODE_ALIAS, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/flex/review_alias/qr_code/03.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/qr_code/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, QR_CODE_ALIAS, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 5 of ENS_ALIAS">
+            id. 5
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 6 of ENS_ALIAS">
+            id. 6
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 1 of ENS_ALIAS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_alias/qr_code/01.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/qr_code/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, QR_CODE_ALIAS, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Recipient address”</span>
+          <a href="../screens/apex_p/review_alias/qr_code/02.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/qr_code/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, QR_CODE_ALIAS, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/apex_p/review_alias/qr_code/03.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/qr_code/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, QR_CODE_ALIAS, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 5 of ENS_ALIAS">
+            id. 5
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 6 of ENS_ALIAS">
+            id. 6
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 1 of ENS_ALIAS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_alias/qr_code/01.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/qr_code/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, QR_CODE_ALIAS, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Recipient address”</span>
+          <a href="../screens/stax/review_alias/qr_code/02.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/qr_code/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, QR_CODE_ALIAS, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/stax/review_alias/qr_code/03.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/qr_code/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, QR_CODE_ALIAS, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 5 of ENS_ALIAS">
+            id. 5
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 6 of ENS_ALIAS">
+            id. 6
+          </span>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="info_list" open>
+    <summary>
+      <span class="variant-title">INFO_LIST_ALIAS</span>
+      <span class="variant-tally">6 screens</span>
+    </summary>
+
+<p class="variant-note">A list of infos rather than a single value, for an alias that takes more than one line to justify.</p>
+    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-comment">/** What the page behind the chevron of an alias is built from. */</span>
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentValueExt_t</span> extension;
+
+<span class="c-comment">/** The status page shown once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
+        confirm ? <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span> : <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>,
+        catalog_on_quit);
+}
+
+<span class="c-comment">/**
+ * A plain transfer whose recipient is an alias: `aliasValue` is what puts the
+ * chevron next to the value, and `extension` what the page behind it shows.
+ * Every variant below only changes that extension.
+ */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_alias_pairs(<span class="c-keyword">const</span> <span class="c-keyword">char</span> *alias) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = alias;
+    pairs[<span class="c-number">1</span>].aliasValue = <span class="c-number">1</span>;
+    pairs[<span class="c-number">1</span>].extension = &amp;extension;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The review itself is the ordinary one: only the pairs carry the alias. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_review(<span class="c-keyword">void</span>) {
+    <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+                       &amp;pairList,
+                       &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                       <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                       <span class="c-const">NULL</span>,
+                       <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       uc_pairs_choice);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">ALIAS_INFO_TYPES</span>[] = {<span class="c-string">&quot;Contract&quot;</span>, <span class="c-string">&quot;Method&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">ALIAS_INFO_CONTENTS</span>[] = {<span class="c-const">RECIPIENT</span>, <span class="c-string">&quot;transfer(address,uint256)&quot;</span>};
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentInfoList_t</span> alias_infos;
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_alias_info_list(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// INFO_LIST_ALIAS: the page behind the chevron is a list of infos rather</span>
+    <span class="c-comment">// than a single value, for an alias that needs several lines to be</span>
+    <span class="c-comment">// justified. `backText` titles that page, instead of the tag name.</span>
+    fill_alias_pairs(<span class="c-string">&quot;Boilerplate contract&quot;</span>);
+
+    alias_infos.nbInfos = <span class="c-const">ARRAYLEN</span>(<span class="c-const">ALIAS_INFO_TYPES</span>);
+    alias_infos.infoTypes = <span class="c-const">ALIAS_INFO_TYPES</span>;
+    alias_infos.infoContents = <span class="c-const">ALIAS_INFO_CONTENTS</span>;
+
+    extension.aliasType = <span class="c-const">INFO_LIST_ALIAS</span>;
+    extension.backText = <span class="c-string">&quot;Contract details&quot;</span>;
+    extension.infolist = &amp;alias_infos;
+
+    uc_pairs_review();
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 1 of ENS_ALIAS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_alias/info_list/01.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/info_list/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Boilerplate contract”</span>
+          <a href="../screens/flex/review_alias/info_list/02.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/info_list/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/flex/review_alias/info_list/03.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/info_list/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 5 of ENS_ALIAS">
+            id. 5
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 6 of ENS_ALIAS">
+            id. 6
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 1 of ENS_ALIAS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_alias/info_list/01.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/info_list/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Boilerplate contract”</span>
+          <a href="../screens/apex_p/review_alias/info_list/02.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/info_list/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/apex_p/review_alias/info_list/03.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/info_list/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 5 of ENS_ALIAS">
+            id. 5
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 6 of ENS_ALIAS">
+            id. 6
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 1 of ENS_ALIAS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_alias/info_list/01.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/info_list/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Boilerplate contract”</span>
+          <a href="../screens/stax/review_alias/info_list/02.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/info_list/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Back</span>
+          <a href="../screens/stax/review_alias/info_list/03.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/info_list/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 5 of ENS_ALIAS">
+            id. 5
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 6 of ENS_ALIAS">
+            id. 6
+          </span>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="tag_value_list" open>
+    <summary>
+      <span class="variant-title">TAG_VALUE_LIST_ALIAS</span>
+      <span class="variant-tally">6 screens</span>
+    </summary>
+
+<p class="variant-note">A whole tag/value list behind the chevron.</p>
+    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-comment">/** What the page behind the chevron of an alias is built from. */</span>
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentValueExt_t</span> extension;
+
+<span class="c-comment">/** The status page shown once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
+        confirm ? <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span> : <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>,
+        catalog_on_quit);
+}
+
+<span class="c-comment">/**
+ * A plain transfer whose recipient is an alias: `aliasValue` is what puts the
+ * chevron next to the value, and `extension` what the page behind it shows.
+ * Every variant below only changes that extension.
+ */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_alias_pairs(<span class="c-keyword">const</span> <span class="c-keyword">char</span> *alias) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = alias;
+    pairs[<span class="c-number">1</span>].aliasValue = <span class="c-number">1</span>;
+    pairs[<span class="c-number">1</span>].extension = &amp;extension;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The review itself is the ordinary one: only the pairs carry the alias. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_review(<span class="c-keyword">void</span>) {
+    <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+                       &amp;pairList,
+                       &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                       <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                       <span class="c-const">NULL</span>,
+                       <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       uc_pairs_choice);
+}
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     alias_pairs[<span class="c-number">2</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> alias_pair_list;
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_alias_tag_value_list(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// TAG_VALUE_LIST_ALIAS: the page behind the chevron is itself a list of</span>
+    <span class="c-comment">// tag/value pairs. Like the main list, it must live in RAM.</span>
+    <span class="c-comment">// `backText` is left unset because this type ignores it: the SDK works</span>
+    <span class="c-comment">// out the modal title, then calls displayTagValueListModal() without it</span>
+    <span class="c-comment">// (nbgl_use_case.c:1451). The page comes up with no title.</span>
+    fill_alias_pairs(<span class="c-string">&quot;Swap 1.2345 BOL&quot;</span>);
+
+    alias_pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Pool&quot;</span>;
+    alias_pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;BOL / USDC&quot;</span>;
+    alias_pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;Minimum received&quot;</span>;
+    alias_pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;4 521.08 USDC&quot;</span>;
+
+    alias_pair_list.pairs = alias_pairs;
+    alias_pair_list.nbPairs = <span class="c-number">2</span>;
+    alias_pair_list.wrapping = <span class="c-keyword">true</span>;
+
+    extension.aliasType = <span class="c-const">TAG_VALUE_LIST_ALIAS</span>;
+    extension.tagValuelist = &amp;alias_pair_list;
+
+    uc_pairs_review();
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 1 of ENS_ALIAS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_alias/tag_value_list/01.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/tag_value_list/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Swap 1.2345 BOL”</span>
+          <a href="../screens/flex/review_alias/tag_value_list/02.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/tag_value_list/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Close”</span>
+          <a href="../screens/flex/review_alias/tag_value_list/03.png" title="Open at full size">
+          <img src="../screens/flex/review_alias/tag_value_list/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 5 of ENS_ALIAS">
+            id. 5
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 6 of ENS_ALIAS">
+            id. 6
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 1 of ENS_ALIAS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_alias/tag_value_list/01.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/tag_value_list/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Swap 1.2345 BOL”</span>
+          <a href="../screens/apex_p/review_alias/tag_value_list/02.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/tag_value_list/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Close”</span>
+          <a href="../screens/apex_p/review_alias/tag_value_list/03.png" title="Open at full size">
+          <img src="../screens/apex_p/review_alias/tag_value_list/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 5 of ENS_ALIAS">
+            id. 5
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 6 of ENS_ALIAS">
+            id. 6
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 1 of ENS_ALIAS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_alias/tag_value_list/01.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/tag_value_list/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Swap 1.2345 BOL”</span>
+          <a href="../screens/stax/review_alias/tag_value_list/02.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/tag_value_list/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Close”</span>
+          <a href="../screens/stax/review_alias/tag_value_list/03.png" title="Open at full size">
+          <img src="../screens/stax/review_alias/tag_value_list/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 5 of ENS_ALIAS">
+            id. 5
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 6 of ENS_ALIAS">
+            id. 6
+          </span>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
+</div>
+  </main>
+
+  <footer>
+    <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
+    <span>2026-09-23T10:18:27+00:00</span>
+  </footer>
+</div>
+
+<script>
+/* Highlights the entry in view in the contents, the way the showcase theme's
+   toc.js does, so both outputs behave the same. */
+(function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+    if (!links.length) { return; }
+    var targets = links.map(function (a) {
+        return document.getElementById(a.getAttribute("href").slice(1));
+    });
+
+    function sync() {
+        var active = 0;
+        targets.forEach(function (el, i) {
+            if (el && !el.hidden && el.getBoundingClientRect().top <= 140) {
+                active = i;
+            }
+        });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === active); });
+    }
+
+    addEventListener("scroll", sync, { passive: true });
+    addEventListener("resize", sync);
+    sync();
+}());
+</script>
+<script>
+(function () {
+    // A collapsed variant must open when the contents jump to it, otherwise
+    // the link would scroll to a closed block.
+    Array.prototype.slice.call(document.querySelectorAll(".toc a")).forEach(
+        function (link) {
+            link.addEventListener("click", function () {
+                var target = document.getElementById(
+                    link.getAttribute("href").slice(1)
+                );
+                if (target) { target.open = true; }
+            });
+        }
+    );
+}());
+</script>
+</body>
+</html>

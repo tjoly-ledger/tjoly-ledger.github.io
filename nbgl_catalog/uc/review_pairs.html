@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nbgl_useCaseReview &mdash; NBGL use cases</title>
+<meta name="description" content="The layout fields a tag/value pair carries itself, which decide how a review paginates and draws it. The list-level ones are not here: nbgl_useCaseReview() overrides smallCaseForValue, nbMaxLinesForValue and hideEndOfLastLine on every page it draws, so an app cannot set them.">
+<link rel="stylesheet" href="../plain.css">
+</head>
+<body>
+
+<div class="layout">
+  <header>
+    <div class="header-left">
+      <span class="header-label">NBGL use cases</span>
+    </div>
+    <div class="env-pill">28 use cases</div>
+  </header>
+
+  <main class="report">
+<nav class="toc" aria-label="Variants">
+  <div class="toc-title">Variants</div>
+  <a href="#force_page_start"><span class="toc-n">01</span><span class="toc-label">forcePageStart</span></a>
+  <a href="#centered_info"><span class="toc-n">02</span><span class="toc-label">centeredInfo</span></a>
+  <a href="#long_value"><span class="toc-n">03</span><span class="toc-label">A value too long for a page</span></a>
+</nav>
+
+<div class="body">
+  <a class="back-link" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    All use cases
+  </a>
+
+  <div class="hero">
+    <h1>nbgl_useCaseReview</h1>
+    <p>The layout fields a tag/value pair carries itself, which decide how a review paginates and draws it. The list-level ones are not here: nbgl_useCaseReview() overrides smallCaseForValue, nbMaxLinesForValue and hideEndOfLastLine on every page it draws, so an app cannot set them.</p>
+  </div>
+
+  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-type">nbgl_operationType_t</span>              operationType,
+                        <span class="c-keyword">const</span> <span class="c-type">nbgl_contentTagValueList_t</span> *tagValueList,
+                        <span class="c-keyword">const</span> <span class="c-type">nbgl_icon_details_t</span>        *icon,
+                        <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *reviewTitle,
+                        <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *reviewSubTitle,
+                        <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *finishTitle,
+                        <span class="c-type">nbgl_choiceCallback_t</span>             choiceCallback);</code></pre>
+
+  <details class="variant" id="force_page_start" open>
+    <summary>
+      <span class="variant-title">forcePageStart</span>
+      <span class="variant-tally">5 screens</span>
+    </summary>
+
+<p class="variant-note">Breaks the page before this pair, to keep a group of pairs together on a page of its own.</p>
+    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-comment">/** What the page behind the chevron of an alias is built from. */</span>
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentValueExt_t</span> extension;
+
+<span class="c-comment">/** The status page shown once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
+        confirm ? <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span> : <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>,
+        catalog_on_quit);
+}
+
+<span class="c-comment">/** The review itself is the ordinary one: only the pairs carry the alias. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_review(<span class="c-keyword">void</span>) {
+    <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+                       &amp;pairList,
+                       &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                       <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                       <span class="c-const">NULL</span>,
+                       <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       uc_pairs_choice);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_pairs_force_page_start(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// The three pairs below fit on one page on every product. `forcePageStart`</span>
+    <span class="c-comment">// on the third one breaks the page before it, so the fees start a page of</span>
+    <span class="c-comment">// their own: that is how a group of pairs is kept together.</span>
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+    pairs[<span class="c-number">2</span>].forcePageStart = <span class="c-number">1</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+
+    uc_pairs_review();
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_pairs/force_page_start/00.png" title="Open at full size">
+          <img src="../screens/flex/review_pairs/force_page_start/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_pairs/force_page_start/01.png" title="Open at full size">
+          <img src="../screens/flex/review_pairs/force_page_start/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_pairs/force_page_start/02.png" title="Open at full size">
+          <img src="../screens/flex/review_pairs/force_page_start/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_pairs/force_page_start/03.png" title="Open at full size">
+          <img src="../screens/flex/review_pairs/force_page_start/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/flex/review_pairs/force_page_start/04.png" title="Open at full size">
+          <img src="../screens/flex/review_pairs/force_page_start/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Flex, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_pairs/force_page_start/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_pairs/force_page_start/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_pairs/force_page_start/01.png" title="Open at full size">
+          <img src="../screens/apex_p/review_pairs/force_page_start/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_pairs/force_page_start/02.png" title="Open at full size">
+          <img src="../screens/apex_p/review_pairs/force_page_start/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_pairs/force_page_start/03.png" title="Open at full size">
+          <img src="../screens/apex_p/review_pairs/force_page_start/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/apex_p/review_pairs/force_page_start/04.png" title="Open at full size">
+          <img src="../screens/apex_p/review_pairs/force_page_start/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Apex P, screen 5">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_pairs/force_page_start/00.png" title="Open at full size">
+          <img src="../screens/stax/review_pairs/force_page_start/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_pairs/force_page_start/01.png" title="Open at full size">
+          <img src="../screens/stax/review_pairs/force_page_start/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_pairs/force_page_start/02.png" title="Open at full size">
+          <img src="../screens/stax/review_pairs/force_page_start/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_pairs/force_page_start/03.png" title="Open at full size">
+          <img src="../screens/stax/review_pairs/force_page_start/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <a href="../screens/stax/review_pairs/force_page_start/04.png" title="Open at full size">
+          <img src="../screens/stax/review_pairs/force_page_start/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, forcePageStart, Stax, screen 5">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="centered_info" open>
+    <summary>
+      <span class="variant-title">centeredInfo</span>
+      <span class="variant-tally">5 screens</span>
+    </summary>
+
+<p class="variant-note">Draws the pair as a review cover instead: the icon of valueIcon, the tag as title and the value as description.</p>
+    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-comment">/** What the page behind the chevron of an alias is built from. */</span>
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentValueExt_t</span> extension;
+
+<span class="c-comment">/** The status page shown once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
+        confirm ? <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span> : <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>,
+        catalog_on_quit);
+}
+
+<span class="c-comment">/** The review itself is the ordinary one: only the pairs carry the alias. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_review(<span class="c-keyword">void</span>) {
+    <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+                       &amp;pairList,
+                       &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                       <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                       <span class="c-const">NULL</span>,
+                       <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       uc_pairs_choice);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_pairs_centered_info(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// `centeredInfo` turns a pair into a page of its own, drawn like a review</span>
+    <span class="c-comment">// cover: the icon of `valueIcon`, `item` as the title and `value` as the</span>
+    <span class="c-comment">// description, under which the SDK adds its own &quot;Swipe to review&quot;.</span>
+    <span class="c-comment">// `valueIcon` shares its union with `extension`, so a pair cannot be both</span>
+    <span class="c-comment">// a centered info and an alias.</span>
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Send 1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;to Alice&quot;</span>;
+    pairs[<span class="c-number">0</span>].centeredInfo = <span class="c-number">1</span>;
+    pairs[<span class="c-number">0</span>].valueIcon = &amp;<span class="c-const">CATALOG_ICON_APP</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">2</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+
+    uc_pairs_review();
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 1 of forcePageStart">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_pairs/centered_info/01.png" title="Open at full size">
+          <img src="../screens/flex/review_pairs/centered_info/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, centeredInfo, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 3 of forcePageStart">
+            id. 3
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 4 of forcePageStart">
+            id. 4
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 5 of forcePageStart">
+            id. 5
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 1 of forcePageStart">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_pairs/centered_info/01.png" title="Open at full size">
+          <img src="../screens/apex_p/review_pairs/centered_info/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, centeredInfo, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 3 of forcePageStart">
+            id. 3
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 4 of forcePageStart">
+            id. 4
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 5 of forcePageStart">
+            id. 5
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 1 of forcePageStart">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_pairs/centered_info/01.png" title="Open at full size">
+          <img src="../screens/stax/review_pairs/centered_info/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, centeredInfo, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 3 of forcePageStart">
+            id. 3
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 4 of forcePageStart">
+            id. 4
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 5 of forcePageStart">
+            id. 5
+          </span>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="long_value" open>
+    <summary>
+      <span class="variant-title">A value too long for a page</span>
+      <span class="variant-tally">6 screens</span>
+    </summary>
+
+<p class="variant-note">Not a field but what NBGL does without one: it builds a TAG_VALUE_DETAILS page with a More button, the one content type a use case cannot be passed.</p>
+    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-comment">/** What the page behind the chevron of an alias is built from. */</span>
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentValueExt_t</span> extension;
+
+<span class="c-comment">/** The status page shown once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
+        confirm ? <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span> : <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>,
+        catalog_on_quit);
+}
+
+<span class="c-comment">/** The review itself is the ordinary one: only the pairs carry the alias. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_pairs_review(<span class="c-keyword">void</span>) {
+    <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+                       &amp;pairList,
+                       &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                       <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                       <span class="c-const">NULL</span>,
+                       <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       uc_pairs_choice);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_pairs_long_value(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// A value too long for one page is not truncated by the app: NBGL turns</span>
+    <span class="c-comment">// that page into a TAG_VALUE_DETAILS content of its own, with a &quot;More&quot;</span>
+    <span class="c-comment">// button opening the full value. TAG_VALUE_DETAILS is the one content</span>
+    <span class="c-comment">// type a use case cannot be passed, the SDK only ever builds it here.</span>
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Raw data&quot;</span>;
+    pairs[<span class="c-number">0</span>].value
+        = <span class="c-string">&quot;0x9f0a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8&quot;</span>
+          <span class="c-string">&quot;f90a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f9&quot;</span>
+          <span class="c-string">&quot;0a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f90a&quot;</span>
+          <span class="c-string">&quot;1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f9&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">1</span>;
+
+    uc_pairs_review();
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/review_pairs/long_value/00.png" title="Open at full size">
+          <img src="../screens/flex/review_pairs/long_value/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_pairs/long_value/01.png" title="Open at full size">
+          <img src="../screens/flex/review_pairs/long_value/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “More”</span>
+          <a href="../screens/flex/review_pairs/long_value/02.png" title="Open at full size">
+          <img src="../screens/flex/review_pairs/long_value/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Flex, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Close”</span>
+          <a href="../screens/flex/review_pairs/long_value/03.png" title="Open at full size">
+          <img src="../screens/flex/review_pairs/long_value/03.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Flex, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/review_pairs/long_value/04.png" title="Open at full size">
+          <img src="../screens/flex/review_pairs/long_value/04.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Flex, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 5 of forcePageStart">
+            id. 5
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/review_pairs/long_value/00.png" title="Open at full size">
+          <img src="../screens/apex_p/review_pairs/long_value/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_pairs/long_value/01.png" title="Open at full size">
+          <img src="../screens/apex_p/review_pairs/long_value/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “More”</span>
+          <a href="../screens/apex_p/review_pairs/long_value/02.png" title="Open at full size">
+          <img src="../screens/apex_p/review_pairs/long_value/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Apex P, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Close”</span>
+          <a href="../screens/apex_p/review_pairs/long_value/03.png" title="Open at full size">
+          <img src="../screens/apex_p/review_pairs/long_value/03.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Apex P, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/review_pairs/long_value/04.png" title="Open at full size">
+          <img src="../screens/apex_p/review_pairs/long_value/04.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Apex P, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 5 of forcePageStart">
+            id. 5
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/review_pairs/long_value/00.png" title="Open at full size">
+          <img src="../screens/stax/review_pairs/long_value/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_pairs/long_value/01.png" title="Open at full size">
+          <img src="../screens/stax/review_pairs/long_value/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “More”</span>
+          <a href="../screens/stax/review_pairs/long_value/02.png" title="Open at full size">
+          <img src="../screens/stax/review_pairs/long_value/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Stax, screen 3">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Close”</span>
+          <a href="../screens/stax/review_pairs/long_value/03.png" title="Open at full size">
+          <img src="../screens/stax/review_pairs/long_value/03.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Stax, screen 4">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/review_pairs/long_value/04.png" title="Open at full size">
+          <img src="../screens/stax/review_pairs/long_value/04.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, A value too long for a page, Stax, screen 5">
+          </a>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 5 of forcePageStart">
+            id. 5
+          </span>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
+</div>
+  </main>
+
+  <footer>
+    <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
+    <span>2026-09-23T10:18:27+00:00</span>
+  </footer>
+</div>
+
+<script>
+/* Highlights the entry in view in the contents, the way the showcase theme's
+   toc.js does, so both outputs behave the same. */
+(function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+    if (!links.length) { return; }
+    var targets = links.map(function (a) {
+        return document.getElementById(a.getAttribute("href").slice(1));
+    });
+
+    function sync() {
+        var active = 0;
+        targets.forEach(function (el, i) {
+            if (el && !el.hidden && el.getBoundingClientRect().top <= 140) {
+                active = i;
+            }
+        });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === active); });
+    }
+
+    addEventListener("scroll", sync, { passive: true });
+    addEventListener("resize", sync);
+    sync();
+}());
+</script>
+<script>
+(function () {
+    // A collapsed variant must open when the contents jump to it, otherwise
+    // the link would scroll to a closed block.
+    Array.prototype.slice.call(document.querySelectorAll(".toc a")).forEach(
+        function (link) {
+            link.addEventListener("click", function () {
+                var target = document.getElementById(
+                    link.getAttribute("href").slice(1)
+                );
+                if (target) { target.open = true; }
+            });
+        }
+    );
+}());
+</script>
+</body>
+</html>

@@ -14,17 +14,18 @@
     <div class="header-left">
       <span class="header-label">NBGL use cases</span>
     </div>
-    <div class="env-pill">26 use cases</div>
+    <div class="env-pill">28 use cases</div>
   </header>
 
   <main class="report">
 <nav class="toc" aria-label="Variants">
   <div class="toc-title">Variants</div>
   <a href="#transaction"><span class="toc-n">01</span><span class="toc-label">TYPE_TRANSACTION</span></a>
-  <a href="#message"><span class="toc-n">02</span><span class="toc-label">TYPE_MESSAGE</span></a>
-  <a href="#operation"><span class="toc-n">03</span><span class="toc-label">TYPE_OPERATION</span></a>
-  <a href="#skippable"><span class="toc-n">04</span><span class="toc-label">| SKIPPABLE_OPERATION</span></a>
-  <a href="#address_book"><span class="toc-n">05</span><span class="toc-label">| ADDRESS_BOOK_OPERATION</span></a>
+  <a href="#reject"><span class="toc-n">02</span><span class="toc-label">Rejecting it</span></a>
+  <a href="#message"><span class="toc-n">03</span><span class="toc-label">TYPE_MESSAGE</span></a>
+  <a href="#operation"><span class="toc-n">04</span><span class="toc-label">TYPE_OPERATION</span></a>
+  <a href="#skippable"><span class="toc-n">05</span><span class="toc-label">| SKIPPABLE_OPERATION</span></a>
+  <a href="#address_book"><span class="toc-n">06</span><span class="toc-label">| ADDRESS_BOOK_OPERATION</span></a>
 </nav>
 
 <div class="body">
@@ -201,6 +202,141 @@
                height="672"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, TYPE_TRANSACTION, Stax, screen 4">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="reject" open>
+    <summary>
+      <span class="variant-title">Rejecting it</span>
+      <span class="variant-tally">3 screens</span>
+    </summary>
+
+<p class="variant-note">The same example followed to its other end: the reject footer opens a confirmation modal, and confirming it shows the rejected status.</p>
+    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+
+<span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_transaction(<span class="c-keyword">void</span>) {
+    fill_transfer_pairs();
+    signed_status = <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+
+    <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+                       &amp;pairList,
+                       &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                       <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                       <span class="c-const">NULL</span>,
+                       <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       uc_review_choice);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 1 of TYPE_TRANSACTION">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Tap “Reject”</span>
+          <a href="../screens/flex/review/reject/01.png" title="Open at full size">
+          <img src="../screens/flex/review/reject/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, Rejecting it, Flex, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Yes, reject”</span>
+          <a href="../screens/flex/review/reject/02.png" title="Open at full size">
+          <img src="../screens/flex/review/reject/02.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, Rejecting it, Flex, screen 3">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 1 of TYPE_TRANSACTION">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Tap “Reject”</span>
+          <a href="../screens/apex_p/review/reject/01.png" title="Open at full size">
+          <img src="../screens/apex_p/review/reject/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, Rejecting it, Apex P, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Yes, reject”</span>
+          <a href="../screens/apex_p/review/reject/02.png" title="Open at full size">
+          <img src="../screens/apex_p/review/reject/02.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, Rejecting it, Apex P, screen 3">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 1 of TYPE_TRANSACTION">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Tap “Reject”</span>
+          <a href="../screens/stax/review/reject/01.png" title="Open at full size">
+          <img src="../screens/stax/review/reject/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, Rejecting it, Stax, screen 2">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Yes, reject”</span>
+          <a href="../screens/stax/review/reject/02.png" title="Open at full size">
+          <img src="../screens/stax/review/reject/02.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseReview, Rejecting it, Stax, screen 3">
           </a>
         </div>
       </div>
@@ -420,12 +556,12 @@
                alt="nbgl_useCaseReview, TYPE_OPERATION, Flex, screen 1">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/review/operation/01.png" title="Open at full size">
-          <img src="../screens/flex/review/operation/01.png" width="480"
-               height="600"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseReview, TYPE_OPERATION, Flex, screen 2">
-          </a>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 2 of TYPE_TRANSACTION">
+            id. 2
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/flex/review/operation/02.png" title="Open at full size">
           <img src="../screens/flex/review/operation/02.png" width="480"
@@ -455,12 +591,12 @@
                alt="nbgl_useCaseReview, TYPE_OPERATION, Apex P, screen 1">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/review/operation/01.png" title="Open at full size">
-          <img src="../screens/apex_p/review/operation/01.png" width="300"
-               height="400"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseReview, TYPE_OPERATION, Apex P, screen 2">
-          </a>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 2 of TYPE_TRANSACTION">
+            id. 2
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/apex_p/review/operation/02.png" title="Open at full size">
           <img src="../screens/apex_p/review/operation/02.png" width="300"
@@ -490,12 +626,12 @@
                alt="nbgl_useCaseReview, TYPE_OPERATION, Stax, screen 1">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/stax/review/operation/01.png" title="Open at full size">
-          <img src="../screens/stax/review/operation/01.png" width="400"
-               height="672"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseReview, TYPE_OPERATION, Stax, screen 2">
-          </a>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 2 of TYPE_TRANSACTION">
+            id. 2
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/stax/review/operation/02.png" title="Open at full size">
           <img src="../screens/stax/review/operation/02.png" width="400"
@@ -597,12 +733,12 @@
                alt="nbgl_useCaseReview, | SKIPPABLE_OPERATION, Flex, screen 4">
           </a>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/flex/review/skippable/04.png" title="Open at full size">
-          <img src="../screens/flex/review/skippable/04.png" width="480"
-               height="600"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseReview, | SKIPPABLE_OPERATION, Flex, screen 5">
-          </a>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 4 of TYPE_TRANSACTION">
+            id. 4
+          </span>
         </div>
       </div>
       <div class="shot-row">
@@ -639,12 +775,12 @@
                alt="nbgl_useCaseReview, | SKIPPABLE_OPERATION, Apex P, screen 4">
           </a>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/apex_p/review/skippable/04.png" title="Open at full size">
-          <img src="../screens/apex_p/review/skippable/04.png" width="300"
-               height="400"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseReview, | SKIPPABLE_OPERATION, Apex P, screen 5">
-          </a>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 4 of TYPE_TRANSACTION">
+            id. 4
+          </span>
         </div>
       </div>
       <div class="shot-row">
@@ -681,12 +817,12 @@
                alt="nbgl_useCaseReview, | SKIPPABLE_OPERATION, Stax, screen 4">
           </a>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/stax/review/skippable/04.png" title="Open at full size">
-          <img src="../screens/stax/review/skippable/04.png" width="400"
-               height="672"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseReview, | SKIPPABLE_OPERATION, Stax, screen 5">
-          </a>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 4 of TYPE_TRANSACTION">
+            id. 4
+          </span>
         </div>
       </div>
     </div>
@@ -768,12 +904,12 @@
                alt="nbgl_useCaseReview, | ADDRESS_BOOK_OPERATION, Flex, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/flex/review/address_book/03.png" title="Open at full size">
-          <img src="../screens/flex/review/address_book/03.png" width="480"
-               height="600"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseReview, | ADDRESS_BOOK_OPERATION, Flex, screen 4">
-          </a>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 4 of TYPE_TRANSACTION">
+            id. 4
+          </span>
         </div>
       </div>
       <div class="shot-row">
@@ -803,12 +939,12 @@
                alt="nbgl_useCaseReview, | ADDRESS_BOOK_OPERATION, Apex P, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/apex_p/review/address_book/03.png" title="Open at full size">
-          <img src="../screens/apex_p/review/address_book/03.png" width="300"
-               height="400"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseReview, | ADDRESS_BOOK_OPERATION, Apex P, screen 4">
-          </a>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 4 of TYPE_TRANSACTION">
+            id. 4
+          </span>
         </div>
       </div>
       <div class="shot-row">
@@ -838,24 +974,24 @@
                alt="nbgl_useCaseReview, | ADDRESS_BOOK_OPERATION, Stax, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/stax/review/address_book/03.png" title="Open at full size">
-          <img src="../screens/stax/review/address_book/03.png" width="400"
-               height="672"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseReview, | ADDRESS_BOOK_OPERATION, Stax, screen 4">
-          </a>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 4 of TYPE_TRANSACTION">
+            id. 4
+          </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T08:43:32+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T08:43:32+00:00</span>
+    <span>2026-09-23T10:18:27+00:00</span>
   </footer>
 </div>
 

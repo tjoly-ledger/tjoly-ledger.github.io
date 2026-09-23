@@ -14,7 +14,7 @@
     <div class="header-left">
       <span class="header-label">NBGL use cases</span>
     </div>
-    <div class="env-pill">26 use cases</div>
+    <div class="env-pill">28 use cases</div>
   </header>
 
   <main class="report">
@@ -48,9 +48,9 @@
       through its REST API.
     </p>
     <div class="stats">
-      <div class="stat"><b>26</b><span>use cases</span></div>
-      <div class="stat"><b>56</b><span>variants</span></div>
-      <div class="stat"><b>548</b><span>screens</span></div>
+      <div class="stat"><b>28</b><span>use cases</span></div>
+      <div class="stat"><b>69</b><span>variants</span></div>
+      <div class="stat"><b>722</b><span>screens</span></div>
       <div class="stat"><b>3</b><span>products</span></div>
     </div>
   </div>
@@ -105,15 +105,15 @@
     </div>
   </section>
   <section id="group-review">
-    <p class="eyebrow">5 use cases</p>
+    <p class="eyebrow">7 use cases</p>
     <h2>Review</h2>
     <div class="uc-list">
       <a class="uc-card" href="uc/review.html"
-         data-name="nbgl_usecasereview | review | full review of an operation whose tag/value pairs are all known upfront: a cover page, as many auto-paginated pair pages as needed, then a long-press page to sign. | type_transaction | review transaction | to send bol | swipe to review | reject | 1 of 3 | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | fees | 0.00012 bol | 2 of 3 | sign transaction | to send bol? | 3 of 3 | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b | type_message | review message | message | sign in to ledger | boilerplate | domain | boilerplate.ledger.com | sign message? | message signed | type_operation | review operation | sign operation? | operation signed | | skippable_operation | 1 of 4 | skip | 2 of 4 | memo | payment for invoice | 2026-0142, thanks for | your business | 3 of 4 | 4 of 4 | | address_book_operation | cancel">
+         data-name="nbgl_usecasereview | review | full review of an operation whose tag/value pairs are all known upfront: a cover page, as many auto-paginated pair pages as needed, then a long-press page to sign. | type_transaction | review transaction | to send bol | swipe to review | reject | 1 of 3 | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | fees | 0.00012 bol | 2 of 3 | sign transaction | to send bol? | 3 of 3 | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b | rejecting it | reject transaction? | go back to transaction | yes, reject | transaction rejected | type_message | review message | message | sign in to ledger | boilerplate | domain | boilerplate.ledger.com | sign message? | message signed | type_operation | review operation | sign operation? | operation signed | | skippable_operation | 1 of 4 | skip | 2 of 4 | memo | payment for invoice | 2026-0142, thanks for | your business | 3 of 4 | 4 of 4 | | address_book_operation | cancel">
         <span class="uc-card-top">
           <span class="uc-name">nbgl_useCaseReview</span>
           <span class="uc-tally">
-            5 variants
+            6 variants
           </span>
         </span>
         <span class="uc-desc">Full review of an operation whose tag/value pairs are all known upfront: a cover page, as many auto-paginated pair pages as needed, then a long-press page to sign.</span>
@@ -149,14 +149,34 @@
         <span class="uc-desc">The same flow as nbgl_useCaseReview(), but the last page validates with a simple button instead of a long press.</span>
       </a>
       <a class="uc-card" href="uc/generic_review.html"
-         data-name="nbgl_usecasegenericreview | generic_review | any mix of content types paginated as a review, with a reject footer, when the predefined reviews do not fit. | pairs then long press | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | fees | 0.00012 bol | reject | 1 of 2 | sign transaction | to send bol? | 2 of 2 | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b">
+         data-name="nbgl_usecasegenericreview | generic_review | any mix of content types paginated as a review, with a reject footer, when the predefined reviews do not fit. | tag_value_list + info_long_press | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | fees | 0.00012 bol | reject | 1 of 2 | sign transaction | to send bol? | 2 of 2 | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b | tag_value_confirm | info_button | confirm transaction | extended_center | review transaction | to send bol | you will be asked to sign it on | the last page. | fees: 0.00012 bol | raw transaction data">
         <span class="uc-card-top">
           <span class="uc-name">nbgl_useCaseGenericReview</span>
           <span class="uc-tally">
-            1 variant
+            4 variants
           </span>
         </span>
         <span class="uc-desc">Any mix of content types paginated as a review, with a reject footer, when the predefined reviews do not fit.</span>
+      </a>
+      <a class="uc-card" href="uc/review_alias.html"
+         data-name="nbgl_usecasereview | review_alias | a tag/value pair whose value is an alias: the review shows the short name with a chevron, and the page behind it justifies the alias. the aliastype of nbgl_contentvalueext_t picks that page. | ens_alias | review transaction | to send bol | swipe to review | reject | 1 of 3 | amount | 1.2345 bol | to | vitalik.eth | fees | 0.00012 bol | 2 of 3 | 0x4a2b1f8c3d7e5a9b0c1d2e | 3f4a5b6c7d8e9f0a1b | ens names are resolved by | ledger backend. | sign transaction | to send bol? | 3 of 3 | hold to sign | transaction signed | address_book_alias | alice | saved in your address | ... | saved in your address book | trusted name from ledger | qr_code_alias | recipient address | scan it to check it in your | wallet. | info_list_alias | boilerplate contract | contract details | contract | method | transfer(address,uint256) | tag_value_list_alias | swap 1.2345 bol | pool | bol / usdc | minimum received | 4 521.08 usdc | close">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseReview</span>
+          <span class="uc-tally">
+<span class="uc-flag">ENABLE_NBGL_QRCODE</span>            5 variants
+          </span>
+        </span>
+        <span class="uc-desc">A tag/value pair whose value is an alias: the review shows the short name with a chevron, and the page behind it justifies the alias. The aliasType of nbgl_contentValueExt_t picks that page.</span>
+      </a>
+      <a class="uc-card" href="uc/review_pairs.html"
+         data-name="nbgl_usecasereview | review_pairs | the layout fields a tag/value pair carries itself, which decide how a review paginates and draws it. the list-level ones are not here: nbgl_usecasereview() overrides smallcaseforvalue, nbmaxlinesforvalue and hideendoflastline on every page it draws, so an app cannot set them. | forcepagestart | review transaction | to send bol | swipe to review | reject | 1 of 4 | amount | 1.2345 bol | to | 0x4a2b1f8c3d7e5a9b | 0c1d2e3f4a5b6c7d8e | 9f0a1b | 2 of 4 | fees | 0.00012 bol | 3 of 4 | sign transaction | to send bol? | 4 of 4 | hold to sign | transaction signed | 0x4a2b1f8c3d7e5a9 | b0c1d2e3f4a5b6c7d | 8e9f0a1b | centeredinfo | send 1.2345 bol | to alice | a value too long for a page | 1 of 3 | raw data | 0x9f0a1b2c3d4e5f6071 | 8293a4b5c6d7e8f90a1 | b2c3d4e5f60718293a4 | b5c6d7e8f90a1b2c3d4 | e5f60718293a4b5c6d7 | e8f90a1b2c3d4e5f6 | ... | more | 2 of 3 | 0x9f0a1b2c3d4e5f60718293 | a4b5c6d7e8f90a1b2c3d4e5f | 60718293a4b5c6d7e8f90a1b | 2c3d4e5f60718293a4b5c6d7 | e8f90a1b2c3d4e5f60718293 | 60718293a4b5c6d7e8f9 | close | 3 of 3 | 0x9f0a1b2c3d4e5f607 | 18293a4b5c6d7e8f90 | a1b2c3d4e5f60718293 | a4b5c6d7e8f90a1b2c | 3d4e5f60718293a4b5 | c6d7e8f90a1b2c3 | 2c3d4e5f60718293a4b5c6d | 7e8f90a1b2c3d4e5f6071829 | 3a4b5c6d7e8f90a1b2c3d4e | 5f60718293a4b5c6d7e8f90a | 1b2c3d4e5f60718293a4b5c | 6d7e8f90a1b2c3d4e5f60718 | 293a4b5c6d7e8f90a1b2c3d | 4e5f60718293a4b5c6d7e8f9 | 0x9f0a1b2c3d4e5f60 | 718293a4b5c6d7e8f9 | 0a1b2c3d4e5f607182 | 93a4b5c6d7e8f90a1b | 2c3d4e5f60718293a4 | b5c6d7e8f90a1b2c3d | 4e5f60718293a4b | 3a4b5c6d7e8f90a1b2c3d4e5 | f60718293a4b5c6d7e8f90a1 | b2c3d4e5f60718293a4b5c6 | d7e8f90a1b2c3d4e5f607182 | 93a4b5c6d7e8f90a1b2c3d4 | e5f60718293a4b5c6d7e8f9">
+        <span class="uc-card-top">
+          <span class="uc-name">nbgl_useCaseReview</span>
+          <span class="uc-tally">
+            3 variants
+          </span>
+        </span>
+        <span class="uc-desc">The layout fields a tag/value pair carries itself, which decide how a review paginates and draws it. The list-level ones are not here: nbgl_useCaseReview() overrides smallCaseForValue, nbMaxLinesForValue and hideEndOfLastLine on every page it draws, so an app cannot set them.</span>
       </a>
     </div>
   </section>
@@ -231,11 +251,11 @@
     <h2>Address</h2>
     <div class="uc-list">
       <a class="uc-card" href="uc/address_review.html"
-         data-name="nbgl_usecaseaddressreview | address_review | shows an address for the user to check against their wallet, with optional extra pairs. the address page also carries a button to display it as a qr code, which is not captured here: it is an icon with no label, so it cannot be located the same way on every product. | address only | verify bol address | swipe to continue | cancel | 1 of 2 | address | bc1qar0srrr7xfkvy5l64 | 3lydnw9re59gtzzwf5m | dq | 2 of 2 | confirm | address verified | bc1qar0srrr7xfkvy5l6 | 43lydnw9re59gtzzwf5 | mdq | 3lydnw9re59gtzzwf5 | with extra pairs | make sure it matches the one | in your wallet. | 1 of 3 | show as qr | 2 of 3 | account | main account | derivation path | m/44&#39;/0&#39;/0&#39;/0/0 | 3 of 3">
+         data-name="nbgl_usecaseaddressreview | address_review | shows an address for the user to check against their wallet, with optional extra pairs. the address page also carries a button to display it as a qr code, which is not captured here: it is an icon with no label, so it cannot be located the same way on every product. | address only | verify bol address | swipe to continue | cancel | 1 of 2 | address | bc1qar0srrr7xfkvy5l64 | 3lydnw9re59gtzzwf5m | dq | 2 of 2 | confirm | address verified | bc1qar0srrr7xfkvy5l6 | 43lydnw9re59gtzzwf5 | mdq | 3lydnw9re59gtzzwf5 | declining it | address verification | cancelled | with extra pairs | make sure it matches the one | in your wallet. | 1 of 3 | show as qr | 2 of 3 | account | main account | derivation path | m/44&#39;/0&#39;/0&#39;/0/0 | 3 of 3">
         <span class="uc-card-top">
           <span class="uc-name">nbgl_useCaseAddressReview</span>
           <span class="uc-tally">
-<span class="uc-flag">ENABLE_NBGL_QRCODE</span>            2 variants
+<span class="uc-flag">ENABLE_NBGL_QRCODE</span>            3 variants
           </span>
         </span>
         <span class="uc-desc">Shows an address for the user to check against their wallet, with optional extra pairs. The address page also carries a button to display it as a QR code, which is not captured here: it is an icon with no label, so it cannot be located the same way on every product.</span>
@@ -362,13 +382,13 @@
   </section>
 
   <p id="noresult" class="uc-empty" hidden>No use case matches this filter.</p>
-  <p class="stamp">Generated 2026-09-23T08:43:32+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T08:43:32+00:00</span>
+    <span>2026-09-23T10:18:27+00:00</span>
   </footer>
 </div>
 

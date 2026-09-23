@@ -14,13 +14,16 @@
     <div class="header-left">
       <span class="header-label">NBGL use cases</span>
     </div>
-    <div class="env-pill">26 use cases</div>
+    <div class="env-pill">28 use cases</div>
   </header>
 
   <main class="report">
 <nav class="toc" aria-label="Variants">
   <div class="toc-title">Variants</div>
-  <a href="#plain"><span class="toc-n">01</span><span class="toc-label">Pairs then long press</span></a>
+  <a href="#plain"><span class="toc-n">01</span><span class="toc-label">TAG_VALUE_LIST + INFO_LONG_PRESS</span></a>
+  <a href="#tag_value_confirm"><span class="toc-n">02</span><span class="toc-label">TAG_VALUE_CONFIRM</span></a>
+  <a href="#info_button"><span class="toc-n">03</span><span class="toc-label">INFO_BUTTON</span></a>
+  <a href="#extended_center"><span class="toc-n">04</span><span class="toc-label">EXTENDED_CENTER</span></a>
 </nav>
 
 <div class="body">
@@ -44,11 +47,11 @@
 
   <details class="variant" id="plain" open>
     <summary>
-      <span class="variant-title">Pairs then long press</span>
+      <span class="variant-title">TAG_VALUE_LIST + INFO_LONG_PRESS</span>
       <span class="variant-tally">3 screens</span>
     </summary>
 
-
+<p class="variant-note">Pairs, then a centered info validated by a long press.</p>
     <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
@@ -71,24 +74,33 @@
     pairList.wrapping = <span class="c-keyword">true</span>;
 }
 
-<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
-<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
-    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
-}
-
-<span class="c-pp">#define GENERIC_LONG_PRESS_TOKEN FIRST_USER_TOKEN</span>
+<span class="c-pp">#define GENERIC_LONG_PRESS_TOKEN (FIRST_USER_TOKEN + 0)</span>
+<span class="c-pp">#define GENERIC_BUTTON_TOKEN     (FIRST_USER_TOKEN + 1)</span>
+<span class="c-pp">#define GENERIC_CONFIRM_TOKEN    (FIRST_USER_TOKEN + 2)</span>
+<span class="c-pp">#define GENERIC_TIP_BOX_TOKEN    (FIRST_USER_TOKEN + 3)</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_content_t</span>         generic_contents[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_genericContents_t</span> generic_review_contents;
 
+<span class="c-comment">/**
+ * Unlike the predefined reviews, a generic review has no choice callback: what
+ * the user does with a content is reported here, through the token that
+ * content carries.
+ */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_generic_review_action(<span class="c-keyword">int</span> token, <span class="c-type">uint8_t</span> index, <span class="c-keyword">int</span> page) {
     <span class="c-const">UNUSED</span>(index);
     <span class="c-const">UNUSED</span>(page);
 
-    <span class="c-comment">// Unlike the predefined reviews, a generic review has no choice callback:</span>
-    <span class="c-comment">// the long press is reported here, through the token it was given.</span>
-    <span class="c-keyword">if</span> (token == <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>) {
-        <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+    <span class="c-keyword">switch</span> (token) {
+        <span class="c-keyword">case</span> <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>:
+        <span class="c-keyword">case</span> <span class="c-const">GENERIC_BUTTON_TOKEN</span>:
+        <span class="c-keyword">case</span> <span class="c-const">GENERIC_CONFIRM_TOKEN</span>:
+            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+            <span class="c-keyword">break</span>;
+        <span class="c-keyword">default</span>:
+            <span class="c-comment">// A tip-box is the app&#x27;s own: NBGL only reports the tap, so a</span>
+            <span class="c-comment">// content it does not act on simply leaves the page as it is.</span>
+            <span class="c-keyword">break</span>;
     }
 }
 
@@ -126,21 +138,21 @@
           <img src="../screens/flex/generic_review/plain/00.png" width="480"
                height="600"
                style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, Pairs then long press, Flex, screen 1">
+               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Flex, screen 1">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/flex/generic_review/plain/01.png" title="Open at full size">
           <img src="../screens/flex/generic_review/plain/01.png" width="480"
                height="600"
                style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, Pairs then long press, Flex, screen 2">
+               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Flex, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <a href="../screens/flex/generic_review/plain/02.png" title="Open at full size">
           <img src="../screens/flex/generic_review/plain/02.png" width="480"
                height="600"
                style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, Pairs then long press, Flex, screen 3">
+               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Flex, screen 3">
           </a>
         </div>
       </div>
@@ -154,21 +166,21 @@
           <img src="../screens/apex_p/generic_review/plain/00.png" width="300"
                height="400"
                style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, Pairs then long press, Apex P, screen 1">
+               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Apex P, screen 1">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/apex_p/generic_review/plain/01.png" title="Open at full size">
           <img src="../screens/apex_p/generic_review/plain/01.png" width="300"
                height="400"
                style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, Pairs then long press, Apex P, screen 2">
+               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Apex P, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <a href="../screens/apex_p/generic_review/plain/02.png" title="Open at full size">
           <img src="../screens/apex_p/generic_review/plain/02.png" width="300"
                height="400"
                style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, Pairs then long press, Apex P, screen 3">
+               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Apex P, screen 3">
           </a>
         </div>
       </div>
@@ -182,34 +194,483 @@
           <img src="../screens/stax/generic_review/plain/00.png" width="400"
                height="672"
                style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, Pairs then long press, Stax, screen 1">
+               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Stax, screen 1">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/stax/generic_review/plain/01.png" title="Open at full size">
           <img src="../screens/stax/generic_review/plain/01.png" width="400"
                height="672"
                style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, Pairs then long press, Stax, screen 2">
+               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Stax, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <a href="../screens/stax/generic_review/plain/02.png" title="Open at full size">
           <img src="../screens/stax/generic_review/plain/02.png" width="400"
                height="672"
                style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, Pairs then long press, Stax, screen 3">
+               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Stax, screen 3">
           </a>
         </div>
       </div>
     </div>
   </details>
+  <details class="variant" id="tag_value_confirm" open>
+    <summary>
+      <span class="variant-title">TAG_VALUE_CONFIRM</span>
+      <span class="variant-tally">2 screens</span>
+    </summary>
 
-  <p class="stamp">Generated 2026-09-23T08:43:32+00:00.</p>
+<p class="variant-note">Pairs, a black button and a footer on the same page, so the review is answered without leaving it.</p>
+    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+
+<span class="c-pp">#define GENERIC_LONG_PRESS_TOKEN (FIRST_USER_TOKEN + 0)</span>
+<span class="c-pp">#define GENERIC_BUTTON_TOKEN     (FIRST_USER_TOKEN + 1)</span>
+<span class="c-pp">#define GENERIC_CONFIRM_TOKEN    (FIRST_USER_TOKEN + 2)</span>
+<span class="c-pp">#define GENERIC_TIP_BOX_TOKEN    (FIRST_USER_TOKEN + 3)</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_content_t</span>         generic_contents[<span class="c-number">2</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_genericContents_t</span> generic_review_contents;
+
+<span class="c-comment">/**
+ * Unlike the predefined reviews, a generic review has no choice callback: what
+ * the user does with a content is reported here, through the token that
+ * content carries.
+ */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_generic_review_action(<span class="c-keyword">int</span> token, <span class="c-type">uint8_t</span> index, <span class="c-keyword">int</span> page) {
+    <span class="c-const">UNUSED</span>(index);
+    <span class="c-const">UNUSED</span>(page);
+
+    <span class="c-keyword">switch</span> (token) {
+        <span class="c-keyword">case</span> <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>:
+        <span class="c-keyword">case</span> <span class="c-const">GENERIC_BUTTON_TOKEN</span>:
+        <span class="c-keyword">case</span> <span class="c-const">GENERIC_CONFIRM_TOKEN</span>:
+            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+            <span class="c-keyword">break</span>;
+        <span class="c-keyword">default</span>:
+            <span class="c-comment">// A tip-box is the app&#x27;s own: NBGL only reports the tap, so a</span>
+            <span class="c-comment">// content it does not act on simply leaves the page as it is.</span>
+            <span class="c-keyword">break</span>;
+    }
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_generic_review_tag_value_confirm(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// TAG_VALUE_CONFIRM puts the pairs, a black button and a footer on the</span>
+    <span class="c-comment">// same page, so the review is answered without a long press. NBGL only</span>
+    <span class="c-comment">// draws the button on the last page of the list: a list that does not fit</span>
+    <span class="c-comment">// on one page is shown as ordinary tag/value pages until that last one.</span>
+    <span class="c-comment">// These two pairs fit on one page on every product.</span>
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">2</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+
+    memset(generic_contents, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(generic_contents));
+
+    generic_contents[<span class="c-number">0</span>].type = <span class="c-const">TAG_VALUE_CONFIRM</span>;
+    generic_contents[<span class="c-number">0</span>].content.tagValueConfirm.tagValueList = pairList;
+    generic_contents[<span class="c-number">0</span>].content.tagValueConfirm.confirmationText = <span class="c-string">&quot;Sign transaction&quot;</span>;
+    generic_contents[<span class="c-number">0</span>].content.tagValueConfirm.confirmationToken = <span class="c-const">GENERIC_CONFIRM_TOKEN</span>;
+    <span class="c-comment">// cancelText / cancelToken are left unset on purpose: a generic content</span>
+    <span class="c-comment">// page draws them from its navigation, so the footer is the rejectText</span>
+    <span class="c-comment">// given to nbgl_useCaseGenericReview() and those two fields are never</span>
+    <span class="c-comment">// read (nbgl_page.c:134).</span>
+    generic_contents[<span class="c-number">0</span>].contentActionCallback = uc_generic_review_action;
+
+    generic_review_contents.callbackCallNeeded = <span class="c-keyword">false</span>;
+    generic_review_contents.contentsList = generic_contents;
+    generic_review_contents.nbContents = <span class="c-number">1</span>;
+
+    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string">&quot;Reject&quot;</span>, catalog_on_quit);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/generic_review/tag_value_confirm/00.png" title="Open at full size">
+          <img src="../screens/flex/generic_review/tag_value_confirm/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Sign transaction”</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 3 of TAG_VALUE_LIST + INFO_LONG_PRESS">
+            id. 3
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/generic_review/tag_value_confirm/00.png" title="Open at full size">
+          <img src="../screens/apex_p/generic_review/tag_value_confirm/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Sign transaction”</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 3 of TAG_VALUE_LIST + INFO_LONG_PRESS">
+            id. 3
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/generic_review/tag_value_confirm/00.png" title="Open at full size">
+          <img src="../screens/stax/generic_review/tag_value_confirm/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Tap “Sign transaction”</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 3 of TAG_VALUE_LIST + INFO_LONG_PRESS">
+            id. 3
+          </span>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="info_button" open>
+    <summary>
+      <span class="variant-title">INFO_BUTTON</span>
+      <span class="variant-tally">2 screens</span>
+    </summary>
+
+<p class="variant-note">The same closing page as INFO_LONG_PRESS, validated by a plain button instead of a long press.</p>
+    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+
+<span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
+    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+
+    pairList.pairs = pairs;
+    pairList.nbPairs = <span class="c-number">3</span>;
+    pairList.wrapping = <span class="c-keyword">true</span>;
+}
+
+<span class="c-pp">#define GENERIC_LONG_PRESS_TOKEN (FIRST_USER_TOKEN + 0)</span>
+<span class="c-pp">#define GENERIC_BUTTON_TOKEN     (FIRST_USER_TOKEN + 1)</span>
+<span class="c-pp">#define GENERIC_CONFIRM_TOKEN    (FIRST_USER_TOKEN + 2)</span>
+<span class="c-pp">#define GENERIC_TIP_BOX_TOKEN    (FIRST_USER_TOKEN + 3)</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_content_t</span>         generic_contents[<span class="c-number">2</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_genericContents_t</span> generic_review_contents;
+
+<span class="c-comment">/**
+ * Unlike the predefined reviews, a generic review has no choice callback: what
+ * the user does with a content is reported here, through the token that
+ * content carries.
+ */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_generic_review_action(<span class="c-keyword">int</span> token, <span class="c-type">uint8_t</span> index, <span class="c-keyword">int</span> page) {
+    <span class="c-const">UNUSED</span>(index);
+    <span class="c-const">UNUSED</span>(page);
+
+    <span class="c-keyword">switch</span> (token) {
+        <span class="c-keyword">case</span> <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>:
+        <span class="c-keyword">case</span> <span class="c-const">GENERIC_BUTTON_TOKEN</span>:
+        <span class="c-keyword">case</span> <span class="c-const">GENERIC_CONFIRM_TOKEN</span>:
+            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+            <span class="c-keyword">break</span>;
+        <span class="c-keyword">default</span>:
+            <span class="c-comment">// A tip-box is the app&#x27;s own: NBGL only reports the tap, so a</span>
+            <span class="c-comment">// content it does not act on simply leaves the page as it is.</span>
+            <span class="c-keyword">break</span>;
+    }
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_generic_review_info_button(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// INFO_BUTTON is the INFO_LONG_PRESS page with a plain black button</span>
+    <span class="c-comment">// instead of the long press, for an operation with nothing at stake.</span>
+    fill_transfer_pairs();
+    memset(generic_contents, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(generic_contents));
+
+    generic_contents[<span class="c-number">0</span>].type = <span class="c-const">TAG_VALUE_LIST</span>;
+    generic_contents[<span class="c-number">0</span>].content.tagValueList = pairList;
+
+    generic_contents[<span class="c-number">1</span>].type = <span class="c-const">INFO_BUTTON</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoButton.text = <span class="c-string">&quot;Confirm transaction\nto send BOL?&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoButton.icon = &amp;<span class="c-const">CATALOG_ICON_APP</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoButton.buttonText = <span class="c-string">&quot;Confirm transaction&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoButton.buttonToken = <span class="c-const">GENERIC_BUTTON_TOKEN</span>;
+    generic_contents[<span class="c-number">1</span>].contentActionCallback = uc_generic_review_action;
+
+    generic_review_contents.callbackCallNeeded = <span class="c-keyword">false</span>;
+    generic_review_contents.contentsList = generic_contents;
+    generic_review_contents.nbContents = <span class="c-const">ARRAYLEN</span>(generic_contents);
+
+    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string">&quot;Reject&quot;</span>, catalog_on_quit);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 1 of TAG_VALUE_LIST + INFO_LONG_PRESS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/flex/generic_review/info_button/01.png" title="Open at full size">
+          <img src="../screens/flex/generic_review/info_button/01.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericReview, INFO_BUTTON, Flex, screen 2">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 1 of TAG_VALUE_LIST + INFO_LONG_PRESS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/apex_p/generic_review/info_button/01.png" title="Open at full size">
+          <img src="../screens/apex_p/generic_review/info_button/01.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericReview, INFO_BUTTON, Apex P, screen 2">
+          </a>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 1 of TAG_VALUE_LIST + INFO_LONG_PRESS">
+            id. 1
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <a href="../screens/stax/generic_review/info_button/01.png" title="Open at full size">
+          <img src="../screens/stax/generic_review/info_button/01.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericReview, INFO_BUTTON, Stax, screen 2">
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="variant" id="extended_center" open>
+    <summary>
+      <span class="variant-title">EXTENDED_CENTER</span>
+      <span class="variant-tally">3 screens</span>
+    </summary>
+
+<p class="variant-note">The cover page of a review, built by hand: an icon, up to four texts, and a tip-box the app reacts to itself.</p>
+    <pre class="code"><code><span class="c-pp">#define GENERIC_LONG_PRESS_TOKEN (FIRST_USER_TOKEN + 0)</span>
+<span class="c-pp">#define GENERIC_BUTTON_TOKEN     (FIRST_USER_TOKEN + 1)</span>
+<span class="c-pp">#define GENERIC_CONFIRM_TOKEN    (FIRST_USER_TOKEN + 2)</span>
+<span class="c-pp">#define GENERIC_TIP_BOX_TOKEN    (FIRST_USER_TOKEN + 3)</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_content_t</span>         generic_contents[<span class="c-number">2</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_genericContents_t</span> generic_review_contents;
+
+<span class="c-comment">/**
+ * Unlike the predefined reviews, a generic review has no choice callback: what
+ * the user does with a content is reported here, through the token that
+ * content carries.
+ */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_generic_review_action(<span class="c-keyword">int</span> token, <span class="c-type">uint8_t</span> index, <span class="c-keyword">int</span> page) {
+    <span class="c-const">UNUSED</span>(index);
+    <span class="c-const">UNUSED</span>(page);
+
+    <span class="c-keyword">switch</span> (token) {
+        <span class="c-keyword">case</span> <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>:
+        <span class="c-keyword">case</span> <span class="c-const">GENERIC_BUTTON_TOKEN</span>:
+        <span class="c-keyword">case</span> <span class="c-const">GENERIC_CONFIRM_TOKEN</span>:
+            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+            <span class="c-keyword">break</span>;
+        <span class="c-keyword">default</span>:
+            <span class="c-comment">// A tip-box is the app&#x27;s own: NBGL only reports the tap, so a</span>
+            <span class="c-comment">// content it does not act on simply leaves the page as it is.</span>
+            <span class="c-keyword">break</span>;
+    }
+}
+
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_generic_review_extended_center(<span class="c-keyword">void</span>) {
+    <span class="c-comment">// EXTENDED_CENTER is the cover page of a review: a centered content of up</span>
+    <span class="c-comment">// to four texts around an icon, plus an optional tip-box on the bottom.</span>
+    <span class="c-comment">// It is what the predefined reviews build from their title and subtitle.</span>
+    memset(generic_contents, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(generic_contents));
+
+    generic_contents[<span class="c-number">0</span>].type = <span class="c-const">EXTENDED_CENTER</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.icon = &amp;<span class="c-const">CATALOG_ICON_APP</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.title
+        = <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.description
+        = <span class="c-string">&quot;You will be asked to sign it on the last page.&quot;</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.subText = <span class="c-string">&quot;Fees: 0.00012 BOL&quot;</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.tipBox.text = <span class="c-string">&quot;Raw transaction data&quot;</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.tipBox.icon = &amp;<span class="c-const">SMALL_INFO_CIRCLE_ICON</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.tipBox.token = <span class="c-const">GENERIC_TIP_BOX_TOKEN</span>;
+    generic_contents[<span class="c-number">0</span>].contentActionCallback = uc_generic_review_action;
+
+    generic_contents[<span class="c-number">1</span>].type = <span class="c-const">INFO_LONG_PRESS</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.text = <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.icon = &amp;<span class="c-const">CATALOG_ICON_APP</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressText = <span class="c-string">&quot;Hold to sign&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressToken = <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>;
+    generic_contents[<span class="c-number">1</span>].contentActionCallback = uc_generic_review_action;
+
+    generic_review_contents.callbackCallNeeded = <span class="c-keyword">false</span>;
+    generic_review_contents.contentsList = generic_contents;
+    generic_review_contents.nbContents = <span class="c-const">ARRAYLEN</span>(generic_contents);
+
+    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string">&quot;Reject&quot;</span>, catalog_on_quit);
+}</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/flex/generic_review/extended_center/00.png" title="Open at full size">
+          <img src="../screens/flex/generic_review/extended_center/00.png" width="480"
+               height="600"
+               style="width: calc(480px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Flex, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 2 of TAG_VALUE_LIST + INFO_LONG_PRESS">
+            id. 2
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(480px * var(--shot-scale) / 3);
+                       height: calc(600px * var(--shot-scale))"
+                title="Identical to screen 3 of TAG_VALUE_LIST + INFO_LONG_PRESS">
+            id. 3
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/apex_p/generic_review/extended_center/00.png" title="Open at full size">
+          <img src="../screens/apex_p/generic_review/extended_center/00.png" width="300"
+               height="400"
+               style="width: calc(300px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Apex P, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 2 of TAG_VALUE_LIST + INFO_LONG_PRESS">
+            id. 2
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(300px * var(--shot-scale) / 3);
+                       height: calc(400px * var(--shot-scale))"
+                title="Identical to screen 3 of TAG_VALUE_LIST + INFO_LONG_PRESS">
+            id. 3
+          </span>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <a href="../screens/stax/generic_review/extended_center/00.png" title="Open at full size">
+          <img src="../screens/stax/generic_review/extended_center/00.png" width="400"
+               height="672"
+               style="width: calc(400px * var(--shot-scale))"
+               alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Stax, screen 1">
+          </a>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 2 of TAG_VALUE_LIST + INFO_LONG_PRESS">
+            id. 2
+          </span>
+          <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
+          <span class="shot-same"
+                style="width: calc(400px * var(--shot-scale) / 3);
+                       height: calc(672px * var(--shot-scale))"
+                title="Identical to screen 3 of TAG_VALUE_LIST + INFO_LONG_PRESS">
+            id. 3
+          </span>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T08:43:32+00:00</span>
+    <span>2026-09-23T10:18:27+00:00</span>
   </footer>
 </div>
 
