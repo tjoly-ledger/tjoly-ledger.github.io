@@ -73,10 +73,16 @@
     <span class="c-const">UNUSED</span>(index);
     <span class="c-const">UNUSED</span>(page);
 
-    <span class="c-keyword">if</span> (token == <span class="c-const">FIRST_SWITCH_TOKEN</span>) {
-        switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState
-            = (switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState == <span class="c-const">ON_STATE</span>) ? <span class="c-const">OFF_STATE</span> : <span class="c-const">ON_STATE</span>;
+    <span class="c-comment">// Each switch owns a token, and NBGL redraws it from `initState` on every</span>
+    <span class="c-comment">// page draw: a switch whose token is not handled here springs back as soon</span>
+    <span class="c-comment">// as the page is drawn again.</span>
+    <span class="c-keyword">int</span> switch_index = token - <span class="c-const">FIRST_SWITCH_TOKEN</span>;
+    <span class="c-keyword">if</span> (switch_index &lt; <span class="c-number">0</span> || switch_index &gt;= <span class="c-const">SWITCHES_NB</span>) {
+        <span class="c-keyword">return</span>;
     }
+
+    switches[switch_index].initState
+        = (switches[switch_index].initState == <span class="c-const">ON_STATE</span>) ? <span class="c-const">OFF_STATE</span> : <span class="c-const">ON_STATE</span>;
 }
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> build_settings(<span class="c-keyword">void</span>) {
@@ -175,13 +181,13 @@
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-22T15:06:27+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T08:43:32+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-22T15:06:27+00:00</span>
+    <span>2026-09-23T08:43:32+00:00</span>
   </footer>
 </div>
 

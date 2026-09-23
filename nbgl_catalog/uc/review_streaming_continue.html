@@ -57,6 +57,11 @@
 <span class="c-comment">/** Whether the chain uses nbgl_useCaseReviewStreamingContinueExt(). */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">bool</span> skippable;
 
+<span class="c-comment">/** Wordings and status of the operation being streamed, set by the start. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span>             *finish_title;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+
 <span class="c-pp">#define NB_CHUNKS 2</span>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_chunk(<span class="c-type">uint8_t</span> index) {
@@ -81,9 +86,7 @@
 }
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> on_finish(<span class="c-keyword">bool</span> confirm) {
-    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
-        confirm ? <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span> : <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>,
-        catalog_on_quit);
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
 }
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> on_skip(<span class="c-keyword">void</span>);
@@ -95,7 +98,7 @@
  */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> show_next_chunk(<span class="c-keyword">void</span>) {
     <span class="c-keyword">if</span> (chunk &gt;= <span class="c-const">NB_CHUNKS</span>) {
-        <span class="c-usecase">nbgl_useCaseReviewStreamingFinish</span>(<span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>, on_finish);
+        <span class="c-usecase">nbgl_useCaseReviewStreamingFinish</span>(finish_title, on_finish);
         <span class="c-keyword">return</span>;
     }
 
@@ -130,6 +133,9 @@
     <span class="c-comment">// makes show_next_chunk() use the plain Continue().</span>
     chunk = <span class="c-number">0</span>;
     skippable = <span class="c-keyword">false</span>;
+    finish_title = <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>;
+    signed_status = <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
 
     <span class="c-usecase">nbgl_useCaseReviewStreamingStart</span>(<span class="c-const">TYPE_TRANSACTION</span>,
                                      &amp;<span class="c-const">CATALOG_ICON_APP</span>,
@@ -268,13 +274,13 @@
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-22T15:06:27+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T08:43:32+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-22T15:06:27+00:00</span>
+    <span>2026-09-23T08:43:32+00:00</span>
   </footer>
 </div>
 
