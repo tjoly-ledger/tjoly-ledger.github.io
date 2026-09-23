@@ -24,6 +24,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     } catch (error) {
         /* No storage to read from: the first product is the right default. */
     }
+    /* A product named in the address wins over the remembered one, so that a
+       link can be sent showing what the sender was looking at. */
+    var asked = new URLSearchParams(location.search).get("product");
+    if (keys.indexOf(asked) >= 0) { chosen = asked; }
     document.documentElement.dataset.product = chosen;
 }());
 </script>
@@ -327,13 +331,13 @@ rejected_status = <span class="c-const">STATUS_TYPE_OPERATION_REJECTED</span>;
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T13:29:04+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T14:21:50+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T13:29:04+00:00</span>
+    <span>2026-09-23T14:21:50+00:00</span>
   </footer>
 </div>
 
@@ -401,6 +405,24 @@ rejected_status = <span class="c-const">STATUS_TYPE_OPERATION_REJECTED</span>;
         return span.closest(".variant").id + "/" + span.dataset.lit;
     }
 
+    // The other way round, now that the boxes are there: pointing at a text
+    // on a screen says which value of the example wrote it.
+    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+        box.addEventListener("mouseenter", function () {
+            if (!pinned) { light(box.closest(".variant").id + "/" + box.dataset.lit); }
+        });
+        box.addEventListener("mouseleave", function () {
+            if (!pinned) { light(null); }
+        });
+        box.addEventListener("click", function (event) {
+            // The picture underneath is a link to the full size one.
+            event.preventDefault();
+            var key = box.closest(".variant").id + "/" + box.dataset.lit;
+            pinned = pinned === key ? null : key;
+            light(pinned || key);
+        });
+    });
+
     document.querySelectorAll(".lit").forEach(function (span) {
         span.addEventListener("mouseenter", function () {
             if (!pinned) { light(keyOf(span)); }
@@ -448,6 +470,11 @@ rejected_status = <span class="c-const">STATUS_TYPE_OPERATION_REJECTED</span>;
         } catch (error) {
             /* Nothing to remember it in: the choice lasts for this page. */
         }
+        // The address follows, so copying it sends the page as seen. Replaced
+        // rather than pushed: a tab click is not a step to walk back through.
+        var url = new URL(location.href);
+        url.searchParams.set("product", product);
+        history.replaceState(null, "", url);
     }
 
     tabs.forEach(function (tab) {

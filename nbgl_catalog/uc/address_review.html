@@ -24,6 +24,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     } catch (error) {
         /* No storage to read from: the first product is the right default. */
     }
+    /* A product named in the address wins over the remembered one, so that a
+       link can be sent showing what the sender was looking at. */
+    var asked = new URLSearchParams(location.search).get("product");
+    if (keys.indexOf(asked) >= 0) { chosen = asked; }
     document.documentElement.dataset.product = chosen;
 }());
 </script>
@@ -43,7 +47,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
   <div class="toc-title">Variants</div>
   <a href="#plain"><span class="toc-n">01</span><span class="toc-label">Address only</span></a>
   <a href="#reject"><span class="toc-n">02</span><span class="toc-label">Declining it</span></a>
-  <a href="#with_pairs"><span class="toc-n">03</span><span class="toc-label">With extra pairs</span></a>
+  <a href="#qr_code"><span class="toc-n">03</span><span class="toc-label">As a QR code</span></a>
+  <a href="#with_pairs"><span class="toc-n">04</span><span class="toc-label">With extra pairs</span></a>
 </nav>
 
 <div class="body">
@@ -385,6 +390,228 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       </div>
     </div>
   </details>
+  <details class="variant" id="qr_code" open>
+    <summary>
+      <span class="variant-title">As a QR code</span>
+      <span class="variant-tally">4 screens</span>
+    </summary>
+
+<p class="variant-note">The same example, following the round button beside Confirm: it shows the address as a QR code, to be checked against another device. Needs ENABLE_NBGL_QRCODE.</p>
+    <pre class="code"><code><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
+
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
+<span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
+
+<span class="c-comment">/** The status page an app shows once the user has answered. */</span>
+<span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_address_review_choice(<span class="c-keyword">bool</span> confirm) {
+    <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
+        confirm ? <span class="c-const">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
+}
+
+<span class="c-comment">// The address page carries a button to show the same address as a QR code,</span>
+<span class="c-comment">// which needs the app to be built with ENABLE_NBGL_QRCODE = 1.</span>
+<span class="c-usecase">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
+                          <span class="c-const">NULL</span>,
+                          &amp;<span class="c-const">CATALOG_ICON_APP</span>,
+                          <span class="c-string lit" data-lit="1">&quot;Verify BOL address&quot;</span>,
+                          <span class="c-const">NULL</span>,
+                          uc_address_review_choice);</code></pre>
+
+    <div class="shot-rows">
+      <div class="shot-row" data-product="flex">
+        <div class="shot-label">
+          Flex
+          <small>480&times;600</small>
+        </div>
+        <div class="shots">
+          <span class="shot">
+            <a href="../screens/flex/address_review/qr_code/00.png" title="Open at full size">
+            <img src="../screens/flex/address_review/qr_code/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, As a QR code, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(73px * var(--shot-scale)); top: calc(262px * var(--shot-scale)); width: calc(334px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(121px * var(--shot-scale)); top: calc(326px * var(--shot-scale)); width: calc(238px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot">
+            <a href="../screens/flex/address_review/qr_code/01.png" title="Open at full size">
+            <img src="../screens/flex/address_review/qr_code/01.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, As a QR code, Flex, screen 2">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(394px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(403px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(45px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(40px * var(--shot-scale)); width: calc(109px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(237px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(243px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
+          <span class="shot-step" aria-label="then">QR code button</span>
+          <span class="shot">
+            <a href="../screens/flex/address_review/qr_code/02.png" title="Open at full size">
+            <img src="../screens/flex/address_review/qr_code/02.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, As a QR code, Flex, screen 3">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(33px * var(--shot-scale)); top: calc(380px * var(--shot-scale)); width: calc(413px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(127px * var(--shot-scale)); top: calc(416px * var(--shot-scale)); width: calc(225px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(201px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(78px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
+          <span class="shot-step" aria-label="then">Tap “Close”</span>
+          <span class="shot">
+            <a href="../screens/flex/address_review/qr_code/03.png" title="Open at full size">
+            <img src="../screens/flex/address_review/qr_code/03.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, As a QR code, Flex, screen 4">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(394px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(403px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(45px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(40px * var(--shot-scale)); width: calc(109px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(237px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(243px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
+        </div>
+      </div>
+      <div class="shot-row" data-product="apex_p">
+        <div class="shot-label">
+          Apex P
+          <small>300&times;400</small>
+        </div>
+        <div class="shots">
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/qr_code/00.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/qr_code/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, As a QR code, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(38px * var(--shot-scale)); top: calc(173px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(72px * var(--shot-scale)); top: calc(225px * var(--shot-scale)); width: calc(155px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/qr_code/01.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/qr_code/01.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, As a QR code, Apex P, screen 2">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(253px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(78px * var(--shot-scale)); width: calc(266px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(106px * var(--shot-scale)); width: calc(51px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(156px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
+          <span class="shot-step" aria-label="then">QR code button</span>
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/qr_code/02.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/qr_code/02.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, As a QR code, Apex P, screen 3">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(21px * var(--shot-scale)); top: calc(250px * var(--shot-scale)); width: calc(258px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(70px * var(--shot-scale)); top: calc(272px * var(--shot-scale)); width: calc(159px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(123px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(53px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
+          <span class="shot-step" aria-label="then">Tap “Close”</span>
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/qr_code/03.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/qr_code/03.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, As a QR code, Apex P, screen 4">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(253px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(78px * var(--shot-scale)); width: calc(266px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(106px * var(--shot-scale)); width: calc(51px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(156px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
+        </div>
+      </div>
+      <div class="shot-row" data-product="stax">
+        <div class="shot-label">
+          Stax
+          <small>400&times;672</small>
+        </div>
+        <div class="shots">
+          <span class="shot">
+            <a href="../screens/stax/address_review/qr_code/00.png" title="Open at full size">
+            <img src="../screens/stax/address_review/qr_code/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, As a QR code, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(53px * var(--shot-scale)); top: calc(298px * var(--shot-scale)); width: calc(294px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(97px * var(--shot-scale)); top: calc(362px * var(--shot-scale)); width: calc(205px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
+          <span class="shot-step" aria-label="then">Next page</span>
+          <span class="shot">
+            <a href="../screens/stax/address_review/qr_code/01.png" title="Open at full size">
+            <img src="../screens/stax/address_review/qr_code/01.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, As a QR code, Stax, screen 2">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(92px * var(--shot-scale)); width: calc(350px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(132px * var(--shot-scale)); width: calc(330px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(172px * var(--shot-scale)); width: calc(68px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(200px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+          </span>
+          <span class="shot-step" aria-label="then">QR code button</span>
+          <span class="shot">
+            <a href="../screens/stax/address_review/qr_code/02.png" title="Open at full size">
+            <img src="../screens/stax/address_review/qr_code/02.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, As a QR code, Stax, screen 3">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(29px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(341px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(93px * var(--shot-scale)); top: calc(450px * var(--shot-scale)); width: calc(213px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(166px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
+          <span class="shot-step" aria-label="then">Tap “Close”</span>
+          <span class="shot">
+            <a href="../screens/stax/address_review/qr_code/03.png" title="Open at full size">
+            <img src="../screens/stax/address_review/qr_code/03.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, As a QR code, Stax, screen 4">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(92px * var(--shot-scale)); width: calc(350px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(132px * var(--shot-scale)); width: calc(330px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(172px * var(--shot-scale)); width: calc(68px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(200px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+          </span>
+        </div>
+      </div>
+    </div>
+  </details>
   <details class="variant" id="with_pairs" open>
     <summary>
       <span class="variant-title">With extra pairs</span>
@@ -603,13 +830,13 @@ pairList.wrapping = <span class="c-keyword">true</span>;
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T13:29:04+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T14:21:50+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T13:29:04+00:00</span>
+    <span>2026-09-23T14:21:50+00:00</span>
   </footer>
 </div>
 
@@ -677,6 +904,24 @@ pairList.wrapping = <span class="c-keyword">true</span>;
         return span.closest(".variant").id + "/" + span.dataset.lit;
     }
 
+    // The other way round, now that the boxes are there: pointing at a text
+    // on a screen says which value of the example wrote it.
+    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+        box.addEventListener("mouseenter", function () {
+            if (!pinned) { light(box.closest(".variant").id + "/" + box.dataset.lit); }
+        });
+        box.addEventListener("mouseleave", function () {
+            if (!pinned) { light(null); }
+        });
+        box.addEventListener("click", function (event) {
+            // The picture underneath is a link to the full size one.
+            event.preventDefault();
+            var key = box.closest(".variant").id + "/" + box.dataset.lit;
+            pinned = pinned === key ? null : key;
+            light(pinned || key);
+        });
+    });
+
     document.querySelectorAll(".lit").forEach(function (span) {
         span.addEventListener("mouseenter", function () {
             if (!pinned) { light(keyOf(span)); }
@@ -724,6 +969,11 @@ pairList.wrapping = <span class="c-keyword">true</span>;
         } catch (error) {
             /* Nothing to remember it in: the choice lasts for this page. */
         }
+        // The address follows, so copying it sends the page as seen. Replaced
+        // rather than pushed: a tab click is not a step to walk back through.
+        var url = new URL(location.href);
+        url.searchParams.set("product", product);
+        history.replaceState(null, "", url);
     }
 
     tabs.forEach(function (tab) {

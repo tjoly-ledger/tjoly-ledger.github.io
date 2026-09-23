@@ -318,6 +318,12 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
     pointer-events: none;
 }
 
+/* Only a box that stands for a value is worth pointing at: the ones the SDK
+   drew have nothing in the code to light up. */
+.hot[data-lit] { pointer-events: auto; cursor: pointer; }
+
+.hot[data-lit]:hover { border-color: var(--link); }
+
 /* Lit by hovering the value in the example, or kept by clicking it. */
 .hot.on {
     border-color: var(--link);
