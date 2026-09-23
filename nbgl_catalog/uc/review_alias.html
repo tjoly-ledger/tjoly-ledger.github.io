@@ -6,6 +6,27 @@
 <title>nbgl_useCaseReview &mdash; NBGL use cases</title>
 <meta name="description" content="A tag/value pair whose value is an alias: the review shows the short name with a chevron, and the page behind it justifies the alias. The aliasType of nbgl_contentValueExt_t picks that page.">
 <link rel="stylesheet" href="../plain.css">
+<meta name="nbgl-products" content="flex apex_p stax">
+<style>
+html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
+<script>
+/* Picks the product the page opens on, before the body is parsed, so the page
+   never shows the three of them and then folds back to one. Without this
+   script no attribute is set, no rule above applies, and the page keeps the
+   three products stacked: that is the no-JavaScript reading. */
+(function () {
+    var meta = document.head.querySelector('meta[name="nbgl-products"]');
+    var keys = meta.content.split(" ");
+    var chosen = keys[0];
+    try {
+        var stored = localStorage.getItem("nbgl-catalog-product");
+        if (keys.indexOf(stored) >= 0) { chosen = stored; }
+    } catch (error) {
+        /* No storage to read from: the first product is the right default. */
+    }
+    document.documentElement.dataset.product = chosen;
+}());
+</script>
 </head>
 <body>
 
@@ -44,6 +65,24 @@
       Needs
 <code>ENABLE_NBGL_QRCODE = 1</code>      in the app Makefile.
     </p>
+  </div>
+
+  <div class="tabs" role="tablist" aria-label="Product">
+    <button type="button" class="tab" role="tab" data-product="flex"
+            aria-selected="true">
+      Flex
+      <small>480&times;600</small>
+    </button>
+    <button type="button" class="tab" role="tab" data-product="apex_p"
+            aria-selected="false">
+      Apex P
+      <small>300&times;400</small>
+    </button>
+    <button type="button" class="tab" role="tab" data-product="stax"
+            aria-selected="false">
+      Stax
+      <small>400&times;672</small>
+    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-type">nbgl_operationType_t</span>              operationType,
@@ -120,7 +159,7 @@
 }</code></pre>
 
     <div class="shot-rows">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -128,48 +167,48 @@
         <div class="shots">
           <a href="../screens/flex/review_alias/ens/00.png" title="Open at full size">
           <img src="../screens/flex/review_alias/ens/00.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Flex, screen 1">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/flex/review_alias/ens/01.png" title="Open at full size">
           <img src="../screens/flex/review_alias/ens/01.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Flex, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “vitalik.eth”</span>
           <a href="../screens/flex/review_alias/ens/02.png" title="Open at full size">
           <img src="../screens/flex/review_alias/ens/02.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Flex, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Back</span>
           <a href="../screens/flex/review_alias/ens/03.png" title="Open at full size">
           <img src="../screens/flex/review_alias/ens/03.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Flex, screen 4">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/flex/review_alias/ens/04.png" title="Open at full size">
           <img src="../screens/flex/review_alias/ens/04.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Flex, screen 5">
           </a>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <a href="../screens/flex/review_alias/ens/05.png" title="Open at full size">
           <img src="../screens/flex/review_alias/ens/05.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Flex, screen 6">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -177,48 +216,48 @@
         <div class="shots">
           <a href="../screens/apex_p/review_alias/ens/00.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/ens/00.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Apex P, screen 1">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/apex_p/review_alias/ens/01.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/ens/01.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Apex P, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “vitalik.eth”</span>
           <a href="../screens/apex_p/review_alias/ens/02.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/ens/02.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Apex P, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Back</span>
           <a href="../screens/apex_p/review_alias/ens/03.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/ens/03.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Apex P, screen 4">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/apex_p/review_alias/ens/04.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/ens/04.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Apex P, screen 5">
           </a>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <a href="../screens/apex_p/review_alias/ens/05.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/ens/05.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Apex P, screen 6">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -226,42 +265,42 @@
         <div class="shots">
           <a href="../screens/stax/review_alias/ens/00.png" title="Open at full size">
           <img src="../screens/stax/review_alias/ens/00.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Stax, screen 1">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/stax/review_alias/ens/01.png" title="Open at full size">
           <img src="../screens/stax/review_alias/ens/01.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Stax, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “vitalik.eth”</span>
           <a href="../screens/stax/review_alias/ens/02.png" title="Open at full size">
           <img src="../screens/stax/review_alias/ens/02.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Stax, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Back</span>
           <a href="../screens/stax/review_alias/ens/03.png" title="Open at full size">
           <img src="../screens/stax/review_alias/ens/03.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Stax, screen 4">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/stax/review_alias/ens/04.png" title="Open at full size">
           <img src="../screens/stax/review_alias/ens/04.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Stax, screen 5">
           </a>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <a href="../screens/stax/review_alias/ens/05.png" title="Open at full size">
           <img src="../screens/stax/review_alias/ens/05.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ENS_ALIAS, Stax, screen 6">
           </a>
@@ -338,7 +377,7 @@
 }</code></pre>
 
     <div class="shot-rows">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -353,21 +392,21 @@
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/flex/review_alias/address_book/01.png" title="Open at full size">
           <img src="../screens/flex/review_alias/address_book/01.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Flex, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Alice”</span>
           <a href="../screens/flex/review_alias/address_book/02.png" title="Open at full size">
           <img src="../screens/flex/review_alias/address_book/02.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Flex, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Back</span>
           <a href="../screens/flex/review_alias/address_book/03.png" title="Open at full size">
           <img src="../screens/flex/review_alias/address_book/03.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Flex, screen 4">
           </a>
@@ -387,7 +426,7 @@
           </span>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -402,21 +441,21 @@
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/apex_p/review_alias/address_book/01.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/address_book/01.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Apex P, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Alice”</span>
           <a href="../screens/apex_p/review_alias/address_book/02.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/address_book/02.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Apex P, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Back</span>
           <a href="../screens/apex_p/review_alias/address_book/03.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/address_book/03.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Apex P, screen 4">
           </a>
@@ -436,7 +475,7 @@
           </span>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -451,21 +490,21 @@
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/stax/review_alias/address_book/01.png" title="Open at full size">
           <img src="../screens/stax/review_alias/address_book/01.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Stax, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Alice”</span>
           <a href="../screens/stax/review_alias/address_book/02.png" title="Open at full size">
           <img src="../screens/stax/review_alias/address_book/02.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Stax, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Back</span>
           <a href="../screens/stax/review_alias/address_book/03.png" title="Open at full size">
           <img src="../screens/stax/review_alias/address_book/03.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, ADDRESS_BOOK_ALIAS, Stax, screen 4">
           </a>
@@ -555,7 +594,7 @@
 }</code></pre>
 
     <div class="shot-rows">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -570,21 +609,21 @@
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/flex/review_alias/qr_code/01.png" title="Open at full size">
           <img src="../screens/flex/review_alias/qr_code/01.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, QR_CODE_ALIAS, Flex, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Recipient address”</span>
           <a href="../screens/flex/review_alias/qr_code/02.png" title="Open at full size">
           <img src="../screens/flex/review_alias/qr_code/02.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, QR_CODE_ALIAS, Flex, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Back</span>
           <a href="../screens/flex/review_alias/qr_code/03.png" title="Open at full size">
           <img src="../screens/flex/review_alias/qr_code/03.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, QR_CODE_ALIAS, Flex, screen 4">
           </a>
@@ -604,7 +643,7 @@
           </span>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -619,21 +658,21 @@
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/apex_p/review_alias/qr_code/01.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/qr_code/01.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, QR_CODE_ALIAS, Apex P, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Recipient address”</span>
           <a href="../screens/apex_p/review_alias/qr_code/02.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/qr_code/02.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, QR_CODE_ALIAS, Apex P, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Back</span>
           <a href="../screens/apex_p/review_alias/qr_code/03.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/qr_code/03.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, QR_CODE_ALIAS, Apex P, screen 4">
           </a>
@@ -653,7 +692,7 @@
           </span>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -668,21 +707,21 @@
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/stax/review_alias/qr_code/01.png" title="Open at full size">
           <img src="../screens/stax/review_alias/qr_code/01.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, QR_CODE_ALIAS, Stax, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Recipient address”</span>
           <a href="../screens/stax/review_alias/qr_code/02.png" title="Open at full size">
           <img src="../screens/stax/review_alias/qr_code/02.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, QR_CODE_ALIAS, Stax, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Back</span>
           <a href="../screens/stax/review_alias/qr_code/03.png" title="Open at full size">
           <img src="../screens/stax/review_alias/qr_code/03.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, QR_CODE_ALIAS, Stax, screen 4">
           </a>
@@ -780,7 +819,7 @@
 }</code></pre>
 
     <div class="shot-rows">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -795,21 +834,21 @@
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/flex/review_alias/info_list/01.png" title="Open at full size">
           <img src="../screens/flex/review_alias/info_list/01.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Flex, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Boilerplate contract”</span>
           <a href="../screens/flex/review_alias/info_list/02.png" title="Open at full size">
           <img src="../screens/flex/review_alias/info_list/02.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Flex, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Back</span>
           <a href="../screens/flex/review_alias/info_list/03.png" title="Open at full size">
           <img src="../screens/flex/review_alias/info_list/03.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Flex, screen 4">
           </a>
@@ -829,7 +868,7 @@
           </span>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -844,21 +883,21 @@
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/apex_p/review_alias/info_list/01.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/info_list/01.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Apex P, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Boilerplate contract”</span>
           <a href="../screens/apex_p/review_alias/info_list/02.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/info_list/02.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Apex P, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Back</span>
           <a href="../screens/apex_p/review_alias/info_list/03.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/info_list/03.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Apex P, screen 4">
           </a>
@@ -878,7 +917,7 @@
           </span>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -893,21 +932,21 @@
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/stax/review_alias/info_list/01.png" title="Open at full size">
           <img src="../screens/stax/review_alias/info_list/01.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Stax, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Boilerplate contract”</span>
           <a href="../screens/stax/review_alias/info_list/02.png" title="Open at full size">
           <img src="../screens/stax/review_alias/info_list/02.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Stax, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Back</span>
           <a href="../screens/stax/review_alias/info_list/03.png" title="Open at full size">
           <img src="../screens/stax/review_alias/info_list/03.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, INFO_LIST_ALIAS, Stax, screen 4">
           </a>
@@ -1009,7 +1048,7 @@
 }</code></pre>
 
     <div class="shot-rows">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -1024,21 +1063,21 @@
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/flex/review_alias/tag_value_list/01.png" title="Open at full size">
           <img src="../screens/flex/review_alias/tag_value_list/01.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Flex, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Swap 1.2345 BOL”</span>
           <a href="../screens/flex/review_alias/tag_value_list/02.png" title="Open at full size">
           <img src="../screens/flex/review_alias/tag_value_list/02.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Flex, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Tap “Close”</span>
           <a href="../screens/flex/review_alias/tag_value_list/03.png" title="Open at full size">
           <img src="../screens/flex/review_alias/tag_value_list/03.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Flex, screen 4">
           </a>
@@ -1058,7 +1097,7 @@
           </span>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -1073,21 +1112,21 @@
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/apex_p/review_alias/tag_value_list/01.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/tag_value_list/01.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Apex P, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Swap 1.2345 BOL”</span>
           <a href="../screens/apex_p/review_alias/tag_value_list/02.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/tag_value_list/02.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Apex P, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Tap “Close”</span>
           <a href="../screens/apex_p/review_alias/tag_value_list/03.png" title="Open at full size">
           <img src="../screens/apex_p/review_alias/tag_value_list/03.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Apex P, screen 4">
           </a>
@@ -1107,7 +1146,7 @@
           </span>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -1122,21 +1161,21 @@
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/stax/review_alias/tag_value_list/01.png" title="Open at full size">
           <img src="../screens/stax/review_alias/tag_value_list/01.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Stax, screen 2">
           </a>
           <span class="shot-step" aria-label="then">Tap “Swap 1.2345 BOL”</span>
           <a href="../screens/stax/review_alias/tag_value_list/02.png" title="Open at full size">
           <img src="../screens/stax/review_alias/tag_value_list/02.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Stax, screen 3">
           </a>
           <span class="shot-step" aria-label="then">Tap “Close”</span>
           <a href="../screens/stax/review_alias/tag_value_list/03.png" title="Open at full size">
           <img src="../screens/stax/review_alias/tag_value_list/03.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReview, TAG_VALUE_LIST_ALIAS, Stax, screen 4">
           </a>
@@ -1195,6 +1234,32 @@
 }());
 </script>
 <script>
+(function () {
+    // The product tabs. The page already opened on the right one, thanks to
+    // the head script: this only follows the clicks and remembers the choice,
+    // so the next use case page opens on the same product.
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+
+    function show(product) {
+        document.documentElement.dataset.product = product;
+        tabs.forEach(function (tab) {
+            tab.setAttribute(
+                "aria-selected", tab.dataset.product === product ? "true" : "false"
+            );
+        });
+        try {
+            localStorage.setItem("nbgl-catalog-product", product);
+        } catch (error) {
+            /* Nothing to remember it in: the choice lasts for this page. */
+        }
+    }
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () { show(tab.dataset.product); });
+    });
+    show(document.documentElement.dataset.product || tabs[0].dataset.product);
+}());
+
 (function () {
     // A collapsed variant must open when the contents jump to it, otherwise
     // the link would scroll to a closed block.

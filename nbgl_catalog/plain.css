@@ -330,6 +330,44 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
     font-size: 10px;
 }
 
+/* One product at a time, picked once for the whole page. */
+.tabs {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 -4px 20px;
+    padding: 10px 4px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.tab {
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-2);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.tab small { margin-left: 6px; color: var(--text-3); }
+
+.tab:hover { color: var(--text-1); background: var(--surface); }
+
+.tab[aria-selected="true"] {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.tab[aria-selected="true"] small { color: var(--bg); opacity: 0.7; }
+
 .shot-soon {
     display: flex;
     align-items: center;
@@ -384,6 +422,8 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
     .toc a.on { border-color: var(--accent); }
     .toc-n { display: none; }
     .shot-row { grid-template-columns: 1fr; gap: 8px; }
+    .tabs { padding: 8px 4px; margin-bottom: 16px; }
+    .tab small { display: none; }
     :root { --shot-scale: 0.32; }
 }
 

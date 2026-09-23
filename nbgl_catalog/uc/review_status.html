@@ -6,6 +6,27 @@
 <title>nbgl_useCaseReviewStatus &mdash; NBGL use cases</title>
 <meta name="description" content="The same transient page, pre-worded for each of the eight values of nbgl_reviewStatusType_t.">
 <link rel="stylesheet" href="../plain.css">
+<meta name="nbgl-products" content="flex apex_p stax">
+<style>
+html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
+<script>
+/* Picks the product the page opens on, before the body is parsed, so the page
+   never shows the three of them and then folds back to one. Without this
+   script no attribute is set, no rule above applies, and the page keeps the
+   three products stacked: that is the no-JavaScript reading. */
+(function () {
+    var meta = document.head.querySelector('meta[name="nbgl-products"]');
+    var keys = meta.content.split(" ");
+    var chosen = keys[0];
+    try {
+        var stored = localStorage.getItem("nbgl-catalog-product");
+        if (keys.indexOf(stored) >= 0) { chosen = stored; }
+    } catch (error) {
+        /* No storage to read from: the first product is the right default. */
+    }
+    document.documentElement.dataset.product = chosen;
+}());
+</script>
 </head>
 <body>
 
@@ -45,6 +66,24 @@
     <p>The same transient page, pre-worded for each of the eight values of nbgl_reviewStatusType_t.</p>
   </div>
 
+  <div class="tabs" role="tablist" aria-label="Product">
+    <button type="button" class="tab" role="tab" data-product="flex"
+            aria-selected="true">
+      Flex
+      <small>480&times;600</small>
+    </button>
+    <button type="button" class="tab" role="tab" data-product="apex_p"
+            aria-selected="false">
+      Apex P
+      <small>300&times;400</small>
+    </button>
+    <button type="button" class="tab" role="tab" data-product="stax"
+            aria-selected="false">
+      Stax
+      <small>400&times;672</small>
+    </button>
+  </div>
+
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-type">nbgl_reviewStatusType_t</span> reviewStatusType,
                               <span class="c-type">nbgl_callback_t</span>         quitCallback);</code></pre>
 
@@ -58,7 +97,7 @@
     <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);</code></pre>
 
     <div class="shot-rows compact">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -66,13 +105,13 @@
         <div class="shots">
           <a href="../screens/flex/review_status/transaction_signed/00.png" title="Open at full size">
           <img src="../screens/flex/review_status/transaction_signed/00.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_SIGNED, Flex, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -80,13 +119,13 @@
         <div class="shots">
           <a href="../screens/apex_p/review_status/transaction_signed/00.png" title="Open at full size">
           <img src="../screens/apex_p/review_status/transaction_signed/00.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_SIGNED, Apex P, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -94,7 +133,7 @@
         <div class="shots">
           <a href="../screens/stax/review_status/transaction_signed/00.png" title="Open at full size">
           <img src="../screens/stax/review_status/transaction_signed/00.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_SIGNED, Stax, screen 1">
           </a>
@@ -112,7 +151,7 @@
     <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>, catalog_on_quit);</code></pre>
 
     <div class="shot-rows compact">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -120,13 +159,13 @@
         <div class="shots">
           <a href="../screens/flex/review_status/transaction_rejected/00.png" title="Open at full size">
           <img src="../screens/flex/review_status/transaction_rejected/00.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_REJECTED, Flex, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -134,13 +173,13 @@
         <div class="shots">
           <a href="../screens/apex_p/review_status/transaction_rejected/00.png" title="Open at full size">
           <img src="../screens/apex_p/review_status/transaction_rejected/00.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_REJECTED, Apex P, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -148,7 +187,7 @@
         <div class="shots">
           <a href="../screens/stax/review_status/transaction_rejected/00.png" title="Open at full size">
           <img src="../screens/stax/review_status/transaction_rejected/00.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_REJECTED, Stax, screen 1">
           </a>
@@ -166,7 +205,7 @@
     <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_MESSAGE_SIGNED</span>, catalog_on_quit);</code></pre>
 
     <div class="shot-rows compact">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -174,13 +213,13 @@
         <div class="shots">
           <a href="../screens/flex/review_status/message_signed/00.png" title="Open at full size">
           <img src="../screens/flex/review_status/message_signed/00.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_SIGNED, Flex, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -188,13 +227,13 @@
         <div class="shots">
           <a href="../screens/apex_p/review_status/message_signed/00.png" title="Open at full size">
           <img src="../screens/apex_p/review_status/message_signed/00.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_SIGNED, Apex P, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -202,7 +241,7 @@
         <div class="shots">
           <a href="../screens/stax/review_status/message_signed/00.png" title="Open at full size">
           <img src="../screens/stax/review_status/message_signed/00.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_SIGNED, Stax, screen 1">
           </a>
@@ -220,7 +259,7 @@
     <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_MESSAGE_REJECTED</span>, catalog_on_quit);</code></pre>
 
     <div class="shot-rows compact">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -228,13 +267,13 @@
         <div class="shots">
           <a href="../screens/flex/review_status/message_rejected/00.png" title="Open at full size">
           <img src="../screens/flex/review_status/message_rejected/00.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_REJECTED, Flex, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -242,13 +281,13 @@
         <div class="shots">
           <a href="../screens/apex_p/review_status/message_rejected/00.png" title="Open at full size">
           <img src="../screens/apex_p/review_status/message_rejected/00.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_REJECTED, Apex P, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -256,7 +295,7 @@
         <div class="shots">
           <a href="../screens/stax/review_status/message_rejected/00.png" title="Open at full size">
           <img src="../screens/stax/review_status/message_rejected/00.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_REJECTED, Stax, screen 1">
           </a>
@@ -274,7 +313,7 @@
     <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_OPERATION_SIGNED</span>, catalog_on_quit);</code></pre>
 
     <div class="shot-rows compact">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -282,13 +321,13 @@
         <div class="shots">
           <a href="../screens/flex/review_status/operation_signed/00.png" title="Open at full size">
           <img src="../screens/flex/review_status/operation_signed/00.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_SIGNED, Flex, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -296,13 +335,13 @@
         <div class="shots">
           <a href="../screens/apex_p/review_status/operation_signed/00.png" title="Open at full size">
           <img src="../screens/apex_p/review_status/operation_signed/00.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_SIGNED, Apex P, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -310,7 +349,7 @@
         <div class="shots">
           <a href="../screens/stax/review_status/operation_signed/00.png" title="Open at full size">
           <img src="../screens/stax/review_status/operation_signed/00.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_SIGNED, Stax, screen 1">
           </a>
@@ -328,7 +367,7 @@
     <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_OPERATION_REJECTED</span>, catalog_on_quit);</code></pre>
 
     <div class="shot-rows compact">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -336,13 +375,13 @@
         <div class="shots">
           <a href="../screens/flex/review_status/operation_rejected/00.png" title="Open at full size">
           <img src="../screens/flex/review_status/operation_rejected/00.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_REJECTED, Flex, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -350,13 +389,13 @@
         <div class="shots">
           <a href="../screens/apex_p/review_status/operation_rejected/00.png" title="Open at full size">
           <img src="../screens/apex_p/review_status/operation_rejected/00.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_REJECTED, Apex P, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -364,7 +403,7 @@
         <div class="shots">
           <a href="../screens/stax/review_status/operation_rejected/00.png" title="Open at full size">
           <img src="../screens/stax/review_status/operation_rejected/00.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_REJECTED, Stax, screen 1">
           </a>
@@ -382,7 +421,7 @@
     <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_ADDRESS_VERIFIED</span>, catalog_on_quit);</code></pre>
 
     <div class="shot-rows compact">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -390,13 +429,13 @@
         <div class="shots">
           <a href="../screens/flex/review_status/address_verified/00.png" title="Open at full size">
           <img src="../screens/flex/review_status/address_verified/00.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_VERIFIED, Flex, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -404,13 +443,13 @@
         <div class="shots">
           <a href="../screens/apex_p/review_status/address_verified/00.png" title="Open at full size">
           <img src="../screens/apex_p/review_status/address_verified/00.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_VERIFIED, Apex P, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -418,7 +457,7 @@
         <div class="shots">
           <a href="../screens/stax/review_status/address_verified/00.png" title="Open at full size">
           <img src="../screens/stax/review_status/address_verified/00.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_VERIFIED, Stax, screen 1">
           </a>
@@ -436,7 +475,7 @@
     <pre class="code"><code><span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);</code></pre>
 
     <div class="shot-rows compact">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -444,13 +483,13 @@
         <div class="shots">
           <a href="../screens/flex/review_status/address_rejected/00.png" title="Open at full size">
           <img src="../screens/flex/review_status/address_rejected/00.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_REJECTED, Flex, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -458,13 +497,13 @@
         <div class="shots">
           <a href="../screens/apex_p/review_status/address_rejected/00.png" title="Open at full size">
           <img src="../screens/apex_p/review_status/address_rejected/00.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_REJECTED, Apex P, screen 1">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -472,7 +511,7 @@
         <div class="shots">
           <a href="../screens/stax/review_status/address_rejected/00.png" title="Open at full size">
           <img src="../screens/stax/review_status/address_rejected/00.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_REJECTED, Stax, screen 1">
           </a>
@@ -517,6 +556,32 @@
 }());
 </script>
 <script>
+(function () {
+    // The product tabs. The page already opened on the right one, thanks to
+    // the head script: this only follows the clicks and remembers the choice,
+    // so the next use case page opens on the same product.
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+
+    function show(product) {
+        document.documentElement.dataset.product = product;
+        tabs.forEach(function (tab) {
+            tab.setAttribute(
+                "aria-selected", tab.dataset.product === product ? "true" : "false"
+            );
+        });
+        try {
+            localStorage.setItem("nbgl-catalog-product", product);
+        } catch (error) {
+            /* Nothing to remember it in: the choice lasts for this page. */
+        }
+    }
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () { show(tab.dataset.product); });
+    });
+    show(document.documentElement.dataset.product || tabs[0].dataset.product);
+}());
+
 (function () {
     // A collapsed variant must open when the contents jump to it, otherwise
     // the link would scroll to a closed block.

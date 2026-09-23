@@ -6,6 +6,27 @@
 <title>nbgl_useCaseGenericSettings &mdash; NBGL use cases</title>
 <meta name="description" content="The settings and info pages of nbgl_useCaseHomeAndSettings(), without the home page, for an app that draws its own.">
 <link rel="stylesheet" href="../plain.css">
+<meta name="nbgl-products" content="flex apex_p stax">
+<style>
+html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
+<script>
+/* Picks the product the page opens on, before the body is parsed, so the page
+   never shows the three of them and then folds back to one. Without this
+   script no attribute is set, no rule above applies, and the page keeps the
+   three products stacked: that is the no-JavaScript reading. */
+(function () {
+    var meta = document.head.querySelector('meta[name="nbgl-products"]');
+    var keys = meta.content.split(" ");
+    var chosen = keys[0];
+    try {
+        var stored = localStorage.getItem("nbgl-catalog-product");
+        if (keys.indexOf(stored) >= 0) { chosen = stored; }
+    } catch (error) {
+        /* No storage to read from: the first product is the right default. */
+    }
+    document.documentElement.dataset.product = chosen;
+}());
+</script>
 </head>
 <body>
 
@@ -36,6 +57,24 @@
   <div class="hero">
     <h1>nbgl_useCaseGenericSettings</h1>
     <p>The settings and info pages of nbgl_useCaseHomeAndSettings(), without the home page, for an app that draws its own.</p>
+  </div>
+
+  <div class="tabs" role="tablist" aria-label="Product">
+    <button type="button" class="tab" role="tab" data-product="flex"
+            aria-selected="true">
+      Flex
+      <small>480&times;600</small>
+    </button>
+    <button type="button" class="tab" role="tab" data-product="apex_p"
+            aria-selected="false">
+      Apex P
+      <small>300&times;400</small>
+    </button>
+    <button type="button" class="tab" role="tab" data-product="stax"
+            aria-selected="false">
+      Stax
+      <small>400&times;672</small>
+    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseGenericSettings</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span>                   *appName,
@@ -115,7 +154,7 @@
     <span class="c-const">APPNAME</span>, <span class="c-number">0</span>, &amp;setting_generic_contents, &amp;info_list, catalog_on_quit);</code></pre>
 
     <div class="shot-rows">
-      <div class="shot-row">
+      <div class="shot-row" data-product="flex">
         <div class="shot-label">
           Flex
           <small>480&times;600</small>
@@ -123,20 +162,20 @@
         <div class="shots">
           <a href="../screens/flex/generic_settings/plain/00.png" title="Open at full size">
           <img src="../screens/flex/generic_settings/plain/00.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseGenericSettings, Switches and infos, Flex, screen 1">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/flex/generic_settings/plain/01.png" title="Open at full size">
           <img src="../screens/flex/generic_settings/plain/01.png" width="480"
-               height="600"
+               height="600" loading="lazy"
                style="width: calc(480px * var(--shot-scale))"
                alt="nbgl_useCaseGenericSettings, Switches and infos, Flex, screen 2">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="apex_p">
         <div class="shot-label">
           Apex P
           <small>300&times;400</small>
@@ -144,20 +183,20 @@
         <div class="shots">
           <a href="../screens/apex_p/generic_settings/plain/00.png" title="Open at full size">
           <img src="../screens/apex_p/generic_settings/plain/00.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseGenericSettings, Switches and infos, Apex P, screen 1">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/apex_p/generic_settings/plain/01.png" title="Open at full size">
           <img src="../screens/apex_p/generic_settings/plain/01.png" width="300"
-               height="400"
+               height="400" loading="lazy"
                style="width: calc(300px * var(--shot-scale))"
                alt="nbgl_useCaseGenericSettings, Switches and infos, Apex P, screen 2">
           </a>
         </div>
       </div>
-      <div class="shot-row">
+      <div class="shot-row" data-product="stax">
         <div class="shot-label">
           Stax
           <small>400&times;672</small>
@@ -165,14 +204,14 @@
         <div class="shots">
           <a href="../screens/stax/generic_settings/plain/00.png" title="Open at full size">
           <img src="../screens/stax/generic_settings/plain/00.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseGenericSettings, Switches and infos, Stax, screen 1">
           </a>
           <span class="shot-step" aria-label="then">Next page</span>
           <a href="../screens/stax/generic_settings/plain/01.png" title="Open at full size">
           <img src="../screens/stax/generic_settings/plain/01.png" width="400"
-               height="672"
+               height="672" loading="lazy"
                style="width: calc(400px * var(--shot-scale))"
                alt="nbgl_useCaseGenericSettings, Switches and infos, Stax, screen 2">
           </a>
@@ -217,6 +256,32 @@
 }());
 </script>
 <script>
+(function () {
+    // The product tabs. The page already opened on the right one, thanks to
+    // the head script: this only follows the clicks and remembers the choice,
+    // so the next use case page opens on the same product.
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+
+    function show(product) {
+        document.documentElement.dataset.product = product;
+        tabs.forEach(function (tab) {
+            tab.setAttribute(
+                "aria-selected", tab.dataset.product === product ? "true" : "false"
+            );
+        });
+        try {
+            localStorage.setItem("nbgl-catalog-product", product);
+        } catch (error) {
+            /* Nothing to remember it in: the choice lasts for this page. */
+        }
+    }
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () { show(tab.dataset.product); });
+    });
+    show(document.documentElement.dataset.product || tabs[0].dataset.product);
+}());
+
 (function () {
     // A collapsed variant must open when the contents jump to it, otherwise
     // the link would scroll to a closed block.
