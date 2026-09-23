@@ -12,6 +12,9 @@
     --text-3: #8a8a94;
     --accent: #1b1b1f;
     --radius-sm: 10px;
+    /* What ties a value of an example to the place it is drawn. */
+    --link: #1c5fa8;
+    --link-wash: rgba(28, 95, 168, 0.14);
     --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     /* Fraction of a device pixel used to draw a screenshot. Every product is
        drawn at the same scale, so the pages show how much room a use case
@@ -305,6 +308,34 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 
 .shots a { display: block; line-height: 0; }
 
+/* A picture and the boxes of the texts Speculos read on it. */
+.shot { position: relative; display: block; line-height: 0; }
+
+.hot {
+    position: absolute;
+    border: 1.5px solid transparent;
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+/* Lit by hovering the value in the example, or kept by clicking it. */
+.hot.on {
+    border-color: var(--link);
+    background: var(--link-wash);
+}
+
+/* Asked for: what the example passes, against what the SDK writes alone. */
+.show-origin .hot { border-color: var(--link); }
+
+.show-origin .hot.sdk { border-color: var(--text-3); border-style: dashed; }
+
+/* The value in the code, marked from the same lookup. */
+.lit { cursor: pointer; border-radius: 3px; }
+
+.lit:hover { background: var(--link-wash); }
+
+.lit.on { background: var(--link-wash); outline: 1px solid var(--link); }
+
 .shots img {
     display: block;
     height: auto;
@@ -352,6 +383,13 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 }
 
 .tab[aria-selected="true"] small { color: var(--bg); opacity: 0.7; }
+
+.tab.origin { margin-left: auto; }
+
+.tab.origin[aria-pressed="true"] {
+    border-color: var(--link);
+    color: var(--link);
+}
 
 .shot-soon {
     display: flex;
@@ -422,6 +460,8 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
         --text-2: #9a9aa6;
         --text-3: #74747e;
         --accent: #ececf0;
+        --link: #7fb4ea;
+        --link-wash: rgba(127, 180, 234, 0.2);
     }
     :root:not([data-theme="light"]) .c-comment { color: #8a8a96; }
     :root:not([data-theme="light"]) .c-string { color: #6ec7a8; }

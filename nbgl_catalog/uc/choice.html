@@ -76,6 +76,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       Stax
       <small>400&times;672</small>
     </button>
+    <button type="button" class="tab origin" aria-pressed="false"
+            title="Frame every text, saying which ones the example provides and which the SDK writes on its own">
+      What the app provides
+    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseChoice</span>(<span class="c-keyword">const</span> <span class="c-type">nbgl_icon_details_t</span> *icon,
@@ -93,10 +97,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 
     <pre class="code"><code><span class="c-usecase">nbgl_useCaseChoice</span>(&amp;<span class="c-const">LARGE_WARNING_ICON</span>,
-                   <span class="c-string">&quot;Allow blind signing?&quot;</span>,
-                   <span class="c-string">&quot;Transactions will be signed\nwithout being displayed.&quot;</span>,
-                   <span class="c-string">&quot;I understand, confirm&quot;</span>,
-                   <span class="c-string">&quot;Cancel&quot;</span>,
+                   <span class="c-string lit" data-lit="0">&quot;Allow blind signing?&quot;</span>,
+                   <span class="c-string lit" data-lit="1">&quot;Transactions will be signed\nwithout being displayed.&quot;</span>,
+                   <span class="c-string lit" data-lit="2">&quot;I understand, confirm&quot;</span>,
+                   <span class="c-string lit" data-lit="3">&quot;Cancel&quot;</span>,
                    catalog_on_choice);</code></pre>
 
     <div class="shot-rows compact">
@@ -106,12 +110,19 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/choice/plain/00.png" title="Open at full size">
-          <img src="../screens/flex/choice/plain/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseChoice, With a sub-message, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/choice/plain/00.png" title="Open at full size">
+            <img src="../screens/flex/choice/plain/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseChoice, With a sub-message, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(66px * var(--shot-scale)); top: calc(208px * var(--shot-scale)); width: calc(348px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(59px * var(--shot-scale)); top: calc(264px * var(--shot-scale)); width: calc(361px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(77px * var(--shot-scale)); top: calc(300px * var(--shot-scale)); width: calc(325px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(92px * var(--shot-scale)); top: calc(442px * var(--shot-scale)); width: calc(388px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(192px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(288px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -120,12 +131,19 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/choice/plain/00.png" title="Open at full size">
-          <img src="../screens/apex_p/choice/plain/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseChoice, With a sub-message, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/choice/plain/00.png" title="Open at full size">
+            <img src="../screens/apex_p/choice/plain/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseChoice, With a sub-message, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(34px * var(--shot-scale)); top: calc(146px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(33px * var(--shot-scale)); top: calc(186px * var(--shot-scale)); width: calc(234px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(45px * var(--shot-scale)); top: calc(208px * var(--shot-scale)); width: calc(210px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(50px * var(--shot-scale)); top: calc(301px * var(--shot-scale)); width: calc(250px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(117px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -134,12 +152,19 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/choice/plain/00.png" title="Open at full size">
-          <img src="../screens/stax/choice/plain/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseChoice, With a sub-message, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/choice/plain/00.png" title="Open at full size">
+            <img src="../screens/stax/choice/plain/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseChoice, With a sub-message, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(47px * var(--shot-scale)); top: calc(252px * var(--shot-scale)); width: calc(305px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(43px * var(--shot-scale)); top: calc(308px * var(--shot-scale)); width: calc(313px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(59px * var(--shot-scale)); top: calc(340px * var(--shot-scale)); width: calc(282px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(72px * var(--shot-scale)); top: calc(528px * var(--shot-scale)); width: calc(328px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(159px * var(--shot-scale)); top: calc(612px * var(--shot-scale)); width: calc(241px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
@@ -152,10 +177,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 
     <pre class="code"><code><span class="c-usecase">nbgl_useCaseChoice</span>(&amp;<span class="c-const">LARGE_TRASH_ICON</span>,
-                   <span class="c-string">&quot;Remove this account?&quot;</span>,
+                   <span class="c-string lit" data-lit="0">&quot;Remove this account?&quot;</span>,
                    <span class="c-const">NULL</span>,
-                   <span class="c-string">&quot;Remove&quot;</span>,
-                   <span class="c-string">&quot;Keep it&quot;</span>,
+                   <span class="c-string lit" data-lit="1">&quot;Remove&quot;</span>,
+                   <span class="c-string lit" data-lit="2">&quot;Keep it&quot;</span>,
                    catalog_on_choice);</code></pre>
 
     <div class="shot-rows compact">
@@ -165,12 +190,17 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/choice/no_sub_message/00.png" title="Open at full size">
-          <img src="../screens/flex/choice/no_sub_message/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseChoice, Without a sub-message, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/choice/no_sub_message/00.png" title="Open at full size">
+            <img src="../screens/flex/choice/no_sub_message/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseChoice, Without a sub-message, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(50px * var(--shot-scale)); top: calc(252px * var(--shot-scale)); width: calc(380px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(185px * var(--shot-scale)); top: calc(442px * var(--shot-scale)); width: calc(295px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(192px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(288px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -179,12 +209,17 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/choice/no_sub_message/00.png" title="Open at full size">
-          <img src="../screens/apex_p/choice/no_sub_message/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseChoice, Without a sub-message, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/choice/no_sub_message/00.png" title="Open at full size">
+            <img src="../screens/apex_p/choice/no_sub_message/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseChoice, Without a sub-message, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(22px * var(--shot-scale)); top: calc(174px * var(--shot-scale)); width: calc(255px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(112px * var(--shot-scale)); top: calc(301px * var(--shot-scale)); width: calc(188px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(117px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -193,24 +228,29 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/choice/no_sub_message/00.png" title="Open at full size">
-          <img src="../screens/stax/choice/no_sub_message/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseChoice, Without a sub-message, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/choice/no_sub_message/00.png" title="Open at full size">
+            <img src="../screens/stax/choice/no_sub_message/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseChoice, Without a sub-message, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(336px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(152px * var(--shot-scale)); top: calc(528px * var(--shot-scale)); width: calc(248px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(160px * var(--shot-scale)); top: calc(612px * var(--shot-scale)); width: calc(240px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T13:29:04+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T10:18:27+00:00</span>
+    <span>2026-09-23T13:29:04+00:00</span>
   </footer>
 </div>
 
@@ -241,10 +281,77 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 </script>
 <script>
 (function () {
+    // The link between a value of the example and the places it is drawn.
+    // Every box carries the number of the value it holds, so lighting one up
+    // is a lookup rather than a search. Hover shows it, a click keeps it.
+    var byValue = new Map();
+    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+        var group = box.closest(".variant");
+        var key = group.id + "/" + box.dataset.lit;
+        if (!byValue.has(key)) { byValue.set(key, []); }
+        byValue.get(key).push(box);
+    });
+
+    var pinned = null;
+
+    function light(key) {
+        document.querySelectorAll(".hot.on").forEach(function (box) {
+            box.classList.remove("on");
+        });
+        document.querySelectorAll(".lit.on").forEach(function (span) {
+            span.classList.remove("on");
+        });
+        if (!key) { return; }
+        (byValue.get(key) || []).forEach(function (box) {
+            box.classList.add("on");
+        });
+        // The value is marked in the code too, so a literal written as
+        // several adjacent chunks lights up whole.
+        var group = key.slice(0, key.lastIndexOf("/"));
+        var value = key.slice(key.lastIndexOf("/") + 1);
+        document.querySelectorAll(
+            "#" + CSS.escape(group) + ' .lit[data-lit="' + value + '"]'
+        ).forEach(function (span) { span.classList.add("on"); });
+    }
+
+    function keyOf(span) {
+        return span.closest(".variant").id + "/" + span.dataset.lit;
+    }
+
+    document.querySelectorAll(".lit").forEach(function (span) {
+        span.addEventListener("mouseenter", function () {
+            if (!pinned) { light(keyOf(span)); }
+        });
+        span.addEventListener("mouseleave", function () {
+            if (!pinned) { light(null); }
+        });
+        span.addEventListener("click", function () {
+            var key = keyOf(span);
+            pinned = pinned === key ? null : key;
+            light(pinned || key);
+        });
+    });
+
+    // Telling apart what the example passed from what the SDK added.
+    var origin = document.querySelector(".tab.origin");
+    if (origin) {
+        origin.addEventListener("click", function () {
+            var on = origin.getAttribute("aria-pressed") !== "true";
+            origin.setAttribute("aria-pressed", on ? "true" : "false");
+            document.documentElement.classList.toggle("show-origin", on);
+        });
+    }
+}());
+
+(function () {
     // The product tabs. The page already opened on the right one, thanks to
     // the head script: this only follows the clicks and remembers the choice,
     // so the next use case page opens on the same product.
-    var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+    // Only the product tabs: the bar also holds the origin toggle, which
+    // wears the same class for the look but selects no product.
+    var tabs = Array.prototype.slice.call(
+        document.querySelectorAll(".tab[data-product]")
+    );
 
     function show(product) {
         document.documentElement.dataset.product = product;

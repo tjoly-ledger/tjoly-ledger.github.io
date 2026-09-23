@@ -75,6 +75,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       Stax
       <small>400&times;672</small>
     </button>
+    <button type="button" class="tab origin" aria-pressed="false"
+            title="Frame every text, saying which ones the example provides and which the SDK writes on its own">
+      What the app provides
+    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseGenericConfiguration</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span>                   *title,
@@ -93,8 +97,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_genericContents_t</span> config_generic_contents;
 
 
-<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">NETWORK_NAMES</span>[] = {<span class="c-string">&quot;Mainnet&quot;</span>, <span class="c-string">&quot;Testnet&quot;</span>, <span class="c-string">&quot;Devnet&quot;</span>};
-<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">BAR_TEXTS</span>[] = {<span class="c-string">&quot;Derivation path&quot;</span>, <span class="c-string">&quot;Custom node&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">NETWORK_NAMES</span>[] = {<span class="c-string lit" data-lit="0">&quot;Mainnet&quot;</span>, <span class="c-string lit" data-lit="1">&quot;Testnet&quot;</span>, <span class="c-string lit" data-lit="2">&quot;Devnet&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">BAR_TEXTS</span>[] = {<span class="c-string lit" data-lit="3">&quot;Derivation path&quot;</span>, <span class="c-string lit" data-lit="4">&quot;Custom node&quot;</span>};
 <span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-type">uint8_t</span>     <span class="c-const">BAR_TOKENS</span>[] = {<span class="c-const">FIRST_USER_TOKEN</span> + <span class="c-number">10</span>, <span class="c-const">FIRST_USER_TOKEN</span> + <span class="c-number">11</span>};
 
 <span class="c-comment">// A titled set of configuration pages, built from any mix of content</span>
@@ -117,7 +121,7 @@ config_generic_contents.contentsList = config_contents;
 config_generic_contents.nbContents = <span class="c-const">ARRAYLEN</span>(config_contents);
 
 <span class="c-usecase">nbgl_useCaseGenericConfiguration</span>(
-    <span class="c-string">&quot;Network&quot;</span>, <span class="c-number">0</span>, &amp;config_generic_contents, catalog_on_quit);</code></pre>
+    <span class="c-string lit" data-lit="5">&quot;Network&quot;</span>, <span class="c-number">0</span>, &amp;config_generic_contents, catalog_on_quit);</code></pre>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -126,19 +130,30 @@ config_generic_contents.nbContents = <span class="c-const">ARRAYLEN</span>(confi
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/generic_configuration/plain/00.png" title="Open at full size">
-          <img src="../screens/flex/generic_configuration/plain/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericConfiguration, Choices and bars, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/generic_configuration/plain/00.png" title="Open at full size">
+            <img src="../screens/flex/generic_configuration/plain/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericConfiguration, Choices and bars, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(124px * var(--shot-scale)); width: calc(110px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(32px * var(--shot-scale)); top: calc(216px * var(--shot-scale)); width: calc(101px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(32px * var(--shot-scale)); top: calc(308px * var(--shot-scale)); width: calc(94px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(182px * var(--shot-scale)); top: calc(30px * var(--shot-scale)); width: calc(116px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/generic_configuration/plain/01.png" title="Open at full size">
-          <img src="../screens/flex/generic_configuration/plain/01.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericConfiguration, Choices and bars, Flex, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/generic_configuration/plain/01.png" title="Open at full size">
+            <img src="../screens/flex/generic_configuration/plain/01.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericConfiguration, Choices and bars, Flex, screen 2">
+            </a>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(124px * var(--shot-scale)); width: calc(207px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(32px * var(--shot-scale)); top: calc(216px * var(--shot-scale)); width: calc(182px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(182px * var(--shot-scale)); top: calc(30px * var(--shot-scale)); width: calc(116px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -147,19 +162,30 @@ config_generic_contents.nbContents = <span class="c-const">ARRAYLEN</span>(confi
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/generic_configuration/plain/00.png" title="Open at full size">
-          <img src="../screens/apex_p/generic_configuration/plain/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericConfiguration, Choices and bars, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/generic_configuration/plain/00.png" title="Open at full size">
+            <img src="../screens/apex_p/generic_configuration/plain/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericConfiguration, Choices and bars, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(83px * var(--shot-scale)); width: calc(74px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(16px * var(--shot-scale)); top: calc(151px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(16px * var(--shot-scale)); top: calc(219px * var(--shot-scale)); width: calc(62px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(110px * var(--shot-scale)); top: calc(19px * var(--shot-scale)); width: calc(79px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/generic_configuration/plain/01.png" title="Open at full size">
-          <img src="../screens/apex_p/generic_configuration/plain/01.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericConfiguration, Choices and bars, Apex P, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/generic_configuration/plain/01.png" title="Open at full size">
+            <img src="../screens/apex_p/generic_configuration/plain/01.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericConfiguration, Choices and bars, Apex P, screen 2">
+            </a>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(83px * var(--shot-scale)); width: calc(140px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(16px * var(--shot-scale)); top: calc(151px * var(--shot-scale)); width: calc(121px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(110px * var(--shot-scale)); top: calc(19px * var(--shot-scale)); width: calc(79px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -168,31 +194,42 @@ config_generic_contents.nbContents = <span class="c-const">ARRAYLEN</span>(confi
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/generic_configuration/plain/00.png" title="Open at full size">
-          <img src="../screens/stax/generic_configuration/plain/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericConfiguration, Choices and bars, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/generic_configuration/plain/00.png" title="Open at full size">
+            <img src="../screens/stax/generic_configuration/plain/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericConfiguration, Choices and bars, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(24px * var(--shot-scale)); top: calc(216px * var(--shot-scale)); width: calc(88px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(24px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(81px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(150px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(100px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/stax/generic_configuration/plain/01.png" title="Open at full size">
-          <img src="../screens/stax/generic_configuration/plain/01.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericConfiguration, Choices and bars, Stax, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/generic_configuration/plain/01.png" title="Open at full size">
+            <img src="../screens/stax/generic_configuration/plain/01.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericConfiguration, Choices and bars, Stax, screen 2">
+            </a>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(179px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(24px * var(--shot-scale)); top: calc(216px * var(--shot-scale)); width: calc(157px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(150px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(100px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T13:29:04+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T10:18:27+00:00</span>
+    <span>2026-09-23T13:29:04+00:00</span>
   </footer>
 </div>
 
@@ -223,10 +260,77 @@ config_generic_contents.nbContents = <span class="c-const">ARRAYLEN</span>(confi
 </script>
 <script>
 (function () {
+    // The link between a value of the example and the places it is drawn.
+    // Every box carries the number of the value it holds, so lighting one up
+    // is a lookup rather than a search. Hover shows it, a click keeps it.
+    var byValue = new Map();
+    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+        var group = box.closest(".variant");
+        var key = group.id + "/" + box.dataset.lit;
+        if (!byValue.has(key)) { byValue.set(key, []); }
+        byValue.get(key).push(box);
+    });
+
+    var pinned = null;
+
+    function light(key) {
+        document.querySelectorAll(".hot.on").forEach(function (box) {
+            box.classList.remove("on");
+        });
+        document.querySelectorAll(".lit.on").forEach(function (span) {
+            span.classList.remove("on");
+        });
+        if (!key) { return; }
+        (byValue.get(key) || []).forEach(function (box) {
+            box.classList.add("on");
+        });
+        // The value is marked in the code too, so a literal written as
+        // several adjacent chunks lights up whole.
+        var group = key.slice(0, key.lastIndexOf("/"));
+        var value = key.slice(key.lastIndexOf("/") + 1);
+        document.querySelectorAll(
+            "#" + CSS.escape(group) + ' .lit[data-lit="' + value + '"]'
+        ).forEach(function (span) { span.classList.add("on"); });
+    }
+
+    function keyOf(span) {
+        return span.closest(".variant").id + "/" + span.dataset.lit;
+    }
+
+    document.querySelectorAll(".lit").forEach(function (span) {
+        span.addEventListener("mouseenter", function () {
+            if (!pinned) { light(keyOf(span)); }
+        });
+        span.addEventListener("mouseleave", function () {
+            if (!pinned) { light(null); }
+        });
+        span.addEventListener("click", function () {
+            var key = keyOf(span);
+            pinned = pinned === key ? null : key;
+            light(pinned || key);
+        });
+    });
+
+    // Telling apart what the example passed from what the SDK added.
+    var origin = document.querySelector(".tab.origin");
+    if (origin) {
+        origin.addEventListener("click", function () {
+            var on = origin.getAttribute("aria-pressed") !== "true";
+            origin.setAttribute("aria-pressed", on ? "true" : "false");
+            document.documentElement.classList.toggle("show-origin", on);
+        });
+    }
+}());
+
+(function () {
     // The product tabs. The page already opened on the right one, thanks to
     // the head script: this only follows the clicks and remembers the choice,
     // so the next use case page opens on the same product.
-    var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+    // Only the product tabs: the bar also holds the origin toggle, which
+    // wears the same class for the look but selects no product.
+    var tabs = Array.prototype.slice.call(
+        document.querySelectorAll(".tab[data-product]")
+    );
 
     function show(product) {
         document.documentElement.dataset.product = product;

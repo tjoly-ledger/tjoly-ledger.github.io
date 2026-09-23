@@ -75,6 +75,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       Stax
       <small>400&times;672</small>
     </button>
+    <button type="button" class="tab origin" aria-pressed="false"
+            title="Frame every text, saying which ones the example provides and which the SDK writes on its own">
+      What the app provides
+    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseNavigableContent</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span>                *title,
@@ -91,11 +95,11 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 
-    <pre class="code"><code><span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">PAGE_TITLES</span>[] = {<span class="c-string">&quot;First page&quot;</span>, <span class="c-string">&quot;Second page&quot;</span>, <span class="c-string">&quot;Third page&quot;</span>};
+    <pre class="code"><code><span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">PAGE_TITLES</span>[] = {<span class="c-string lit" data-lit="0">&quot;First page&quot;</span>, <span class="c-string lit" data-lit="1">&quot;Second page&quot;</span>, <span class="c-string lit" data-lit="2">&quot;Third page&quot;</span>};
 <span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">PAGE_TEXTS</span>[] = {
-    <span class="c-string">&quot;This use case lets the app fill each page on demand.&quot;</span>,
-    <span class="c-string">&quot;The navigation bar and the back arrow come for free.&quot;</span>,
-    <span class="c-string">&quot;Return false from the callback to end the navigation.&quot;</span>,
+    <span class="c-string lit" data-lit="3">&quot;This use case lets the app fill each page on demand.&quot;</span>,
+    <span class="c-string lit" data-lit="4">&quot;The navigation bar and the back arrow come for free.&quot;</span>,
+    <span class="c-string lit" data-lit="5">&quot;Return false from the callback to end the navigation.&quot;</span>,
 };
 
 <span class="c-keyword">static</span> <span class="c-keyword">bool</span> uc_navigable_content_nav(<span class="c-type">uint8_t</span> page, <span class="c-type">nbgl_pageContent_t</span> *content) {
@@ -114,7 +118,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 }
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_navigable_content_three_pages(<span class="c-keyword">void</span>) {
-    <span class="c-usecase">nbgl_useCaseNavigableContent</span>(<span class="c-string">&quot;Help&quot;</span>,
+    <span class="c-usecase">nbgl_useCaseNavigableContent</span>(<span class="c-string lit" data-lit="6">&quot;Help&quot;</span>,
                                  <span class="c-number">0</span>,
                                  <span class="c-const">ARRAYLEN</span>(<span class="c-const">PAGE_TITLES</span>),
                                  catalog_on_quit,
@@ -129,26 +133,44 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/navigable_content/three_pages/00.png" title="Open at full size">
-          <img src="../screens/flex/navigable_content/three_pages/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseNavigableContent, Three centered pages, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/navigable_content/three_pages/00.png" title="Open at full size">
+            <img src="../screens/flex/navigable_content/three_pages/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseNavigableContent, Three centered pages, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(154px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(172px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(46px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(387px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(89px * var(--shot-scale)); top: calc(328px * var(--shot-scale)); width: calc(302px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(208px * var(--shot-scale)); top: calc(30px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/navigable_content/three_pages/01.png" title="Open at full size">
-          <img src="../screens/flex/navigable_content/three_pages/01.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseNavigableContent, Three centered pages, Flex, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/navigable_content/three_pages/01.png" title="Open at full size">
+            <img src="../screens/flex/navigable_content/three_pages/01.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseNavigableContent, Three centered pages, Flex, screen 2">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(126px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(227px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(62px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(356px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(69px * var(--shot-scale)); top: calc(328px * var(--shot-scale)); width: calc(342px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(208px * var(--shot-scale)); top: calc(30px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/navigable_content/three_pages/02.png" title="Open at full size">
-          <img src="../screens/flex/navigable_content/three_pages/02.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseNavigableContent, Three centered pages, Flex, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/navigable_content/three_pages/02.png" title="Open at full size">
+            <img src="../screens/flex/navigable_content/three_pages/02.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseNavigableContent, Three centered pages, Flex, screen 3">
+            </a>
+            <b class="hot" data-lit="2" style="left: calc(146px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(187px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(42px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(396px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(95px * var(--shot-scale)); top: calc(328px * var(--shot-scale)); width: calc(289px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(208px * var(--shot-scale)); top: calc(30px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -157,26 +179,44 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/navigable_content/three_pages/00.png" title="Open at full size">
-          <img src="../screens/apex_p/navigable_content/three_pages/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseNavigableContent, Three centered pages, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/navigable_content/three_pages/00.png" title="Open at full size">
+            <img src="../screens/apex_p/navigable_content/three_pages/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseNavigableContent, Three centered pages, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(93px * var(--shot-scale)); top: calc(158px * var(--shot-scale)); width: calc(114px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(198px * var(--shot-scale)); width: calc(251px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(51px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(197px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(129px * var(--shot-scale)); top: calc(19px * var(--shot-scale)); width: calc(42px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/navigable_content/three_pages/01.png" title="Open at full size">
-          <img src="../screens/apex_p/navigable_content/three_pages/01.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseNavigableContent, Three centered pages, Apex P, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/navigable_content/three_pages/01.png" title="Open at full size">
+            <img src="../screens/apex_p/navigable_content/three_pages/01.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseNavigableContent, Three centered pages, Apex P, screen 2">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(73px * var(--shot-scale)); top: calc(158px * var(--shot-scale)); width: calc(153px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(36px * var(--shot-scale)); top: calc(198px * var(--shot-scale)); width: calc(228px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(37px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(225px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(129px * var(--shot-scale)); top: calc(19px * var(--shot-scale)); width: calc(42px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/navigable_content/three_pages/02.png" title="Open at full size">
-          <img src="../screens/apex_p/navigable_content/three_pages/02.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseNavigableContent, Three centered pages, Apex P, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/navigable_content/three_pages/02.png" title="Open at full size">
+            <img src="../screens/apex_p/navigable_content/three_pages/02.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseNavigableContent, Three centered pages, Apex P, screen 3">
+            </a>
+            <b class="hot" data-lit="2" style="left: calc(88px * var(--shot-scale)); top: calc(158px * var(--shot-scale)); width: calc(124px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(19px * var(--shot-scale)); top: calc(198px * var(--shot-scale)); width: calc(261px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(57px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(186px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(129px * var(--shot-scale)); top: calc(19px * var(--shot-scale)); width: calc(42px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -185,38 +225,56 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/navigable_content/three_pages/00.png" title="Open at full size">
-          <img src="../screens/stax/navigable_content/three_pages/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseNavigableContent, Three centered pages, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/navigable_content/three_pages/00.png" title="Open at full size">
+            <img src="../screens/stax/navigable_content/three_pages/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseNavigableContent, Three centered pages, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(123px * var(--shot-scale)); top: calc(274px * var(--shot-scale)); width: calc(153px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(330px * var(--shot-scale)); width: calc(335px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(69px * var(--shot-scale)); top: calc(362px * var(--shot-scale)); width: calc(262px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(173px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(54px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/stax/navigable_content/three_pages/01.png" title="Open at full size">
-          <img src="../screens/stax/navigable_content/three_pages/01.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseNavigableContent, Three centered pages, Stax, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/navigable_content/three_pages/01.png" title="Open at full size">
+            <img src="../screens/stax/navigable_content/three_pages/01.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseNavigableContent, Three centered pages, Stax, screen 2">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(99px * var(--shot-scale)); top: calc(274px * var(--shot-scale)); width: calc(201px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(46px * var(--shot-scale)); top: calc(330px * var(--shot-scale)); width: calc(308px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(52px * var(--shot-scale)); top: calc(362px * var(--shot-scale)); width: calc(296px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(173px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(54px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/stax/navigable_content/three_pages/02.png" title="Open at full size">
-          <img src="../screens/stax/navigable_content/three_pages/02.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseNavigableContent, Three centered pages, Stax, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/navigable_content/three_pages/02.png" title="Open at full size">
+            <img src="../screens/stax/navigable_content/three_pages/02.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseNavigableContent, Three centered pages, Stax, screen 3">
+            </a>
+            <b class="hot" data-lit="2" style="left: calc(117px * var(--shot-scale)); top: calc(274px * var(--shot-scale)); width: calc(165px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(28px * var(--shot-scale)); top: calc(330px * var(--shot-scale)); width: calc(343px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(75px * var(--shot-scale)); top: calc(362px * var(--shot-scale)); width: calc(250px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(173px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(54px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T13:29:04+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T10:18:27+00:00</span>
+    <span>2026-09-23T13:29:04+00:00</span>
   </footer>
 </div>
 
@@ -247,10 +305,77 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 </script>
 <script>
 (function () {
+    // The link between a value of the example and the places it is drawn.
+    // Every box carries the number of the value it holds, so lighting one up
+    // is a lookup rather than a search. Hover shows it, a click keeps it.
+    var byValue = new Map();
+    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+        var group = box.closest(".variant");
+        var key = group.id + "/" + box.dataset.lit;
+        if (!byValue.has(key)) { byValue.set(key, []); }
+        byValue.get(key).push(box);
+    });
+
+    var pinned = null;
+
+    function light(key) {
+        document.querySelectorAll(".hot.on").forEach(function (box) {
+            box.classList.remove("on");
+        });
+        document.querySelectorAll(".lit.on").forEach(function (span) {
+            span.classList.remove("on");
+        });
+        if (!key) { return; }
+        (byValue.get(key) || []).forEach(function (box) {
+            box.classList.add("on");
+        });
+        // The value is marked in the code too, so a literal written as
+        // several adjacent chunks lights up whole.
+        var group = key.slice(0, key.lastIndexOf("/"));
+        var value = key.slice(key.lastIndexOf("/") + 1);
+        document.querySelectorAll(
+            "#" + CSS.escape(group) + ' .lit[data-lit="' + value + '"]'
+        ).forEach(function (span) { span.classList.add("on"); });
+    }
+
+    function keyOf(span) {
+        return span.closest(".variant").id + "/" + span.dataset.lit;
+    }
+
+    document.querySelectorAll(".lit").forEach(function (span) {
+        span.addEventListener("mouseenter", function () {
+            if (!pinned) { light(keyOf(span)); }
+        });
+        span.addEventListener("mouseleave", function () {
+            if (!pinned) { light(null); }
+        });
+        span.addEventListener("click", function () {
+            var key = keyOf(span);
+            pinned = pinned === key ? null : key;
+            light(pinned || key);
+        });
+    });
+
+    // Telling apart what the example passed from what the SDK added.
+    var origin = document.querySelector(".tab.origin");
+    if (origin) {
+        origin.addEventListener("click", function () {
+            var on = origin.getAttribute("aria-pressed") !== "true";
+            origin.setAttribute("aria-pressed", on ? "true" : "false");
+            document.documentElement.classList.toggle("show-origin", on);
+        });
+    }
+}());
+
+(function () {
     // The product tabs. The page already opened on the right one, thanks to
     // the head script: this only follows the clicks and remembers the choice,
     // so the next use case page opens on the same product.
-    var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+    // Only the product tabs: the bar also holds the origin toggle, which
+    // wears the same class for the look but selects no product.
+    var tabs = Array.prototype.slice.call(
+        document.querySelectorAll(".tab[data-product]")
+    );
 
     function show(product) {
         document.documentElement.dataset.product = product;

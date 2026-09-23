@@ -75,6 +75,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       Stax
       <small>400&times;672</small>
     </button>
+    <button type="button" class="tab origin" aria-pressed="false"
+            title="Frame every text, saying which ones the example provides and which the SDK writes on its own">
+      What the app provides
+    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseReviewStreamingContinueExt</span>(<span class="c-keyword">const</span> <span class="c-type">nbgl_contentTagValueList_t</span> *tagValueList,
@@ -109,15 +113,15 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     memset(&amp;pairList, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(pairList));
 
     <span class="c-keyword">if</span> (index == <span class="c-number">0</span>) {
-        pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
-        pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
-        pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
-        pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+        pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
+        pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
+        pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;To&quot;</span>;
+        pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
     } <span class="c-keyword">else</span> {
-        pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Memo&quot;</span>;
-        pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;Payment for invoice 2026-0142&quot;</span>;
-        pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
-        pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+        pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="4">&quot;Memo&quot;</span>;
+        pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="5">&quot;Payment for invoice 2026-0142&quot;</span>;
+        pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="6">&quot;Fees&quot;</span>;
+        pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="7">&quot;0.00012 BOL&quot;</span>;
     }
 
     pairList.pairs = pairs;
@@ -173,13 +177,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     <span class="c-comment">// show_next_chunk() call ContinueExt() rather than Continue().</span>
     chunk = <span class="c-number">0</span>;
     skippable = <span class="c-keyword">true</span>;
-    finish_title = <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>;
+    finish_title = <span class="c-string lit" data-lit="8">&quot;Sign transaction\nto send BOL?&quot;</span>;
     signed_status = <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>;
     rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
 
     <span class="c-usecase">nbgl_useCaseReviewStreamingStart</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">SKIPPABLE_OPERATION</span>,
                                      &amp;<span class="c-const">CATALOG_ICON_APP</span>,
-                                     <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>,
+                                     <span class="c-string lit" data-lit="9">&quot;Review transaction\nto send BOL&quot;</span>,
                                      <span class="c-const">NULL</span>,
                                      on_chunk);
 }</code></pre>
@@ -191,40 +195,74 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/review_streaming_continue_ext/skippable/00.png" title="Open at full size">
-          <img src="../screens/flex/review_streaming_continue_ext/skippable/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/review_streaming_continue_ext/skippable/00.png" title="Open at full size">
+            <img src="../screens/flex/review_streaming_continue_ext/skippable/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="9" style="left: calc(75px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(330px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="9" style="left: calc(134px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(212px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(134px * var(--shot-scale)); top: calc(346px * var(--shot-scale)); width: calc(212px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/review_streaming_continue_ext/skippable/01.png" title="Open at full size">
-          <img src="../screens/flex/review_streaming_continue_ext/skippable/01.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Flex, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/review_streaming_continue_ext/skippable/01.png" title="Open at full size">
+            <img src="../screens/flex/review_streaming_continue_ext/skippable/01.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Flex, screen 2">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(102px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(32px * var(--shot-scale)); top: calc(136px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(32px * var(--shot-scale)); top: calc(200px * var(--shot-scale)); width: calc(35px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(240px * var(--shot-scale)); width: calc(402px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(280px * var(--shot-scale)); width: calc(401px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(320px * var(--shot-scale)); width: calc(124px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(390px * var(--shot-scale)); top: calc(30px * var(--shot-scale)); width: calc(58px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/review_streaming_continue_ext/skippable/02.png" title="Open at full size">
-          <img src="../screens/flex/review_streaming_continue_ext/skippable/02.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Flex, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/review_streaming_continue_ext/skippable/02.png" title="Open at full size">
+            <img src="../screens/flex/review_streaming_continue_ext/skippable/02.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Flex, screen 3">
+            </a>
+            <b class="hot" data-lit="4" style="left: calc(32px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(32px * var(--shot-scale)); top: calc(136px * var(--shot-scale)); width: calc(344px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(32px * var(--shot-scale)); top: calc(176px * var(--shot-scale)); width: calc(193px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(32px * var(--shot-scale)); top: calc(240px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="7" style="left: calc(32px * var(--shot-scale)); top: calc(280px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(390px * var(--shot-scale)); top: calc(30px * var(--shot-scale)); width: calc(58px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/review_streaming_continue_ext/skippable/03.png" title="Open at full size">
-          <img src="../screens/flex/review_streaming_continue_ext/skippable/03.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Flex, screen 4">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/review_streaming_continue_ext/skippable/03.png" title="Open at full size">
+            <img src="../screens/flex/review_streaming_continue_ext/skippable/03.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Flex, screen 4">
+            </a>
+            <b class="hot" data-lit="8" style="left: calc(99px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(282px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(124px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(197px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/flex/review_streaming_continue_ext/skippable/04.png" title="Open at full size">
-          <img src="../screens/flex/review_streaming_continue_ext/skippable/04.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Flex, screen 5">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/review_streaming_continue_ext/skippable/04.png" title="Open at full size">
+            <img src="../screens/flex/review_streaming_continue_ext/skippable/04.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Flex, screen 5">
+            </a>
+            <b class="hot sdk" style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -233,40 +271,74 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/review_streaming_continue_ext/skippable/00.png" title="Open at full size">
-          <img src="../screens/apex_p/review_streaming_continue_ext/skippable/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/review_streaming_continue_ext/skippable/00.png" title="Open at full size">
+            <img src="../screens/apex_p/review_streaming_continue_ext/skippable/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="9" style="left: calc(40px * var(--shot-scale)); top: calc(159px * var(--shot-scale)); width: calc(220px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="9" style="left: calc(80px * var(--shot-scale)); top: calc(187px * var(--shot-scale)); width: calc(140px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(81px * var(--shot-scale)); top: calc(239px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/review_streaming_continue_ext/skippable/01.png" title="Open at full size">
-          <img src="../screens/apex_p/review_streaming_continue_ext/skippable/01.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Apex P, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/review_streaming_continue_ext/skippable/01.png" title="Open at full size">
+            <img src="../screens/apex_p/review_streaming_continue_ext/skippable/01.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Apex P, screen 2">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(60px * var(--shot-scale)); width: calc(68px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(16px * var(--shot-scale)); top: calc(86px * var(--shot-scale)); width: calc(133px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(16px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(156px * var(--shot-scale)); width: calc(268px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(268px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(212px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(245px * var(--shot-scale)); top: calc(19px * var(--shot-scale)); width: calc(39px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/review_streaming_continue_ext/skippable/02.png" title="Open at full size">
-          <img src="../screens/apex_p/review_streaming_continue_ext/skippable/02.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Apex P, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/review_streaming_continue_ext/skippable/02.png" title="Open at full size">
+            <img src="../screens/apex_p/review_streaming_continue_ext/skippable/02.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Apex P, screen 3">
+            </a>
+            <b class="hot" data-lit="4" style="left: calc(16px * var(--shot-scale)); top: calc(60px * var(--shot-scale)); width: calc(54px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(16px * var(--shot-scale)); top: calc(86px * var(--shot-scale)); width: calc(229px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(16px * var(--shot-scale)); top: calc(114px * var(--shot-scale)); width: calc(129px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(16px * var(--shot-scale)); top: calc(158px * var(--shot-scale)); width: calc(43px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="7" style="left: calc(16px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(151px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(245px * var(--shot-scale)); top: calc(19px * var(--shot-scale)); width: calc(39px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/review_streaming_continue_ext/skippable/03.png" title="Open at full size">
-          <img src="../screens/apex_p/review_streaming_continue_ext/skippable/03.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Apex P, screen 4">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/review_streaming_continue_ext/skippable/03.png" title="Open at full size">
+            <img src="../screens/apex_p/review_streaming_continue_ext/skippable/03.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Apex P, screen 4">
+            </a>
+            <b class="hot" data-lit="8" style="left: calc(56px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(188px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(73px * var(--shot-scale)); top: calc(158px * var(--shot-scale)); width: calc(153px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(120px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/apex_p/review_streaming_continue_ext/skippable/04.png" title="Open at full size">
-          <img src="../screens/apex_p/review_streaming_continue_ext/skippable/04.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Apex P, screen 5">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/review_streaming_continue_ext/skippable/04.png" title="Open at full size">
+            <img src="../screens/apex_p/review_streaming_continue_ext/skippable/04.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Apex P, screen 5">
+            </a>
+            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -275,52 +347,86 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/review_streaming_continue_ext/skippable/00.png" title="Open at full size">
-          <img src="../screens/stax/review_streaming_continue_ext/skippable/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/review_streaming_continue_ext/skippable/00.png" title="Open at full size">
+            <img src="../screens/stax/review_streaming_continue_ext/skippable/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="9" style="left: calc(54px * var(--shot-scale)); top: calc(278px * var(--shot-scale)); width: calc(291px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="9" style="left: calc(107px * var(--shot-scale)); top: calc(318px * var(--shot-scale)); width: calc(186px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(108px * var(--shot-scale)); top: calc(382px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/stax/review_streaming_continue_ext/skippable/01.png" title="Open at full size">
-          <img src="../screens/stax/review_streaming_continue_ext/skippable/01.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Stax, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/review_streaming_continue_ext/skippable/01.png" title="Open at full size">
+            <img src="../screens/stax/review_streaming_continue_ext/skippable/01.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Stax, screen 2">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(112px * var(--shot-scale)); width: calc(88px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(24px * var(--shot-scale)); top: calc(148px * var(--shot-scale)); width: calc(178px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(24px * var(--shot-scale)); top: calc(200px * var(--shot-scale)); width: calc(29px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(338px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(338px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(316px * var(--shot-scale)); width: calc(149px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(325px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(51px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/stax/review_streaming_continue_ext/skippable/02.png" title="Open at full size">
-          <img src="../screens/stax/review_streaming_continue_ext/skippable/02.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Stax, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/review_streaming_continue_ext/skippable/02.png" title="Open at full size">
+            <img src="../screens/stax/review_streaming_continue_ext/skippable/02.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Stax, screen 3">
+            </a>
+            <b class="hot" data-lit="4" style="left: calc(24px * var(--shot-scale)); top: calc(112px * var(--shot-scale)); width: calc(70px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(24px * var(--shot-scale)); top: calc(148px * var(--shot-scale)); width: calc(302px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(24px * var(--shot-scale)); top: calc(188px * var(--shot-scale)); width: calc(173px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(24px * var(--shot-scale)); top: calc(240px * var(--shot-scale)); width: calc(55px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="7" style="left: calc(24px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(325px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(51px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/stax/review_streaming_continue_ext/skippable/03.png" title="Open at full size">
-          <img src="../screens/stax/review_streaming_continue_ext/skippable/03.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Stax, screen 4">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/review_streaming_continue_ext/skippable/03.png" title="Open at full size">
+            <img src="../screens/stax/review_streaming_continue_ext/skippable/03.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Stax, screen 4">
+            </a>
+            <b class="hot" data-lit="8" style="left: calc(76px * var(--shot-scale)); top: calc(230px * var(--shot-scale)); width: calc(248px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(98px * var(--shot-scale)); top: calc(270px * var(--shot-scale)); width: calc(203px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(163px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(496px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/stax/review_streaming_continue_ext/skippable/04.png" title="Open at full size">
-          <img src="../screens/stax/review_streaming_continue_ext/skippable/04.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Stax, screen 5">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/review_streaming_continue_ext/skippable/04.png" title="Open at full size">
+            <img src="../screens/stax/review_streaming_continue_ext/skippable/04.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseReviewStreamingContinueExt, With the Skip button, Stax, screen 5">
+            </a>
+            <b class="hot sdk" style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T13:29:04+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T10:18:27+00:00</span>
+    <span>2026-09-23T13:29:04+00:00</span>
   </footer>
 </div>
 
@@ -351,10 +457,77 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 </script>
 <script>
 (function () {
+    // The link between a value of the example and the places it is drawn.
+    // Every box carries the number of the value it holds, so lighting one up
+    // is a lookup rather than a search. Hover shows it, a click keeps it.
+    var byValue = new Map();
+    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+        var group = box.closest(".variant");
+        var key = group.id + "/" + box.dataset.lit;
+        if (!byValue.has(key)) { byValue.set(key, []); }
+        byValue.get(key).push(box);
+    });
+
+    var pinned = null;
+
+    function light(key) {
+        document.querySelectorAll(".hot.on").forEach(function (box) {
+            box.classList.remove("on");
+        });
+        document.querySelectorAll(".lit.on").forEach(function (span) {
+            span.classList.remove("on");
+        });
+        if (!key) { return; }
+        (byValue.get(key) || []).forEach(function (box) {
+            box.classList.add("on");
+        });
+        // The value is marked in the code too, so a literal written as
+        // several adjacent chunks lights up whole.
+        var group = key.slice(0, key.lastIndexOf("/"));
+        var value = key.slice(key.lastIndexOf("/") + 1);
+        document.querySelectorAll(
+            "#" + CSS.escape(group) + ' .lit[data-lit="' + value + '"]'
+        ).forEach(function (span) { span.classList.add("on"); });
+    }
+
+    function keyOf(span) {
+        return span.closest(".variant").id + "/" + span.dataset.lit;
+    }
+
+    document.querySelectorAll(".lit").forEach(function (span) {
+        span.addEventListener("mouseenter", function () {
+            if (!pinned) { light(keyOf(span)); }
+        });
+        span.addEventListener("mouseleave", function () {
+            if (!pinned) { light(null); }
+        });
+        span.addEventListener("click", function () {
+            var key = keyOf(span);
+            pinned = pinned === key ? null : key;
+            light(pinned || key);
+        });
+    });
+
+    // Telling apart what the example passed from what the SDK added.
+    var origin = document.querySelector(".tab.origin");
+    if (origin) {
+        origin.addEventListener("click", function () {
+            var on = origin.getAttribute("aria-pressed") !== "true";
+            origin.setAttribute("aria-pressed", on ? "true" : "false");
+            document.documentElement.classList.toggle("show-origin", on);
+        });
+    }
+}());
+
+(function () {
     // The product tabs. The page already opened on the right one, thanks to
     // the head script: this only follows the clicks and remembers the choice,
     // so the next use case page opens on the same product.
-    var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+    // Only the product tabs: the bar also holds the origin toggle, which
+    // wears the same class for the look but selects no product.
+    var tabs = Array.prototype.slice.call(
+        document.querySelectorAll(".tab[data-product]")
+    );
 
     function show(product) {
         document.documentElement.dataset.product = product;

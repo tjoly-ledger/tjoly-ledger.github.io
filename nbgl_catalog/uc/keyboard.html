@@ -80,6 +80,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       Stax
       <small>400&times;672</small>
     </button>
+    <button type="button" class="tab origin" aria-pressed="false"
+            title="Frame every text, saying which ones the example provides and which the SDK writes on its own">
+      What the app provides
+    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseKeyboard</span>(<span class="c-keyword">const</span> <span class="c-type">nbgl_keyboardParams_t</span> *params, <span class="c-type">nbgl_callback_t</span> backCallback);</code></pre>
@@ -101,13 +105,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-comment">// A confirmation button sits under the entry area; the keyboard starts in</span>
 <span class="c-comment">// letters mode and `casing` decides how the first letter is capitalised.</span>
 keyboard_params.type = <span class="c-const">KEYBOARD_WITH_BUTTON</span>;
-keyboard_params.title = <span class="c-string">&quot;Enter the account name&quot;</span>;
+keyboard_params.title = <span class="c-string lit" data-lit="0">&quot;Enter the account name&quot;</span>;
 keyboard_params.entryBuffer = entry_buffer;
 keyboard_params.entryMaxLen = <span class="c-const">ENTRY_MAX_LEN</span>;
 keyboard_params.mode = <span class="c-const">MODE_LETTERS</span>;
 keyboard_params.lettersOnly = <span class="c-keyword">false</span>;
 keyboard_params.casing = <span class="c-const">LOCKED_UPPER_CASE</span>;
-keyboard_params.confirmationParams.buttonText = <span class="c-string">&quot;Confirm&quot;</span>;
+keyboard_params.confirmationParams.buttonText = <span class="c-string lit" data-lit="1">&quot;Confirm&quot;</span>;
 keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
 
 <span class="c-usecase">nbgl_useCaseKeyboard</span>(&amp;keyboard_params, catalog_on_quit);</code></pre>
@@ -119,12 +123,24 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/keyboard/with_button/00.png" title="Open at full size">
-          <img src="../screens/flex/keyboard/with_button/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseKeyboard, With a confirmation button, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/keyboard/with_button/00.png" title="Open at full size">
+            <img src="../screens/flex/keyboard/with_button/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseKeyboard, With a confirmation button, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(82px * var(--shot-scale)); top: calc(100px * var(--shot-scale)); width: calc(315px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(185px * var(--shot-scale)); top: calc(238px * var(--shot-scale)); width: calc(295px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(87px * var(--shot-scale)); top: calc(474px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(135px * var(--shot-scale)); top: calc(474px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(182px * var(--shot-scale)); top: calc(474px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(230px * var(--shot-scale)); top: calc(474px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(279px * var(--shot-scale)); top: calc(474px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(325px * var(--shot-scale)); top: calc(474px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(371px * var(--shot-scale)); top: calc(474px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(37px * var(--shot-scale)); top: calc(546px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -133,12 +149,24 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/keyboard/with_button/00.png" title="Open at full size">
-          <img src="../screens/apex_p/keyboard/with_button/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseKeyboard, With a confirmation button, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/keyboard/with_button/00.png" title="Open at full size">
+            <img src="../screens/apex_p/keyboard/with_button/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseKeyboard, With a confirmation button, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(47px * var(--shot-scale)); top: calc(57px * var(--shot-scale)); width: calc(206px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(113px * var(--shot-scale)); top: calc(149px * var(--shot-scale)); width: calc(187px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(54px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(83px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(113px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(174px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(203px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(232px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(23px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -147,12 +175,24 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/keyboard/with_button/00.png" title="Open at full size">
-          <img src="../screens/stax/keyboard/with_button/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseKeyboard, With a confirmation button, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/keyboard/with_button/00.png" title="Open at full size">
+            <img src="../screens/stax/keyboard/with_button/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseKeyboard, With a confirmation button, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(64px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(272px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(153px * var(--shot-scale)); top: calc(296px * var(--shot-scale)); width: calc(247px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(73px * var(--shot-scale)); top: calc(510px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(112px * var(--shot-scale)); top: calc(510px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(151px * var(--shot-scale)); top: calc(510px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(192px * var(--shot-scale)); top: calc(510px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(232px * var(--shot-scale)); top: calc(510px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(271px * var(--shot-scale)); top: calc(510px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(310px * var(--shot-scale)); top: calc(510px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(33px * var(--shot-scale)); top: calc(570px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
@@ -174,13 +214,13 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
 <span class="c-comment">// Suggestion buttons replace the confirmation button; the update callback</span>
 <span class="c-comment">// is called on every key press, to refresh them and to grey out the keys</span>
 <span class="c-comment">// that cannot lead to a word.</span>
-suggestions[<span class="c-number">0</span>] = <span class="c-string">&quot;abandon&quot;</span>;
-suggestions[<span class="c-number">1</span>] = <span class="c-string">&quot;ability&quot;</span>;
-suggestions[<span class="c-number">2</span>] = <span class="c-string">&quot;able&quot;</span>;
-suggestions[<span class="c-number">3</span>] = <span class="c-string">&quot;about&quot;</span>;
+suggestions[<span class="c-number">0</span>] = <span class="c-string lit" data-lit="0">&quot;abandon&quot;</span>;
+suggestions[<span class="c-number">1</span>] = <span class="c-string lit" data-lit="1">&quot;ability&quot;</span>;
+suggestions[<span class="c-number">2</span>] = <span class="c-string lit" data-lit="2">&quot;able&quot;</span>;
+suggestions[<span class="c-number">3</span>] = <span class="c-string lit" data-lit="3">&quot;about&quot;</span>;
 
 keyboard_params.type = <span class="c-const">KEYBOARD_WITH_SUGGESTIONS</span>;
-keyboard_params.title = <span class="c-string">&quot;Enter word no. 1&quot;</span>;
+keyboard_params.title = <span class="c-string lit" data-lit="4">&quot;Enter word no. 1&quot;</span>;
 keyboard_params.entryBuffer = entry_buffer;
 keyboard_params.entryMaxLen = <span class="c-const">ENTRY_MAX_LEN</span>;
 keyboard_params.mode = <span class="c-const">MODE_LETTERS</span>;
@@ -202,12 +242,18 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/keyboard/with_suggestions/00.png" title="Open at full size">
-          <img src="../screens/flex/keyboard/with_suggestions/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseKeyboard, With suggestion buttons, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/keyboard/with_suggestions/00.png" title="Open at full size">
+            <img src="../screens/flex/keyboard/with_suggestions/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseKeyboard, With suggestion buttons, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(74px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(204px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(304px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(176px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(133px * var(--shot-scale)); top: calc(116px * var(--shot-scale)); width: calc(214px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(170px * var(--shot-scale)); width: calc(27px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -216,12 +262,18 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/keyboard/with_suggestions/00.png" title="Open at full size">
-          <img src="../screens/apex_p/keyboard/with_suggestions/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseKeyboard, With suggestion buttons, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/keyboard/with_suggestions/00.png" title="Open at full size">
+            <img src="../screens/apex_p/keyboard/with_suggestions/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseKeyboard, With suggestion buttons, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(41px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(130px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(190px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(110px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(80px * var(--shot-scale)); top: calc(70px * var(--shot-scale)); width: calc(139px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(104px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -230,24 +282,32 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/keyboard/with_suggestions/00.png" title="Open at full size">
-          <img src="../screens/stax/keyboard/with_suggestions/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseKeyboard, With suggestion buttons, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/keyboard/with_suggestions/00.png" title="Open at full size">
+            <img src="../screens/stax/keyboard/with_suggestions/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseKeyboard, With suggestion buttons, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(37px * var(--shot-scale)); top: calc(16px * var(--shot-scale)); width: calc(172px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(49px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(172px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(60px * var(--shot-scale)); top: calc(144px * var(--shot-scale)); width: calc(172px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(53px * var(--shot-scale)); top: calc(208px * var(--shot-scale)); width: calc(172px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(107px * var(--shot-scale)); top: calc(108px * var(--shot-scale)); width: calc(185px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(40px * var(--shot-scale)); top: calc(156px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T13:29:04+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T10:18:27+00:00</span>
+    <span>2026-09-23T13:29:04+00:00</span>
   </footer>
 </div>
 
@@ -278,10 +338,77 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
 </script>
 <script>
 (function () {
+    // The link between a value of the example and the places it is drawn.
+    // Every box carries the number of the value it holds, so lighting one up
+    // is a lookup rather than a search. Hover shows it, a click keeps it.
+    var byValue = new Map();
+    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+        var group = box.closest(".variant");
+        var key = group.id + "/" + box.dataset.lit;
+        if (!byValue.has(key)) { byValue.set(key, []); }
+        byValue.get(key).push(box);
+    });
+
+    var pinned = null;
+
+    function light(key) {
+        document.querySelectorAll(".hot.on").forEach(function (box) {
+            box.classList.remove("on");
+        });
+        document.querySelectorAll(".lit.on").forEach(function (span) {
+            span.classList.remove("on");
+        });
+        if (!key) { return; }
+        (byValue.get(key) || []).forEach(function (box) {
+            box.classList.add("on");
+        });
+        // The value is marked in the code too, so a literal written as
+        // several adjacent chunks lights up whole.
+        var group = key.slice(0, key.lastIndexOf("/"));
+        var value = key.slice(key.lastIndexOf("/") + 1);
+        document.querySelectorAll(
+            "#" + CSS.escape(group) + ' .lit[data-lit="' + value + '"]'
+        ).forEach(function (span) { span.classList.add("on"); });
+    }
+
+    function keyOf(span) {
+        return span.closest(".variant").id + "/" + span.dataset.lit;
+    }
+
+    document.querySelectorAll(".lit").forEach(function (span) {
+        span.addEventListener("mouseenter", function () {
+            if (!pinned) { light(keyOf(span)); }
+        });
+        span.addEventListener("mouseleave", function () {
+            if (!pinned) { light(null); }
+        });
+        span.addEventListener("click", function () {
+            var key = keyOf(span);
+            pinned = pinned === key ? null : key;
+            light(pinned || key);
+        });
+    });
+
+    // Telling apart what the example passed from what the SDK added.
+    var origin = document.querySelector(".tab.origin");
+    if (origin) {
+        origin.addEventListener("click", function () {
+            var on = origin.getAttribute("aria-pressed") !== "true";
+            origin.setAttribute("aria-pressed", on ? "true" : "false");
+            document.documentElement.classList.toggle("show-origin", on);
+        });
+    }
+}());
+
+(function () {
     // The product tabs. The page already opened on the right one, thanks to
     // the head script: this only follows the clicks and remembers the choice,
     // so the next use case page opens on the same product.
-    var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+    // Only the product tabs: the bar also holds the origin toggle, which
+    // wears the same class for the look but selects no product.
+    var tabs = Array.prototype.slice.call(
+        document.querySelectorAll(".tab[data-product]")
+    );
 
     function show(product) {
         document.documentElement.dataset.product = product;

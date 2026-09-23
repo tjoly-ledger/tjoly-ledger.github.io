@@ -81,6 +81,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       Stax
       <small>400&times;672</small>
     </button>
+    <button type="button" class="tab origin" aria-pressed="false"
+            title="Frame every text, saying which ones the example provides and which the SDK writes on its own">
+      What the app provides
+    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseAddressReview</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *address,
@@ -113,7 +117,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-usecase">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
                           <span class="c-const">NULL</span>,
                           &amp;<span class="c-const">CATALOG_ICON_APP</span>,
-                          <span class="c-string">&quot;Verify BOL address&quot;</span>,
+                          <span class="c-string lit" data-lit="1">&quot;Verify BOL address&quot;</span>,
                           <span class="c-const">NULL</span>,
                           uc_address_review_choice);</code></pre>
 
@@ -124,26 +128,44 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/address_review/plain/00.png" title="Open at full size">
-          <img src="../screens/flex/address_review/plain/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Address only, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/address_review/plain/00.png" title="Open at full size">
+            <img src="../screens/flex/address_review/plain/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Address only, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(73px * var(--shot-scale)); top: calc(262px * var(--shot-scale)); width: calc(334px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(121px * var(--shot-scale)); top: calc(326px * var(--shot-scale)); width: calc(238px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/address_review/plain/01.png" title="Open at full size">
-          <img src="../screens/flex/address_review/plain/01.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Address only, Flex, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/address_review/plain/01.png" title="Open at full size">
+            <img src="../screens/flex/address_review/plain/01.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Address only, Flex, screen 2">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(394px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(403px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(45px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(40px * var(--shot-scale)); width: calc(109px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(237px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(243px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
-          <a href="../screens/flex/address_review/plain/02.png" title="Open at full size">
-          <img src="../screens/flex/address_review/plain/02.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Address only, Flex, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/address_review/plain/02.png" title="Open at full size">
+            <img src="../screens/flex/address_review/plain/02.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Address only, Flex, screen 3">
+            </a>
+            <b class="hot sdk" style="left: calc(98px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(284px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -152,26 +174,44 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/address_review/plain/00.png" title="Open at full size">
-          <img src="../screens/apex_p/address_review/plain/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Address only, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/plain/00.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/plain/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Address only, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(38px * var(--shot-scale)); top: calc(173px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(72px * var(--shot-scale)); top: calc(225px * var(--shot-scale)); width: calc(155px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/address_review/plain/01.png" title="Open at full size">
-          <img src="../screens/apex_p/address_review/plain/01.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Address only, Apex P, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/plain/01.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/plain/01.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Address only, Apex P, screen 2">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(253px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(78px * var(--shot-scale)); width: calc(266px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(106px * var(--shot-scale)); width: calc(51px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(156px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
-          <a href="../screens/apex_p/address_review/plain/02.png" title="Open at full size">
-          <img src="../screens/apex_p/address_review/plain/02.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Address only, Apex P, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/plain/02.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/plain/02.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Address only, Apex P, screen 3">
+            </a>
+            <b class="hot sdk" style="left: calc(55px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(189px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -180,26 +220,44 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/address_review/plain/00.png" title="Open at full size">
-          <img src="../screens/stax/address_review/plain/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Address only, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/address_review/plain/00.png" title="Open at full size">
+            <img src="../screens/stax/address_review/plain/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Address only, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(53px * var(--shot-scale)); top: calc(298px * var(--shot-scale)); width: calc(294px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(97px * var(--shot-scale)); top: calc(362px * var(--shot-scale)); width: calc(205px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/stax/address_review/plain/01.png" title="Open at full size">
-          <img src="../screens/stax/address_review/plain/01.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Address only, Stax, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/address_review/plain/01.png" title="Open at full size">
+            <img src="../screens/stax/address_review/plain/01.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Address only, Stax, screen 2">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(92px * var(--shot-scale)); width: calc(350px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(132px * var(--shot-scale)); width: calc(330px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(172px * var(--shot-scale)); width: calc(68px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(200px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
-          <a href="../screens/stax/address_review/plain/02.png" title="Open at full size">
-          <img src="../screens/stax/address_review/plain/02.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Address only, Stax, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/address_review/plain/02.png" title="Open at full size">
+            <img src="../screens/stax/address_review/plain/02.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Address only, Stax, screen 3">
+            </a>
+            <b class="hot sdk" style="left: calc(74px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(251px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
@@ -227,7 +285,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-usecase">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
                           <span class="c-const">NULL</span>,
                           &amp;<span class="c-const">CATALOG_ICON_APP</span>,
-                          <span class="c-string">&quot;Verify BOL address&quot;</span>,
+                          <span class="c-string lit" data-lit="1">&quot;Verify BOL address&quot;</span>,
                           <span class="c-const">NULL</span>,
                           uc_address_review_choice);</code></pre>
 
@@ -238,19 +296,29 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/address_review/reject/00.png" title="Open at full size">
-          <img src="../screens/flex/address_review/reject/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Declining it, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/address_review/reject/00.png" title="Open at full size">
+            <img src="../screens/flex/address_review/reject/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Declining it, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(73px * var(--shot-scale)); top: calc(262px * var(--shot-scale)); width: calc(334px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(121px * var(--shot-scale)); top: calc(326px * var(--shot-scale)); width: calc(238px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Tap “Cancel”</span>
-          <a href="../screens/flex/address_review/reject/01.png" title="Open at full size">
-          <img src="../screens/flex/address_review/reject/01.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Declining it, Flex, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/address_review/reject/01.png" title="Open at full size">
+            <img src="../screens/flex/address_review/reject/01.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Declining it, Flex, screen 2">
+            </a>
+            <b class="hot sdk" style="left: calc(66px * var(--shot-scale)); top: calc(304px * var(--shot-scale)); width: calc(347px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(156px * var(--shot-scale)); top: calc(344px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -259,19 +327,29 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/address_review/reject/00.png" title="Open at full size">
-          <img src="../screens/apex_p/address_review/reject/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Declining it, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/reject/00.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/reject/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Declining it, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(38px * var(--shot-scale)); top: calc(173px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(72px * var(--shot-scale)); top: calc(225px * var(--shot-scale)); width: calc(155px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Tap “Cancel”</span>
-          <a href="../screens/apex_p/address_review/reject/01.png" title="Open at full size">
-          <img src="../screens/apex_p/address_review/reject/01.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Declining it, Apex P, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/reject/01.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/reject/01.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Declining it, Apex P, screen 2">
+            </a>
+            <b class="hot sdk" style="left: calc(34px * var(--shot-scale)); top: calc(204px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(93px * var(--shot-scale)); top: calc(232px * var(--shot-scale)); width: calc(114px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -280,19 +358,29 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/address_review/reject/00.png" title="Open at full size">
-          <img src="../screens/stax/address_review/reject/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Declining it, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/address_review/reject/00.png" title="Open at full size">
+            <img src="../screens/stax/address_review/reject/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Declining it, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(53px * var(--shot-scale)); top: calc(298px * var(--shot-scale)); width: calc(294px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(97px * var(--shot-scale)); top: calc(362px * var(--shot-scale)); width: calc(205px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Tap “Cancel”</span>
-          <a href="../screens/stax/address_review/reject/01.png" title="Open at full size">
-          <img src="../screens/stax/address_review/reject/01.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, Declining it, Stax, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/address_review/reject/01.png" title="Open at full size">
+            <img src="../screens/stax/address_review/reject/01.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, Declining it, Stax, screen 2">
+            </a>
+            <b class="hot sdk" style="left: calc(47px * var(--shot-scale)); top: calc(340px * var(--shot-scale)); width: calc(306px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(125px * var(--shot-scale)); top: calc(380px * var(--shot-scale)); width: calc(149px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
@@ -315,10 +403,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         confirm ? <span class="c-const">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
 }
 
-pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Account&quot;</span>;
-pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;Main account&quot;</span>;
-pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;Derivation path&quot;</span>;
-pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;m/44&#x27;/0&#x27;/0&#x27;/0/0&quot;</span>;
+pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="1">&quot;Account&quot;</span>;
+pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="2">&quot;Main account&quot;</span>;
+pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="3">&quot;Derivation path&quot;</span>;
+pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="4">&quot;m/44&#x27;/0&#x27;/0&#x27;/0/0&quot;</span>;
 
 pairList.pairs = pairs;
 pairList.nbPairs = <span class="c-number">2</span>;
@@ -327,8 +415,8 @@ pairList.wrapping = <span class="c-keyword">true</span>;
 <span class="c-usecase">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
                           &amp;pairList,
                           &amp;<span class="c-const">CATALOG_ICON_APP</span>,
-                          <span class="c-string">&quot;Verify BOL address&quot;</span>,
-                          <span class="c-string">&quot;Make sure it matches the one\nin your wallet.&quot;</span>,
+                          <span class="c-string lit" data-lit="5">&quot;Verify BOL address&quot;</span>,
+                          <span class="c-string lit" data-lit="6">&quot;Make sure it matches the one\nin your wallet.&quot;</span>,
                           uc_address_review_choice);</code></pre>
 
     <div class="shot-rows">
@@ -338,33 +426,62 @@ pairList.wrapping = <span class="c-keyword">true</span>;
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/address_review/with_pairs/00.png" title="Open at full size">
-          <img src="../screens/flex/address_review/with_pairs/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/address_review/with_pairs/00.png" title="Open at full size">
+            <img src="../screens/flex/address_review/with_pairs/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, With extra pairs, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="5" style="left: calc(73px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(334px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(44px * var(--shot-scale)); top: calc(274px * var(--shot-scale)); width: calc(392px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(147px * var(--shot-scale)); top: calc(310px * var(--shot-scale)); width: calc(185px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(121px * var(--shot-scale)); top: calc(370px * var(--shot-scale)); width: calc(238px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(74px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/address_review/with_pairs/01.png" title="Open at full size">
-          <img src="../screens/flex/address_review/with_pairs/01.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Flex, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/address_review/with_pairs/01.png" title="Open at full size">
+            <img src="../screens/flex/address_review/with_pairs/01.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, With extra pairs, Flex, screen 2">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(394px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(403px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(45px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(40px * var(--shot-scale)); width: calc(109px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(186px * var(--shot-scale)); top: calc(226px * var(--shot-scale)); width: calc(224px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(78px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/address_review/with_pairs/02.png" title="Open at full size">
-          <img src="../screens/flex/address_review/with_pairs/02.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Flex, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/address_review/with_pairs/02.png" title="Open at full size">
+            <img src="../screens/flex/address_review/with_pairs/02.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, With extra pairs, Flex, screen 3">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(32px * var(--shot-scale)); top: calc(40px * var(--shot-scale)); width: calc(110px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(233px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(144px * var(--shot-scale)); width: calc(203px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(32px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(261px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(296px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(79px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(295px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
-          <a href="../screens/flex/address_review/with_pairs/03.png" title="Open at full size">
-          <img src="../screens/flex/address_review/with_pairs/03.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Flex, screen 4">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/address_review/with_pairs/03.png" title="Open at full size">
+            <img src="../screens/flex/address_review/with_pairs/03.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, With extra pairs, Flex, screen 4">
+            </a>
+            <b class="hot sdk" style="left: calc(98px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(284px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -373,33 +490,62 @@ pairList.wrapping = <span class="c-keyword">true</span>;
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/address_review/with_pairs/00.png" title="Open at full size">
-          <img src="../screens/apex_p/address_review/with_pairs/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/with_pairs/00.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/with_pairs/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, With extra pairs, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="5" style="left: calc(38px * var(--shot-scale)); top: calc(145px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(22px * var(--shot-scale)); top: calc(185px * var(--shot-scale)); width: calc(256px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(89px * var(--shot-scale)); top: calc(207px * var(--shot-scale)); width: calc(121px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(72px * var(--shot-scale)); top: calc(253px * var(--shot-scale)); width: calc(155px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/address_review/with_pairs/01.png" title="Open at full size">
-          <img src="../screens/apex_p/address_review/with_pairs/01.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Apex P, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/with_pairs/01.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/with_pairs/01.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, With extra pairs, Apex P, screen 2">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(253px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(78px * var(--shot-scale)); width: calc(266px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(106px * var(--shot-scale)); width: calc(51px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(114px * var(--shot-scale)); top: calc(155px * var(--shot-scale)); width: calc(147px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/address_review/with_pairs/02.png" title="Open at full size">
-          <img src="../screens/apex_p/address_review/with_pairs/02.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Apex P, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/with_pairs/02.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/with_pairs/02.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, With extra pairs, Apex P, screen 3">
+            </a>
+            <b class="hot" data-lit="1" style="left: calc(16px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(72px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(157px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(94px * var(--shot-scale)); width: calc(130px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(16px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(186px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(113px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(187px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
-          <a href="../screens/apex_p/address_review/with_pairs/03.png" title="Open at full size">
-          <img src="../screens/apex_p/address_review/with_pairs/03.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Apex P, screen 4">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/address_review/with_pairs/03.png" title="Open at full size">
+            <img src="../screens/apex_p/address_review/with_pairs/03.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, With extra pairs, Apex P, screen 4">
+            </a>
+            <b class="hot sdk" style="left: calc(55px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(189px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -408,38 +554,62 @@ pairList.wrapping = <span class="c-keyword">true</span>;
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/address_review/with_pairs/00.png" title="Open at full size">
-          <img src="../screens/stax/address_review/with_pairs/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/address_review/with_pairs/00.png" title="Open at full size">
+            <img src="../screens/stax/address_review/with_pairs/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, With extra pairs, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="5" style="left: calc(53px * var(--shot-scale)); top: calc(258px * var(--shot-scale)); width: calc(294px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(30px * var(--shot-scale)); top: calc(314px * var(--shot-scale)); width: calc(339px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(120px * var(--shot-scale)); top: calc(346px * var(--shot-scale)); width: calc(160px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(97px * var(--shot-scale)); top: calc(402px * var(--shot-scale)); width: calc(205px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/stax/address_review/with_pairs/01.png" title="Open at full size">
-          <img src="../screens/stax/address_review/with_pairs/01.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Stax, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/address_review/with_pairs/01.png" title="Open at full size">
+            <img src="../screens/stax/address_review/with_pairs/01.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, With extra pairs, Stax, screen 2">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(92px * var(--shot-scale)); width: calc(350px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(132px * var(--shot-scale)); width: calc(330px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(172px * var(--shot-scale)); width: calc(68px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(24px * var(--shot-scale)); top: calc(224px * var(--shot-scale)); width: calc(93px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(24px * var(--shot-scale)); top: calc(260px * var(--shot-scale)); width: calc(205px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(175px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(24px * var(--shot-scale)); top: calc(348px * var(--shot-scale)); width: calc(235px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(200px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
-          <a href="../screens/stax/address_review/with_pairs/02.png" title="Open at full size">
-          <img src="../screens/stax/address_review/with_pairs/02.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseAddressReview, With extra pairs, Stax, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/address_review/with_pairs/02.png" title="Open at full size">
+            <img src="../screens/stax/address_review/with_pairs/02.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAddressReview, With extra pairs, Stax, screen 3">
+            </a>
+            <b class="hot sdk" style="left: calc(74px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(251px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T13:29:04+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T10:18:27+00:00</span>
+    <span>2026-09-23T13:29:04+00:00</span>
   </footer>
 </div>
 
@@ -470,10 +640,77 @@ pairList.wrapping = <span class="c-keyword">true</span>;
 </script>
 <script>
 (function () {
+    // The link between a value of the example and the places it is drawn.
+    // Every box carries the number of the value it holds, so lighting one up
+    // is a lookup rather than a search. Hover shows it, a click keeps it.
+    var byValue = new Map();
+    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+        var group = box.closest(".variant");
+        var key = group.id + "/" + box.dataset.lit;
+        if (!byValue.has(key)) { byValue.set(key, []); }
+        byValue.get(key).push(box);
+    });
+
+    var pinned = null;
+
+    function light(key) {
+        document.querySelectorAll(".hot.on").forEach(function (box) {
+            box.classList.remove("on");
+        });
+        document.querySelectorAll(".lit.on").forEach(function (span) {
+            span.classList.remove("on");
+        });
+        if (!key) { return; }
+        (byValue.get(key) || []).forEach(function (box) {
+            box.classList.add("on");
+        });
+        // The value is marked in the code too, so a literal written as
+        // several adjacent chunks lights up whole.
+        var group = key.slice(0, key.lastIndexOf("/"));
+        var value = key.slice(key.lastIndexOf("/") + 1);
+        document.querySelectorAll(
+            "#" + CSS.escape(group) + ' .lit[data-lit="' + value + '"]'
+        ).forEach(function (span) { span.classList.add("on"); });
+    }
+
+    function keyOf(span) {
+        return span.closest(".variant").id + "/" + span.dataset.lit;
+    }
+
+    document.querySelectorAll(".lit").forEach(function (span) {
+        span.addEventListener("mouseenter", function () {
+            if (!pinned) { light(keyOf(span)); }
+        });
+        span.addEventListener("mouseleave", function () {
+            if (!pinned) { light(null); }
+        });
+        span.addEventListener("click", function () {
+            var key = keyOf(span);
+            pinned = pinned === key ? null : key;
+            light(pinned || key);
+        });
+    });
+
+    // Telling apart what the example passed from what the SDK added.
+    var origin = document.querySelector(".tab.origin");
+    if (origin) {
+        origin.addEventListener("click", function () {
+            var on = origin.getAttribute("aria-pressed") !== "true";
+            origin.setAttribute("aria-pressed", on ? "true" : "false");
+            document.documentElement.classList.toggle("show-origin", on);
+        });
+    }
+}());
+
+(function () {
     // The product tabs. The page already opened on the right one, thanks to
     // the head script: this only follows the clicks and remembers the choice,
     // so the next use case page opens on the same product.
-    var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+    // Only the product tabs: the bar also holds the origin toggle, which
+    // wears the same class for the look but selects no product.
+    var tabs = Array.prototype.slice.call(
+        document.querySelectorAll(".tab[data-product]")
+    );
 
     function show(product) {
         document.documentElement.dataset.product = product;

@@ -75,6 +75,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       Stax
       <small>400&times;672</small>
     </button>
+    <button type="button" class="tab origin" aria-pressed="false"
+            title="Frame every text, saying which ones the example provides and which the SDK writes on its own">
+      What the app provides
+    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseAction</span>(<span class="c-keyword">const</span> <span class="c-type">nbgl_icon_details_t</span> *icon,
@@ -90,8 +94,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 
     <pre class="code"><code><span class="c-usecase">nbgl_useCaseAction</span>(&amp;<span class="c-const">LARGE_WARNING_ICON</span>,
-                   <span class="c-string">&quot;This app is not\ngenuine&quot;</span>,
-                   <span class="c-string">&quot;Update the app&quot;</span>,
+                   <span class="c-string lit" data-lit="0">&quot;This app is not\ngenuine&quot;</span>,
+                   <span class="c-string lit" data-lit="1">&quot;Update the app&quot;</span>,
                    catalog_on_quit);</code></pre>
 
     <div class="shot-rows compact">
@@ -101,12 +105,17 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/action/single/00.png" title="Open at full size">
-          <img src="../screens/flex/action/single/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseAction, One action, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/action/single/00.png" title="Open at full size">
+            <img src="../screens/flex/action/single/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseAction, One action, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(113px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(253px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(171px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(135px * var(--shot-scale)); top: calc(514px * var(--shot-scale)); width: calc(345px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -115,12 +124,17 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/action/single/00.png" title="Open at full size">
-          <img src="../screens/apex_p/action/single/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseAction, One action, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/action/single/00.png" title="Open at full size">
+            <img src="../screens/apex_p/action/single/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseAction, One action, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(67px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(166px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(103px * var(--shot-scale)); top: calc(188px * var(--shot-scale)); width: calc(93px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(81px * var(--shot-scale)); top: calc(345px * var(--shot-scale)); width: calc(219px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -129,24 +143,29 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/action/single/00.png" title="Open at full size">
-          <img src="../screens/stax/action/single/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseAction, One action, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/action/single/00.png" title="Open at full size">
+            <img src="../screens/stax/action/single/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseAction, One action, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(89px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(222px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(138px * var(--shot-scale)); top: calc(316px * var(--shot-scale)); width: calc(123px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(110px * var(--shot-scale)); top: calc(592px * var(--shot-scale)); width: calc(290px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T13:29:04+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T10:18:27+00:00</span>
+    <span>2026-09-23T13:29:04+00:00</span>
   </footer>
 </div>
 
@@ -177,10 +196,77 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 </script>
 <script>
 (function () {
+    // The link between a value of the example and the places it is drawn.
+    // Every box carries the number of the value it holds, so lighting one up
+    // is a lookup rather than a search. Hover shows it, a click keeps it.
+    var byValue = new Map();
+    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+        var group = box.closest(".variant");
+        var key = group.id + "/" + box.dataset.lit;
+        if (!byValue.has(key)) { byValue.set(key, []); }
+        byValue.get(key).push(box);
+    });
+
+    var pinned = null;
+
+    function light(key) {
+        document.querySelectorAll(".hot.on").forEach(function (box) {
+            box.classList.remove("on");
+        });
+        document.querySelectorAll(".lit.on").forEach(function (span) {
+            span.classList.remove("on");
+        });
+        if (!key) { return; }
+        (byValue.get(key) || []).forEach(function (box) {
+            box.classList.add("on");
+        });
+        // The value is marked in the code too, so a literal written as
+        // several adjacent chunks lights up whole.
+        var group = key.slice(0, key.lastIndexOf("/"));
+        var value = key.slice(key.lastIndexOf("/") + 1);
+        document.querySelectorAll(
+            "#" + CSS.escape(group) + ' .lit[data-lit="' + value + '"]'
+        ).forEach(function (span) { span.classList.add("on"); });
+    }
+
+    function keyOf(span) {
+        return span.closest(".variant").id + "/" + span.dataset.lit;
+    }
+
+    document.querySelectorAll(".lit").forEach(function (span) {
+        span.addEventListener("mouseenter", function () {
+            if (!pinned) { light(keyOf(span)); }
+        });
+        span.addEventListener("mouseleave", function () {
+            if (!pinned) { light(null); }
+        });
+        span.addEventListener("click", function () {
+            var key = keyOf(span);
+            pinned = pinned === key ? null : key;
+            light(pinned || key);
+        });
+    });
+
+    // Telling apart what the example passed from what the SDK added.
+    var origin = document.querySelector(".tab.origin");
+    if (origin) {
+        origin.addEventListener("click", function () {
+            var on = origin.getAttribute("aria-pressed") !== "true";
+            origin.setAttribute("aria-pressed", on ? "true" : "false");
+            document.documentElement.classList.toggle("show-origin", on);
+        });
+    }
+}());
+
+(function () {
     // The product tabs. The page already opened on the right one, thanks to
     // the head script: this only follows the clicks and remembers the choice,
     // so the next use case page opens on the same product.
-    var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+    // Only the product tabs: the bar also holds the origin toggle, which
+    // wears the same class for the look but selects no product.
+    var tabs = Array.prototype.slice.call(
+        document.querySelectorAll(".tab[data-product]")
+    );
 
     function show(product) {
         document.documentElement.dataset.product = product;

@@ -78,6 +78,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       Stax
       <small>400&times;672</small>
     </button>
+    <button type="button" class="tab origin" aria-pressed="false"
+            title="Frame every text, saying which ones the example provides and which the SDK writes on its own">
+      What the app provides
+    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseGenericReview</span>(<span class="c-keyword">const</span> <span class="c-type">nbgl_genericContents_t</span> *contents,
@@ -101,12 +105,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
-    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
-    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
-    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
-    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
-    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
-    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5">&quot;0.00012 BOL&quot;</span>;
 
     pairList.pairs = pairs;
     pairList.nbPairs = <span class="c-number">3</span>;
@@ -153,9 +157,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_contents[<span class="c-number">0</span>].content.tagValueList = pairList;
 
     generic_contents[<span class="c-number">1</span>].type = <span class="c-const">INFO_LONG_PRESS</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoLongPress.text = <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.text = <span class="c-string lit" data-lit="6">&quot;Sign transaction\nto send BOL?&quot;</span>;
     generic_contents[<span class="c-number">1</span>].content.infoLongPress.icon = &amp;<span class="c-const">CATALOG_ICON_APP</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressText = <span class="c-string">&quot;Hold to sign&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressText = <span class="c-string lit" data-lit="7">&quot;Hold to sign&quot;</span>;
     generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressToken = <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>;
     generic_contents[<span class="c-number">1</span>].contentActionCallback = uc_generic_review_action;
 
@@ -163,7 +167,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_review_contents.contentsList = generic_contents;
     generic_review_contents.nbContents = <span class="c-const">ARRAYLEN</span>(generic_contents);
 
-    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string">&quot;Reject&quot;</span>, catalog_on_quit);
+    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="8">&quot;Reject&quot;</span>, catalog_on_quit);
 }</code></pre>
 
     <div class="shot-rows">
@@ -173,26 +177,48 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/generic_review/plain/00.png" title="Open at full size">
-          <img src="../screens/flex/generic_review/plain/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/generic_review/plain/00.png" title="Open at full size">
+            <img src="../screens/flex/generic_review/plain/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(40px * var(--shot-scale)); width: calc(102px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(32px * var(--shot-scale)); top: calc(144px * var(--shot-scale)); width: calc(35px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(402px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(224px * var(--shot-scale)); width: calc(401px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(264px * var(--shot-scale)); width: calc(124px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(32px * var(--shot-scale)); top: calc(328px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(32px * var(--shot-scale)); top: calc(368px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/generic_review/plain/01.png" title="Open at full size">
-          <img src="../screens/flex/generic_review/plain/01.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Flex, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/generic_review/plain/01.png" title="Open at full size">
+            <img src="../screens/flex/generic_review/plain/01.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Flex, screen 2">
+            </a>
+            <b class="hot" data-lit="6" style="left: calc(99px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(282px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(124px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="7" style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/flex/generic_review/plain/02.png" title="Open at full size">
-          <img src="../screens/flex/generic_review/plain/02.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Flex, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/generic_review/plain/02.png" title="Open at full size">
+            <img src="../screens/flex/generic_review/plain/02.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Flex, screen 3">
+            </a>
+            <b class="hot sdk" style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -201,26 +227,48 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/generic_review/plain/00.png" title="Open at full size">
-          <img src="../screens/apex_p/generic_review/plain/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/generic_review/plain/00.png" title="Open at full size">
+            <img src="../screens/apex_p/generic_review/plain/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(68px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(133px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(16px * var(--shot-scale)); top: calc(94px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(268px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(148px * var(--shot-scale)); width: calc(268px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(176px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(16px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(43px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(16px * var(--shot-scale)); top: calc(246px * var(--shot-scale)); width: calc(151px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/generic_review/plain/01.png" title="Open at full size">
-          <img src="../screens/apex_p/generic_review/plain/01.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Apex P, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/generic_review/plain/01.png" title="Open at full size">
+            <img src="../screens/apex_p/generic_review/plain/01.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Apex P, screen 2">
+            </a>
+            <b class="hot" data-lit="6" style="left: calc(56px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(188px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(73px * var(--shot-scale)); top: calc(158px * var(--shot-scale)); width: calc(153px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="7" style="left: calc(16px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/apex_p/generic_review/plain/02.png" title="Open at full size">
-          <img src="../screens/apex_p/generic_review/plain/02.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Apex P, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/generic_review/plain/02.png" title="Open at full size">
+            <img src="../screens/apex_p/generic_review/plain/02.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Apex P, screen 3">
+            </a>
+            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -229,26 +277,48 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/generic_review/plain/00.png" title="Open at full size">
-          <img src="../screens/stax/generic_review/plain/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/generic_review/plain/00.png" title="Open at full size">
+            <img src="../screens/stax/generic_review/plain/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(88px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(24px * var(--shot-scale)); top: calc(92px * var(--shot-scale)); width: calc(178px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(24px * var(--shot-scale)); top: calc(144px * var(--shot-scale)); width: calc(29px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(338px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(338px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(260px * var(--shot-scale)); width: calc(149px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(24px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(55px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(24px * var(--shot-scale)); top: calc(348px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/stax/generic_review/plain/01.png" title="Open at full size">
-          <img src="../screens/stax/generic_review/plain/01.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Stax, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/generic_review/plain/01.png" title="Open at full size">
+            <img src="../screens/stax/generic_review/plain/01.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Stax, screen 2">
+            </a>
+            <b class="hot" data-lit="6" style="left: calc(76px * var(--shot-scale)); top: calc(230px * var(--shot-scale)); width: calc(248px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(98px * var(--shot-scale)); top: calc(270px * var(--shot-scale)); width: calc(203px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="7" style="left: calc(24px * var(--shot-scale)); top: calc(496px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/stax/generic_review/plain/02.png" title="Open at full size">
-          <img src="../screens/stax/generic_review/plain/02.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Stax, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/generic_review/plain/02.png" title="Open at full size">
+            <img src="../screens/stax/generic_review/plain/02.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Stax, screen 3">
+            </a>
+            <b class="hot sdk" style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
@@ -304,10 +374,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     <span class="c-comment">// draws the button on the last page of the list: a list that does not fit</span>
     <span class="c-comment">// on one page is shown as ordinary tag/value pages until that last one.</span>
     <span class="c-comment">// These two pairs fit on one page on every product.</span>
-    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
-    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
-    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
-    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0.00012 BOL&quot;</span>;
 
     pairList.pairs = pairs;
     pairList.nbPairs = <span class="c-number">2</span>;
@@ -317,7 +387,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
     generic_contents[<span class="c-number">0</span>].type = <span class="c-const">TAG_VALUE_CONFIRM</span>;
     generic_contents[<span class="c-number">0</span>].content.tagValueConfirm.tagValueList = pairList;
-    generic_contents[<span class="c-number">0</span>].content.tagValueConfirm.confirmationText = <span class="c-string">&quot;Sign transaction&quot;</span>;
+    generic_contents[<span class="c-number">0</span>].content.tagValueConfirm.confirmationText = <span class="c-string lit" data-lit="4">&quot;Sign transaction&quot;</span>;
     generic_contents[<span class="c-number">0</span>].content.tagValueConfirm.confirmationToken = <span class="c-const">GENERIC_CONFIRM_TOKEN</span>;
     <span class="c-comment">// cancelText / cancelToken are left unset on purpose: a generic content</span>
     <span class="c-comment">// page draws them from its navigation, so the footer is the rejectText</span>
@@ -329,7 +399,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_review_contents.contentsList = generic_contents;
     generic_review_contents.nbContents = <span class="c-number">1</span>;
 
-    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string">&quot;Reject&quot;</span>, catalog_on_quit);
+    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="5">&quot;Reject&quot;</span>, catalog_on_quit);
 }</code></pre>
 
     <div class="shot-rows">
@@ -339,19 +409,30 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/generic_review/tag_value_confirm/00.png" title="Open at full size">
-          <img src="../screens/flex/generic_review/tag_value_confirm/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/generic_review/tag_value_confirm/00.png" title="Open at full size">
+            <img src="../screens/flex/generic_review/tag_value_confirm/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(40px * var(--shot-scale)); width: calc(102px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(32px * var(--shot-scale)); top: calc(144px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(129px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(351px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(197px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Tap “Sign transaction”</span>
-          <a href="../screens/flex/generic_review/tag_value_confirm/01.png" title="Open at full size">
-          <img src="../screens/flex/generic_review/tag_value_confirm/01.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Flex, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/generic_review/tag_value_confirm/01.png" title="Open at full size">
+            <img src="../screens/flex/generic_review/tag_value_confirm/01.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Flex, screen 2">
+            </a>
+            <b class="hot sdk" style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -360,19 +441,30 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/generic_review/tag_value_confirm/00.png" title="Open at full size">
-          <img src="../screens/apex_p/generic_review/tag_value_confirm/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/generic_review/tag_value_confirm/00.png" title="Open at full size">
+            <img src="../screens/apex_p/generic_review/tag_value_confirm/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(68px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(133px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(16px * var(--shot-scale)); top: calc(94px * var(--shot-scale)); width: calc(43px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(151px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(75px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(225px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(120px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Tap “Sign transaction”</span>
-          <a href="../screens/apex_p/generic_review/tag_value_confirm/01.png" title="Open at full size">
-          <img src="../screens/apex_p/generic_review/tag_value_confirm/01.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Apex P, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/generic_review/tag_value_confirm/01.png" title="Open at full size">
+            <img src="../screens/apex_p/generic_review/tag_value_confirm/01.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Apex P, screen 2">
+            </a>
+            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -381,19 +473,30 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/generic_review/tag_value_confirm/00.png" title="Open at full size">
-          <img src="../screens/stax/generic_review/tag_value_confirm/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/generic_review/tag_value_confirm/00.png" title="Open at full size">
+            <img src="../screens/stax/generic_review/tag_value_confirm/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(88px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(24px * var(--shot-scale)); top: calc(92px * var(--shot-scale)); width: calc(178px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(24px * var(--shot-scale)); top: calc(144px * var(--shot-scale)); width: calc(55px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(104px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(296px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(163px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Tap “Sign transaction”</span>
-          <a href="../screens/stax/generic_review/tag_value_confirm/01.png" title="Open at full size">
-          <img src="../screens/stax/generic_review/tag_value_confirm/01.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Stax, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/generic_review/tag_value_confirm/01.png" title="Open at full size">
+            <img src="../screens/stax/generic_review/tag_value_confirm/01.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Stax, screen 2">
+            </a>
+            <b class="hot sdk" style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
@@ -415,12 +518,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
-    pairs[<span class="c-number">0</span>].item = <span class="c-string">&quot;Amount&quot;</span>;
-    pairs[<span class="c-number">0</span>].value = <span class="c-string">&quot;1.2345 BOL&quot;</span>;
-    pairs[<span class="c-number">1</span>].item = <span class="c-string">&quot;To&quot;</span>;
-    pairs[<span class="c-number">1</span>].value = <span class="c-string">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
-    pairs[<span class="c-number">2</span>].item = <span class="c-string">&quot;Fees&quot;</span>;
-    pairs[<span class="c-number">2</span>].value = <span class="c-string">&quot;0.00012 BOL&quot;</span>;
+    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5">&quot;0.00012 BOL&quot;</span>;
 
     pairList.pairs = pairs;
     pairList.nbPairs = <span class="c-number">3</span>;
@@ -467,9 +570,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_contents[<span class="c-number">0</span>].content.tagValueList = pairList;
 
     generic_contents[<span class="c-number">1</span>].type = <span class="c-const">INFO_BUTTON</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoButton.text = <span class="c-string">&quot;Confirm transaction\nto send BOL?&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoButton.text = <span class="c-string lit" data-lit="6">&quot;Confirm transaction\nto send BOL?&quot;</span>;
     generic_contents[<span class="c-number">1</span>].content.infoButton.icon = &amp;<span class="c-const">CATALOG_ICON_APP</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoButton.buttonText = <span class="c-string">&quot;Confirm transaction&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoButton.buttonText = <span class="c-string lit" data-lit="7">&quot;Confirm transaction&quot;</span>;
     generic_contents[<span class="c-number">1</span>].content.infoButton.buttonToken = <span class="c-const">GENERIC_BUTTON_TOKEN</span>;
     generic_contents[<span class="c-number">1</span>].contentActionCallback = uc_generic_review_action;
 
@@ -477,7 +580,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_review_contents.contentsList = generic_contents;
     generic_review_contents.nbContents = <span class="c-const">ARRAYLEN</span>(generic_contents);
 
-    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string">&quot;Reject&quot;</span>, catalog_on_quit);
+    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="8">&quot;Reject&quot;</span>, catalog_on_quit);
 }</code></pre>
 
     <div class="shot-rows">
@@ -487,19 +590,39 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/generic_review/info_button/00.png" title="Open at full size">
-          <img src="../screens/flex/generic_review/info_button/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, INFO_BUTTON, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/generic_review/info_button/00.png" title="Open at full size">
+            <img src="../screens/flex/generic_review/info_button/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, INFO_BUTTON, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(40px * var(--shot-scale)); width: calc(102px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(32px * var(--shot-scale)); top: calc(144px * var(--shot-scale)); width: calc(35px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(402px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(224px * var(--shot-scale)); width: calc(401px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(264px * var(--shot-scale)); width: calc(124px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(32px * var(--shot-scale)); top: calc(328px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(32px * var(--shot-scale)); top: calc(368px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/generic_review/info_button/01.png" title="Open at full size">
-          <img src="../screens/flex/generic_review/info_button/01.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, INFO_BUTTON, Flex, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/generic_review/info_button/01.png" title="Open at full size">
+            <img src="../screens/flex/generic_review/info_button/01.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, INFO_BUTTON, Flex, screen 2">
+            </a>
+            <b class="hot" data-lit="6" style="left: calc(68px * var(--shot-scale)); top: calc(188px * var(--shot-scale)); width: calc(344px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(124px * var(--shot-scale)); top: calc(228px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="7" style="left: calc(68px * var(--shot-scale)); top: calc(188px * var(--shot-scale)); width: calc(344px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="7" style="left: calc(105px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(375px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -508,19 +631,39 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/generic_review/info_button/00.png" title="Open at full size">
-          <img src="../screens/apex_p/generic_review/info_button/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, INFO_BUTTON, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/generic_review/info_button/00.png" title="Open at full size">
+            <img src="../screens/apex_p/generic_review/info_button/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, INFO_BUTTON, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(68px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(133px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(16px * var(--shot-scale)); top: calc(94px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(268px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(148px * var(--shot-scale)); width: calc(268px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(176px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(16px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(43px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(16px * var(--shot-scale)); top: calc(246px * var(--shot-scale)); width: calc(151px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/generic_review/info_button/01.png" title="Open at full size">
-          <img src="../screens/apex_p/generic_review/info_button/01.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, INFO_BUTTON, Apex P, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/generic_review/info_button/01.png" title="Open at full size">
+            <img src="../screens/apex_p/generic_review/info_button/01.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, INFO_BUTTON, Apex P, screen 2">
+            </a>
+            <b class="hot" data-lit="6" style="left: calc(35px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(230px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(73px * var(--shot-scale)); top: calc(158px * var(--shot-scale)); width: calc(153px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="7" style="left: calc(35px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(230px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="7" style="left: calc(58px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(242px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -529,19 +672,39 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/generic_review/info_button/00.png" title="Open at full size">
-          <img src="../screens/stax/generic_review/info_button/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, INFO_BUTTON, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/generic_review/info_button/00.png" title="Open at full size">
+            <img src="../screens/stax/generic_review/info_button/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, INFO_BUTTON, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(88px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(24px * var(--shot-scale)); top: calc(92px * var(--shot-scale)); width: calc(178px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(24px * var(--shot-scale)); top: calc(144px * var(--shot-scale)); width: calc(29px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(338px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(338px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(260px * var(--shot-scale)); width: calc(149px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(24px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(55px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(24px * var(--shot-scale)); top: calc(348px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/stax/generic_review/info_button/01.png" title="Open at full size">
-          <img src="../screens/stax/generic_review/info_button/01.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, INFO_BUTTON, Stax, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/generic_review/info_button/01.png" title="Open at full size">
+            <img src="../screens/stax/generic_review/info_button/01.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, INFO_BUTTON, Stax, screen 2">
+            </a>
+            <b class="hot" data-lit="6" style="left: calc(49px * var(--shot-scale)); top: calc(234px * var(--shot-scale)); width: calc(302px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(98px * var(--shot-scale)); top: calc(274px * var(--shot-scale)); width: calc(203px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="7" style="left: calc(49px * var(--shot-scale)); top: calc(234px * var(--shot-scale)); width: calc(302px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="7" style="left: calc(82px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(318px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="8" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
@@ -592,19 +755,19 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_contents[<span class="c-number">0</span>].type = <span class="c-const">EXTENDED_CENTER</span>;
     generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.icon = &amp;<span class="c-const">CATALOG_ICON_APP</span>;
     generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.title
-        = <span class="c-string">&quot;Review transaction\nto send BOL&quot;</span>;
+        = <span class="c-string lit" data-lit="0">&quot;Review transaction\nto send BOL&quot;</span>;
     generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.description
-        = <span class="c-string">&quot;You will be asked to sign it on the last page.&quot;</span>;
-    generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.subText = <span class="c-string">&quot;Fees: 0.00012 BOL&quot;</span>;
-    generic_contents[<span class="c-number">0</span>].content.extendedCenter.tipBox.text = <span class="c-string">&quot;Raw transaction data&quot;</span>;
+        = <span class="c-string lit" data-lit="1">&quot;You will be asked to sign it on the last page.&quot;</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.subText = <span class="c-string lit" data-lit="2">&quot;Fees: 0.00012 BOL&quot;</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.tipBox.text = <span class="c-string lit" data-lit="3">&quot;Raw transaction data&quot;</span>;
     generic_contents[<span class="c-number">0</span>].content.extendedCenter.tipBox.icon = &amp;<span class="c-const">SMALL_INFO_CIRCLE_ICON</span>;
     generic_contents[<span class="c-number">0</span>].content.extendedCenter.tipBox.token = <span class="c-const">GENERIC_TIP_BOX_TOKEN</span>;
     generic_contents[<span class="c-number">0</span>].contentActionCallback = uc_generic_review_action;
 
     generic_contents[<span class="c-number">1</span>].type = <span class="c-const">INFO_LONG_PRESS</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoLongPress.text = <span class="c-string">&quot;Sign transaction\nto send BOL?&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.text = <span class="c-string lit" data-lit="4">&quot;Sign transaction\nto send BOL?&quot;</span>;
     generic_contents[<span class="c-number">1</span>].content.infoLongPress.icon = &amp;<span class="c-const">CATALOG_ICON_APP</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressText = <span class="c-string">&quot;Hold to sign&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressText = <span class="c-string lit" data-lit="5">&quot;Hold to sign&quot;</span>;
     generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressToken = <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>;
     generic_contents[<span class="c-number">1</span>].contentActionCallback = uc_generic_review_action;
 
@@ -612,7 +775,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_review_contents.contentsList = generic_contents;
     generic_review_contents.nbContents = <span class="c-const">ARRAYLEN</span>(generic_contents);
 
-    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string">&quot;Reject&quot;</span>, catalog_on_quit);
+    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="6">&quot;Reject&quot;</span>, catalog_on_quit);
 }</code></pre>
 
     <div class="shot-rows">
@@ -622,26 +785,46 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <a href="../screens/flex/generic_review/extended_center/00.png" title="Open at full size">
-          <img src="../screens/flex/generic_review/extended_center/00.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Flex, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/generic_review/extended_center/00.png" title="Open at full size">
+            <img src="../screens/flex/generic_review/extended_center/00.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Flex, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(75px * var(--shot-scale)); top: calc(154px * var(--shot-scale)); width: calc(330px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(134px * var(--shot-scale)); top: calc(194px * var(--shot-scale)); width: calc(212px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(42px * var(--shot-scale)); top: calc(250px * var(--shot-scale)); width: calc(396px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(149px * var(--shot-scale)); top: calc(286px * var(--shot-scale)); width: calc(181px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(114px * var(--shot-scale)); top: calc(346px * var(--shot-scale)); width: calc(252px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(442px * var(--shot-scale)); width: calc(281px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/flex/generic_review/extended_center/01.png" title="Open at full size">
-          <img src="../screens/flex/generic_review/extended_center/01.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Flex, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/generic_review/extended_center/01.png" title="Open at full size">
+            <img src="../screens/flex/generic_review/extended_center/01.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Flex, screen 2">
+            </a>
+            <b class="hot" data-lit="4" style="left: calc(99px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(282px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(124px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/flex/generic_review/extended_center/02.png" title="Open at full size">
-          <img src="../screens/flex/generic_review/extended_center/02.png" width="480"
-               height="600" loading="lazy"
-               style="width: calc(480px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Flex, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/flex/generic_review/extended_center/02.png" title="Open at full size">
+            <img src="../screens/flex/generic_review/extended_center/02.png" width="480"
+                 height="600" loading="lazy"
+                 style="width: calc(480px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Flex, screen 3">
+            </a>
+            <b class="hot sdk" style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -650,26 +833,46 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <a href="../screens/apex_p/generic_review/extended_center/00.png" title="Open at full size">
-          <img src="../screens/apex_p/generic_review/extended_center/00.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Apex P, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/generic_review/extended_center/00.png" title="Open at full size">
+            <img src="../screens/apex_p/generic_review/extended_center/00.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Apex P, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(40px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(220px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(80px * var(--shot-scale)); top: calc(135px * var(--shot-scale)); width: calc(140px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(21px * var(--shot-scale)); top: calc(175px * var(--shot-scale)); width: calc(257px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(91px * var(--shot-scale)); top: calc(197px * var(--shot-scale)); width: calc(117px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(67px * var(--shot-scale)); top: calc(243px * var(--shot-scale)); width: calc(165px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(305px * var(--shot-scale)); width: calc(180px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/apex_p/generic_review/extended_center/01.png" title="Open at full size">
-          <img src="../screens/apex_p/generic_review/extended_center/01.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Apex P, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/generic_review/extended_center/01.png" title="Open at full size">
+            <img src="../screens/apex_p/generic_review/extended_center/01.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Apex P, screen 2">
+            </a>
+            <b class="hot" data-lit="4" style="left: calc(56px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(188px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(73px * var(--shot-scale)); top: calc(158px * var(--shot-scale)); width: calc(153px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(16px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/apex_p/generic_review/extended_center/02.png" title="Open at full size">
-          <img src="../screens/apex_p/generic_review/extended_center/02.png" width="300"
-               height="400" loading="lazy"
-               style="width: calc(300px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Apex P, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/apex_p/generic_review/extended_center/02.png" title="Open at full size">
+            <img src="../screens/apex_p/generic_review/extended_center/02.png" width="300"
+                 height="400" loading="lazy"
+                 style="width: calc(300px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Apex P, screen 3">
+            </a>
+            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -678,38 +881,58 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <a href="../screens/stax/generic_review/extended_center/00.png" title="Open at full size">
-          <img src="../screens/stax/generic_review/extended_center/00.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Stax, screen 1">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/generic_review/extended_center/00.png" title="Open at full size">
+            <img src="../screens/stax/generic_review/extended_center/00.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Stax, screen 1">
+            </a>
+            <b class="hot" data-lit="0" style="left: calc(54px * var(--shot-scale)); top: calc(198px * var(--shot-scale)); width: calc(291px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="0" style="left: calc(107px * var(--shot-scale)); top: calc(238px * var(--shot-scale)); width: calc(186px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(28px * var(--shot-scale)); top: calc(294px * var(--shot-scale)); width: calc(343px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="1" style="left: calc(121px * var(--shot-scale)); top: calc(326px * var(--shot-scale)); width: calc(158px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="2" style="left: calc(91px * var(--shot-scale)); top: calc(382px * var(--shot-scale)); width: calc(217px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(524px * var(--shot-scale)); width: calc(244px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Next page</span>
-          <a href="../screens/stax/generic_review/extended_center/01.png" title="Open at full size">
-          <img src="../screens/stax/generic_review/extended_center/01.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Stax, screen 2">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/generic_review/extended_center/01.png" title="Open at full size">
+            <img src="../screens/stax/generic_review/extended_center/01.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Stax, screen 2">
+            </a>
+            <b class="hot" data-lit="4" style="left: calc(76px * var(--shot-scale)); top: calc(230px * var(--shot-scale)); width: calc(248px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="4" style="left: calc(98px * var(--shot-scale)); top: calc(270px * var(--shot-scale)); width: calc(203px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="5" style="left: calc(24px * var(--shot-scale)); top: calc(496px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot" data-lit="6" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <a href="../screens/stax/generic_review/extended_center/02.png" title="Open at full size">
-          <img src="../screens/stax/generic_review/extended_center/02.png" width="400"
-               height="672" loading="lazy"
-               style="width: calc(400px * var(--shot-scale))"
-               alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Stax, screen 3">
-          </a>
+          <span class="shot">
+            <a href="../screens/stax/generic_review/extended_center/02.png" title="Open at full size">
+            <img src="../screens/stax/generic_review/extended_center/02.png" width="400"
+                 height="672" loading="lazy"
+                 style="width: calc(400px * var(--shot-scale))"
+                 alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Stax, screen 3">
+            </a>
+            <b class="hot sdk" style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T10:18:27+00:00.</p>
+  <p class="stamp">Generated 2026-09-23T13:29:04+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T10:18:27+00:00</span>
+    <span>2026-09-23T13:29:04+00:00</span>
   </footer>
 </div>
 
@@ -740,10 +963,77 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 </script>
 <script>
 (function () {
+    // The link between a value of the example and the places it is drawn.
+    // Every box carries the number of the value it holds, so lighting one up
+    // is a lookup rather than a search. Hover shows it, a click keeps it.
+    var byValue = new Map();
+    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+        var group = box.closest(".variant");
+        var key = group.id + "/" + box.dataset.lit;
+        if (!byValue.has(key)) { byValue.set(key, []); }
+        byValue.get(key).push(box);
+    });
+
+    var pinned = null;
+
+    function light(key) {
+        document.querySelectorAll(".hot.on").forEach(function (box) {
+            box.classList.remove("on");
+        });
+        document.querySelectorAll(".lit.on").forEach(function (span) {
+            span.classList.remove("on");
+        });
+        if (!key) { return; }
+        (byValue.get(key) || []).forEach(function (box) {
+            box.classList.add("on");
+        });
+        // The value is marked in the code too, so a literal written as
+        // several adjacent chunks lights up whole.
+        var group = key.slice(0, key.lastIndexOf("/"));
+        var value = key.slice(key.lastIndexOf("/") + 1);
+        document.querySelectorAll(
+            "#" + CSS.escape(group) + ' .lit[data-lit="' + value + '"]'
+        ).forEach(function (span) { span.classList.add("on"); });
+    }
+
+    function keyOf(span) {
+        return span.closest(".variant").id + "/" + span.dataset.lit;
+    }
+
+    document.querySelectorAll(".lit").forEach(function (span) {
+        span.addEventListener("mouseenter", function () {
+            if (!pinned) { light(keyOf(span)); }
+        });
+        span.addEventListener("mouseleave", function () {
+            if (!pinned) { light(null); }
+        });
+        span.addEventListener("click", function () {
+            var key = keyOf(span);
+            pinned = pinned === key ? null : key;
+            light(pinned || key);
+        });
+    });
+
+    // Telling apart what the example passed from what the SDK added.
+    var origin = document.querySelector(".tab.origin");
+    if (origin) {
+        origin.addEventListener("click", function () {
+            var on = origin.getAttribute("aria-pressed") !== "true";
+            origin.setAttribute("aria-pressed", on ? "true" : "false");
+            document.documentElement.classList.toggle("show-origin", on);
+        });
+    }
+}());
+
+(function () {
     // The product tabs. The page already opened on the right one, thanks to
     // the head script: this only follows the clicks and remembers the choice,
     // so the next use case page opens on the same product.
-    var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+    // Only the product tabs: the bar also holds the origin toggle, which
+    // wears the same class for the look but selects no product.
+    var tabs = Array.prototype.slice.call(
+        document.querySelectorAll(".tab[data-product]")
+    );
 
     function show(product) {
         document.documentElement.dataset.product = product;
