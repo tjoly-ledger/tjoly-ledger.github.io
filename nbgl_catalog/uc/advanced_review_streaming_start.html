@@ -586,7 +586,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       <span class="variant-tally">4 screens</span>
     </summary>
 
-<p class="variant-note">The flow stops after the first chunk: the app segfaults there with the current SDK. Every warning configuration of this use case but W3C_THREAT_DETECTED_WARN does, while the same configurations work on nbgl_useCaseAdvancedReview() and the plain streaming chain goes all the way through.</p>
+<p class="variant-note">Both chunks are drawn, then the app segfaults the moment the chain reaches nbgl_useCaseReviewStreamingFinish(). The same chain with W3C_THREAT_DETECTED_WARN, and the plain streaming chain, both reach the status page, so it is the advanced streaming path that cannot end.</p>
     <pre class="code"><code><span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
 <span class="c-keyword">static</span> <span class="c-type">nbgl_warning_t</span>             warning;
@@ -896,13 +896,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-23T14:51:00+00:00.</p>
+  <p class="stamp">Generated 2026-09-24T08:49:19+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-23T14:51:00+00:00</span>
+    <span>2026-09-24T08:49:19+00:00</span>
   </footer>
 </div>
 
@@ -945,6 +945,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         }
     );
 
+    /* What a click keeps lit once the pointer has gone. Hovering always
+       answers and wins while it lasts; leaving falls back to this. */
     var pinned = null;
 
     /* A value of the example and a consequence of it are two different
@@ -1010,12 +1012,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     // The other way round, now that the boxes are there: pointing at a text
     // on a screen says which value of the example wrote it.
     document.querySelectorAll(".hot[data-lit], .hot[data-cause]").forEach(function (box) {
-        box.addEventListener("mouseenter", function () {
-            if (!pinned) { light(keyOf(box)); }
-        });
-        box.addEventListener("mouseleave", function () {
-            if (!pinned) { light(null); }
-        });
+        box.addEventListener("mouseenter", function () { light(keyOf(box)); });
+        box.addEventListener("mouseleave", function () { light(pinned); });
         box.addEventListener("click", function (event) {
             // The picture underneath is a link to the full size one.
             event.preventDefault();
@@ -1027,12 +1025,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     });
 
     document.querySelectorAll(".lit, .cause").forEach(function (span) {
-        span.addEventListener("mouseenter", function () {
-            if (!pinned) { light(keyOf(span)); }
-        });
-        span.addEventListener("mouseleave", function () {
-            if (!pinned) { light(null); }
-        });
+        span.addEventListener("mouseenter", function () { light(keyOf(span)); });
+        span.addEventListener("mouseleave", function () { light(pinned); });
         span.addEventListener("click", function () {
             var key = keyOf(span);
             pinned = pinned === key ? null : key;
