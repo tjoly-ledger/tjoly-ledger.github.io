@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseAction &mdash; NBGL use cases</title>
 <meta name="description" content="A centered info page with a single action button.">
-<link rel="stylesheet" href="../plain.css?v=17b08587">
+<link rel="stylesheet" href="../plain.css?v=74a30021">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -93,9 +93,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 
-    <pre class="code"><code><span class="c-usecase">nbgl_useCaseAction</span>(&amp;<span class="c-const lit" data-icon="0">LARGE_WARNING_ICON</span>,
-                   <span class="c-string lit" data-lit="0">&quot;This app is not\ngenuine&quot;</span>,
-                   <span class="c-string lit" data-lit="1">&quot;Update the app&quot;</span>,
+    <pre class="code"><code><span class="c-usecase">nbgl_useCaseAction</span>(&amp;<span class="c-const lit" data-icon="0" data-line="nbgl_useCaseAction(&amp;LARGE_WARNING_ICON,">LARGE_WARNING_ICON</span>,
+                   <span class="c-string lit" data-lit="0" data-line="&quot;This app is not\ngenuine&quot;,">&quot;This app is not\ngenuine&quot;</span>,
+                   <span class="c-string lit" data-lit="1" data-line="&quot;Update the app&quot;,">&quot;Update the app&quot;</span>,
                    catalog_on_quit);</code></pre>
 
     <div class="shot-rows compact">
@@ -170,6 +170,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
   <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
+
+<span class="peek" hidden></span>
 
 <div class="viewer" hidden>
   <div class="viewer-stage"></div>
@@ -338,6 +340,41 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         return node;
     }
 
+    /* The line of code a box answers to, shown beside it. Placed against the
+       box rather than following the pointer, so it does not jitter, and
+       flipped above when there is no room below. */
+    var chip = document.querySelector(".peek");
+
+    function peek(box) {
+        if (!chip) { return; }
+        var key = keyOf(box).split("/");
+        var family = key[1] === "cause" ? "cause" : "lit";
+        var span = document.querySelector(
+            "#" + CSS.escape(key[0]) + " ." + family +
+            "[data-" + key[1] + '="' + key[2] + '"]'
+        );
+        var line = span && span.dataset.line;
+        if (!line) { return; }
+        chip.textContent = line;
+        chip.hidden = false;
+        var at = box.getBoundingClientRect();
+        var size = chip.getBoundingClientRect();
+        var top = at.bottom + 8;
+        if (top + size.height > innerHeight) { top = at.top - size.height - 8; }
+        // Never under the sticky bars: the top of the viewport is behind
+        // them, so a chip put there is a chip nobody reads.
+        var bars = document.querySelector(".tabs");
+        var ceiling = (bars ? bars.getBoundingClientRect().bottom : 0) + 4;
+        chip.style.top = Math.max(ceiling, top) + "px";
+        chip.style.left = Math.max(
+            4, Math.min(at.left, innerWidth - size.width - 8)
+        ) + "px";
+    }
+
+    function hidePeek() {
+        if (chip) { chip.hidden = true; }
+    }
+
     function firstVisible(nodes) {
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
@@ -374,8 +411,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     // The other way round, now that the boxes are there: pointing at a text
     // on a screen says which value of the example wrote it.
     document.querySelectorAll(".hot[data-lit], .hot[data-cause], .hot[data-icon]").forEach(function (box) {
-        box.addEventListener("mouseenter", function () { light(keyOf(box)); });
-        box.addEventListener("mouseleave", function () { light(pinned); });
+        box.addEventListener("mouseenter", function () {
+            light(keyOf(box));
+            peek(box);
+        });
+        box.addEventListener("mouseleave", function () {
+            light(pinned);
+            hidePeek();
+        });
         box.addEventListener("click", function (event) {
             // The picture underneath is a link to the full size one.
             event.preventDefault();

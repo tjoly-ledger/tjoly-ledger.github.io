@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseKeyboard &mdash; NBGL use cases</title>
 <meta name="description" content="A text entry page, with either a confirmation button or dynamic suggestion buttons.">
-<link rel="stylesheet" href="../plain.css?v=17b08587">
+<link rel="stylesheet" href="../plain.css?v=74a30021">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -108,13 +108,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-comment">// A confirmation button sits under the entry area; the keyboard starts in</span>
 <span class="c-comment">// letters mode and `casing` decides how the first letter is capitalised.</span>
 keyboard_params.type = <span class="c-const">KEYBOARD_WITH_BUTTON</span>;
-keyboard_params.title = <span class="c-string lit" data-lit="0">&quot;Enter the account name&quot;</span>;
+keyboard_params.title = <span class="c-string lit" data-lit="0" data-line="keyboard_params.title = &quot;Enter the account name&quot;;">&quot;Enter the account name&quot;</span>;
 keyboard_params.entryBuffer = entry_buffer;
 keyboard_params.entryMaxLen = <span class="c-const">ENTRY_MAX_LEN</span>;
 keyboard_params.mode = <span class="c-const">MODE_LETTERS</span>;
 keyboard_params.lettersOnly = <span class="c-keyword">false</span>;
 keyboard_params.casing = <span class="c-const">LOCKED_UPPER_CASE</span>;
-keyboard_params.confirmationParams.buttonText = <span class="c-string lit" data-lit="1">&quot;Confirm&quot;</span>;
+keyboard_params.confirmationParams.buttonText = <span class="c-string lit" data-lit="1" data-line="keyboard_params.confirmationParams.buttonText = &quot;Confirm&quot;;">&quot;Confirm&quot;</span>;
 keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
 
 <span class="c-usecase">nbgl_useCaseKeyboard</span>(&amp;keyboard_params, catalog_on_quit);</code></pre>
@@ -193,13 +193,13 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
 <span class="c-comment">// A confirmation button sits under the entry area; the keyboard starts in</span>
 <span class="c-comment">// letters mode and `casing` decides how the first letter is capitalised.</span>
 keyboard_params.type = <span class="c-const">KEYBOARD_WITH_BUTTON</span>;
-keyboard_params.title = <span class="c-string lit" data-lit="0">&quot;Enter the account name&quot;</span>;
+keyboard_params.title = <span class="c-string lit" data-lit="0" data-line="keyboard_params.title = &quot;Enter the account name&quot;;">&quot;Enter the account name&quot;</span>;
 keyboard_params.entryBuffer = entry_buffer;
 keyboard_params.entryMaxLen = <span class="c-const">ENTRY_MAX_LEN</span>;
 keyboard_params.mode = <span class="c-const">MODE_LETTERS</span>;
 keyboard_params.lettersOnly = <span class="c-keyword">false</span>;
 keyboard_params.casing = <span class="c-const">LOCKED_UPPER_CASE</span>;
-keyboard_params.confirmationParams.buttonText = <span class="c-string lit" data-lit="1">&quot;Confirm&quot;</span>;
+keyboard_params.confirmationParams.buttonText = <span class="c-string lit" data-lit="1" data-line="keyboard_params.confirmationParams.buttonText = &quot;Confirm&quot;;">&quot;Confirm&quot;</span>;
 keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
 
 <span class="c-usecase">nbgl_useCaseKeyboard</span>(&amp;keyboard_params, catalog_on_quit);</code></pre>
@@ -395,13 +395,13 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
 <span class="c-comment">// A confirmation button sits under the entry area; the keyboard starts in</span>
 <span class="c-comment">// letters mode and `casing` decides how the first letter is capitalised.</span>
 keyboard_params.type = <span class="c-const">KEYBOARD_WITH_BUTTON</span>;
-keyboard_params.title = <span class="c-string lit" data-lit="0">&quot;Enter the account name&quot;</span>;
+keyboard_params.title = <span class="c-string lit" data-lit="0" data-line="keyboard_params.title = &quot;Enter the account name&quot;;">&quot;Enter the account name&quot;</span>;
 keyboard_params.entryBuffer = entry_buffer;
 keyboard_params.entryMaxLen = <span class="c-const">ENTRY_MAX_LEN</span>;
 keyboard_params.mode = <span class="c-const">MODE_LETTERS</span>;
 keyboard_params.lettersOnly = <span class="c-keyword">false</span>;
 keyboard_params.casing = <span class="c-const">LOCKED_UPPER_CASE</span>;
-keyboard_params.confirmationParams.buttonText = <span class="c-string lit" data-lit="1">&quot;Confirm&quot;</span>;
+keyboard_params.confirmationParams.buttonText = <span class="c-string lit" data-lit="1" data-line="keyboard_params.confirmationParams.buttonText = &quot;Confirm&quot;;">&quot;Confirm&quot;</span>;
 keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
 
 <span class="c-usecase">nbgl_useCaseKeyboard</span>(&amp;keyboard_params, catalog_on_quit);</code></pre>
@@ -513,13 +513,13 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
 <span class="c-comment">// Suggestion buttons replace the confirmation button; the update callback</span>
 <span class="c-comment">// is called on every key press, to refresh them and to grey out the keys</span>
 <span class="c-comment">// that cannot lead to a word.</span>
-suggestions[<span class="c-number">0</span>] = <span class="c-string lit" data-lit="0">&quot;abandon&quot;</span>;
-suggestions[<span class="c-number">1</span>] = <span class="c-string lit" data-lit="1">&quot;ability&quot;</span>;
-suggestions[<span class="c-number">2</span>] = <span class="c-string lit" data-lit="2">&quot;able&quot;</span>;
-suggestions[<span class="c-number">3</span>] = <span class="c-string lit" data-lit="3">&quot;about&quot;</span>;
+suggestions[<span class="c-number">0</span>] = <span class="c-string lit" data-lit="0" data-line="suggestions[0] = &quot;abandon&quot;;">&quot;abandon&quot;</span>;
+suggestions[<span class="c-number">1</span>] = <span class="c-string lit" data-lit="1" data-line="suggestions[1] = &quot;ability&quot;;">&quot;ability&quot;</span>;
+suggestions[<span class="c-number">2</span>] = <span class="c-string lit" data-lit="2" data-line="suggestions[2] = &quot;able&quot;;">&quot;able&quot;</span>;
+suggestions[<span class="c-number">3</span>] = <span class="c-string lit" data-lit="3" data-line="suggestions[3] = &quot;about&quot;;">&quot;about&quot;</span>;
 
 keyboard_params.type = <span class="c-const">KEYBOARD_WITH_SUGGESTIONS</span>;
-keyboard_params.title = <span class="c-string lit" data-lit="4">&quot;Enter word no. 1&quot;</span>;
+keyboard_params.title = <span class="c-string lit" data-lit="4" data-line="keyboard_params.title = &quot;Enter word no. 1&quot;;">&quot;Enter word no. 1&quot;</span>;
 keyboard_params.entryBuffer = entry_buffer;
 keyboard_params.entryMaxLen = <span class="c-const">ENTRY_MAX_LEN</span>;
 keyboard_params.mode = <span class="c-const">MODE_LETTERS</span>;
@@ -613,13 +613,13 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
 <span class="c-comment">// Suggestion buttons replace the confirmation button; the update callback</span>
 <span class="c-comment">// is called on every key press, to refresh them and to grey out the keys</span>
 <span class="c-comment">// that cannot lead to a word.</span>
-suggestions[<span class="c-number">0</span>] = <span class="c-string lit" data-lit="0">&quot;abandon&quot;</span>;
-suggestions[<span class="c-number">1</span>] = <span class="c-string lit" data-lit="1">&quot;ability&quot;</span>;
-suggestions[<span class="c-number">2</span>] = <span class="c-string lit" data-lit="2">&quot;able&quot;</span>;
-suggestions[<span class="c-number">3</span>] = <span class="c-string lit" data-lit="3">&quot;about&quot;</span>;
+suggestions[<span class="c-number">0</span>] = <span class="c-string lit" data-lit="0" data-line="suggestions[0] = &quot;abandon&quot;;">&quot;abandon&quot;</span>;
+suggestions[<span class="c-number">1</span>] = <span class="c-string lit" data-lit="1" data-line="suggestions[1] = &quot;ability&quot;;">&quot;ability&quot;</span>;
+suggestions[<span class="c-number">2</span>] = <span class="c-string lit" data-lit="2" data-line="suggestions[2] = &quot;able&quot;;">&quot;able&quot;</span>;
+suggestions[<span class="c-number">3</span>] = <span class="c-string lit" data-lit="3" data-line="suggestions[3] = &quot;about&quot;;">&quot;about&quot;</span>;
 
 keyboard_params.type = <span class="c-const">KEYBOARD_WITH_SUGGESTIONS</span>;
-keyboard_params.title = <span class="c-string lit" data-lit="4">&quot;Enter word no. 1&quot;</span>;
+keyboard_params.title = <span class="c-string lit" data-lit="4" data-line="keyboard_params.title = &quot;Enter word no. 1&quot;;">&quot;Enter word no. 1&quot;</span>;
 keyboard_params.entryBuffer = entry_buffer;
 keyboard_params.entryMaxLen = <span class="c-const">ENTRY_MAX_LEN</span>;
 keyboard_params.mode = <span class="c-const">MODE_LETTERS</span>;
@@ -775,6 +775,8 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
 
   <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
+
+<span class="peek" hidden></span>
 
 <div class="viewer" hidden>
   <div class="viewer-stage"></div>
@@ -943,6 +945,41 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
         return node;
     }
 
+    /* The line of code a box answers to, shown beside it. Placed against the
+       box rather than following the pointer, so it does not jitter, and
+       flipped above when there is no room below. */
+    var chip = document.querySelector(".peek");
+
+    function peek(box) {
+        if (!chip) { return; }
+        var key = keyOf(box).split("/");
+        var family = key[1] === "cause" ? "cause" : "lit";
+        var span = document.querySelector(
+            "#" + CSS.escape(key[0]) + " ." + family +
+            "[data-" + key[1] + '="' + key[2] + '"]'
+        );
+        var line = span && span.dataset.line;
+        if (!line) { return; }
+        chip.textContent = line;
+        chip.hidden = false;
+        var at = box.getBoundingClientRect();
+        var size = chip.getBoundingClientRect();
+        var top = at.bottom + 8;
+        if (top + size.height > innerHeight) { top = at.top - size.height - 8; }
+        // Never under the sticky bars: the top of the viewport is behind
+        // them, so a chip put there is a chip nobody reads.
+        var bars = document.querySelector(".tabs");
+        var ceiling = (bars ? bars.getBoundingClientRect().bottom : 0) + 4;
+        chip.style.top = Math.max(ceiling, top) + "px";
+        chip.style.left = Math.max(
+            4, Math.min(at.left, innerWidth - size.width - 8)
+        ) + "px";
+    }
+
+    function hidePeek() {
+        if (chip) { chip.hidden = true; }
+    }
+
     function firstVisible(nodes) {
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
@@ -979,8 +1016,14 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
     // The other way round, now that the boxes are there: pointing at a text
     // on a screen says which value of the example wrote it.
     document.querySelectorAll(".hot[data-lit], .hot[data-cause], .hot[data-icon]").forEach(function (box) {
-        box.addEventListener("mouseenter", function () { light(keyOf(box)); });
-        box.addEventListener("mouseleave", function () { light(pinned); });
+        box.addEventListener("mouseenter", function () {
+            light(keyOf(box));
+            peek(box);
+        });
+        box.addEventListener("mouseleave", function () {
+            light(pinned);
+            hidePeek();
+        });
         box.addEventListener("click", function (event) {
             // The picture underneath is a link to the full size one.
             event.preventDefault();

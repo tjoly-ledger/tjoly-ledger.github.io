@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseGenericReview &mdash; NBGL use cases</title>
 <meta name="description" content="Any mix of content types paginated as a review, with a reject footer, when the predefined reviews do not fit.">
-<link rel="stylesheet" href="../plain.css?v=17b08587">
+<link rel="stylesheet" href="../plain.css?v=74a30021">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -105,12 +105,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
-    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
-    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
-    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;To&quot;</span>;
-    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
-    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4">&quot;Fees&quot;</span>;
-    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5">&quot;0.00012 BOL&quot;</span>;
+    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0" data-line="pairs[0].item = &quot;Amount&quot;;">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1" data-line="pairs[0].value = &quot;1.2345 BOL&quot;;">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2" data-line="pairs[1].item = &quot;To&quot;;">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3" data-line="pairs[1].value = &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;;">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4" data-line="pairs[2].item = &quot;Fees&quot;;">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5" data-line="pairs[2].value = &quot;0.00012 BOL&quot;;">&quot;0.00012 BOL&quot;</span>;
 
     pairList.pairs = pairs;
     pairList.nbPairs = <span class="c-number">3</span>;
@@ -138,7 +138,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_BUTTON_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_CONFIRM_TOKEN</span>:
-            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="1" data-line="nbgl_useCaseReviewStatus(STATUS_TYPE_TRANSACTION_SIGNED, catalog_on_quit);">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
             <span class="c-keyword">break</span>;
         <span class="c-keyword">default</span>:
             <span class="c-comment">// A tip-box is the app&#x27;s own: NBGL only reports the tap, so a</span>
@@ -157,9 +157,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_contents[<span class="c-number">0</span>].content.tagValueList = pairList;
 
     generic_contents[<span class="c-number">1</span>].type = <span class="c-const">INFO_LONG_PRESS</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoLongPress.text = <span class="c-string lit" data-lit="6">&quot;Sign transaction\nto send BOL?&quot;</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoLongPress.icon = &amp;<span class="c-const lit" data-icon="0">CATALOG_ICON_APP</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressText = <span class="c-string lit" data-lit="7">&quot;Hold to sign&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.text = <span class="c-string lit" data-lit="6" data-line="generic_contents[1].content.infoLongPress.text = &quot;Sign transaction\nto send BOL?&quot;;">&quot;Sign transaction\nto send BOL?&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.icon = &amp;<span class="c-const lit" data-icon="0" data-line="generic_contents[1].content.infoLongPress.icon = &amp;CATALOG_ICON_APP;">CATALOG_ICON_APP</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressText = <span class="c-string lit" data-lit="7" data-line="generic_contents[1].content.infoLongPress.longPressText = &quot;Hold to sign&quot;;">&quot;Hold to sign&quot;</span>;
     generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressToken = <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>;
     generic_contents[<span class="c-number">1</span>].contentActionCallback = uc_generic_review_action;
 
@@ -167,7 +167,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_review_contents.contentsList = generic_contents;
     generic_review_contents.nbContents = <span class="c-const">ARRAYLEN</span>(generic_contents);
 
-    <span class="c-usecase cause" data-cause="0">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="8">&quot;Reject&quot;</span>, catalog_on_quit);
+    <span class="c-usecase cause" data-cause="0" data-line="nbgl_useCaseGenericReview(&amp;generic_review_contents, &quot;Reject&quot;, catalog_on_quit);">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="8" data-line="nbgl_useCaseGenericReview(&amp;generic_review_contents, &quot;Reject&quot;, catalog_on_quit);">&quot;Reject&quot;</span>, catalog_on_quit);
 }</code></pre>
 
     <div class="shot-rows">
@@ -386,7 +386,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_BUTTON_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_CONFIRM_TOKEN</span>:
-            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="1" data-line="nbgl_useCaseReviewStatus(STATUS_TYPE_TRANSACTION_SIGNED, catalog_on_quit);">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
             <span class="c-keyword">break</span>;
         <span class="c-keyword">default</span>:
             <span class="c-comment">// A tip-box is the app&#x27;s own: NBGL only reports the tap, so a</span>
@@ -401,10 +401,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     <span class="c-comment">// draws the button on the last page of the list: a list that does not fit</span>
     <span class="c-comment">// on one page is shown as ordinary tag/value pages until that last one.</span>
     <span class="c-comment">// These two pairs fit on one page on every product.</span>
-    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
-    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
-    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;Fees&quot;</span>;
-    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0.00012 BOL&quot;</span>;
+    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0" data-line="pairs[0].item = &quot;Amount&quot;;">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1" data-line="pairs[0].value = &quot;1.2345 BOL&quot;;">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2" data-line="pairs[1].item = &quot;Fees&quot;;">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3" data-line="pairs[1].value = &quot;0.00012 BOL&quot;;">&quot;0.00012 BOL&quot;</span>;
 
     pairList.pairs = pairs;
     pairList.nbPairs = <span class="c-number">2</span>;
@@ -414,7 +414,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
     generic_contents[<span class="c-number">0</span>].type = <span class="c-const">TAG_VALUE_CONFIRM</span>;
     generic_contents[<span class="c-number">0</span>].content.tagValueConfirm.tagValueList = pairList;
-    generic_contents[<span class="c-number">0</span>].content.tagValueConfirm.confirmationText = <span class="c-string lit" data-lit="4">&quot;Sign transaction&quot;</span>;
+    generic_contents[<span class="c-number">0</span>].content.tagValueConfirm.confirmationText = <span class="c-string lit" data-lit="4" data-line="generic_contents[0].content.tagValueConfirm.confirmationText = &quot;Sign transaction&quot;;">&quot;Sign transaction&quot;</span>;
     generic_contents[<span class="c-number">0</span>].content.tagValueConfirm.confirmationToken = <span class="c-const">GENERIC_CONFIRM_TOKEN</span>;
     <span class="c-comment">// cancelText / cancelToken are left unset on purpose: a generic content</span>
     <span class="c-comment">// page draws them from its navigation, so the footer is the rejectText</span>
@@ -426,7 +426,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_review_contents.contentsList = generic_contents;
     generic_review_contents.nbContents = <span class="c-number">1</span>;
 
-    <span class="c-usecase cause" data-cause="0">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="5">&quot;Reject&quot;</span>, catalog_on_quit);
+    <span class="c-usecase cause" data-cause="0" data-line="nbgl_useCaseGenericReview(&amp;generic_review_contents, &quot;Reject&quot;, catalog_on_quit);">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="5" data-line="nbgl_useCaseGenericReview(&amp;generic_review_contents, &quot;Reject&quot;, catalog_on_quit);">&quot;Reject&quot;</span>, catalog_on_quit);
 }</code></pre>
 
     <div class="shot-rows">
@@ -551,12 +551,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
-    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
-    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
-    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;To&quot;</span>;
-    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
-    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4">&quot;Fees&quot;</span>;
-    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5">&quot;0.00012 BOL&quot;</span>;
+    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0" data-line="pairs[0].item = &quot;Amount&quot;;">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1" data-line="pairs[0].value = &quot;1.2345 BOL&quot;;">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2" data-line="pairs[1].item = &quot;To&quot;;">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3" data-line="pairs[1].value = &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;;">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4" data-line="pairs[2].item = &quot;Fees&quot;;">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5" data-line="pairs[2].value = &quot;0.00012 BOL&quot;;">&quot;0.00012 BOL&quot;</span>;
 
     pairList.pairs = pairs;
     pairList.nbPairs = <span class="c-number">3</span>;
@@ -584,7 +584,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_BUTTON_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_CONFIRM_TOKEN</span>:
-            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="1" data-line="nbgl_useCaseReviewStatus(STATUS_TYPE_TRANSACTION_SIGNED, catalog_on_quit);">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
             <span class="c-keyword">break</span>;
         <span class="c-keyword">default</span>:
             <span class="c-comment">// A tip-box is the app&#x27;s own: NBGL only reports the tap, so a</span>
@@ -603,9 +603,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_contents[<span class="c-number">0</span>].content.tagValueList = pairList;
 
     generic_contents[<span class="c-number">1</span>].type = <span class="c-const">INFO_BUTTON</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoButton.text = <span class="c-string lit" data-lit="6">&quot;Confirm transaction\nto send BOL?&quot;</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoButton.icon = &amp;<span class="c-const lit" data-icon="0">CATALOG_ICON_APP</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoButton.buttonText = <span class="c-string lit" data-lit="7">&quot;Confirm transaction&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoButton.text = <span class="c-string lit" data-lit="6" data-line="generic_contents[1].content.infoButton.text = &quot;Confirm transaction\nto send BOL?&quot;;">&quot;Confirm transaction\nto send BOL?&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoButton.icon = &amp;<span class="c-const lit" data-icon="0" data-line="generic_contents[1].content.infoButton.icon = &amp;CATALOG_ICON_APP;">CATALOG_ICON_APP</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoButton.buttonText = <span class="c-string lit" data-lit="7" data-line="generic_contents[1].content.infoButton.buttonText = &quot;Confirm transaction&quot;;">&quot;Confirm transaction&quot;</span>;
     generic_contents[<span class="c-number">1</span>].content.infoButton.buttonToken = <span class="c-const">GENERIC_BUTTON_TOKEN</span>;
     generic_contents[<span class="c-number">1</span>].contentActionCallback = uc_generic_review_action;
 
@@ -613,7 +613,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_review_contents.contentsList = generic_contents;
     generic_review_contents.nbContents = <span class="c-const">ARRAYLEN</span>(generic_contents);
 
-    <span class="c-usecase cause" data-cause="0">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="8">&quot;Reject&quot;</span>, catalog_on_quit);
+    <span class="c-usecase cause" data-cause="0" data-line="nbgl_useCaseGenericReview(&amp;generic_review_contents, &quot;Reject&quot;, catalog_on_quit);">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="8" data-line="nbgl_useCaseGenericReview(&amp;generic_review_contents, &quot;Reject&quot;, catalog_on_quit);">&quot;Reject&quot;</span>, catalog_on_quit);
 }</code></pre>
 
     <div class="shot-rows">
@@ -791,7 +791,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_BUTTON_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_CONFIRM_TOKEN</span>:
-            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="1" data-line="nbgl_useCaseReviewStatus(STATUS_TYPE_TRANSACTION_SIGNED, catalog_on_quit);">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
             <span class="c-keyword">break</span>;
         <span class="c-keyword">default</span>:
             <span class="c-comment">// A tip-box is the app&#x27;s own: NBGL only reports the tap, so a</span>
@@ -807,21 +807,21 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     memset(generic_contents, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(generic_contents));
 
     generic_contents[<span class="c-number">0</span>].type = <span class="c-const">EXTENDED_CENTER</span>;
-    generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.icon = &amp;<span class="c-const lit" data-icon="0">CATALOG_ICON_APP</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.icon = &amp;<span class="c-const lit" data-icon="0" data-line="generic_contents[0].content.extendedCenter.contentCenter.icon = &amp;CATALOG_ICON_APP;">CATALOG_ICON_APP</span>;
     generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.title
-        = <span class="c-string lit" data-lit="0">&quot;Review transaction\nto send BOL&quot;</span>;
+        = <span class="c-string lit" data-lit="0" data-line="= &quot;Review transaction\nto send BOL&quot;;">&quot;Review transaction\nto send BOL&quot;</span>;
     generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.description
-        = <span class="c-string lit" data-lit="1">&quot;You will be asked to sign it on the last page.&quot;</span>;
-    generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.subText = <span class="c-string lit" data-lit="2">&quot;Fees: 0.00012 BOL&quot;</span>;
-    generic_contents[<span class="c-number">0</span>].content.extendedCenter.tipBox.text = <span class="c-string lit" data-lit="3">&quot;Raw transaction data&quot;</span>;
-    generic_contents[<span class="c-number">0</span>].content.extendedCenter.tipBox.icon = &amp;<span class="c-const lit" data-icon="1">SMALL_INFO_CIRCLE_ICON</span>;
+        = <span class="c-string lit" data-lit="1" data-line="= &quot;You will be asked to sign it on the last page.&quot;;">&quot;You will be asked to sign it on the last page.&quot;</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.contentCenter.subText = <span class="c-string lit" data-lit="2" data-line="generic_contents[0].content.extendedCenter.contentCenter.subText = &quot;Fees: 0.00012 BOL&quot;;">&quot;Fees: 0.00012 BOL&quot;</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.tipBox.text = <span class="c-string lit" data-lit="3" data-line="generic_contents[0].content.extendedCenter.tipBox.text = &quot;Raw transaction data&quot;;">&quot;Raw transaction data&quot;</span>;
+    generic_contents[<span class="c-number">0</span>].content.extendedCenter.tipBox.icon = &amp;<span class="c-const lit" data-icon="1" data-line="generic_contents[0].content.extendedCenter.tipBox.icon = &amp;SMALL_INFO_CIRCLE_ICON;">SMALL_INFO_CIRCLE_ICON</span>;
     generic_contents[<span class="c-number">0</span>].content.extendedCenter.tipBox.token = <span class="c-const">GENERIC_TIP_BOX_TOKEN</span>;
     generic_contents[<span class="c-number">0</span>].contentActionCallback = uc_generic_review_action;
 
     generic_contents[<span class="c-number">1</span>].type = <span class="c-const">INFO_LONG_PRESS</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoLongPress.text = <span class="c-string lit" data-lit="4">&quot;Sign transaction\nto send BOL?&quot;</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoLongPress.icon = &amp;<span class="c-const lit" data-icon="0">CATALOG_ICON_APP</span>;
-    generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressText = <span class="c-string lit" data-lit="5">&quot;Hold to sign&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.text = <span class="c-string lit" data-lit="4" data-line="generic_contents[1].content.infoLongPress.text = &quot;Sign transaction\nto send BOL?&quot;;">&quot;Sign transaction\nto send BOL?&quot;</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.icon = &amp;<span class="c-const lit" data-icon="0" data-line="generic_contents[1].content.infoLongPress.icon = &amp;CATALOG_ICON_APP;">CATALOG_ICON_APP</span>;
+    generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressText = <span class="c-string lit" data-lit="5" data-line="generic_contents[1].content.infoLongPress.longPressText = &quot;Hold to sign&quot;;">&quot;Hold to sign&quot;</span>;
     generic_contents[<span class="c-number">1</span>].content.infoLongPress.longPressToken = <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>;
     generic_contents[<span class="c-number">1</span>].contentActionCallback = uc_generic_review_action;
 
@@ -829,7 +829,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_review_contents.contentsList = generic_contents;
     generic_review_contents.nbContents = <span class="c-const">ARRAYLEN</span>(generic_contents);
 
-    <span class="c-usecase cause" data-cause="0">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="6">&quot;Reject&quot;</span>, catalog_on_quit);
+    <span class="c-usecase cause" data-cause="0" data-line="nbgl_useCaseGenericReview(&amp;generic_review_contents, &quot;Reject&quot;, catalog_on_quit);">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="6" data-line="nbgl_useCaseGenericReview(&amp;generic_review_contents, &quot;Reject&quot;, catalog_on_quit);">&quot;Reject&quot;</span>, catalog_on_quit);
 }</code></pre>
 
     <div class="shot-rows">
@@ -1028,6 +1028,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
   <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
 
+<span class="peek" hidden></span>
+
 <div class="viewer" hidden>
   <div class="viewer-stage"></div>
   <div class="viewer-bar">
@@ -1195,6 +1197,41 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         return node;
     }
 
+    /* The line of code a box answers to, shown beside it. Placed against the
+       box rather than following the pointer, so it does not jitter, and
+       flipped above when there is no room below. */
+    var chip = document.querySelector(".peek");
+
+    function peek(box) {
+        if (!chip) { return; }
+        var key = keyOf(box).split("/");
+        var family = key[1] === "cause" ? "cause" : "lit";
+        var span = document.querySelector(
+            "#" + CSS.escape(key[0]) + " ." + family +
+            "[data-" + key[1] + '="' + key[2] + '"]'
+        );
+        var line = span && span.dataset.line;
+        if (!line) { return; }
+        chip.textContent = line;
+        chip.hidden = false;
+        var at = box.getBoundingClientRect();
+        var size = chip.getBoundingClientRect();
+        var top = at.bottom + 8;
+        if (top + size.height > innerHeight) { top = at.top - size.height - 8; }
+        // Never under the sticky bars: the top of the viewport is behind
+        // them, so a chip put there is a chip nobody reads.
+        var bars = document.querySelector(".tabs");
+        var ceiling = (bars ? bars.getBoundingClientRect().bottom : 0) + 4;
+        chip.style.top = Math.max(ceiling, top) + "px";
+        chip.style.left = Math.max(
+            4, Math.min(at.left, innerWidth - size.width - 8)
+        ) + "px";
+    }
+
+    function hidePeek() {
+        if (chip) { chip.hidden = true; }
+    }
+
     function firstVisible(nodes) {
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
@@ -1231,8 +1268,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     // The other way round, now that the boxes are there: pointing at a text
     // on a screen says which value of the example wrote it.
     document.querySelectorAll(".hot[data-lit], .hot[data-cause], .hot[data-icon]").forEach(function (box) {
-        box.addEventListener("mouseenter", function () { light(keyOf(box)); });
-        box.addEventListener("mouseleave", function () { light(pinned); });
+        box.addEventListener("mouseenter", function () {
+            light(keyOf(box));
+            peek(box);
+        });
+        box.addEventListener("mouseleave", function () {
+            light(pinned);
+            hidePeek();
+        });
         box.addEventListener("click", function (event) {
             // The picture underneath is a link to the full size one.
             event.preventDefault();

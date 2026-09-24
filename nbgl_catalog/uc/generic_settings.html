@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseGenericSettings &mdash; NBGL use cases</title>
 <meta name="description" content="The settings and info pages of nbgl_useCaseHomeAndSettings(), without the home page, for an app that draws its own.">
-<link rel="stylesheet" href="../plain.css?v=17b08587">
+<link rel="stylesheet" href="../plain.css?v=74a30021">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -101,8 +101,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-pp">#define FIRST_SWITCH_TOKEN FIRST_USER_TOKEN</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentSwitch_t</span>     switches[<span class="c-const">SWITCHES_NB</span>];
-<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span>        <span class="c-const">INFO_TYPES</span>[] = {<span class="c-string lit" data-lit="0">&quot;Version&quot;</span>, <span class="c-string lit" data-lit="1">&quot;Developer&quot;</span>};
-<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span>        <span class="c-const">INFO_CONTENTS</span>[] = {<span class="c-const">APPVERSION</span>, <span class="c-string lit" data-lit="2">&quot;Ledger&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span>        <span class="c-const">INFO_TYPES</span>[] = {<span class="c-string lit" data-lit="0" data-line="static const char *const        INFO_TYPES[] = {&quot;Version&quot;, &quot;Developer&quot;};">&quot;Version&quot;</span>, <span class="c-string lit" data-lit="1" data-line="static const char *const        INFO_TYPES[] = {&quot;Version&quot;, &quot;Developer&quot;};">&quot;Developer&quot;</span>};
+<span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span>        <span class="c-const">INFO_CONTENTS</span>[] = {<span class="c-const">APPVERSION</span>, <span class="c-string lit" data-lit="2" data-line="static const char *const        INFO_CONTENTS[] = {APPVERSION, &quot;Ledger&quot;};">&quot;Ledger&quot;</span>};
 <span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-type">nbgl_contentInfoList_t</span> info_list = {
     .nbInfos = <span class="c-const">ARRAYLEN</span>(<span class="c-const">INFO_TYPES</span>),
     .infoTypes = <span class="c-const">INFO_TYPES</span>,
@@ -131,13 +131,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> build_settings(<span class="c-keyword">void</span>) {
     memset(switches, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(switches));
 
-    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].text = <span class="c-string lit" data-lit="3">&quot;Blind signing&quot;</span>;
-    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].subText = <span class="c-string lit" data-lit="4">&quot;Allow transactions\nthat cannot be decoded&quot;</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].text = <span class="c-string lit" data-lit="3" data-line="switches[SWITCH_BLIND_SIGNING].text = &quot;Blind signing&quot;;">&quot;Blind signing&quot;</span>;
+    switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].subText = <span class="c-string lit" data-lit="4" data-line="switches[SWITCH_BLIND_SIGNING].subText = &quot;Allow transactions\nthat cannot be decoded&quot;;">&quot;Allow transactions\nthat cannot be decoded&quot;</span>;
     switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].initState = <span class="c-const">OFF_STATE</span>;
     switches[<span class="c-const">SWITCH_BLIND_SIGNING</span>].token = <span class="c-const">FIRST_SWITCH_TOKEN</span>;
 
-    switches[<span class="c-const">SWITCH_NONCE</span>].text = <span class="c-string lit" data-lit="5">&quot;Display nonce&quot;</span>;
-    switches[<span class="c-const">SWITCH_NONCE</span>].subText = <span class="c-string lit" data-lit="6">&quot;Show the nonce\nin transactions&quot;</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].text = <span class="c-string lit" data-lit="5" data-line="switches[SWITCH_NONCE].text = &quot;Display nonce&quot;;">&quot;Display nonce&quot;</span>;
+    switches[<span class="c-const">SWITCH_NONCE</span>].subText = <span class="c-string lit" data-lit="6" data-line="switches[SWITCH_NONCE].subText = &quot;Show the nonce\nin transactions&quot;;">&quot;Show the nonce\nin transactions&quot;</span>;
     switches[<span class="c-const">SWITCH_NONCE</span>].initState = <span class="c-const">ON_STATE</span>;
     switches[<span class="c-const">SWITCH_NONCE</span>].token = <span class="c-const">FIRST_SWITCH_TOKEN</span> + <span class="c-number">1</span>;
 
@@ -265,6 +265,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
   <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
+
+<span class="peek" hidden></span>
 
 <div class="viewer" hidden>
   <div class="viewer-stage"></div>
@@ -433,6 +435,41 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         return node;
     }
 
+    /* The line of code a box answers to, shown beside it. Placed against the
+       box rather than following the pointer, so it does not jitter, and
+       flipped above when there is no room below. */
+    var chip = document.querySelector(".peek");
+
+    function peek(box) {
+        if (!chip) { return; }
+        var key = keyOf(box).split("/");
+        var family = key[1] === "cause" ? "cause" : "lit";
+        var span = document.querySelector(
+            "#" + CSS.escape(key[0]) + " ." + family +
+            "[data-" + key[1] + '="' + key[2] + '"]'
+        );
+        var line = span && span.dataset.line;
+        if (!line) { return; }
+        chip.textContent = line;
+        chip.hidden = false;
+        var at = box.getBoundingClientRect();
+        var size = chip.getBoundingClientRect();
+        var top = at.bottom + 8;
+        if (top + size.height > innerHeight) { top = at.top - size.height - 8; }
+        // Never under the sticky bars: the top of the viewport is behind
+        // them, so a chip put there is a chip nobody reads.
+        var bars = document.querySelector(".tabs");
+        var ceiling = (bars ? bars.getBoundingClientRect().bottom : 0) + 4;
+        chip.style.top = Math.max(ceiling, top) + "px";
+        chip.style.left = Math.max(
+            4, Math.min(at.left, innerWidth - size.width - 8)
+        ) + "px";
+    }
+
+    function hidePeek() {
+        if (chip) { chip.hidden = true; }
+    }
+
     function firstVisible(nodes) {
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
@@ -469,8 +506,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     // The other way round, now that the boxes are there: pointing at a text
     // on a screen says which value of the example wrote it.
     document.querySelectorAll(".hot[data-lit], .hot[data-cause], .hot[data-icon]").forEach(function (box) {
-        box.addEventListener("mouseenter", function () { light(keyOf(box)); });
-        box.addEventListener("mouseleave", function () { light(pinned); });
+        box.addEventListener("mouseenter", function () {
+            light(keyOf(box));
+            peek(box);
+        });
+        box.addEventListener("mouseleave", function () {
+            light(pinned);
+            hidePeek();
+        });
         box.addEventListener("click", function (event) {
             // The picture underneath is a link to the full size one.
             event.preventDefault();

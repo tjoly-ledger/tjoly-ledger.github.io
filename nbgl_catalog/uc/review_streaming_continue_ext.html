@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseReviewStreamingContinueExt &mdash; NBGL use cases</title>
 <meta name="description" content="The same as Continue(), plus a Skip button whose callback is expected to jump straight to the signing page. Needs SKIPPABLE_OPERATION on the start.">
-<link rel="stylesheet" href="../plain.css?v=17b08587">
+<link rel="stylesheet" href="../plain.css?v=74a30021">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -113,15 +113,15 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     memset(&amp;pairList, <span class="c-number">0</span>, <span class="c-keyword">sizeof</span>(pairList));
 
     <span class="c-keyword">if</span> (index == <span class="c-number">0</span>) {
-        pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
-        pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
-        pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;To&quot;</span>;
-        pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+        pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0" data-line="pairs[0].item = &quot;Amount&quot;;">&quot;Amount&quot;</span>;
+        pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1" data-line="pairs[0].value = &quot;1.2345 BOL&quot;;">&quot;1.2345 BOL&quot;</span>;
+        pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2" data-line="pairs[1].item = &quot;To&quot;;">&quot;To&quot;</span>;
+        pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3" data-line="pairs[1].value = &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;;">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
     } <span class="c-keyword">else</span> {
-        pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="4">&quot;Memo&quot;</span>;
-        pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="5">&quot;Payment for invoice 2026-0142&quot;</span>;
-        pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="6">&quot;Fees&quot;</span>;
-        pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="7">&quot;0.00012 BOL&quot;</span>;
+        pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="4" data-line="pairs[0].item = &quot;Memo&quot;;">&quot;Memo&quot;</span>;
+        pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="5" data-line="pairs[0].value = &quot;Payment for invoice 2026-0142&quot;;">&quot;Payment for invoice 2026-0142&quot;</span>;
+        pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="6" data-line="pairs[1].item = &quot;Fees&quot;;">&quot;Fees&quot;</span>;
+        pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="7" data-line="pairs[1].value = &quot;0.00012 BOL&quot;;">&quot;0.00012 BOL&quot;</span>;
     }
 
     pairList.pairs = pairs;
@@ -142,7 +142,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
  */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> show_next_chunk(<span class="c-keyword">void</span>) {
     <span class="c-keyword">if</span> (chunk &gt;= <span class="c-const">NB_CHUNKS</span>) {
-        <span class="c-usecase cause" data-cause="3">nbgl_useCaseReviewStreamingFinish</span>(finish_title, on_finish);
+        <span class="c-usecase cause" data-cause="3" data-line="nbgl_useCaseReviewStreamingFinish(finish_title, on_finish);">nbgl_useCaseReviewStreamingFinish</span>(finish_title, on_finish);
         <span class="c-keyword">return</span>;
     }
 
@@ -152,9 +152,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     <span class="c-keyword">if</span> (skippable) {
         <span class="c-comment">// The Ext flavour adds a &quot;Skip&quot; button, whose callback is expected to</span>
         <span class="c-comment">// jump straight to the signing page.</span>
-        <span class="c-usecase cause" data-cause="2">nbgl_useCaseReviewStreamingContinueExt</span>(&amp;pairList, on_chunk, on_skip);
+        <span class="c-usecase cause" data-cause="2" data-line="nbgl_useCaseReviewStreamingContinueExt(&amp;pairList, on_chunk, on_skip);">nbgl_useCaseReviewStreamingContinueExt</span>(&amp;pairList, on_chunk, on_skip);
     } <span class="c-keyword">else</span> {
-        <span class="c-usecase cause" data-cause="1">nbgl_useCaseReviewStreamingContinue</span>(&amp;pairList, on_chunk);
+        <span class="c-usecase cause" data-cause="1" data-line="nbgl_useCaseReviewStreamingContinue(&amp;pairList, on_chunk);">nbgl_useCaseReviewStreamingContinue</span>(&amp;pairList, on_chunk);
     }
 }
 
@@ -177,13 +177,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     <span class="c-comment">// show_next_chunk() call ContinueExt() rather than Continue().</span>
     chunk = <span class="c-number">0</span>;
     skippable = <span class="c-keyword">true</span>;
-    finish_title = <span class="c-string lit" data-lit="8">&quot;Sign transaction\nto send BOL?&quot;</span>;
-    signed_status = <span class="c-const cause" data-cause="5">STATUS_TYPE_TRANSACTION_SIGNED</span>;
-    rejected_status = <span class="c-const cause" data-cause="6">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    finish_title = <span class="c-string lit" data-lit="8" data-line="finish_title = &quot;Sign transaction\nto send BOL?&quot;;">&quot;Sign transaction\nto send BOL?&quot;</span>;
+    signed_status = <span class="c-const cause" data-cause="5" data-line="signed_status = STATUS_TYPE_TRANSACTION_SIGNED;">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const cause" data-cause="6" data-line="rejected_status = STATUS_TYPE_TRANSACTION_REJECTED;">STATUS_TYPE_TRANSACTION_REJECTED</span>;
 
-    <span class="c-usecase cause" data-cause="0">nbgl_useCaseReviewStreamingStart</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const cause" data-cause="4">SKIPPABLE_OPERATION</span>,
-                                     &amp;<span class="c-const lit" data-icon="0">CATALOG_ICON_APP</span>,
-                                     <span class="c-string lit" data-lit="9">&quot;Review transaction\nto send BOL&quot;</span>,
+    <span class="c-usecase cause" data-cause="0" data-line="nbgl_useCaseReviewStreamingStart(TYPE_TRANSACTION | SKIPPABLE_OPERATION,">nbgl_useCaseReviewStreamingStart</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const cause" data-cause="4" data-line="nbgl_useCaseReviewStreamingStart(TYPE_TRANSACTION | SKIPPABLE_OPERATION,">SKIPPABLE_OPERATION</span>,
+                                     &amp;<span class="c-const lit" data-icon="0" data-line="&amp;CATALOG_ICON_APP,">CATALOG_ICON_APP</span>,
+                                     <span class="c-string lit" data-lit="9" data-line="&quot;Review transaction\nto send BOL&quot;,">&quot;Review transaction\nto send BOL&quot;</span>,
                                      <span class="c-const">NULL</span>,
                                      on_chunk);
 }</code></pre>
@@ -657,6 +657,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
   <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
 
+<span class="peek" hidden></span>
+
 <div class="viewer" hidden>
   <div class="viewer-stage"></div>
   <div class="viewer-bar">
@@ -824,6 +826,41 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         return node;
     }
 
+    /* The line of code a box answers to, shown beside it. Placed against the
+       box rather than following the pointer, so it does not jitter, and
+       flipped above when there is no room below. */
+    var chip = document.querySelector(".peek");
+
+    function peek(box) {
+        if (!chip) { return; }
+        var key = keyOf(box).split("/");
+        var family = key[1] === "cause" ? "cause" : "lit";
+        var span = document.querySelector(
+            "#" + CSS.escape(key[0]) + " ." + family +
+            "[data-" + key[1] + '="' + key[2] + '"]'
+        );
+        var line = span && span.dataset.line;
+        if (!line) { return; }
+        chip.textContent = line;
+        chip.hidden = false;
+        var at = box.getBoundingClientRect();
+        var size = chip.getBoundingClientRect();
+        var top = at.bottom + 8;
+        if (top + size.height > innerHeight) { top = at.top - size.height - 8; }
+        // Never under the sticky bars: the top of the viewport is behind
+        // them, so a chip put there is a chip nobody reads.
+        var bars = document.querySelector(".tabs");
+        var ceiling = (bars ? bars.getBoundingClientRect().bottom : 0) + 4;
+        chip.style.top = Math.max(ceiling, top) + "px";
+        chip.style.left = Math.max(
+            4, Math.min(at.left, innerWidth - size.width - 8)
+        ) + "px";
+    }
+
+    function hidePeek() {
+        if (chip) { chip.hidden = true; }
+    }
+
     function firstVisible(nodes) {
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
@@ -860,8 +897,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     // The other way round, now that the boxes are there: pointing at a text
     // on a screen says which value of the example wrote it.
     document.querySelectorAll(".hot[data-lit], .hot[data-cause], .hot[data-icon]").forEach(function (box) {
-        box.addEventListener("mouseenter", function () { light(keyOf(box)); });
-        box.addEventListener("mouseleave", function () { light(pinned); });
+        box.addEventListener("mouseenter", function () {
+            light(keyOf(box));
+            peek(box);
+        });
+        box.addEventListener("mouseleave", function () {
+            light(pinned);
+            hidePeek();
+        });
         box.addEventListener("click", function (event) {
             // The picture underneath is a link to the full size one.
             event.preventDefault();

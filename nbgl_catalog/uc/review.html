@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseReview &mdash; NBGL use cases</title>
 <meta name="description" content="Full review of an operation whose tag/value pairs are all known upfront: a cover page, as many auto-paginated pair pages as needed, then a long-press page to sign.">
-<link rel="stylesheet" href="../plain.css?v=17b08587">
+<link rel="stylesheet" href="../plain.css?v=74a30021">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -111,12 +111,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
-    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
-    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
-    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;To&quot;</span>;
-    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
-    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4">&quot;Fees&quot;</span>;
-    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5">&quot;0.00012 BOL&quot;</span>;
+    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0" data-line="pairs[0].item = &quot;Amount&quot;;">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1" data-line="pairs[0].value = &quot;1.2345 BOL&quot;;">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2" data-line="pairs[1].item = &quot;To&quot;;">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3" data-line="pairs[1].value = &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;;">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4" data-line="pairs[2].item = &quot;Fees&quot;;">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5" data-line="pairs[2].value = &quot;0.00012 BOL&quot;;">&quot;0.00012 BOL&quot;</span>;
 
     pairList.pairs = pairs;
     pairList.nbPairs = <span class="c-number">3</span>;
@@ -130,15 +130,15 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_transaction(<span class="c-keyword">void</span>) {
     fill_transfer_pairs();
-    signed_status = <span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>;
-    rejected_status = <span class="c-const cause" data-cause="2">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    signed_status = <span class="c-const cause" data-cause="1" data-line="signed_status = STATUS_TYPE_TRANSACTION_SIGNED;">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const cause" data-cause="2" data-line="rejected_status = STATUS_TYPE_TRANSACTION_REJECTED;">STATUS_TYPE_TRANSACTION_REJECTED</span>;
 
-    <span class="c-usecase cause" data-cause="0">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+    <span class="c-usecase cause" data-cause="0" data-line="nbgl_useCaseReview(TYPE_TRANSACTION,">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
                        &amp;pairList,
-                       &amp;<span class="c-const lit" data-icon="0">CATALOG_ICON_APP</span>,
-                       <span class="c-string lit" data-lit="6">&quot;Review transaction\nto send BOL&quot;</span>,
+                       &amp;<span class="c-const lit" data-icon="0" data-line="&amp;CATALOG_ICON_APP,">CATALOG_ICON_APP</span>,
+                       <span class="c-string lit" data-lit="6" data-line="&quot;Review transaction\nto send BOL&quot;,">&quot;Review transaction\nto send BOL&quot;</span>,
                        <span class="c-const">NULL</span>,
-                       <span class="c-string lit" data-lit="7">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       <span class="c-string lit" data-lit="7" data-line="&quot;Sign transaction\nto send BOL?&quot;,">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_review_choice);
 }</code></pre>
 
@@ -426,12 +426,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
-    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
-    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
-    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;To&quot;</span>;
-    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
-    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4">&quot;Fees&quot;</span>;
-    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5">&quot;0.00012 BOL&quot;</span>;
+    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0" data-line="pairs[0].item = &quot;Amount&quot;;">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1" data-line="pairs[0].value = &quot;1.2345 BOL&quot;;">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2" data-line="pairs[1].item = &quot;To&quot;;">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3" data-line="pairs[1].value = &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;;">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4" data-line="pairs[2].item = &quot;Fees&quot;;">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5" data-line="pairs[2].value = &quot;0.00012 BOL&quot;;">&quot;0.00012 BOL&quot;</span>;
 
     pairList.pairs = pairs;
     pairList.nbPairs = <span class="c-number">3</span>;
@@ -445,15 +445,15 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_transaction(<span class="c-keyword">void</span>) {
     fill_transfer_pairs();
-    signed_status = <span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>;
-    rejected_status = <span class="c-const cause" data-cause="2">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    signed_status = <span class="c-const cause" data-cause="1" data-line="signed_status = STATUS_TYPE_TRANSACTION_SIGNED;">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const cause" data-cause="2" data-line="rejected_status = STATUS_TYPE_TRANSACTION_REJECTED;">STATUS_TYPE_TRANSACTION_REJECTED</span>;
 
-    <span class="c-usecase cause" data-cause="0">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+    <span class="c-usecase cause" data-cause="0" data-line="nbgl_useCaseReview(TYPE_TRANSACTION,">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span>,
                        &amp;pairList,
-                       &amp;<span class="c-const lit" data-icon="0">CATALOG_ICON_APP</span>,
-                       <span class="c-string lit" data-lit="6">&quot;Review transaction\nto send BOL&quot;</span>,
+                       &amp;<span class="c-const lit" data-icon="0" data-line="&amp;CATALOG_ICON_APP,">CATALOG_ICON_APP</span>,
+                       <span class="c-string lit" data-lit="6" data-line="&quot;Review transaction\nto send BOL&quot;,">&quot;Review transaction\nto send BOL&quot;</span>,
                        <span class="c-const">NULL</span>,
-                       <span class="c-string lit" data-lit="7">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       <span class="c-string lit" data-lit="7" data-line="&quot;Sign transaction\nto send BOL?&quot;,">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_review_choice);
 }</code></pre>
 
@@ -634,24 +634,24 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 }</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_message(<span class="c-keyword">void</span>) {
-    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Message&quot;</span>;
-    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;Sign in to Ledger Boilerplate&quot;</span>;
-    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;Domain&quot;</span>;
-    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;boilerplate.ledger.com&quot;</span>;
+    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0" data-line="pairs[0].item = &quot;Message&quot;;">&quot;Message&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1" data-line="pairs[0].value = &quot;Sign in to Ledger Boilerplate&quot;;">&quot;Sign in to Ledger Boilerplate&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2" data-line="pairs[1].item = &quot;Domain&quot;;">&quot;Domain&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3" data-line="pairs[1].value = &quot;boilerplate.ledger.com&quot;;">&quot;boilerplate.ledger.com&quot;</span>;
 
     pairList.pairs = pairs;
     pairList.nbPairs = <span class="c-number">2</span>;
     pairList.wrapping = <span class="c-keyword">true</span>;
 
-    signed_status = <span class="c-const cause" data-cause="1">STATUS_TYPE_MESSAGE_SIGNED</span>;
-    rejected_status = <span class="c-const cause" data-cause="2">STATUS_TYPE_MESSAGE_REJECTED</span>;
+    signed_status = <span class="c-const cause" data-cause="1" data-line="signed_status = STATUS_TYPE_MESSAGE_SIGNED;">STATUS_TYPE_MESSAGE_SIGNED</span>;
+    rejected_status = <span class="c-const cause" data-cause="2" data-line="rejected_status = STATUS_TYPE_MESSAGE_REJECTED;">STATUS_TYPE_MESSAGE_REJECTED</span>;
 
-    <span class="c-usecase cause" data-cause="0">nbgl_useCaseReview</span>(<span class="c-const">TYPE_MESSAGE</span>,
+    <span class="c-usecase cause" data-cause="0" data-line="nbgl_useCaseReview(TYPE_MESSAGE,">nbgl_useCaseReview</span>(<span class="c-const">TYPE_MESSAGE</span>,
                        &amp;pairList,
-                       &amp;<span class="c-const lit" data-icon="0">CATALOG_ICON_APP</span>,
-                       <span class="c-string lit" data-lit="4">&quot;Review message&quot;</span>,
+                       &amp;<span class="c-const lit" data-icon="0" data-line="&amp;CATALOG_ICON_APP,">CATALOG_ICON_APP</span>,
+                       <span class="c-string lit" data-lit="4" data-line="&quot;Review message&quot;,">&quot;Review message&quot;</span>,
                        <span class="c-const">NULL</span>,
-                       <span class="c-string lit" data-lit="5">&quot;Sign message?&quot;</span>,
+                       <span class="c-string lit" data-lit="5" data-line="&quot;Sign message?&quot;,">&quot;Sign message?&quot;</span>,
                        uc_review_choice);
 }</code></pre>
 
@@ -918,12 +918,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
-    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
-    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
-    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;To&quot;</span>;
-    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
-    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4">&quot;Fees&quot;</span>;
-    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5">&quot;0.00012 BOL&quot;</span>;
+    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0" data-line="pairs[0].item = &quot;Amount&quot;;">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1" data-line="pairs[0].value = &quot;1.2345 BOL&quot;;">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2" data-line="pairs[1].item = &quot;To&quot;;">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3" data-line="pairs[1].value = &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;;">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4" data-line="pairs[2].item = &quot;Fees&quot;;">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5" data-line="pairs[2].value = &quot;0.00012 BOL&quot;;">&quot;0.00012 BOL&quot;</span>;
 
     pairList.pairs = pairs;
     pairList.nbPairs = <span class="c-number">3</span>;
@@ -937,17 +937,17 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_operation(<span class="c-keyword">void</span>) {
     fill_transfer_pairs();
-    signed_status = <span class="c-const cause" data-cause="1">STATUS_TYPE_OPERATION_SIGNED</span>;
-    rejected_status = <span class="c-const cause" data-cause="2">STATUS_TYPE_OPERATION_REJECTED</span>;
+    signed_status = <span class="c-const cause" data-cause="1" data-line="signed_status = STATUS_TYPE_OPERATION_SIGNED;">STATUS_TYPE_OPERATION_SIGNED</span>;
+    rejected_status = <span class="c-const cause" data-cause="2" data-line="rejected_status = STATUS_TYPE_OPERATION_REJECTED;">STATUS_TYPE_OPERATION_REJECTED</span>;
 
     <span class="c-comment">// TYPE_OPERATION is the generic base type, for anything that is neither a</span>
     <span class="c-comment">// coin transfer nor a message.</span>
-    <span class="c-usecase cause" data-cause="0">nbgl_useCaseReview</span>(<span class="c-const">TYPE_OPERATION</span>,
+    <span class="c-usecase cause" data-cause="0" data-line="nbgl_useCaseReview(TYPE_OPERATION,">nbgl_useCaseReview</span>(<span class="c-const">TYPE_OPERATION</span>,
                        &amp;pairList,
-                       &amp;<span class="c-const lit" data-icon="0">CATALOG_ICON_APP</span>,
-                       <span class="c-string lit" data-lit="6">&quot;Review operation&quot;</span>,
+                       &amp;<span class="c-const lit" data-icon="0" data-line="&amp;CATALOG_ICON_APP,">CATALOG_ICON_APP</span>,
+                       <span class="c-string lit" data-lit="6" data-line="&quot;Review operation&quot;,">&quot;Review operation&quot;</span>,
                        <span class="c-const">NULL</span>,
-                       <span class="c-string lit" data-lit="7">&quot;Sign operation?&quot;</span>,
+                       <span class="c-string lit" data-lit="7" data-line="&quot;Sign operation?&quot;,">&quot;Sign operation?&quot;</span>,
                        uc_review_choice);
 }</code></pre>
 
@@ -1235,28 +1235,28 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_skippable(<span class="c-keyword">void</span>) {
     <span class="c-comment">// SKIPPABLE_OPERATION only shows its &quot;Skip&quot; button when the review spans</span>
     <span class="c-comment">// several pages, so that the user can jump straight to the signing page.</span>
-    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
-    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
-    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;To&quot;</span>;
-    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
-    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4">&quot;Memo&quot;</span>;
-    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5">&quot;Payment for invoice 2026-0142, thanks for your business&quot;</span>;
-    pairs[<span class="c-number">3</span>].item = <span class="c-string lit" data-lit="6">&quot;Fees&quot;</span>;
-    pairs[<span class="c-number">3</span>].value = <span class="c-string lit" data-lit="7">&quot;0.00012 BOL&quot;</span>;
+    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0" data-line="pairs[0].item = &quot;Amount&quot;;">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1" data-line="pairs[0].value = &quot;1.2345 BOL&quot;;">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2" data-line="pairs[1].item = &quot;To&quot;;">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3" data-line="pairs[1].value = &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;;">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4" data-line="pairs[2].item = &quot;Memo&quot;;">&quot;Memo&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5" data-line="pairs[2].value = &quot;Payment for invoice 2026-0142, thanks for your business&quot;;">&quot;Payment for invoice 2026-0142, thanks for your business&quot;</span>;
+    pairs[<span class="c-number">3</span>].item = <span class="c-string lit" data-lit="6" data-line="pairs[3].item = &quot;Fees&quot;;">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">3</span>].value = <span class="c-string lit" data-lit="7" data-line="pairs[3].value = &quot;0.00012 BOL&quot;;">&quot;0.00012 BOL&quot;</span>;
 
     pairList.pairs = pairs;
     pairList.nbPairs = <span class="c-number">4</span>;
     pairList.wrapping = <span class="c-keyword">true</span>;
 
-    signed_status = <span class="c-const cause" data-cause="2">STATUS_TYPE_TRANSACTION_SIGNED</span>;
-    rejected_status = <span class="c-const cause" data-cause="3">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    signed_status = <span class="c-const cause" data-cause="2" data-line="signed_status = STATUS_TYPE_TRANSACTION_SIGNED;">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const cause" data-cause="3" data-line="rejected_status = STATUS_TYPE_TRANSACTION_REJECTED;">STATUS_TYPE_TRANSACTION_REJECTED</span>;
 
-    <span class="c-usecase cause" data-cause="0">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const cause" data-cause="1">SKIPPABLE_OPERATION</span>,
+    <span class="c-usecase cause" data-cause="0" data-line="nbgl_useCaseReview(TYPE_TRANSACTION | SKIPPABLE_OPERATION,">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const cause" data-cause="1" data-line="nbgl_useCaseReview(TYPE_TRANSACTION | SKIPPABLE_OPERATION,">SKIPPABLE_OPERATION</span>,
                        &amp;pairList,
-                       &amp;<span class="c-const lit" data-icon="0">CATALOG_ICON_APP</span>,
-                       <span class="c-string lit" data-lit="8">&quot;Review transaction\nto send BOL&quot;</span>,
+                       &amp;<span class="c-const lit" data-icon="0" data-line="&amp;CATALOG_ICON_APP,">CATALOG_ICON_APP</span>,
+                       <span class="c-string lit" data-lit="8" data-line="&quot;Review transaction\nto send BOL&quot;,">&quot;Review transaction\nto send BOL&quot;</span>,
                        <span class="c-const">NULL</span>,
-                       <span class="c-string lit" data-lit="9">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       <span class="c-string lit" data-lit="9" data-line="&quot;Sign transaction\nto send BOL?&quot;,">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_review_choice);
 }</code></pre>
 
@@ -1619,12 +1619,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
-    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Amount&quot;</span>;
-    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1">&quot;1.2345 BOL&quot;</span>;
-    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2">&quot;To&quot;</span>;
-    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
-    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4">&quot;Fees&quot;</span>;
-    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5">&quot;0.00012 BOL&quot;</span>;
+    pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0" data-line="pairs[0].item = &quot;Amount&quot;;">&quot;Amount&quot;</span>;
+    pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="1" data-line="pairs[0].value = &quot;1.2345 BOL&quot;;">&quot;1.2345 BOL&quot;</span>;
+    pairs[<span class="c-number">1</span>].item = <span class="c-string lit" data-lit="2" data-line="pairs[1].item = &quot;To&quot;;">&quot;To&quot;</span>;
+    pairs[<span class="c-number">1</span>].value = <span class="c-string lit" data-lit="3" data-line="pairs[1].value = &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;;">&quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>;
+    pairs[<span class="c-number">2</span>].item = <span class="c-string lit" data-lit="4" data-line="pairs[2].item = &quot;Fees&quot;;">&quot;Fees&quot;</span>;
+    pairs[<span class="c-number">2</span>].value = <span class="c-string lit" data-lit="5" data-line="pairs[2].value = &quot;0.00012 BOL&quot;;">&quot;0.00012 BOL&quot;</span>;
 
     pairList.pairs = pairs;
     pairList.nbPairs = <span class="c-number">3</span>;
@@ -1638,16 +1638,16 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_address_book(<span class="c-keyword">void</span>) {
     fill_transfer_pairs();
-    signed_status = <span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>;
-    rejected_status = <span class="c-const cause" data-cause="2">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    signed_status = <span class="c-const cause" data-cause="1" data-line="signed_status = STATUS_TYPE_TRANSACTION_SIGNED;">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const cause" data-cause="2" data-line="rejected_status = STATUS_TYPE_TRANSACTION_REJECTED;">STATUS_TYPE_TRANSACTION_REJECTED</span>;
 
     <span class="c-comment">// ADDRESS_BOOK_OPERATION adapts the wordings to an Address Book entry.</span>
-    <span class="c-usecase cause" data-cause="0">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">ADDRESS_BOOK_OPERATION</span>,
+    <span class="c-usecase cause" data-cause="0" data-line="nbgl_useCaseReview(TYPE_TRANSACTION | ADDRESS_BOOK_OPERATION,">nbgl_useCaseReview</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">ADDRESS_BOOK_OPERATION</span>,
                        &amp;pairList,
-                       &amp;<span class="c-const lit" data-icon="0">CATALOG_ICON_APP</span>,
-                       <span class="c-string lit" data-lit="6">&quot;Review transaction\nto send BOL&quot;</span>,
+                       &amp;<span class="c-const lit" data-icon="0" data-line="&amp;CATALOG_ICON_APP,">CATALOG_ICON_APP</span>,
+                       <span class="c-string lit" data-lit="6" data-line="&quot;Review transaction\nto send BOL&quot;,">&quot;Review transaction\nto send BOL&quot;</span>,
                        <span class="c-const">NULL</span>,
-                       <span class="c-string lit" data-lit="7">&quot;Sign transaction\nto send BOL?&quot;</span>,
+                       <span class="c-string lit" data-lit="7" data-line="&quot;Sign transaction\nto send BOL?&quot;,">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_review_choice);
 }</code></pre>
 
@@ -1895,6 +1895,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
   <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
 
+<span class="peek" hidden></span>
+
 <div class="viewer" hidden>
   <div class="viewer-stage"></div>
   <div class="viewer-bar">
@@ -2062,6 +2064,41 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         return node;
     }
 
+    /* The line of code a box answers to, shown beside it. Placed against the
+       box rather than following the pointer, so it does not jitter, and
+       flipped above when there is no room below. */
+    var chip = document.querySelector(".peek");
+
+    function peek(box) {
+        if (!chip) { return; }
+        var key = keyOf(box).split("/");
+        var family = key[1] === "cause" ? "cause" : "lit";
+        var span = document.querySelector(
+            "#" + CSS.escape(key[0]) + " ." + family +
+            "[data-" + key[1] + '="' + key[2] + '"]'
+        );
+        var line = span && span.dataset.line;
+        if (!line) { return; }
+        chip.textContent = line;
+        chip.hidden = false;
+        var at = box.getBoundingClientRect();
+        var size = chip.getBoundingClientRect();
+        var top = at.bottom + 8;
+        if (top + size.height > innerHeight) { top = at.top - size.height - 8; }
+        // Never under the sticky bars: the top of the viewport is behind
+        // them, so a chip put there is a chip nobody reads.
+        var bars = document.querySelector(".tabs");
+        var ceiling = (bars ? bars.getBoundingClientRect().bottom : 0) + 4;
+        chip.style.top = Math.max(ceiling, top) + "px";
+        chip.style.left = Math.max(
+            4, Math.min(at.left, innerWidth - size.width - 8)
+        ) + "px";
+    }
+
+    function hidePeek() {
+        if (chip) { chip.hidden = true; }
+    }
+
     function firstVisible(nodes) {
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
@@ -2098,8 +2135,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     // The other way round, now that the boxes are there: pointing at a text
     // on a screen says which value of the example wrote it.
     document.querySelectorAll(".hot[data-lit], .hot[data-cause], .hot[data-icon]").forEach(function (box) {
-        box.addEventListener("mouseenter", function () { light(keyOf(box)); });
-        box.addEventListener("mouseleave", function () { light(pinned); });
+        box.addEventListener("mouseenter", function () {
+            light(keyOf(box));
+            peek(box);
+        });
+        box.addEventListener("mouseleave", function () {
+            light(pinned);
+            hidePeek();
+        });
         box.addEventListener("click", function (event) {
             // The picture underneath is a link to the full size one.
             event.preventDefault();

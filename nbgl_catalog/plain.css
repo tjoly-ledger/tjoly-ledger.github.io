@@ -548,6 +548,27 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 
 .shared > summary:hover { color: var(--text-1); }
 
+/* The line of code a box answers to, said next to the box. */
+.peek {
+    position: fixed;
+    z-index: 6;
+    max-width: 60ch;
+    padding: 5px 9px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    color: var(--text-1);
+    font-family: var(--mono);
+    font-size: 11px;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+}
+
+.peek[hidden] { display: none; }
+
 /* A screen at its own size. The clone inside is drawn at scale 1, which is
    all it takes for its boxes to land where the device put them. */
 .viewer {
