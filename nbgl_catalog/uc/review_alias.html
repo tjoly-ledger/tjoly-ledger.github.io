@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseReview &mdash; NBGL use cases</title>
 <meta name="description" content="A tag/value pair whose value is an alias: the review shows the short name with a chevron, and the page behind it justifies the alias. The aliasType of nbgl_contentValueExt_t picks that page.">
-<link rel="stylesheet" href="../plain.css?v=cfddf5f7">
+<link rel="stylesheet" href="../plain.css?v=531e6523">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -2277,6 +2277,16 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
   <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
+
+<div class="viewer" hidden>
+  <div class="viewer-stage"></div>
+  <div class="viewer-bar">
+    <button type="button" class="viewer-step" data-step="-1" aria-label="Previous screen">&#8592;</button>
+    <span class="viewer-say"></span>
+    <button type="button" class="viewer-step" data-step="1" aria-label="Next screen">&#8594;</button>
+    <button type="button" class="viewer-close" aria-label="Close">&#10005;</button>
+  </div>
+</div>
   </main>
 
   <footer>
@@ -2308,6 +2318,75 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     addEventListener("scroll", sync, { passive: true });
     addEventListener("resize", sync);
     sync();
+}());
+</script>
+<script>
+(function () {
+    /* A screen too small to read, shown at its own size. The shot is cloned
+       from the page rather than rebuilt, so the boxes over it come along:
+       they are placed in `calc(px * var(--shot-scale))`, so drawing the
+       clone at scale 1 puts them back where the device had them. */
+    var viewer = document.querySelector(".viewer");
+    if (!viewer) { return; }
+    var stage = viewer.querySelector(".viewer-stage");
+    var say = viewer.querySelector(".viewer-say");
+    var strip = [];
+    var at = 0;
+
+    function show(index) {
+        if (index < 0 || index >= strip.length) { return; }
+        at = index;
+        stage.textContent = "";
+        stage.appendChild(strip[at].shot.cloneNode(true));
+        say.textContent = "Screen " + (at + 1) + " of " + strip.length
+            + (strip[at].lead ? " \u2014 " + strip[at].lead : "");
+        viewer.hidden = false;
+    }
+
+    function open(shot) {
+        var shots = shot.parentNode;
+        strip = [];
+        var lead = "";
+        Array.prototype.forEach.call(shots.children, function (node) {
+            if (node.classList.contains("shot-step")) {
+                lead = node.textContent.trim();
+            } else if (node.classList.contains("shot")) {
+                strip.push({shot: node, lead: lead});
+                lead = "";
+            }
+        });
+        show(strip.findIndex(function (s) { return s.shot === shot; }));
+    }
+
+    function close() {
+        viewer.hidden = true;
+        stage.textContent = "";
+    }
+
+    document.querySelectorAll(".shots .shot > a").forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+            open(link.closest(".shot"));
+        });
+    });
+
+    viewer.querySelectorAll(".viewer-step").forEach(function (button) {
+        button.addEventListener("click", function () {
+            show(at + Number(button.dataset.step));
+        });
+    });
+    viewer.querySelector(".viewer-close").addEventListener("click", close);
+    viewer.addEventListener("click", function (event) {
+        // Anywhere off the screen itself closes, which is what a backdrop is
+        // for; the bar and the picture keep their own clicks.
+        if (event.target === viewer) { close(); }
+    });
+    addEventListener("keydown", function (event) {
+        if (viewer.hidden) { return; }
+        if (event.key === "Escape") { close(); }
+        if (event.key === "ArrowLeft") { show(at - 1); }
+        if (event.key === "ArrowRight") { show(at + 1); }
+    });
 }());
 </script>
 <script>
