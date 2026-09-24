@@ -1107,12 +1107,14 @@ home_action.style = <span class="c-const">STRONG_HOME_ACTION</span>;
     }
 
     function light(key) {
-        document.querySelectorAll(".hot.on").forEach(function (box) {
-            box.classList.remove("on");
-        });
-        document.querySelectorAll(".lit.on").forEach(function (span) {
-            span.classList.remove("on");
-        });
+        /* Everything that takes part carries the number it answers to, box
+           or token alike, so clearing goes by that rather than by a list of
+           classes: a list is what left `.cause` lit for good when it was
+           added. The contents menu marks its own entries with `on` too,
+           which is why this is not simply `.on`. */
+        document.querySelectorAll("[data-lit].on, [data-cause].on").forEach(
+            function (node) { node.classList.remove("on"); }
+        );
         if (!key) { return; }
         (byValue.get(key) || []).forEach(function (box) {
             box.classList.add("on");
