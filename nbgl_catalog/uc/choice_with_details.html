@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseChoiceWithDetails &mdash; NBGL use cases</title>
 <meta name="description" content="The same choice page, plus a top-right button opening a details modal: either one centered page, or a list of bars drilling down into sub-pages.">
-<link rel="stylesheet" href="../plain.css?v=d16cd85c">
+<link rel="stylesheet" href="../plain.css?v=13620c8c">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -106,14 +106,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-comment">// Details shown as a single centered page, reached by the top-right button</span>
 details.title = <span class="c-string lit" data-lit="0">&quot;Blind signing&quot;</span>;
 details.type = <span class="c-const">CENTERED_INFO_WARNING</span>;
-details.centeredInfo.icon = &amp;<span class="c-const">LARGE_WARNING_ICON</span>;
+details.centeredInfo.icon = &amp;<span class="c-const lit" data-icon="0">LARGE_WARNING_ICON</span>;
 details.centeredInfo.title = <span class="c-string lit" data-lit="0">&quot;Blind signing&quot;</span>;
 details.centeredInfo.description
     = <span class="c-string lit" data-lit="1">&quot;The app cannot decode this transaction, so it cannot show you what &quot;</span>
       <span class="c-string lit" data-lit="1">&quot;you are about to sign.&quot;</span>;
 details.centeredInfo.subText = <span class="c-string lit" data-lit="2">&quot;Only continue if you trust the source.&quot;</span>;
 
-<span class="c-usecase">nbgl_useCaseChoiceWithDetails</span>(&amp;<span class="c-const">LARGE_WARNING_ICON</span>,
+<span class="c-usecase">nbgl_useCaseChoiceWithDetails</span>(&amp;<span class="c-const lit" data-icon="0">LARGE_WARNING_ICON</span>,
                               <span class="c-string lit" data-lit="3">&quot;Allow blind signing?&quot;</span>,
                               <span class="c-string lit" data-lit="4">&quot;Transactions will be signed\nwithout being displayed.&quot;</span>,
                               <span class="c-string lit" data-lit="5">&quot;I understand, confirm&quot;</span>,
@@ -140,6 +140,14 @@ details.centeredInfo.subText = <span class="c-string lit" data-lit="2">&quot;Onl
             <b class="hot" data-lit="4" style="left: calc(77px * var(--shot-scale)); top: calc(300px * var(--shot-scale)); width: calc(325px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(92px * var(--shot-scale)); top: calc(442px * var(--shot-scale)); width: calc(388px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(192px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(288px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="0"
+               title="Drawn from LARGE_WARNING_ICON"
+               style="left: calc(208px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(360px * var(--shot-scale)); top: calc(32px * var(--shot-scale)); width: calc(44px * var(--shot-scale)); height: calc(88px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(404px * var(--shot-scale)); top: calc(32px * var(--shot-scale)); width: calc(44px * var(--shot-scale)); height: calc(88px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(384px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(416px * var(--shot-scale)); width: calc(44px * var(--shot-scale)); height: calc(88px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(404px * var(--shot-scale)); top: calc(416px * var(--shot-scale)); width: calc(44px * var(--shot-scale)); height: calc(88px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Top-right button</span>
           <span class="shot">
@@ -157,6 +165,12 @@ details.centeredInfo.subText = <span class="c-string lit" data-lit="2">&quot;Onl
             <b class="hot" data-lit="1" style="left: calc(208px * var(--shot-scale)); top: calc(404px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="2" style="left: calc(48px * var(--shot-scale)); top: calc(464px * var(--shot-scale)); width: calc(384px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="2" style="left: calc(191px * var(--shot-scale)); top: calc(500px * var(--shot-scale)); width: calc(98px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="0"
+               title="Drawn from LARGE_WARNING_ICON"
+               style="left: calc(208px * var(--shot-scale)); top: calc(152px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(251px * var(--shot-scale)); top: calc(41px * var(--shot-scale)); width: calc(15px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(310px * var(--shot-scale)); top: calc(41px * var(--shot-scale)); width: calc(15px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -178,6 +192,13 @@ details.centeredInfo.subText = <span class="c-string lit" data-lit="2">&quot;Onl
             <b class="hot" data-lit="4" style="left: calc(45px * var(--shot-scale)); top: calc(208px * var(--shot-scale)); width: calc(210px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(50px * var(--shot-scale)); top: calc(301px * var(--shot-scale)); width: calc(250px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(117px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="0"
+               title="Drawn from LARGE_WARNING_ICON"
+               style="left: calc(126px * var(--shot-scale)); top: calc(82px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(230px * var(--shot-scale)); top: calc(16px * var(--shot-scale)); width: calc(54px * var(--shot-scale)); height: calc(56px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(245px * var(--shot-scale)); top: calc(32px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(284px * var(--shot-scale)); width: calc(8px * var(--shot-scale)); height: calc(56px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(276px * var(--shot-scale)); top: calc(284px * var(--shot-scale)); width: calc(8px * var(--shot-scale)); height: calc(56px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Top-right button</span>
           <span class="shot">
@@ -195,6 +216,10 @@ details.centeredInfo.subText = <span class="c-string lit" data-lit="2">&quot;Onl
             <b class="hot" data-lit="1" style="left: calc(129px * var(--shot-scale)); top: calc(266px * var(--shot-scale)); width: calc(41px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="2" style="left: calc(24px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(251px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="2" style="left: calc(117px * var(--shot-scale)); top: calc(334px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="0"
+               title="Drawn from LARGE_WARNING_ICON"
+               style="left: calc(126px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -216,6 +241,16 @@ details.centeredInfo.subText = <span class="c-string lit" data-lit="2">&quot;Onl
             <b class="hot" data-lit="4" style="left: calc(59px * var(--shot-scale)); top: calc(340px * var(--shot-scale)); width: calc(282px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(72px * var(--shot-scale)); top: calc(528px * var(--shot-scale)); width: calc(328px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(159px * var(--shot-scale)); top: calc(612px * var(--shot-scale)); width: calc(241px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="0"
+               title="Drawn from LARGE_WARNING_ICON"
+               style="left: calc(168px * var(--shot-scale)); top: calc(164px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(318px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(202px * var(--shot-scale)); top: calc(350px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(296px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(80px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(336px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(80px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(320px * var(--shot-scale)); top: calc(48px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(80px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(336px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(80px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Top-right button</span>
           <span class="shot">
@@ -233,6 +268,13 @@ details.centeredInfo.subText = <span class="c-string lit" data-lit="2">&quot;Onl
             <b class="hot" data-lit="1" style="left: calc(172px * var(--shot-scale)); top: calc(436px * var(--shot-scale)); width: calc(55px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="2" style="left: calc(34px * var(--shot-scale)); top: calc(492px * var(--shot-scale)); width: calc(331px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="2" style="left: calc(158px * var(--shot-scale)); top: calc(524px * var(--shot-scale)); width: calc(84px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="0"
+               title="Drawn from LARGE_WARNING_ICON"
+               style="left: calc(168px * var(--shot-scale)); top: calc(196px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(210px * var(--shot-scale)); top: calc(38px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(261px * var(--shot-scale)); top: calc(38px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(192px * var(--shot-scale)); top: calc(446px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -253,14 +295,14 @@ details.centeredInfo.subText = <span class="c-string lit" data-lit="2">&quot;Onl
 <span class="c-comment">// Details shown as touchable bars, each one leading to its own sub-page</span>
 sub_details[<span class="c-number">0</span>].title = bar_texts[<span class="c-number">0</span>];
 sub_details[<span class="c-number">0</span>].type = <span class="c-const">CENTERED_INFO_WARNING</span>;
-sub_details[<span class="c-number">0</span>].centeredInfo.icon = &amp;<span class="c-const">LARGE_WARNING_ICON</span>;
+sub_details[<span class="c-number">0</span>].centeredInfo.icon = &amp;<span class="c-const lit" data-icon="0">LARGE_WARNING_ICON</span>;
 sub_details[<span class="c-number">0</span>].centeredInfo.title = <span class="c-string lit" data-lit="4">&quot;Blind signing&quot;</span>;
 sub_details[<span class="c-number">0</span>].centeredInfo.description
     = <span class="c-string lit" data-lit="5">&quot;The transaction cannot be decoded, so its content cannot be shown.&quot;</span>;
 
 sub_details[<span class="c-number">1</span>].title = bar_texts[<span class="c-number">1</span>];
 sub_details[<span class="c-number">1</span>].type = <span class="c-const">CENTERED_INFO_WARNING</span>;
-sub_details[<span class="c-number">1</span>].centeredInfo.icon = &amp;<span class="c-const">LARGE_SECURITY_SHIELD_ICON</span>;
+sub_details[<span class="c-number">1</span>].centeredInfo.icon = &amp;<span class="c-const lit" data-icon="1">LARGE_SECURITY_SHIELD_ICON</span>;
 sub_details[<span class="c-number">1</span>].centeredInfo.title = <span class="c-string lit" data-lit="3">&quot;Blockaid&quot;</span>;
 sub_details[<span class="c-number">1</span>].centeredInfo.description = <span class="c-string lit" data-lit="6">&quot;The security report comes from Blockaid.&quot;</span>;
 
@@ -272,7 +314,7 @@ details.barList.subTexts = bar_sub_texts;
 details.barList.icons = <span class="c-const">NULL</span>;
 details.barList.details = sub_details;
 
-<span class="c-usecase">nbgl_useCaseChoiceWithDetails</span>(&amp;<span class="c-const">LARGE_WARNING_ICON</span>,
+<span class="c-usecase">nbgl_useCaseChoiceWithDetails</span>(&amp;<span class="c-const lit" data-icon="0">LARGE_WARNING_ICON</span>,
                               <span class="c-string lit" data-lit="7">&quot;Allow blind signing?&quot;</span>,
                               <span class="c-string lit" data-lit="8">&quot;Transactions will be signed\nwithout being displayed.&quot;</span>,
                               <span class="c-string lit" data-lit="9">&quot;I understand, confirm&quot;</span>,
@@ -299,6 +341,14 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="8" style="left: calc(77px * var(--shot-scale)); top: calc(300px * var(--shot-scale)); width: calc(325px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="9" style="left: calc(92px * var(--shot-scale)); top: calc(442px * var(--shot-scale)); width: calc(388px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="10" style="left: calc(192px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(288px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="0"
+               title="Drawn from LARGE_WARNING_ICON"
+               style="left: calc(208px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(360px * var(--shot-scale)); top: calc(32px * var(--shot-scale)); width: calc(44px * var(--shot-scale)); height: calc(88px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(404px * var(--shot-scale)); top: calc(32px * var(--shot-scale)); width: calc(44px * var(--shot-scale)); height: calc(88px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(384px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(416px * var(--shot-scale)); width: calc(44px * var(--shot-scale)); height: calc(88px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(404px * var(--shot-scale)); top: calc(416px * var(--shot-scale)); width: calc(44px * var(--shot-scale)); height: calc(88px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Top-right button</span>
           <span class="shot">
@@ -313,6 +363,14 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="2" style="left: calc(32px * var(--shot-scale)); top: calc(174px * var(--shot-scale)); width: calc(301px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(314px * var(--shot-scale)); width: calc(113px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="4" style="left: calc(153px * var(--shot-scale)); top: calc(30px * var(--shot-scale)); width: calc(174px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(251px * var(--shot-scale)); top: calc(41px * var(--shot-scale)); width: calc(15px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(310px * var(--shot-scale)); top: calc(41px * var(--shot-scale)); width: calc(15px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(238px * var(--shot-scale)); top: calc(135px * var(--shot-scale)); width: calc(15px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(135px * var(--shot-scale)); width: calc(15px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(408px * var(--shot-scale)); top: calc(122px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(183px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(408px * var(--shot-scale)); top: calc(262px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “What is blind signing?”</span>
           <span class="shot">
@@ -328,6 +386,12 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="5" style="left: calc(66px * var(--shot-scale)); top: calc(366px * var(--shot-scale)); width: calc(348px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(34px * var(--shot-scale)); top: calc(402px * var(--shot-scale)); width: calc(412px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(171px * var(--shot-scale)); top: calc(438px * var(--shot-scale)); width: calc(137px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="0"
+               title="Drawn from LARGE_WARNING_ICON"
+               style="left: calc(208px * var(--shot-scale)); top: calc(222px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(206px * var(--shot-scale)); top: calc(59px * var(--shot-scale)); width: calc(15px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(265px * var(--shot-scale)); top: calc(59px * var(--shot-scale)); width: calc(15px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Back</span>
           <span class="shot">
@@ -342,6 +406,14 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="2" style="left: calc(32px * var(--shot-scale)); top: calc(174px * var(--shot-scale)); width: calc(301px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(314px * var(--shot-scale)); width: calc(113px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="4" style="left: calc(153px * var(--shot-scale)); top: calc(30px * var(--shot-scale)); width: calc(174px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(251px * var(--shot-scale)); top: calc(41px * var(--shot-scale)); width: calc(15px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(310px * var(--shot-scale)); top: calc(41px * var(--shot-scale)); width: calc(15px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(238px * var(--shot-scale)); top: calc(135px * var(--shot-scale)); width: calc(15px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(135px * var(--shot-scale)); width: calc(15px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(408px * var(--shot-scale)); top: calc(122px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(183px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(408px * var(--shot-scale)); top: calc(262px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “Who is the provider?”</span>
           <span class="shot">
@@ -356,6 +428,11 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="3" style="left: calc(165px * var(--shot-scale)); top: calc(328px * var(--shot-scale)); width: calc(149px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(65px * var(--shot-scale)); top: calc(384px * var(--shot-scale)); width: calc(349px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(145px * var(--shot-scale)); top: calc(420px * var(--shot-scale)); width: calc(190px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="1"
+               title="Drawn from LARGE_SECURITY_SHIELD_ICON"
+               style="left: calc(208px * var(--shot-scale)); top: calc(240px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(176px * var(--shot-scale)); top: calc(59px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -377,6 +454,13 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="8" style="left: calc(45px * var(--shot-scale)); top: calc(208px * var(--shot-scale)); width: calc(210px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="9" style="left: calc(50px * var(--shot-scale)); top: calc(301px * var(--shot-scale)); width: calc(250px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="10" style="left: calc(117px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="0"
+               title="Drawn from LARGE_WARNING_ICON"
+               style="left: calc(126px * var(--shot-scale)); top: calc(82px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(230px * var(--shot-scale)); top: calc(16px * var(--shot-scale)); width: calc(54px * var(--shot-scale)); height: calc(56px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(245px * var(--shot-scale)); top: calc(32px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(284px * var(--shot-scale)); width: calc(8px * var(--shot-scale)); height: calc(56px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(276px * var(--shot-scale)); top: calc(284px * var(--shot-scale)); width: calc(8px * var(--shot-scale)); height: calc(56px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Top-right button</span>
           <span class="shot">
@@ -391,6 +475,9 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="2" style="left: calc(16px * var(--shot-scale)); top: calc(114px * var(--shot-scale)); width: calc(196px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(212px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="4" style="left: calc(92px * var(--shot-scale)); top: calc(19px * var(--shot-scale)); width: calc(116px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(260px * var(--shot-scale)); top: calc(82px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(260px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “What is blind signing?”</span>
           <span class="shot">
@@ -406,6 +493,10 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="5" style="left: calc(38px * var(--shot-scale)); top: calc(249px * var(--shot-scale)); width: calc(224px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(16px * var(--shot-scale)); top: calc(271px * var(--shot-scale)); width: calc(267px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(105px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(90px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="0"
+               title="Drawn from LARGE_WARNING_ICON"
+               style="left: calc(126px * var(--shot-scale)); top: calc(145px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Back</span>
           <span class="shot">
@@ -420,6 +511,9 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="2" style="left: calc(16px * var(--shot-scale)); top: calc(114px * var(--shot-scale)); width: calc(196px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(212px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="4" style="left: calc(92px * var(--shot-scale)); top: calc(19px * var(--shot-scale)); width: calc(116px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(260px * var(--shot-scale)); top: calc(82px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(260px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “Who is the provider?”</span>
           <span class="shot">
@@ -434,6 +528,10 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="3" style="left: calc(100px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(100px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(36px * var(--shot-scale)); top: calc(260px * var(--shot-scale)); width: calc(227px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(88px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(124px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="1"
+               title="Drawn from LARGE_SECURITY_SHIELD_ICON"
+               style="left: calc(126px * var(--shot-scale)); top: calc(156px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -455,6 +553,16 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="8" style="left: calc(59px * var(--shot-scale)); top: calc(340px * var(--shot-scale)); width: calc(282px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="9" style="left: calc(72px * var(--shot-scale)); top: calc(528px * var(--shot-scale)); width: calc(328px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
             <b class="hot" data-lit="10" style="left: calc(159px * var(--shot-scale)); top: calc(612px * var(--shot-scale)); width: calc(241px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="0"
+               title="Drawn from LARGE_WARNING_ICON"
+               style="left: calc(168px * var(--shot-scale)); top: calc(164px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(318px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(202px * var(--shot-scale)); top: calc(350px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(296px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(80px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(336px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(80px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(320px * var(--shot-scale)); top: calc(48px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(80px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(336px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(80px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Top-right button</span>
           <span class="shot">
@@ -469,6 +577,17 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="2" style="left: calc(24px * var(--shot-scale)); top: calc(168px * var(--shot-scale)); width: calc(261px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(308px * var(--shot-scale)); width: calc(97px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="4" style="left: calc(125px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(150px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(210px * var(--shot-scale)); top: calc(38px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(261px * var(--shot-scale)); top: calc(38px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(201px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(252px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(344px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(178px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(95px * var(--shot-scale)); top: calc(178px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(271px * var(--shot-scale)); top: calc(178px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(154px * var(--shot-scale)); top: calc(270px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(344px * var(--shot-scale)); top: calc(260px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “What is blind signing?”</span>
           <span class="shot">
@@ -484,6 +603,12 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="5" style="left: calc(50px * var(--shot-scale)); top: calc(404px * var(--shot-scale)); width: calc(300px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(65px * var(--shot-scale)); top: calc(436px * var(--shot-scale)); width: calc(270px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(98px * var(--shot-scale)); top: calc(468px * var(--shot-scale)); width: calc(203px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="0"
+               title="Drawn from LARGE_WARNING_ICON"
+               style="left: calc(168px * var(--shot-scale)); top: calc(260px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(171px * var(--shot-scale)); top: calc(54px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(222px * var(--shot-scale)); top: calc(54px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Back</span>
           <span class="shot">
@@ -498,6 +623,17 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="2" style="left: calc(24px * var(--shot-scale)); top: calc(168px * var(--shot-scale)); width: calc(261px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(308px * var(--shot-scale)); width: calc(97px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="4" style="left: calc(125px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(150px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(210px * var(--shot-scale)); top: calc(38px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(261px * var(--shot-scale)); top: calc(38px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(201px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(252px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(344px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(178px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(95px * var(--shot-scale)); top: calc(178px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(271px * var(--shot-scale)); top: calc(178px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(154px * var(--shot-scale)); top: calc(270px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(344px * var(--shot-scale)); top: calc(260px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “Who is the provider?”</span>
           <span class="shot">
@@ -512,19 +648,24 @@ details.barList.details = sub_details;
             <b class="hot" data-lit="3" style="left: calc(134px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(131px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(50px * var(--shot-scale)); top: calc(420px * var(--shot-scale)); width: calc(300px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(118px * var(--shot-scale)); top: calc(452px * var(--shot-scale)); width: calc(164px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot" data-icon="1"
+               title="Drawn from LARGE_SECURITY_SHIELD_ICON"
+               style="left: calc(168px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(145px * var(--shot-scale)); top: calc(54px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-24T09:45:01+00:00.</p>
+  <p class="stamp">Generated 2026-09-24T12:14:03+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-24T09:45:01+00:00</span>
+    <span>2026-09-24T12:14:03+00:00</span>
   </footer>
 </div>
 
@@ -559,7 +700,7 @@ details.barList.details = sub_details;
     // Every box carries the number of the value it holds, so lighting one up
     // is a lookup rather than a search. Hover shows it, a click keeps it.
     var byValue = new Map();
-    document.querySelectorAll(".hot[data-lit], .hot[data-cause]").forEach(
+    document.querySelectorAll(".hot[data-lit], .hot[data-cause], .hot[data-icon]").forEach(
         function (box) {
             var key = keyOf(box);
             if (!byValue.has(key)) { byValue.set(key, []); }
@@ -575,9 +716,9 @@ details.barList.details = sub_details;
        relations, so they are two different families of box; the key says
        which, so one index and one lookup serve both. */
     function keyOf(node) {
-        var kind = node.dataset.lit !== undefined ? "lit" : "cause";
-        return node.closest(".variant").id + "/" + kind + "/" +
-               (node.dataset.lit !== undefined ? node.dataset.lit : node.dataset.cause);
+        var kind = node.dataset.lit !== undefined ? "lit"
+                 : node.dataset.icon !== undefined ? "icon" : "cause";
+        return node.closest(".variant").id + "/" + kind + "/" + node.dataset[kind];
     }
 
     /* Marking the other end is no use if it sits off screen: a value set at
@@ -613,7 +754,7 @@ details.barList.details = sub_details;
            classes: a list is what left `.cause` lit for good when it was
            added. The contents menu marks its own entries with `on` too,
            which is why this is not simply `.on`. */
-        document.querySelectorAll("[data-lit].on, [data-cause].on").forEach(
+        document.querySelectorAll("[data-lit].on, [data-cause].on, [data-icon].on").forEach(
             function (node) { node.classList.remove("on"); }
         );
         if (!key) { return; }
@@ -623,11 +764,11 @@ details.barList.details = sub_details;
         // The value is marked in the code too, so a literal written as
         // several adjacent chunks lights up whole.
         var parts = key.split("/");
-        var attribute = parts[1] === "lit" ? "data-lit" : "data-cause";
-        // parts[1] is the family, which is also the class of its spans.
+        // An icon is a value, so its spans wear the same class as a literal.
+        var family = parts[1] === "cause" ? "cause" : "lit";
         document.querySelectorAll(
-            "#" + CSS.escape(parts[0]) + " ." + parts[1] +
-            "[" + attribute + '="' + parts[2] + '"]'
+            "#" + CSS.escape(parts[0]) + " ." + family +
+            "[data-" + parts[1] + '="' + parts[2] + '"]'
         ).forEach(function (span) { span.classList.add("on"); });
     }
 
@@ -635,7 +776,7 @@ details.barList.details = sub_details;
 
     // The other way round, now that the boxes are there: pointing at a text
     // on a screen says which value of the example wrote it.
-    document.querySelectorAll(".hot[data-lit], .hot[data-cause]").forEach(function (box) {
+    document.querySelectorAll(".hot[data-lit], .hot[data-cause], .hot[data-icon]").forEach(function (box) {
         box.addEventListener("mouseenter", function () { light(keyOf(box)); });
         box.addEventListener("mouseleave", function () { light(pinned); });
         box.addEventListener("click", function (event) {

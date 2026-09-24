@@ -342,6 +342,10 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
     background: var(--cause-wash);
 }
 
+.hot[data-icon] { pointer-events: auto; cursor: pointer; }
+
+.hot[data-icon]:hover { border-color: var(--link); }
+
 .hot[data-cause] { pointer-events: auto; cursor: pointer; }
 
 .hot[data-cause]:hover { border-color: var(--cause); }

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseStatus &mdash; NBGL use cases</title>
 <meta name="description" content="A transient page with a free text, closing on its own after 3 seconds. The emulated time is frozen here so it can be captured.">
-<link rel="stylesheet" href="../plain.css?v=d16cd85c">
+<link rel="stylesheet" href="../plain.css?v=13620c8c">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -112,6 +112,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseStatus, Success, Flex, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(98px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(284px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(208px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -129,6 +130,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseStatus, Success, Apex P, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(55px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(189px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(126px * var(--shot-scale)); top: calc(154px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -146,6 +148,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseStatus, Success, Stax, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(74px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(251px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(168px * var(--shot-scale)); top: calc(272px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -175,6 +178,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseStatus, Failure, Flex, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(61px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(358px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(208px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -192,6 +196,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseStatus, Failure, Apex P, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(30px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(239px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(126px * var(--shot-scale)); top: calc(154px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -209,19 +214,20 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseStatus, Failure, Stax, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(42px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(316px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot sdk" style="left: calc(168px * var(--shot-scale)); top: calc(272px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-24T09:45:01+00:00.</p>
+  <p class="stamp">Generated 2026-09-24T12:14:03+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-24T09:45:01+00:00</span>
+    <span>2026-09-24T12:14:03+00:00</span>
   </footer>
 </div>
 
@@ -256,7 +262,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     // Every box carries the number of the value it holds, so lighting one up
     // is a lookup rather than a search. Hover shows it, a click keeps it.
     var byValue = new Map();
-    document.querySelectorAll(".hot[data-lit], .hot[data-cause]").forEach(
+    document.querySelectorAll(".hot[data-lit], .hot[data-cause], .hot[data-icon]").forEach(
         function (box) {
             var key = keyOf(box);
             if (!byValue.has(key)) { byValue.set(key, []); }
@@ -272,9 +278,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
        relations, so they are two different families of box; the key says
        which, so one index and one lookup serve both. */
     function keyOf(node) {
-        var kind = node.dataset.lit !== undefined ? "lit" : "cause";
-        return node.closest(".variant").id + "/" + kind + "/" +
-               (node.dataset.lit !== undefined ? node.dataset.lit : node.dataset.cause);
+        var kind = node.dataset.lit !== undefined ? "lit"
+                 : node.dataset.icon !== undefined ? "icon" : "cause";
+        return node.closest(".variant").id + "/" + kind + "/" + node.dataset[kind];
     }
 
     /* Marking the other end is no use if it sits off screen: a value set at
@@ -310,7 +316,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
            classes: a list is what left `.cause` lit for good when it was
            added. The contents menu marks its own entries with `on` too,
            which is why this is not simply `.on`. */
-        document.querySelectorAll("[data-lit].on, [data-cause].on").forEach(
+        document.querySelectorAll("[data-lit].on, [data-cause].on, [data-icon].on").forEach(
             function (node) { node.classList.remove("on"); }
         );
         if (!key) { return; }
@@ -320,11 +326,11 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         // The value is marked in the code too, so a literal written as
         // several adjacent chunks lights up whole.
         var parts = key.split("/");
-        var attribute = parts[1] === "lit" ? "data-lit" : "data-cause";
-        // parts[1] is the family, which is also the class of its spans.
+        // An icon is a value, so its spans wear the same class as a literal.
+        var family = parts[1] === "cause" ? "cause" : "lit";
         document.querySelectorAll(
-            "#" + CSS.escape(parts[0]) + " ." + parts[1] +
-            "[" + attribute + '="' + parts[2] + '"]'
+            "#" + CSS.escape(parts[0]) + " ." + family +
+            "[data-" + parts[1] + '="' + parts[2] + '"]'
         ).forEach(function (span) { span.classList.add("on"); });
     }
 
@@ -332,7 +338,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
     // The other way round, now that the boxes are there: pointing at a text
     // on a screen says which value of the example wrote it.
-    document.querySelectorAll(".hot[data-lit], .hot[data-cause]").forEach(function (box) {
+    document.querySelectorAll(".hot[data-lit], .hot[data-cause], .hot[data-icon]").forEach(function (box) {
         box.addEventListener("mouseenter", function () { light(keyOf(box)); });
         box.addEventListener("mouseleave", function () { light(pinned); });
         box.addEventListener("click", function (event) {
