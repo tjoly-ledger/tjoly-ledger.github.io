@@ -142,7 +142,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_BUTTON_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_CONFIRM_TOKEN</span>:
-            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="0">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
             <span class="c-keyword">break</span>;
         <span class="c-keyword">default</span>:
             <span class="c-comment">// A tip-box is the app&#x27;s own: NBGL only reports the tap, so a</span>
@@ -171,7 +171,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_review_contents.contentsList = generic_contents;
     generic_review_contents.nbContents = <span class="c-const">ARRAYLEN</span>(generic_contents);
 
-    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="8">&quot;Reject&quot;</span>, catalog_on_quit);
+    <span class="c-usecase cause" data-cause="0">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="8">&quot;Reject&quot;</span>, catalog_on_quit);
 }</code></pre>
 
     <div class="shot-rows">
@@ -197,7 +197,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="4" style="left: calc(32px * var(--shot-scale)); top: calc(328px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(32px * var(--shot-scale)); top: calc(368px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -211,7 +213,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="6" style="left: calc(124px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <span class="shot">
@@ -221,7 +225,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Flex, screen 3">
             </a>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="1"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
@@ -249,7 +253,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="4" style="left: calc(16px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(43px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(16px * var(--shot-scale)); top: calc(246px * var(--shot-scale)); width: calc(151px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -263,7 +269,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="6" style="left: calc(73px * var(--shot-scale)); top: calc(158px * var(--shot-scale)); width: calc(153px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(16px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <span class="shot">
@@ -273,7 +281,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Apex P, screen 3">
             </a>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="1"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
@@ -301,7 +309,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="4" style="left: calc(24px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(55px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(24px * var(--shot-scale)); top: calc(348px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -315,7 +325,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="6" style="left: calc(98px * var(--shot-scale)); top: calc(270px * var(--shot-scale)); width: calc(203px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(24px * var(--shot-scale)); top: calc(496px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <span class="shot">
@@ -325,7 +337,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseGenericReview, TAG_VALUE_LIST + INFO_LONG_PRESS, Stax, screen 3">
             </a>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="1"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
@@ -369,7 +381,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_BUTTON_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_CONFIRM_TOKEN</span>:
-            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="0">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
             <span class="c-keyword">break</span>;
         <span class="c-keyword">default</span>:
             <span class="c-comment">// A tip-box is the app&#x27;s own: NBGL only reports the tap, so a</span>
@@ -409,7 +421,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_review_contents.contentsList = generic_contents;
     generic_review_contents.nbContents = <span class="c-number">1</span>;
 
-    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="5">&quot;Reject&quot;</span>, catalog_on_quit);
+    <span class="c-usecase cause" data-cause="0">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="5">&quot;Reject&quot;</span>, catalog_on_quit);
 }</code></pre>
 
     <div class="shot-rows">
@@ -441,7 +453,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Flex, screen 2">
             </a>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="1"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
@@ -475,7 +487,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Apex P, screen 2">
             </a>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="1"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
@@ -509,7 +521,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseGenericReview, TAG_VALUE_CONFIRM, Stax, screen 2">
             </a>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="1"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
@@ -567,7 +579,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_BUTTON_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_CONFIRM_TOKEN</span>:
-            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="0">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
             <span class="c-keyword">break</span>;
         <span class="c-keyword">default</span>:
             <span class="c-comment">// A tip-box is the app&#x27;s own: NBGL only reports the tap, so a</span>
@@ -596,7 +608,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_review_contents.contentsList = generic_contents;
     generic_review_contents.nbContents = <span class="c-const">ARRAYLEN</span>(generic_contents);
 
-    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="8">&quot;Reject&quot;</span>, catalog_on_quit);
+    <span class="c-usecase cause" data-cause="0">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="8">&quot;Reject&quot;</span>, catalog_on_quit);
 }</code></pre>
 
     <div class="shot-rows">
@@ -622,7 +634,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="4" style="left: calc(32px * var(--shot-scale)); top: calc(328px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(32px * var(--shot-scale)); top: calc(368px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -637,7 +651,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="7" style="left: calc(68px * var(--shot-scale)); top: calc(188px * var(--shot-scale)); width: calc(344px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(105px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(375px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -663,7 +679,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="4" style="left: calc(16px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(43px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(16px * var(--shot-scale)); top: calc(246px * var(--shot-scale)); width: calc(151px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -678,7 +696,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="7" style="left: calc(35px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(230px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(58px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(242px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -704,7 +724,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="4" style="left: calc(24px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(55px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(24px * var(--shot-scale)); top: calc(348px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -719,7 +741,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="7" style="left: calc(49px * var(--shot-scale)); top: calc(234px * var(--shot-scale)); width: calc(302px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(82px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(318px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -753,7 +777,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_LONG_PRESS_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_BUTTON_TOKEN</span>:
         <span class="c-keyword">case</span> <span class="c-const">GENERIC_CONFIRM_TOKEN</span>:
-            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="0">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
+            <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>, catalog_on_quit);
             <span class="c-keyword">break</span>;
         <span class="c-keyword">default</span>:
             <span class="c-comment">// A tip-box is the app&#x27;s own: NBGL only reports the tap, so a</span>
@@ -791,7 +815,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     generic_review_contents.contentsList = generic_contents;
     generic_review_contents.nbContents = <span class="c-const">ARRAYLEN</span>(generic_contents);
 
-    <span class="c-usecase">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="6">&quot;Reject&quot;</span>, catalog_on_quit);
+    <span class="c-usecase cause" data-cause="0">nbgl_useCaseGenericReview</span>(&amp;generic_review_contents, <span class="c-string lit" data-lit="6">&quot;Reject&quot;</span>, catalog_on_quit);
 }</code></pre>
 
     <div class="shot-rows">
@@ -815,7 +839,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="2" style="left: calc(114px * var(--shot-scale)); top: calc(346px * var(--shot-scale)); width: calc(252px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(442px * var(--shot-scale)); width: calc(281px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -829,7 +855,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="4" style="left: calc(124px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <span class="shot">
@@ -839,7 +867,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Flex, screen 3">
             </a>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="1"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
@@ -865,7 +893,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="2" style="left: calc(67px * var(--shot-scale)); top: calc(243px * var(--shot-scale)); width: calc(165px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(305px * var(--shot-scale)); width: calc(180px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -879,7 +909,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="4" style="left: calc(73px * var(--shot-scale)); top: calc(158px * var(--shot-scale)); width: calc(153px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(16px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <span class="shot">
@@ -889,7 +921,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Apex P, screen 3">
             </a>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="1"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
@@ -915,7 +947,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="2" style="left: calc(91px * var(--shot-scale)); top: calc(382px * var(--shot-scale)); width: calc(217px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(524px * var(--shot-scale)); width: calc(244px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -929,7 +963,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="4" style="left: calc(98px * var(--shot-scale)); top: calc(270px * var(--shot-scale)); width: calc(203px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(24px * var(--shot-scale)); top: calc(496px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseGenericReview"
+               style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <span class="shot">
@@ -939,7 +975,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseGenericReview, EXTENDED_CENTER, Stax, screen 3">
             </a>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="1"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
@@ -948,13 +984,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-24T08:49:19+00:00.</p>
+  <p class="stamp">Generated 2026-09-24T09:45:01+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-24T08:49:19+00:00</span>
+    <span>2026-09-24T09:45:01+00:00</span>
   </footer>
 </div>
 

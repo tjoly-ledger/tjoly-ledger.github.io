@@ -154,7 +154,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
  */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> show_next_chunk(<span class="c-keyword">void</span>) {
     <span class="c-keyword">if</span> (chunk &gt;= <span class="c-const">NB_CHUNKS</span>) {
-        <span class="c-usecase">nbgl_useCaseReviewStreamingFinish</span>(finish_title, on_finish);
+        <span class="c-usecase cause" data-cause="3">nbgl_useCaseReviewStreamingFinish</span>(finish_title, on_finish);
         <span class="c-keyword">return</span>;
     }
 
@@ -164,9 +164,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     <span class="c-keyword">if</span> (skippable) {
         <span class="c-comment">// The Ext flavour adds a &quot;Skip&quot; button, whose callback is expected to</span>
         <span class="c-comment">// jump straight to the signing page.</span>
-        <span class="c-usecase">nbgl_useCaseReviewStreamingContinueExt</span>(&amp;pairList, on_chunk, on_skip);
+        <span class="c-usecase cause" data-cause="2">nbgl_useCaseReviewStreamingContinueExt</span>(&amp;pairList, on_chunk, on_skip);
     } <span class="c-keyword">else</span> {
-        <span class="c-usecase">nbgl_useCaseReviewStreamingContinue</span>(&amp;pairList, on_chunk);
+        <span class="c-usecase cause" data-cause="1">nbgl_useCaseReviewStreamingContinue</span>(&amp;pairList, on_chunk);
     }
 }
 
@@ -190,14 +190,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     chunk = <span class="c-number">0</span>;
     skippable = <span class="c-keyword">false</span>;
     finish_title = <span class="c-string lit" data-lit="8">&quot;Sign transaction\nto send BOL?&quot;</span>;
-    signed_status = <span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>;
-    rejected_status = <span class="c-const cause" data-cause="2">STATUS_TYPE_TRANSACTION_REJECTED</span>;
-    warning.predefinedSet = <span class="c-number">1</span> &lt;&lt; <span class="c-const cause" data-cause="0">W3C_THREAT_DETECTED_WARN</span>;
+    signed_status = <span class="c-const cause" data-cause="5">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const cause" data-cause="6">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    warning.predefinedSet = <span class="c-number">1</span> &lt;&lt; <span class="c-const cause" data-cause="4">W3C_THREAT_DETECTED_WARN</span>;
     warning.reportProvider = <span class="c-string lit" data-lit="9">&quot;Blockaid&quot;</span>;
     warning.reportUrl = <span class="c-string lit" data-lit="10">&quot;url.com/od24xz&quot;</span>;
     warning.providerMessage = <span class="c-string lit" data-lit="11">&quot;Transaction checked by Blockaid.&quot;</span>;
 
-    <span class="c-usecase">nbgl_useCaseAdvancedReviewStreamingStart</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">RISKY_OPERATION</span>,
+    <span class="c-usecase cause" data-cause="0">nbgl_useCaseAdvancedReviewStreamingStart</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">RISKY_OPERATION</span>,
                                              &amp;<span class="c-const">CATALOG_ICON_APP</span>,
                                              <span class="c-string lit" data-lit="12">&quot;Review transaction\nto send BOL&quot;</span>,
                                              <span class="c-const">NULL</span>,
@@ -223,11 +223,15 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="9" style="left: calc(179px * var(--shot-scale)); top: calc(326px * var(--shot-scale)); width: calc(121px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="11" style="left: calc(80px * var(--shot-scale)); top: calc(290px * var(--shot-scale)); width: calc(319px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="11" style="left: calc(179px * var(--shot-scale)); top: calc(326px * var(--shot-scale)); width: calc(121px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="4"
                title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
                style="left: calc(122px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(236px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(54px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(416px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(442px * var(--shot-scale)); width: calc(337px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="4"
+               title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
+               style="left: calc(54px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(416px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="4"
+               title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
+               style="left: calc(143px * var(--shot-scale)); top: calc(442px * var(--shot-scale)); width: calc(337px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -240,9 +244,20 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="12" style="left: calc(75px * var(--shot-scale)); top: calc(234px * var(--shot-scale)); width: calc(330px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="12" style="left: calc(134px * var(--shot-scale)); top: calc(274px * var(--shot-scale)); width: calc(212px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="4"
                title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
                style="left: calc(32px * var(--shot-scale)); top: calc(444px * var(--shot-scale)); width: calc(314px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Top-right button</span>
           <span class="shot">
@@ -255,7 +270,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="9" style="left: calc(32px * var(--shot-scale)); top: calc(210px * var(--shot-scale)); width: calc(121px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="11" style="left: calc(32px * var(--shot-scale)); top: calc(174px * var(--shot-scale)); width: calc(319px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="11" style="left: calc(32px * var(--shot-scale)); top: calc(210px * var(--shot-scale)); width: calc(121px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="4"
                title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
                style="left: calc(88px * var(--shot-scale)); top: calc(124px * var(--shot-scale)); width: calc(187px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(138px * var(--shot-scale)); top: calc(30px * var(--shot-scale)); width: calc(204px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
@@ -286,7 +301,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(402px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(224px * var(--shot-scale)); width: calc(401px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(264px * var(--shot-scale)); width: calc(124px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -301,7 +327,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="5" style="left: calc(32px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(193px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(32px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(32px * var(--shot-scale)); top: calc(224px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -313,8 +350,30 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             </a>
             <b class="hot" data-lit="8" style="left: calc(99px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(282px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(124px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(197px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(197px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(197px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(197px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(197px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <span class="shot">
@@ -324,7 +383,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseAdvancedReviewStreamingStart, W3C_THREAT_DETECTED_WARN, Flex, screen 8">
             </a>
-            <b class="hot because" data-cause="1"
+            <b class="hot because" data-cause="5"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
@@ -347,11 +406,15 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="9" style="left: calc(111px * var(--shot-scale)); top: calc(225px * var(--shot-scale)); width: calc(78px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="11" style="left: calc(47px * var(--shot-scale)); top: calc(203px * var(--shot-scale)); width: calc(205px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="11" style="left: calc(111px * var(--shot-scale)); top: calc(225px * var(--shot-scale)); width: calc(78px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="4"
                title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
                style="left: calc(72px * var(--shot-scale)); top: calc(129px * var(--shot-scale)); width: calc(156px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(268px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(83px * var(--shot-scale)); top: calc(301px * var(--shot-scale)); width: calc(217px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="4"
+               title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
+               style="left: calc(24px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(268px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="4"
+               title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
+               style="left: calc(83px * var(--shot-scale)); top: calc(301px * var(--shot-scale)); width: calc(217px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -364,9 +427,20 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="12" style="left: calc(40px * var(--shot-scale)); top: calc(163px * var(--shot-scale)); width: calc(220px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="12" style="left: calc(80px * var(--shot-scale)); top: calc(191px * var(--shot-scale)); width: calc(140px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="4"
                title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
                style="left: calc(16px * var(--shot-scale)); top: calc(306px * var(--shot-scale)); width: calc(202px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Top-right button</span>
           <span class="shot">
@@ -379,7 +453,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="9" style="left: calc(16px * var(--shot-scale)); top: calc(136px * var(--shot-scale)); width: calc(78px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="11" style="left: calc(16px * var(--shot-scale)); top: calc(114px * var(--shot-scale)); width: calc(205px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="11" style="left: calc(16px * var(--shot-scale)); top: calc(136px * var(--shot-scale)); width: calc(78px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="4"
                title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
                style="left: calc(48px * var(--shot-scale)); top: calc(83px * var(--shot-scale)); width: calc(128px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(79px * var(--shot-scale)); top: calc(19px * var(--shot-scale)); width: calc(141px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
@@ -410,7 +484,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(268px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(148px * var(--shot-scale)); width: calc(268px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(176px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -425,7 +510,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="5" style="left: calc(16px * var(--shot-scale)); top: calc(78px * var(--shot-scale)); width: calc(129px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(16px * var(--shot-scale)); top: calc(122px * var(--shot-scale)); width: calc(43px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(16px * var(--shot-scale)); top: calc(148px * var(--shot-scale)); width: calc(151px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -437,8 +533,30 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             </a>
             <b class="hot" data-lit="8" style="left: calc(56px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(188px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(73px * var(--shot-scale)); top: calc(158px * var(--shot-scale)); width: calc(153px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(120px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(120px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(16px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(120px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(16px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(120px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(16px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(120px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(16px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <span class="shot">
@@ -448,7 +566,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseAdvancedReviewStreamingStart, W3C_THREAT_DETECTED_WARN, Apex P, screen 8">
             </a>
-            <b class="hot because" data-cause="1"
+            <b class="hot because" data-cause="5"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
@@ -471,11 +589,15 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="9" style="left: calc(148px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(104px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="11" style="left: calc(63px * var(--shot-scale)); top: calc(332px * var(--shot-scale)); width: calc(273px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="11" style="left: calc(148px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(104px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="4"
                title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
                style="left: calc(95px * var(--shot-scale)); top: calc(228px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(40px * var(--shot-scale)); top: calc(612px * var(--shot-scale)); width: calc(352px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(116px * var(--shot-scale)); top: calc(528px * var(--shot-scale)); width: calc(284px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="4"
+               title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
+               style="left: calc(40px * var(--shot-scale)); top: calc(612px * var(--shot-scale)); width: calc(352px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="4"
+               title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
+               style="left: calc(116px * var(--shot-scale)); top: calc(528px * var(--shot-scale)); width: calc(284px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -488,9 +610,20 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="12" style="left: calc(54px * var(--shot-scale)); top: calc(270px * var(--shot-scale)); width: calc(291px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="12" style="left: calc(107px * var(--shot-scale)); top: calc(310px * var(--shot-scale)); width: calc(186px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="4"
                title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
                style="left: calc(24px * var(--shot-scale)); top: calc(524px * var(--shot-scale)); width: calc(273px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Top-right button</span>
           <span class="shot">
@@ -503,7 +636,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="9" style="left: calc(24px * var(--shot-scale)); top: calc(200px * var(--shot-scale)); width: calc(104px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="11" style="left: calc(24px * var(--shot-scale)); top: calc(168px * var(--shot-scale)); width: calc(273px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="11" style="left: calc(24px * var(--shot-scale)); top: calc(200px * var(--shot-scale)); width: calc(104px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="4"
                title="Drawn by the SDK because of W3C_THREAT_DETECTED_WARN"
                style="left: calc(68px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(161px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(111px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(177px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
@@ -534,7 +667,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(338px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(338px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(260px * var(--shot-scale)); width: calc(149px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -549,7 +693,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="5" style="left: calc(24px * var(--shot-scale)); top: calc(132px * var(--shot-scale)); width: calc(173px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(24px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(55px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(24px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -561,8 +716,30 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             </a>
             <b class="hot" data-lit="8" style="left: calc(76px * var(--shot-scale)); top: calc(230px * var(--shot-scale)); width: calc(248px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="8" style="left: calc(98px * var(--shot-scale)); top: calc(270px * var(--shot-scale)); width: calc(203px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(163px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(496px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(163px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(24px * var(--shot-scale)); top: calc(496px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(163px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(24px * var(--shot-scale)); top: calc(496px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(163px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(24px * var(--shot-scale)); top: calc(496px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(163px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(24px * var(--shot-scale)); top: calc(496px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <span class="shot">
@@ -572,7 +749,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseAdvancedReviewStreamingStart, W3C_THREAT_DETECTED_WARN, Stax, screen 8">
             </a>
-            <b class="hot because" data-cause="1"
+            <b class="hot because" data-cause="5"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
@@ -637,7 +814,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
  */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> show_next_chunk(<span class="c-keyword">void</span>) {
     <span class="c-keyword">if</span> (chunk &gt;= <span class="c-const">NB_CHUNKS</span>) {
-        <span class="c-usecase">nbgl_useCaseReviewStreamingFinish</span>(finish_title, on_finish);
+        <span class="c-usecase cause" data-cause="3">nbgl_useCaseReviewStreamingFinish</span>(finish_title, on_finish);
         <span class="c-keyword">return</span>;
     }
 
@@ -647,9 +824,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     <span class="c-keyword">if</span> (skippable) {
         <span class="c-comment">// The Ext flavour adds a &quot;Skip&quot; button, whose callback is expected to</span>
         <span class="c-comment">// jump straight to the signing page.</span>
-        <span class="c-usecase">nbgl_useCaseReviewStreamingContinueExt</span>(&amp;pairList, on_chunk, on_skip);
+        <span class="c-usecase cause" data-cause="2">nbgl_useCaseReviewStreamingContinueExt</span>(&amp;pairList, on_chunk, on_skip);
     } <span class="c-keyword">else</span> {
-        <span class="c-usecase">nbgl_useCaseReviewStreamingContinue</span>(&amp;pairList, on_chunk);
+        <span class="c-usecase cause" data-cause="1">nbgl_useCaseReviewStreamingContinue</span>(&amp;pairList, on_chunk);
     }
 }
 
@@ -673,14 +850,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     chunk = <span class="c-number">0</span>;
     skippable = <span class="c-keyword">false</span>;
     finish_title = <span class="c-string lit" data-lit="8">&quot;Sign transaction\nto send BOL?&quot;</span>;
-    signed_status = <span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>;
-    rejected_status = <span class="c-const cause" data-cause="2">STATUS_TYPE_TRANSACTION_REJECTED</span>;
-    warning.predefinedSet = <span class="c-number">1</span> &lt;&lt; <span class="c-const cause" data-cause="0">W3C_NO_THREAT_WARN</span>;
+    signed_status = <span class="c-const cause" data-cause="5">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+    rejected_status = <span class="c-const cause" data-cause="6">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+    warning.predefinedSet = <span class="c-number">1</span> &lt;&lt; <span class="c-const cause" data-cause="4">W3C_NO_THREAT_WARN</span>;
     warning.reportProvider = <span class="c-string lit" data-lit="9">&quot;Blockaid&quot;</span>;
     warning.reportUrl = <span class="c-string lit" data-lit="10">&quot;url.com/od24xz&quot;</span>;
     warning.providerMessage = <span class="c-string lit" data-lit="11">&quot;Transaction checked by Blockaid.&quot;</span>;
 
-    <span class="c-usecase">nbgl_useCaseAdvancedReviewStreamingStart</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">NO_THREAT_OPERATION</span>,
+    <span class="c-usecase cause" data-cause="0">nbgl_useCaseAdvancedReviewStreamingStart</span>(<span class="c-const">TYPE_TRANSACTION</span> | <span class="c-const">NO_THREAT_OPERATION</span>,
                                              &amp;<span class="c-const">CATALOG_ICON_APP</span>,
                                              <span class="c-string lit" data-lit="12">&quot;Review transaction\nto send BOL&quot;</span>,
                                              <span class="c-const">NULL</span>,
@@ -704,7 +881,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             </a>
             <b class="hot" data-lit="12" style="left: calc(75px * var(--shot-scale)); top: calc(216px * var(--shot-scale)); width: calc(330px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="12" style="left: calc(134px * var(--shot-scale)); top: calc(256px * var(--shot-scale)); width: calc(212px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(444px * var(--shot-scale)); width: calc(257px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
@@ -716,7 +904,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseAdvancedReviewStreamingStart, W3C_NO_THREAT_WARN, Flex, screen 2">
             </a>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="4"
                title="Drawn by the SDK because of W3C_NO_THREAT_WARN"
                style="left: calc(32px * var(--shot-scale)); top: calc(124px * var(--shot-scale)); width: calc(260px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(138px * var(--shot-scale)); top: calc(30px * var(--shot-scale)); width: calc(204px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
@@ -738,7 +926,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(402px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(224px * var(--shot-scale)); width: calc(401px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(264px * var(--shot-scale)); width: calc(124px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -753,7 +952,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="5" style="left: calc(32px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(193px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(32px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(32px * var(--shot-scale)); top: calc(224px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -772,7 +982,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             </a>
             <b class="hot" data-lit="12" style="left: calc(40px * var(--shot-scale)); top: calc(152px * var(--shot-scale)); width: calc(220px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="12" style="left: calc(80px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(140px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(284px * var(--shot-scale)); width: calc(188px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(306px * var(--shot-scale)); width: calc(165px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
@@ -784,7 +1005,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseAdvancedReviewStreamingStart, W3C_NO_THREAT_WARN, Apex P, screen 2">
             </a>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="4"
                title="Drawn by the SDK because of W3C_NO_THREAT_WARN"
                style="left: calc(16px * var(--shot-scale)); top: calc(83px * var(--shot-scale)); width: calc(176px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(79px * var(--shot-scale)); top: calc(19px * var(--shot-scale)); width: calc(141px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
@@ -806,7 +1027,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(268px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(148px * var(--shot-scale)); width: calc(268px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(176px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -821,7 +1053,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="5" style="left: calc(16px * var(--shot-scale)); top: calc(78px * var(--shot-scale)); width: calc(129px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(16px * var(--shot-scale)); top: calc(122px * var(--shot-scale)); width: calc(43px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(16px * var(--shot-scale)); top: calc(148px * var(--shot-scale)); width: calc(151px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -840,7 +1083,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             </a>
             <b class="hot" data-lit="12" style="left: calc(54px * var(--shot-scale)); top: calc(254px * var(--shot-scale)); width: calc(291px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="12" style="left: calc(107px * var(--shot-scale)); top: calc(294px * var(--shot-scale)); width: calc(186px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(492px * var(--shot-scale)); width: calc(253px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(524px * var(--shot-scale)); width: calc(220px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
@@ -852,7 +1106,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseAdvancedReviewStreamingStart, W3C_NO_THREAT_WARN, Stax, screen 2">
             </a>
-            <b class="hot because" data-cause="0"
+            <b class="hot because" data-cause="4"
                title="Drawn by the SDK because of W3C_NO_THREAT_WARN"
                style="left: calc(24px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(220px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(111px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(177px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
@@ -874,7 +1128,18 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(338px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(338px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(260px * var(--shot-scale)); width: calc(149px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
           <span class="shot">
@@ -889,20 +1154,31 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="5" style="left: calc(24px * var(--shot-scale)); top: calc(132px * var(--shot-scale)); width: calc(173px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(24px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(55px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(24px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAdvancedReviewStreamingStart"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinue"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingContinueExt"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="3"
+               title="Drawn by the SDK because of nbgl_useCaseReviewStreamingFinish"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-24T08:49:19+00:00.</p>
+  <p class="stamp">Generated 2026-09-24T09:45:01+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-24T08:49:19+00:00</span>
+    <span>2026-09-24T09:45:01+00:00</span>
   </footer>
 </div>
 
