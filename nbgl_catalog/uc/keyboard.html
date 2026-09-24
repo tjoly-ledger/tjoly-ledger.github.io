@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseKeyboard &mdash; NBGL use cases</title>
 <meta name="description" content="A text entry page, with either a confirmation button or dynamic suggestion buttons.">
-<link rel="stylesheet" href="../plain.css?v=cfc5f3f7">
+<link rel="stylesheet" href="../plain.css?v=cfddf5f7">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -94,12 +94,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 
-    <pre class="code"><code><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
+    <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_keyboardParams_t</span> keyboard_params;
 
 <span class="c-comment">/** The app owns the buffer the keyboard writes into. */</span>
-<span class="c-keyword">static</span> <span class="c-keyword">char</span> entry_buffer[<span class="c-const">ENTRY_MAX_LEN</span> + <span class="c-number">1</span>];
+<span class="c-keyword">static</span> <span class="c-keyword">char</span> entry_buffer[<span class="c-const">ENTRY_MAX_LEN</span> + <span class="c-number">1</span>];</details>
 
 <span class="c-comment">// A confirmation button sits under the entry area; the keyboard starts in</span>
 <span class="c-comment">// letters mode and `casing` decides how the first letter is capitalised.</span>
@@ -179,12 +179,12 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
     </summary>
 
 <p class="variant-note">The same example after three keys: the entry area fills up, and LOCKED_UPPER_CASE keeps every letter capital.</p>
-    <pre class="code"><code><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
+    <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_keyboardParams_t</span> keyboard_params;
 
 <span class="c-comment">/** The app owns the buffer the keyboard writes into. */</span>
-<span class="c-keyword">static</span> <span class="c-keyword">char</span> entry_buffer[<span class="c-const">ENTRY_MAX_LEN</span> + <span class="c-number">1</span>];
+<span class="c-keyword">static</span> <span class="c-keyword">char</span> entry_buffer[<span class="c-const">ENTRY_MAX_LEN</span> + <span class="c-number">1</span>];</details>
 
 <span class="c-comment">// A confirmation button sits under the entry area; the keyboard starts in</span>
 <span class="c-comment">// letters mode and `casing` decides how the first letter is capitalised.</span>
@@ -381,12 +381,12 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
     </summary>
 
 <p class="variant-note">The key that ends the bottom row swaps the letters for digits and punctuation. It is the SDK&#39;s own, which lettersOnly removes.</p>
-    <pre class="code"><code><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
+    <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_keyboardParams_t</span> keyboard_params;
 
 <span class="c-comment">/** The app owns the buffer the keyboard writes into. */</span>
-<span class="c-keyword">static</span> <span class="c-keyword">char</span> entry_buffer[<span class="c-const">ENTRY_MAX_LEN</span> + <span class="c-number">1</span>];
+<span class="c-keyword">static</span> <span class="c-keyword">char</span> entry_buffer[<span class="c-const">ENTRY_MAX_LEN</span> + <span class="c-number">1</span>];</details>
 
 <span class="c-comment">// A confirmation button sits under the entry area; the keyboard starts in</span>
 <span class="c-comment">// letters mode and `casing` decides how the first letter is capitalised.</span>
@@ -499,12 +499,12 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
     </summary>
 
 
-    <pre class="code"><code><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
+    <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_keyboardParams_t</span> keyboard_params;
 
 <span class="c-comment">/** The app owns the buffer the keyboard writes into. */</span>
-<span class="c-keyword">static</span> <span class="c-keyword">char</span> entry_buffer[<span class="c-const">ENTRY_MAX_LEN</span> + <span class="c-number">1</span>];
+<span class="c-keyword">static</span> <span class="c-keyword">char</span> entry_buffer[<span class="c-const">ENTRY_MAX_LEN</span> + <span class="c-number">1</span>];</details>
 
 <span class="c-comment">// Suggestion buttons replace the confirmation button; the update callback</span>
 <span class="c-comment">// is called on every key press, to refresh them and to grey out the keys</span>
@@ -599,12 +599,12 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
     </summary>
 
 <p class="variant-note">The update callback runs on every key press. This app keeps the same four words; a real one would narrow them down and grey out the keys leading nowhere.</p>
-    <pre class="code"><code><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
+    <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_keyboardParams_t</span> keyboard_params;
 
 <span class="c-comment">/** The app owns the buffer the keyboard writes into. */</span>
-<span class="c-keyword">static</span> <span class="c-keyword">char</span> entry_buffer[<span class="c-const">ENTRY_MAX_LEN</span> + <span class="c-number">1</span>];
+<span class="c-keyword">static</span> <span class="c-keyword">char</span> entry_buffer[<span class="c-const">ENTRY_MAX_LEN</span> + <span class="c-number">1</span>];</details>
 
 <span class="c-comment">// Suggestion buttons replace the confirmation button; the update callback</span>
 <span class="c-comment">// is called on every key press, to refresh them and to grey out the keys</span>
@@ -769,13 +769,13 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-24T12:14:03+00:00.</p>
+  <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-24T12:14:03+00:00</span>
+    <span>2026-09-24T13:35:15+00:00</span>
   </footer>
 </div>
 
@@ -851,6 +851,15 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
         element.scrollIntoView({block: "nearest"});
     }
 
+    /* A value can live in a folded region: marking it there would mark
+       something the reader cannot see. Asked for it by a click, so show it. */
+    function unfold(node) {
+        for (var d = node && node.closest("details.shared"); d; d = null) {
+            d.open = true;
+        }
+        return node;
+    }
+
     function firstVisible(nodes) {
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
@@ -895,7 +904,7 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
             var key = keyOf(box);
             pinned = pinned === key ? null : key;
             light(pinned || key);
-            reveal(document.querySelector(".lit.on, .cause.on"));
+            reveal(unfold(document.querySelector(".lit.on, .cause.on")));
         });
     });
 

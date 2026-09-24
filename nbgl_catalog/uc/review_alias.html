@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseReview &mdash; NBGL use cases</title>
 <meta name="description" content="A tag/value pair whose value is an alias: the review shows the short name with a chevron, and the page behind it justifies the alias. The aliasType of nbgl_contentValueExt_t picks that page.">
-<link rel="stylesheet" href="../plain.css?v=cfc5f3f7">
+<link rel="stylesheet" href="../plain.css?v=cfddf5f7">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -100,7 +100,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">A domain name resolved by the Ledger backend, which the SDK says itself under the full address.</p>
-    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+    <pre class="code"><code><details class="shared"><summary>45 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -144,7 +144,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-const">NULL</span>,
                        <span class="c-string lit" data-lit="7">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_pairs_choice);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_alias_ens(<span class="c-keyword">void</span>) {
     <span class="c-comment">// ENS_ALIAS: the page repeats the alias as its title, then the full</span>
@@ -528,7 +528,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">An entry of the user&#39;s Address Book, with its sub-name under the alias and, here, a trusted name as well.</p>
-    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+    <pre class="code"><code><details class="shared"><summary>45 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -572,7 +572,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-const">NULL</span>,
                        <span class="c-string lit" data-lit="7">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_pairs_choice);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_alias_address_book(<span class="c-keyword">void</span>) {
     <span class="c-comment">// ADDRESS_BOOK_ALIAS: `aliasSubName` is shown under the alias both on the</span>
@@ -965,7 +965,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">The full value as a QR code, so it can be checked against another device.</p>
-    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+    <pre class="code"><code><details class="shared"><summary>45 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -1009,7 +1009,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-const">NULL</span>,
                        <span class="c-string lit" data-lit="7">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_pairs_choice);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_alias_qr_code(<span class="c-keyword">void</span>) {
     <span class="c-comment">// QR_CODE_ALIAS: the page behind the chevron is a QR code of `fullValue`,</span>
@@ -1395,7 +1395,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">A list of infos rather than a single value, for an alias that takes more than one line to justify.</p>
-    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+    <pre class="code"><code><details class="shared"><summary>45 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -1439,7 +1439,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-const">NULL</span>,
                        <span class="c-string lit" data-lit="7">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_pairs_choice);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">ALIAS_INFO_TYPES</span>[] = {<span class="c-string lit" data-lit="8">&quot;Contract&quot;</span>, <span class="c-string lit" data-lit="9">&quot;Method&quot;</span>};
 <span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">ALIAS_INFO_CONTENTS</span>[] = {<span class="c-const">RECIPIENT</span>, <span class="c-string lit" data-lit="10">&quot;transfer(address,uint256)&quot;</span>};
@@ -1839,7 +1839,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">A whole tag/value list behind the chevron.</p>
-    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+    <pre class="code"><code><details class="shared"><summary>45 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -1883,7 +1883,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-const">NULL</span>,
                        <span class="c-string lit" data-lit="6">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_pairs_choice);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     alias_pairs[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> alias_pair_list;
@@ -2275,13 +2275,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-24T12:14:03+00:00.</p>
+  <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-24T12:14:03+00:00</span>
+    <span>2026-09-24T13:35:15+00:00</span>
   </footer>
 </div>
 
@@ -2357,6 +2357,15 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         element.scrollIntoView({block: "nearest"});
     }
 
+    /* A value can live in a folded region: marking it there would mark
+       something the reader cannot see. Asked for it by a click, so show it. */
+    function unfold(node) {
+        for (var d = node && node.closest("details.shared"); d; d = null) {
+            d.open = true;
+        }
+        return node;
+    }
+
     function firstVisible(nodes) {
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
@@ -2401,7 +2410,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             var key = keyOf(box);
             pinned = pinned === key ? null : key;
             light(pinned || key);
-            reveal(document.querySelector(".lit.on, .cause.on"));
+            reveal(unfold(document.querySelector(".lit.on, .cause.on")));
         });
     });
 

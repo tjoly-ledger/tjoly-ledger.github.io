@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseReview &mdash; NBGL use cases</title>
 <meta name="description" content="Full review of an operation whose tag/value pairs are all known upfront: a cover page, as many auto-paginated pair pages as needed, then a long-press page to sign.">
-<link rel="stylesheet" href="../plain.css?v=cfc5f3f7">
+<link rel="stylesheet" href="../plain.css?v=cfddf5f7">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -97,13 +97,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">The most common flow, for a coin transfer.</p>
-    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+    <pre class="code"><code><details class="shared"><summary>7 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
-<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;</details>
 
 <span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
@@ -119,10 +119,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     pairList.wrapping = <span class="c-keyword">true</span>;
 }
 
-<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
+<details class="shared"><summary>4 lines every variant of this page repeats</summary><span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_transaction(<span class="c-keyword">void</span>) {
     fill_transfer_pairs();
@@ -412,13 +412,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">The same example followed to its other end: the reject footer opens a confirmation modal, and confirming it shows the rejected status.</p>
-    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+    <pre class="code"><code><details class="shared"><summary>7 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
-<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;</details>
 
 <span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
@@ -434,10 +434,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     pairList.wrapping = <span class="c-keyword">true</span>;
 }
 
-<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
+<details class="shared"><summary>4 lines every variant of this page repeats</summary><span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_transaction(<span class="c-keyword">void</span>) {
     fill_transfer_pairs();
@@ -616,7 +616,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">For an operation that will not be broadcast, which changes the wordings of the reject page and of the status.</p>
-    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+    <pre class="code"><code><details class="shared"><summary>12 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -627,7 +627,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_message(<span class="c-keyword">void</span>) {
     pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="0">&quot;Message&quot;</span>;
@@ -904,13 +904,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">The generic type, for anything else.</p>
-    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+    <pre class="code"><code><details class="shared"><summary>7 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
-<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;</details>
 
 <span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
@@ -926,10 +926,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     pairList.wrapping = <span class="c-keyword">true</span>;
 }
 
-<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
+<details class="shared"><summary>4 lines every variant of this page repeats</summary><span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_operation(<span class="c-keyword">void</span>) {
     fill_transfer_pairs();
@@ -1215,7 +1215,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Adds a Skip button on the first page, so that a long review can be jumped over.</p>
-    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+    <pre class="code"><code><details class="shared"><summary>12 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -1226,7 +1226,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_skippable(<span class="c-keyword">void</span>) {
     <span class="c-comment">// SKIPPABLE_OPERATION only shows its &quot;Skip&quot; button when the review spans</span>
@@ -1605,13 +1605,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Adapts the wordings to an Address Book entry.</p>
-    <pre class="code"><code><span class="c-pp">#define MAX_PAIRS 4</span>
+    <pre class="code"><code><details class="shared"><summary>7 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> signed_status;
-<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;
+<span class="c-keyword">static</span> <span class="c-type">nbgl_reviewStatusType_t</span> rejected_status;</details>
 
 <span class="c-comment">/** Fill the pair list with a plain coin transfer, used by most variants. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> fill_transfer_pairs(<span class="c-keyword">void</span>) {
@@ -1627,10 +1627,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     pairList.wrapping = <span class="c-keyword">true</span>;
 }
 
-<span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
+<details class="shared"><summary>4 lines every variant of this page repeats</summary><span class="c-comment">/** The status page an app shows once the user has answered the review. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(confirm ? signed_status : rejected_status, catalog_on_quit);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_address_book(<span class="c-keyword">void</span>) {
     fill_transfer_pairs();
@@ -1888,13 +1888,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-24T12:14:03+00:00.</p>
+  <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-24T12:14:03+00:00</span>
+    <span>2026-09-24T13:35:15+00:00</span>
   </footer>
 </div>
 
@@ -1970,6 +1970,15 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         element.scrollIntoView({block: "nearest"});
     }
 
+    /* A value can live in a folded region: marking it there would mark
+       something the reader cannot see. Asked for it by a click, so show it. */
+    function unfold(node) {
+        for (var d = node && node.closest("details.shared"); d; d = null) {
+            d.open = true;
+        }
+        return node;
+    }
+
     function firstVisible(nodes) {
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
@@ -2014,7 +2023,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             var key = keyOf(box);
             pinned = pinned === key ? null : key;
             light(pinned || key);
-            reveal(document.querySelector(".lit.on, .cause.on"));
+            reveal(unfold(document.querySelector(".lit.on, .cause.on")));
         });
     });
 

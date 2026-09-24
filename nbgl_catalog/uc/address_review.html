@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseAddressReview &mdash; NBGL use cases</title>
 <meta name="description" content="Shows an address for the user to check against their wallet, with optional extra pairs. The address page also carries a button to display it as a QR code, which is not captured here: it is an icon with no label, so it cannot be located the same way on every product.">
-<link rel="stylesheet" href="../plain.css?v=cfc5f3f7">
+<link rel="stylesheet" href="../plain.css?v=cfddf5f7">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -98,7 +98,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 
-    <pre class="code"><code><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
+    <pre class="code"><code><details class="shared"><summary>10 lines every variant of this page repeats</summary><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -107,7 +107,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_address_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
         confirm ? <span class="c-const cause" data-cause="1">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const cause" data-cause="2">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
-}
+}</details>
 
 <span class="c-comment">// The address page carries a button to show the same address as a QR code,</span>
 <span class="c-comment">// which needs the app to be built with ENABLE_NBGL_QRCODE = 1.</span>
@@ -314,7 +314,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">The same example followed to its other end: declining the address.</p>
-    <pre class="code"><code><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
+    <pre class="code"><code><details class="shared"><summary>10 lines every variant of this page repeats</summary><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -323,7 +323,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_address_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
         confirm ? <span class="c-const cause" data-cause="1">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const cause" data-cause="2">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
-}
+}</details>
 
 <span class="c-comment">// The address page carries a button to show the same address as a QR code,</span>
 <span class="c-comment">// which needs the app to be built with ENABLE_NBGL_QRCODE = 1.</span>
@@ -476,7 +476,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">The same example, following the round button beside Confirm: it shows the address as a QR code, to be checked against another device. Needs ENABLE_NBGL_QRCODE.</p>
-    <pre class="code"><code><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
+    <pre class="code"><code><details class="shared"><summary>10 lines every variant of this page repeats</summary><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -485,7 +485,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_address_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
         confirm ? <span class="c-const cause" data-cause="1">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const cause" data-cause="2">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
-}
+}</details>
 
 <span class="c-comment">// The address page carries a button to show the same address as a QR code,</span>
 <span class="c-comment">// which needs the app to be built with ENABLE_NBGL_QRCODE = 1.</span>
@@ -752,7 +752,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Extra tag/value pairs are shown after the address, for an account name or a derivation path.</p>
-    <pre class="code"><code><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
+    <pre class="code"><code><details class="shared"><summary>10 lines every variant of this page repeats</summary><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -761,7 +761,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_address_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
         confirm ? <span class="c-const cause" data-cause="1">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const cause" data-cause="2">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
-}
+}</details>
 
 pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="1">&quot;Account&quot;</span>;
 pairs[<span class="c-number">0</span>].value = <span class="c-string lit" data-lit="2">&quot;Main account&quot;</span>;
@@ -1017,13 +1017,13 @@ pairList.wrapping = <span class="c-keyword">true</span>;
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-24T12:14:03+00:00.</p>
+  <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-24T12:14:03+00:00</span>
+    <span>2026-09-24T13:35:15+00:00</span>
   </footer>
 </div>
 
@@ -1099,6 +1099,15 @@ pairList.wrapping = <span class="c-keyword">true</span>;
         element.scrollIntoView({block: "nearest"});
     }
 
+    /* A value can live in a folded region: marking it there would mark
+       something the reader cannot see. Asked for it by a click, so show it. */
+    function unfold(node) {
+        for (var d = node && node.closest("details.shared"); d; d = null) {
+            d.open = true;
+        }
+        return node;
+    }
+
     function firstVisible(nodes) {
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
@@ -1143,7 +1152,7 @@ pairList.wrapping = <span class="c-keyword">true</span>;
             var key = keyOf(box);
             pinned = pinned === key ? null : key;
             light(pinned || key);
-            reveal(document.querySelector(".lit.on, .cause.on"));
+            reveal(unfold(document.querySelector(".lit.on, .cause.on")));
         });
     });
 

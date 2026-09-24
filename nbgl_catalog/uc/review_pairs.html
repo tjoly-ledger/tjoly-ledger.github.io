@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseReview &mdash; NBGL use cases</title>
 <meta name="description" content="The layout fields a tag/value pair carries itself, which decide how a review paginates and draws it. The list-level ones are not here: nbgl_useCaseReview() overrides smallCaseForValue, nbMaxLinesForValue and hideEndOfLastLine on every page it draws, so an app cannot set them.">
-<link rel="stylesheet" href="../plain.css?v=cfc5f3f7">
+<link rel="stylesheet" href="../plain.css?v=cfddf5f7">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -94,7 +94,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Breaks the page before this pair, to keep a group of pairs together on a page of its own.</p>
-    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+    <pre class="code"><code><details class="shared"><summary>25 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -118,7 +118,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-const">NULL</span>,
                        <span class="c-string lit" data-lit="1">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_pairs_choice);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_pairs_force_page_start(<span class="c-keyword">void</span>) {
     <span class="c-comment">// The three pairs below fit on one page on every product. `forcePageStart`</span>
@@ -458,7 +458,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Draws the pair as a review cover instead: the icon of valueIcon, the tag as title and the value as description.</p>
-    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+    <pre class="code"><code><details class="shared"><summary>25 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -482,7 +482,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-const">NULL</span>,
                        <span class="c-string lit" data-lit="1">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_pairs_choice);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_pairs_centered_info(<span class="c-keyword">void</span>) {
     <span class="c-comment">// `centeredInfo` turns a pair into a page of its own, drawn like a review</span>
@@ -829,7 +829,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Not a field but what NBGL does without one: it builds a TAG_VALUE_DETAILS page with a More button, the one content type a use case cannot be passed.</p>
-    <pre class="code"><code><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+    <pre class="code"><code><details class="shared"><summary>25 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -853,7 +853,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-const">NULL</span>,
                        <span class="c-string lit" data-lit="1">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_pairs_choice);
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_review_pairs_long_value(<span class="c-keyword">void</span>) {
     <span class="c-comment">// A value too long for one page is not truncated by the app: NBGL turns</span>
@@ -1231,13 +1231,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-24T12:14:03+00:00.</p>
+  <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-24T12:14:03+00:00</span>
+    <span>2026-09-24T13:35:15+00:00</span>
   </footer>
 </div>
 
@@ -1313,6 +1313,15 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         element.scrollIntoView({block: "nearest"});
     }
 
+    /* A value can live in a folded region: marking it there would mark
+       something the reader cannot see. Asked for it by a click, so show it. */
+    function unfold(node) {
+        for (var d = node && node.closest("details.shared"); d; d = null) {
+            d.open = true;
+        }
+        return node;
+    }
+
     function firstVisible(nodes) {
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
@@ -1357,7 +1366,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             var key = keyOf(box);
             pinned = pinned === key ? null : key;
             light(pinned || key);
-            reveal(document.querySelector(".lit.on, .cause.on"));
+            reveal(unfold(document.querySelector(".lit.on, .cause.on")));
         });
     });
 

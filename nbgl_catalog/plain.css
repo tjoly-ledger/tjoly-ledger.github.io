@@ -482,6 +482,30 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
     color: var(--text-3);
 }
 
+/* What every variant of a page repeats word for word: folded, so the few
+   lines that make the variant are what the eye lands on. The block stays
+   whole and compilable, it just starts closed. */
+.shared > summary {
+    display: block;
+    margin: 2px 0;
+    padding: 1px 0;
+    color: var(--text-3);
+    font-size: 11px;
+    font-style: italic;
+    cursor: pointer;
+    list-style: none;
+    border-top: 1px dotted var(--border);
+    border-bottom: 1px dotted var(--border);
+}
+
+.shared > summary::-webkit-details-marker { display: none; }
+
+.shared > summary::before { content: "\25B8\00a0"; font-style: normal; }
+
+.shared[open] > summary::before { content: "\25BE\00a0"; }
+
+.shared > summary:hover { color: var(--text-1); }
+
 /* ---------------- C syntax colouring ---------------- */
 
 .c-comment { color: #7a7a85; font-style: italic; }

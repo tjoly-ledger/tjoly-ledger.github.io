@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseAdvancedReviewStreamingStart &mdash; NBGL use cases</title>
 <meta name="description" content="The configurable streaming start: the same warning bitfield as nbgl_useCaseAdvancedReview().">
-<link rel="stylesheet" href="../plain.css?v=cfc5f3f7">
+<link rel="stylesheet" href="../plain.css?v=cfddf5f7">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -96,7 +96,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 
-    <pre class="code"><code><span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
+    <pre class="code"><code><details class="shared"><summary>78 lines every variant of this page repeats</summary><span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
 <span class="c-keyword">static</span> <span class="c-type">nbgl_warning_t</span>             warning;
 
@@ -173,7 +173,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> on_skip(<span class="c-keyword">void</span>) {
     chunk = <span class="c-const">NB_CHUNKS</span>;
     show_next_chunk();
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_advanced_review_streaming_start_w3c_threat(<span class="c-keyword">void</span>) {
     <span class="c-comment">// Web3 Checks found a threat.</span>
@@ -768,7 +768,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Both chunks are drawn, then the app segfaults the moment the chain reaches nbgl_useCaseReviewStreamingFinish(). The same chain with W3C_THREAT_DETECTED_WARN, and the plain streaming chain, both reach the status page, so it is the advanced streaming path that cannot end.</p>
-    <pre class="code"><code><span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
+    <pre class="code"><code><details class="shared"><summary>78 lines every variant of this page repeats</summary><span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
 <span class="c-keyword">static</span> <span class="c-type">nbgl_warning_t</span>             warning;
 
@@ -845,7 +845,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> on_skip(<span class="c-keyword">void</span>) {
     chunk = <span class="c-const">NB_CHUNKS</span>;
     show_next_chunk();
-}
+}</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_advanced_review_streaming_start_w3c_no_threat(<span class="c-keyword">void</span>) {
     <span class="c-comment">// Web3 Checks found nothing.</span>
@@ -1167,13 +1167,13 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </div>
   </details>
 
-  <p class="stamp">Generated 2026-09-24T12:14:03+00:00.</p>
+  <p class="stamp">Generated 2026-09-24T13:35:15+00:00.</p>
 </div>
   </main>
 
   <footer>
     <span>Rendered from app-boilerplate built against a SDK and run in Speculos</span>
-    <span>2026-09-24T12:14:03+00:00</span>
+    <span>2026-09-24T13:35:15+00:00</span>
   </footer>
 </div>
 
@@ -1249,6 +1249,15 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         element.scrollIntoView({block: "nearest"});
     }
 
+    /* A value can live in a folded region: marking it there would mark
+       something the reader cannot see. Asked for it by a click, so show it. */
+    function unfold(node) {
+        for (var d = node && node.closest("details.shared"); d; d = null) {
+            d.open = true;
+        }
+        return node;
+    }
+
     function firstVisible(nodes) {
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
@@ -1293,7 +1302,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             var key = keyOf(box);
             pinned = pinned === key ? null : key;
             light(pinned || key);
-            reveal(document.querySelector(".lit.on, .cause.on"));
+            reveal(unfold(document.querySelector(".lit.on, .cause.on")));
         });
     });
 
