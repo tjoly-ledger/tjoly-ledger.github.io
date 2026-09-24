@@ -347,6 +347,14 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 
 .shot-label { padding-top: 4px; font-family: var(--mono); font-size: 11px; color: var(--text-2); }
 
+/* With a product picked, the sticky tab already says which one and how big,
+   so the label in front of every strip is the same thing said twice. Kept
+   for the no-JavaScript reading, where the three products stack and nothing
+   else names them. */
+html[data-product] .shot-label { display: none; }
+
+html[data-product] .shot-row { grid-template-columns: minmax(0, 1fr); }
+
 .shot-label small { display: block; color: var(--text-3); }
 
 /* A one-screen variant does not deserve a row per product. */
@@ -356,7 +364,21 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 
 .shot-rows.compact .shot-label { padding-top: 0; }
 
-.shots { display: flex; flex-wrap: wrap; gap: 10px; }
+/* A flow is a sequence, so it stays on one line and scrolls. It used to
+   wrap: the longest strip is 1370px in a 1000px column, which turned every
+   flow into a chequerboard. The vertical padding is for the lift on hover —
+   setting overflow-x alone makes overflow-y compute to auto, which would
+   clip it and add a scrollbar nobody asked for. */
+.shots {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+}
+
+.shots > * { flex: none; }
 
 .shots a { display: block; line-height: 0; }
 
@@ -547,6 +569,35 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 .shared[open] > summary::before { content: "\25BE\00a0"; }
 
 .shared > summary:hover { color: var(--text-1); }
+
+.code-wrap { position: relative; }
+
+.copy {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+    padding: 2px 8px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--text-3);
+    font-family: var(--mono);
+    font-size: 10px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 120ms ease;
+}
+
+.code-wrap:hover .copy,
+.copy:focus-visible { opacity: 1; }
+
+/* Where there is no pointer to hover with, it simply stays. */
+@media (hover: none) {
+    .copy { opacity: 1; }
+}
+
+.copy:hover { color: var(--text-1); border-color: var(--accent); }
 
 /* The line of code a box answers to, said next to the box. */
 .peek {

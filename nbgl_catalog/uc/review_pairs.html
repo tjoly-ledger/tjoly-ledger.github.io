@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseReview &mdash; NBGL use cases</title>
 <meta name="description" content="The layout fields a tag/value pair carries itself, which decide how a review paginates and draws it. The list-level ones are not here: nbgl_useCaseReview() overrides smallCaseForValue, nbMaxLinesForValue and hideEndOfLastLine on every page it draws, so an app cannot set them.">
-<link rel="stylesheet" href="../plain.css?v=74a30021">
+<link rel="stylesheet" href="../plain.css?v=e0668a1c">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -98,7 +98,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Breaks the page before this pair, to keep a group of pairs together on a page of its own.</p>
-    <pre class="code"><code><details class="shared"><summary>25 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>25 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -142,6 +144,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
     uc_pairs_review();
 }</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -462,7 +465,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Draws the pair as a review cover instead: the icon of valueIcon, the tag as title and the value as description.</p>
-    <pre class="code"><code><details class="shared"><summary>25 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>25 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -507,6 +512,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
     uc_pairs_review();
 }</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -833,7 +839,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Not a field but what NBGL does without one: it builds a TAG_VALUE_DETAILS page with a More button, the one content type a use case cannot be passed.</p>
-    <pre class="code"><code><details class="shared"><summary>25 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>25 lines every variant of this page repeats</summary><span class="c-pp">#define RECIPIENT &quot;0x4A2b1F8c3D7e5A9b0C1d2E3f4A5b6C7d8E9f0A1b&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">3</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -876,6 +884,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
     uc_pairs_review();
 }</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -1280,6 +1289,47 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     addEventListener("scroll", sync, { passive: true });
     addEventListener("resize", sync);
     sync();
+}());
+</script>
+<script>
+(function () {
+    /* Trying an example should not mean dragging over forty lines. The text
+       is taken from the block itself, folds included, minus the one line
+       each fold puts in their place — that line is the page talking, not the
+       example. */
+    document.querySelectorAll(".copy").forEach(function (button) {
+        button.addEventListener("click", function () {
+            var block = button.parentNode.querySelector("pre.code").cloneNode(true);
+            block.querySelectorAll("summary").forEach(function (s) { s.remove(); });
+            var said = button.textContent;
+            var text = block.textContent.trim();
+
+            function fallback() {
+                /* Refused, which happens off a secure page: select the
+                   example so the keystroke offered actually copies it.
+                   Telling someone to press a key over nothing would be
+                   worse than saying nothing. */
+                var range = document.createRange();
+                range.selectNodeContents(
+                    button.parentNode.querySelector("pre.code")
+                );
+                var picked = getSelection();
+                picked.removeAllRanges();
+                picked.addRange(range);
+                button.textContent = "press \u2318C";
+            }
+
+            try {
+                navigator.clipboard.writeText(text).then(
+                    function () { button.textContent = "copied"; },
+                    fallback
+                );
+            } catch (error) {
+                fallback();
+            }
+            setTimeout(function () { button.textContent = said; }, 1400);
+        });
+    });
 }());
 </script>
 <script>

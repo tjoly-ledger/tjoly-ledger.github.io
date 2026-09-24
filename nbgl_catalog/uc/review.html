@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseReview &mdash; NBGL use cases</title>
 <meta name="description" content="Full review of an operation whose tag/value pairs are all known upfront: a cover page, as many auto-paginated pair pages as needed, then a long-press page to sign.">
-<link rel="stylesheet" href="../plain.css?v=74a30021">
+<link rel="stylesheet" href="../plain.css?v=e0668a1c">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -101,7 +101,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">The most common flow, for a coin transfer.</p>
-    <pre class="code"><code><details class="shared"><summary>7 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>7 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -141,6 +143,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-string lit" data-lit="7" data-line="&quot;Sign transaction\nto send BOL?&quot;,">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_review_choice);
 }</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -416,7 +419,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">The same example followed to its other end: the reject footer opens a confirmation modal, and confirming it shows the rejected status.</p>
-    <pre class="code"><code><details class="shared"><summary>7 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>7 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -456,6 +461,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-string lit" data-lit="7" data-line="&quot;Sign transaction\nto send BOL?&quot;,">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_review_choice);
 }</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -620,7 +626,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">For an operation that will not be broadcast, which changes the wordings of the reject page and of the status.</p>
-    <pre class="code"><code><details class="shared"><summary>12 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>12 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -654,6 +662,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-string lit" data-lit="5" data-line="&quot;Sign message?&quot;,">&quot;Sign message?&quot;</span>,
                        uc_review_choice);
 }</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -908,7 +917,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">The generic type, for anything else.</p>
-    <pre class="code"><code><details class="shared"><summary>7 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>7 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -950,6 +961,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-string lit" data-lit="7" data-line="&quot;Sign operation?&quot;,">&quot;Sign operation?&quot;</span>,
                        uc_review_choice);
 }</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -1219,7 +1231,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Adds a Skip button on the first page, so that a long review can be jumped over.</p>
-    <pre class="code"><code><details class="shared"><summary>12 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>12 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -1259,6 +1273,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-string lit" data-lit="9" data-line="&quot;Sign transaction\nto send BOL?&quot;,">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_review_choice);
 }</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -1609,7 +1624,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Adapts the wordings to an Address Book entry.</p>
-    <pre class="code"><code><details class="shared"><summary>7 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>7 lines every variant of this page repeats</summary><span class="c-pp">#define MAX_PAIRS 4</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-const">MAX_PAIRS</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -1650,6 +1667,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                        <span class="c-string lit" data-lit="7" data-line="&quot;Sign transaction\nto send BOL?&quot;,">&quot;Sign transaction\nto send BOL?&quot;</span>,
                        uc_review_choice);
 }</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -1937,6 +1955,47 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     addEventListener("scroll", sync, { passive: true });
     addEventListener("resize", sync);
     sync();
+}());
+</script>
+<script>
+(function () {
+    /* Trying an example should not mean dragging over forty lines. The text
+       is taken from the block itself, folds included, minus the one line
+       each fold puts in their place — that line is the page talking, not the
+       example. */
+    document.querySelectorAll(".copy").forEach(function (button) {
+        button.addEventListener("click", function () {
+            var block = button.parentNode.querySelector("pre.code").cloneNode(true);
+            block.querySelectorAll("summary").forEach(function (s) { s.remove(); });
+            var said = button.textContent;
+            var text = block.textContent.trim();
+
+            function fallback() {
+                /* Refused, which happens off a secure page: select the
+                   example so the keystroke offered actually copies it.
+                   Telling someone to press a key over nothing would be
+                   worse than saying nothing. */
+                var range = document.createRange();
+                range.selectNodeContents(
+                    button.parentNode.querySelector("pre.code")
+                );
+                var picked = getSelection();
+                picked.removeAllRanges();
+                picked.addRange(range);
+                button.textContent = "press \u2318C";
+            }
+
+            try {
+                navigator.clipboard.writeText(text).then(
+                    function () { button.textContent = "copied"; },
+                    fallback
+                );
+            } catch (error) {
+                fallback();
+            }
+            setTimeout(function () { button.textContent = said; }, 1400);
+        });
+    });
 }());
 </script>
 <script>

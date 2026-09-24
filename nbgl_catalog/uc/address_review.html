@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseAddressReview &mdash; NBGL use cases</title>
 <meta name="description" content="Shows an address for the user to check against their wallet, with optional extra pairs. The address page also carries a button to display it as a QR code, which is not captured here: it is an icon with no label, so it cannot be located the same way on every product.">
-<link rel="stylesheet" href="../plain.css?v=74a30021">
+<link rel="stylesheet" href="../plain.css?v=e0668a1c">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -102,7 +102,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 
-    <pre class="code"><code><details class="shared"><summary>10 lines every variant of this page repeats</summary><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>10 lines every variant of this page repeats</summary><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -121,6 +123,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                           <span class="c-string lit" data-lit="1" data-line="&quot;Verify BOL address&quot;,">&quot;Verify BOL address&quot;</span>,
                           <span class="c-const">NULL</span>,
                           uc_address_review_choice);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -318,7 +321,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">The same example followed to its other end: declining the address.</p>
-    <pre class="code"><code><details class="shared"><summary>10 lines every variant of this page repeats</summary><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>10 lines every variant of this page repeats</summary><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -337,6 +342,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                           <span class="c-string lit" data-lit="1" data-line="&quot;Verify BOL address&quot;,">&quot;Verify BOL address&quot;</span>,
                           <span class="c-const">NULL</span>,
                           uc_address_review_choice);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -480,7 +486,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">The same example, following the round button beside Confirm: it shows the address as a QR code, to be checked against another device. Needs ENABLE_NBGL_QRCODE.</p>
-    <pre class="code"><code><details class="shared"><summary>10 lines every variant of this page repeats</summary><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>10 lines every variant of this page repeats</summary><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -499,6 +507,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                           <span class="c-string lit" data-lit="1" data-line="&quot;Verify BOL address&quot;,">&quot;Verify BOL address&quot;</span>,
                           <span class="c-const">NULL</span>,
                           uc_address_review_choice);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -756,7 +765,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">Extra tag/value pairs are shown after the address, for an account name or a derivation path.</p>
-    <pre class="code"><code><details class="shared"><summary>10 lines every variant of this page repeats</summary><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>10 lines every variant of this page repeats</summary><span class="c-pp">#define ADDRESS &quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValue_t</span>     pairs[<span class="c-number">2</span>];
 <span class="c-keyword">static</span> <span class="c-type">nbgl_contentTagValueList_t</span> pairList;
@@ -782,6 +793,7 @@ pairList.wrapping = <span class="c-keyword">true</span>;
                           <span class="c-string lit" data-lit="5" data-line="&quot;Verify BOL address&quot;,">&quot;Verify BOL address&quot;</span>,
                           <span class="c-string lit" data-lit="6" data-line="&quot;Make sure it matches the one\nin your wallet.&quot;,">&quot;Make sure it matches the one\nin your wallet.&quot;</span>,
                           uc_address_review_choice);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -1066,6 +1078,47 @@ pairList.wrapping = <span class="c-keyword">true</span>;
     addEventListener("scroll", sync, { passive: true });
     addEventListener("resize", sync);
     sync();
+}());
+</script>
+<script>
+(function () {
+    /* Trying an example should not mean dragging over forty lines. The text
+       is taken from the block itself, folds included, minus the one line
+       each fold puts in their place — that line is the page talking, not the
+       example. */
+    document.querySelectorAll(".copy").forEach(function (button) {
+        button.addEventListener("click", function () {
+            var block = button.parentNode.querySelector("pre.code").cloneNode(true);
+            block.querySelectorAll("summary").forEach(function (s) { s.remove(); });
+            var said = button.textContent;
+            var text = block.textContent.trim();
+
+            function fallback() {
+                /* Refused, which happens off a secure page: select the
+                   example so the keystroke offered actually copies it.
+                   Telling someone to press a key over nothing would be
+                   worse than saying nothing. */
+                var range = document.createRange();
+                range.selectNodeContents(
+                    button.parentNode.querySelector("pre.code")
+                );
+                var picked = getSelection();
+                picked.removeAllRanges();
+                picked.addRange(range);
+                button.textContent = "press \u2318C";
+            }
+
+            try {
+                navigator.clipboard.writeText(text).then(
+                    function () { button.textContent = "copied"; },
+                    fallback
+                );
+            } catch (error) {
+                fallback();
+            }
+            setTimeout(function () { button.textContent = said; }, 1400);
+        });
+    });
 }());
 </script>
 <script>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseSpinner &mdash; NBGL use cases</title>
 <meta name="description" content="A waiting page with no control, whose spinner turns on its own every 800 ms. Freezing the emulated time holds the page still long enough to capture, but not at a fixed phase of the glyph, so this is the one screen of the catalog that comes out differently from one run to the next.">
-<link rel="stylesheet" href="../plain.css?v=74a30021">
+<link rel="stylesheet" href="../plain.css?v=e0668a1c">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -90,9 +90,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 
-    <pre class="code"><code><span class="c-comment">// The spinner glyph rotates on its own every 800 ms, and the page has no</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><span class="c-comment">// The spinner glyph rotates on its own every 800 ms, and the page has no</span>
 <span class="c-comment">// control: the app is expected to draw something else when it is done.</span>
 <span class="c-usecase">nbgl_useCaseSpinner</span>(<span class="c-string lit" data-lit="0" data-line="nbgl_useCaseSpinner(&quot;Signing transaction&quot;);">&quot;Signing transaction&quot;</span>);</code></pre>
+    </div>
 
     <div class="shot-rows compact">
       <div class="shot-row" data-product="flex">
@@ -194,6 +197,47 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     addEventListener("scroll", sync, { passive: true });
     addEventListener("resize", sync);
     sync();
+}());
+</script>
+<script>
+(function () {
+    /* Trying an example should not mean dragging over forty lines. The text
+       is taken from the block itself, folds included, minus the one line
+       each fold puts in their place — that line is the page talking, not the
+       example. */
+    document.querySelectorAll(".copy").forEach(function (button) {
+        button.addEventListener("click", function () {
+            var block = button.parentNode.querySelector("pre.code").cloneNode(true);
+            block.querySelectorAll("summary").forEach(function (s) { s.remove(); });
+            var said = button.textContent;
+            var text = block.textContent.trim();
+
+            function fallback() {
+                /* Refused, which happens off a secure page: select the
+                   example so the keystroke offered actually copies it.
+                   Telling someone to press a key over nothing would be
+                   worse than saying nothing. */
+                var range = document.createRange();
+                range.selectNodeContents(
+                    button.parentNode.querySelector("pre.code")
+                );
+                var picked = getSelection();
+                picked.removeAllRanges();
+                picked.addRange(range);
+                button.textContent = "press \u2318C";
+            }
+
+            try {
+                navigator.clipboard.writeText(text).then(
+                    function () { button.textContent = "copied"; },
+                    fallback
+                );
+            } catch (error) {
+                fallback();
+            }
+            setTimeout(function () { button.textContent = said; }, 1400);
+        });
+    });
 }());
 </script>
 <script>

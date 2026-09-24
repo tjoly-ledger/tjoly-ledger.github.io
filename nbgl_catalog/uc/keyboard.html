@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseKeyboard &mdash; NBGL use cases</title>
 <meta name="description" content="A text entry page, with either a confirmation button or dynamic suggestion buttons.">
-<link rel="stylesheet" href="../plain.css?v=74a30021">
+<link rel="stylesheet" href="../plain.css?v=e0668a1c">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -98,7 +98,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 
-    <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_keyboardParams_t</span> keyboard_params;
 
@@ -118,6 +120,7 @@ keyboard_params.confirmationParams.buttonText = <span class="c-string lit" data-
 keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
 
 <span class="c-usecase">nbgl_useCaseKeyboard</span>(&amp;keyboard_params, catalog_on_quit);</code></pre>
+    </div>
 
     <div class="shot-rows compact">
       <div class="shot-row" data-product="flex">
@@ -183,7 +186,9 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
     </summary>
 
 <p class="variant-note">The same example after three keys: the entry area fills up, and LOCKED_UPPER_CASE keeps every letter capital.</p>
-    <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_keyboardParams_t</span> keyboard_params;
 
@@ -203,6 +208,7 @@ keyboard_params.confirmationParams.buttonText = <span class="c-string lit" data-
 keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
 
 <span class="c-usecase">nbgl_useCaseKeyboard</span>(&amp;keyboard_params, catalog_on_quit);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -385,7 +391,9 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
     </summary>
 
 <p class="variant-note">The key that ends the bottom row swaps the letters for digits and punctuation. It is the SDK&#39;s own, which lettersOnly removes.</p>
-    <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_keyboardParams_t</span> keyboard_params;
 
@@ -405,6 +413,7 @@ keyboard_params.confirmationParams.buttonText = <span class="c-string lit" data-
 keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
 
 <span class="c-usecase">nbgl_useCaseKeyboard</span>(&amp;keyboard_params, catalog_on_quit);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -503,7 +512,9 @@ keyboard_params.confirmationParams.onButtonCallback = uc_keyboard_on_button;
     </summary>
 
 
-    <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_keyboardParams_t</span> keyboard_params;
 
@@ -533,6 +544,7 @@ keyboard_params.suggestionParams.onButtonCallback = uc_keyboard_on_suggestion;
 keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_suggestions;
 
 <span class="c-usecase">nbgl_useCaseKeyboard</span>(&amp;keyboard_params, catalog_on_quit);</code></pre>
+    </div>
 
     <div class="shot-rows compact">
       <div class="shot-row" data-product="flex">
@@ -603,7 +615,9 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
     </summary>
 
 <p class="variant-note">The update callback runs on every key press. This app keeps the same four words; a real one would narrow them down and grey out the keys leading nowhere.</p>
-    <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>6 lines every variant of this page repeats</summary><span class="c-pp">#define ENTRY_MAX_LEN 32</span>
 
 <span class="c-keyword">static</span> <span class="c-type">nbgl_keyboardParams_t</span> keyboard_params;
 
@@ -633,6 +647,7 @@ keyboard_params.suggestionParams.onButtonCallback = uc_keyboard_on_suggestion;
 keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_suggestions;
 
 <span class="c-usecase">nbgl_useCaseKeyboard</span>(&amp;keyboard_params, catalog_on_quit);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -818,6 +833,47 @@ keyboard_params.suggestionParams.updateButtonsCallback = uc_keyboard_update_sugg
     addEventListener("scroll", sync, { passive: true });
     addEventListener("resize", sync);
     sync();
+}());
+</script>
+<script>
+(function () {
+    /* Trying an example should not mean dragging over forty lines. The text
+       is taken from the block itself, folds included, minus the one line
+       each fold puts in their place — that line is the page talking, not the
+       example. */
+    document.querySelectorAll(".copy").forEach(function (button) {
+        button.addEventListener("click", function () {
+            var block = button.parentNode.querySelector("pre.code").cloneNode(true);
+            block.querySelectorAll("summary").forEach(function (s) { s.remove(); });
+            var said = button.textContent;
+            var text = block.textContent.trim();
+
+            function fallback() {
+                /* Refused, which happens off a secure page: select the
+                   example so the keystroke offered actually copies it.
+                   Telling someone to press a key over nothing would be
+                   worse than saying nothing. */
+                var range = document.createRange();
+                range.selectNodeContents(
+                    button.parentNode.querySelector("pre.code")
+                );
+                var picked = getSelection();
+                picked.removeAllRanges();
+                picked.addRange(range);
+                button.textContent = "press \u2318C";
+            }
+
+            try {
+                navigator.clipboard.writeText(text).then(
+                    function () { button.textContent = "copied"; },
+                    fallback
+                );
+            } catch (error) {
+                fallback();
+            }
+            setTimeout(function () { button.textContent = said; }, 1400);
+        });
+    });
 }());
 </script>
 <script>

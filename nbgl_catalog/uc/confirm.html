@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseConfirm &mdash; NBGL use cases</title>
 <meta name="description" content="A modal page drawn on top of the current screen, to confirm a decision. The review behind it is only there to give the modal the page an app would have.">
-<link rel="stylesheet" href="../plain.css?v=74a30021">
+<link rel="stylesheet" href="../plain.css?v=e0668a1c">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -95,11 +95,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 
-    <pre class="code"><code><span class="c-usecase">nbgl_useCaseConfirm</span>(<span class="c-string lit" data-lit="0" data-line="nbgl_useCaseConfirm(&quot;Reject transaction?&quot;,">&quot;Reject transaction?&quot;</span>,
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><span class="c-usecase">nbgl_useCaseConfirm</span>(<span class="c-string lit" data-lit="0" data-line="nbgl_useCaseConfirm(&quot;Reject transaction?&quot;,">&quot;Reject transaction?&quot;</span>,
                     <span class="c-const">NULL</span>,
                     <span class="c-string lit" data-lit="1" data-line="&quot;Yes, reject&quot;,">&quot;Yes, reject&quot;</span>,
                     <span class="c-string lit" data-lit="2" data-line="&quot;Go back to transaction&quot;,">&quot;Go back to transaction&quot;</span>,
                     catalog_on_quit);</code></pre>
+    </div>
 
     <div class="shot-rows compact">
       <div class="shot-row" data-product="flex">
@@ -168,11 +171,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 
-    <pre class="code"><code><span class="c-usecase">nbgl_useCaseConfirm</span>(<span class="c-string lit" data-lit="0" data-line="nbgl_useCaseConfirm(&quot;Delete this account?&quot;,">&quot;Delete this account?&quot;</span>,
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><span class="c-usecase">nbgl_useCaseConfirm</span>(<span class="c-string lit" data-lit="0" data-line="nbgl_useCaseConfirm(&quot;Delete this account?&quot;,">&quot;Delete this account?&quot;</span>,
                     <span class="c-string lit" data-lit="1" data-line="&quot;Its keys will no longer be\nderived by this app.&quot;,">&quot;Its keys will no longer be\nderived by this app.&quot;</span>,
                     <span class="c-string lit" data-lit="2" data-line="&quot;Yes, delete&quot;,">&quot;Yes, delete&quot;</span>,
                     <span class="c-string lit" data-lit="3" data-line="&quot;Cancel&quot;,">&quot;Cancel&quot;</span>,
                     catalog_on_quit);</code></pre>
+    </div>
 
     <div class="shot-rows compact">
       <div class="shot-row" data-product="flex">
@@ -286,6 +292,47 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     addEventListener("scroll", sync, { passive: true });
     addEventListener("resize", sync);
     sync();
+}());
+</script>
+<script>
+(function () {
+    /* Trying an example should not mean dragging over forty lines. The text
+       is taken from the block itself, folds included, minus the one line
+       each fold puts in their place — that line is the page talking, not the
+       example. */
+    document.querySelectorAll(".copy").forEach(function (button) {
+        button.addEventListener("click", function () {
+            var block = button.parentNode.querySelector("pre.code").cloneNode(true);
+            block.querySelectorAll("summary").forEach(function (s) { s.remove(); });
+            var said = button.textContent;
+            var text = block.textContent.trim();
+
+            function fallback() {
+                /* Refused, which happens off a secure page: select the
+                   example so the keystroke offered actually copies it.
+                   Telling someone to press a key over nothing would be
+                   worse than saying nothing. */
+                var range = document.createRange();
+                range.selectNodeContents(
+                    button.parentNode.querySelector("pre.code")
+                );
+                var picked = getSelection();
+                picked.removeAllRanges();
+                picked.addRange(range);
+                button.textContent = "press \u2318C";
+            }
+
+            try {
+                navigator.clipboard.writeText(text).then(
+                    function () { button.textContent = "copied"; },
+                    fallback
+                );
+            } catch (error) {
+                fallback();
+            }
+            setTimeout(function () { button.textContent = said; }, 1400);
+        });
+    });
 }());
 </script>
 <script>

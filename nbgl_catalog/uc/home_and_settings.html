@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseHomeAndSettings &mdash; NBGL use cases</title>
 <meta name="description" content="The app home page, with its optional action button, plus the auto-paginated settings and info pages reached through the top-right gear.">
-<link rel="stylesheet" href="../plain.css?v=74a30021">
+<link rel="stylesheet" href="../plain.css?v=e0668a1c">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -100,7 +100,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">A NULL tagline makes the SDK build the default one from the app name.</p>
-    <pre class="code"><code><details class="shared"><summary>57 lines every variant of this page repeats</summary><span class="c-pp">#define SWITCH_BLIND_SIGNING 0</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>57 lines every variant of this page repeats</summary><span class="c-pp">#define SWITCH_BLIND_SIGNING 0</span>
 <span class="c-pp">#define SWITCH_NONCE         1</span>
 <span class="c-pp">#define SWITCHES_NB          2</span>
 
@@ -168,6 +170,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                             &amp;info_list,
                             <span class="c-const">NULL</span>,
                             catalog_on_quit);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -326,7 +329,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">The app provides its own tagline.</p>
-    <pre class="code"><code><details class="shared"><summary>57 lines every variant of this page repeats</summary><span class="c-pp">#define SWITCH_BLIND_SIGNING 0</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>57 lines every variant of this page repeats</summary><span class="c-pp">#define SWITCH_BLIND_SIGNING 0</span>
 <span class="c-pp">#define SWITCH_NONCE         1</span>
 <span class="c-pp">#define SWITCHES_NB          2</span>
 
@@ -392,6 +397,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                             &amp;info_list,
                             <span class="c-const">NULL</span>,
                             catalog_on_quit);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -553,7 +559,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 <p class="variant-note">A STRONG_HOME_ACTION button is added above the quit footer, for the main action of the app.</p>
-    <pre class="code"><code><details class="shared"><summary>57 lines every variant of this page repeats</summary><span class="c-pp">#define SWITCH_BLIND_SIGNING 0</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>57 lines every variant of this page repeats</summary><span class="c-pp">#define SWITCH_BLIND_SIGNING 0</span>
 <span class="c-pp">#define SWITCH_NONCE         1</span>
 <span class="c-pp">#define SWITCHES_NB          2</span>
 
@@ -628,6 +636,7 @@ home_action.style = <span class="c-const">STRONG_HOME_ACTION</span>;
                             &amp;info_list,
                             &amp;home_action,
                             catalog_on_quit);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -792,7 +801,9 @@ home_action.style = <span class="c-const">STRONG_HOME_ACTION</span>;
     </summary>
 
 <p class="variant-note">Passing a page index instead of INIT_HOME_PAGE opens the use case directly on that settings page.</p>
-    <pre class="code"><code><details class="shared"><summary>57 lines every variant of this page repeats</summary><span class="c-pp">#define SWITCH_BLIND_SIGNING 0</span>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>57 lines every variant of this page repeats</summary><span class="c-pp">#define SWITCH_BLIND_SIGNING 0</span>
 <span class="c-pp">#define SWITCH_NONCE         1</span>
 <span class="c-pp">#define SWITCHES_NB          2</span>
 
@@ -861,6 +872,7 @@ home_action.style = <span class="c-const">STRONG_HOME_ACTION</span>;
                             &amp;info_list,
                             <span class="c-const">NULL</span>,
                             catalog_on_quit);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -1061,6 +1073,47 @@ home_action.style = <span class="c-const">STRONG_HOME_ACTION</span>;
     addEventListener("scroll", sync, { passive: true });
     addEventListener("resize", sync);
     sync();
+}());
+</script>
+<script>
+(function () {
+    /* Trying an example should not mean dragging over forty lines. The text
+       is taken from the block itself, folds included, minus the one line
+       each fold puts in their place — that line is the page talking, not the
+       example. */
+    document.querySelectorAll(".copy").forEach(function (button) {
+        button.addEventListener("click", function () {
+            var block = button.parentNode.querySelector("pre.code").cloneNode(true);
+            block.querySelectorAll("summary").forEach(function (s) { s.remove(); });
+            var said = button.textContent;
+            var text = block.textContent.trim();
+
+            function fallback() {
+                /* Refused, which happens off a secure page: select the
+                   example so the keystroke offered actually copies it.
+                   Telling someone to press a key over nothing would be
+                   worse than saying nothing. */
+                var range = document.createRange();
+                range.selectNodeContents(
+                    button.parentNode.querySelector("pre.code")
+                );
+                var picked = getSelection();
+                picked.removeAllRanges();
+                picked.addRange(range);
+                button.textContent = "press \u2318C";
+            }
+
+            try {
+                navigator.clipboard.writeText(text).then(
+                    function () { button.textContent = "copied"; },
+                    fallback
+                );
+            } catch (error) {
+                fallback();
+            }
+            setTimeout(function () { button.textContent = said; }, 1400);
+        });
+    });
 }());
 </script>
 <script>

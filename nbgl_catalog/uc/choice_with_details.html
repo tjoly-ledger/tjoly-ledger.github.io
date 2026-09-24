@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseChoiceWithDetails &mdash; NBGL use cases</title>
 <meta name="description" content="The same choice page, plus a top-right button opening a details modal: either one centered page, or a list of bars drilling down into sub-pages.">
-<link rel="stylesheet" href="../plain.css?v=74a30021">
+<link rel="stylesheet" href="../plain.css?v=e0668a1c">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -97,7 +97,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 
-    <pre class="code"><code><details class="shared"><summary>1 lines every variant of this page repeats</summary><span class="c-keyword">static</span> <span class="c-type">nbgl_genericDetails_t</span> details;</details>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>1 lines every variant of this page repeats</summary><span class="c-keyword">static</span> <span class="c-type">nbgl_genericDetails_t</span> details;</details>
 
 <span class="c-comment">// Details shown as a single centered page, reached by the top-right button</span>
 details.title = <span class="c-string lit" data-lit="0" data-line="details.title = &quot;Blind signing&quot;;">&quot;Blind signing&quot;</span>;
@@ -116,6 +118,7 @@ details.centeredInfo.subText = <span class="c-string lit" data-lit="2" data-line
                               <span class="c-string lit" data-lit="6" data-line="&quot;Cancel&quot;,">&quot;Cancel&quot;</span>,
                               &amp;details,
                               catalog_on_choice);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -259,7 +262,9 @@ details.centeredInfo.subText = <span class="c-string lit" data-lit="2" data-line
     </summary>
 
 <p class="variant-note">Each bar opens its own sub-page, reachable from the details modal.</p>
-    <pre class="code"><code><details class="shared"><summary>1 lines every variant of this page repeats</summary><span class="c-keyword">static</span> <span class="c-type">nbgl_genericDetails_t</span> details;</details>
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><details class="shared"><summary>1 lines every variant of this page repeats</summary><span class="c-keyword">static</span> <span class="c-type">nbgl_genericDetails_t</span> details;</details>
 
 <span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> bar_texts[] = {<span class="c-string lit" data-lit="0" data-line="static const char *const bar_texts[] = {&quot;What is blind signing?&quot;, &quot;Who is the provider?&quot;};">&quot;What is blind signing?&quot;</span>, <span class="c-string lit" data-lit="1" data-line="static const char *const bar_texts[] = {&quot;What is blind signing?&quot;, &quot;Who is the provider?&quot;};">&quot;Who is the provider?&quot;</span>};
 <span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> bar_sub_texts[] = {<span class="c-string lit" data-lit="2" data-line="static const char *const bar_sub_texts[] = {&quot;Signing without seeing&quot;, &quot;Blockaid&quot;};">&quot;Signing without seeing&quot;</span>, <span class="c-string lit" data-lit="3" data-line="static const char *const bar_sub_texts[] = {&quot;Signing without seeing&quot;, &quot;Blockaid&quot;};">&quot;Blockaid&quot;</span>};
@@ -293,6 +298,7 @@ details.barList.details = sub_details;
                               <span class="c-string lit" data-lit="10" data-line="&quot;Cancel&quot;,">&quot;Cancel&quot;</span>,
                               &amp;details,
                               catalog_on_choice);</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -604,6 +610,47 @@ details.barList.details = sub_details;
     addEventListener("scroll", sync, { passive: true });
     addEventListener("resize", sync);
     sync();
+}());
+</script>
+<script>
+(function () {
+    /* Trying an example should not mean dragging over forty lines. The text
+       is taken from the block itself, folds included, minus the one line
+       each fold puts in their place — that line is the page talking, not the
+       example. */
+    document.querySelectorAll(".copy").forEach(function (button) {
+        button.addEventListener("click", function () {
+            var block = button.parentNode.querySelector("pre.code").cloneNode(true);
+            block.querySelectorAll("summary").forEach(function (s) { s.remove(); });
+            var said = button.textContent;
+            var text = block.textContent.trim();
+
+            function fallback() {
+                /* Refused, which happens off a secure page: select the
+                   example so the keystroke offered actually copies it.
+                   Telling someone to press a key over nothing would be
+                   worse than saying nothing. */
+                var range = document.createRange();
+                range.selectNodeContents(
+                    button.parentNode.querySelector("pre.code")
+                );
+                var picked = getSelection();
+                picked.removeAllRanges();
+                picked.addRange(range);
+                button.textContent = "press \u2318C";
+            }
+
+            try {
+                navigator.clipboard.writeText(text).then(
+                    function () { button.textContent = "copied"; },
+                    fallback
+                );
+            } catch (error) {
+                fallback();
+            }
+            setTimeout(function () { button.textContent = said; }, 1400);
+        });
+    });
 }());
 </script>
 <script>

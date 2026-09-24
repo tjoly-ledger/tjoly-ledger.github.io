@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseNavigableContent &mdash; NBGL use cases</title>
 <meta name="description" content="One level of generic pages with a touchable header, where the app fills each page on demand through a navigation callback.">
-<link rel="stylesheet" href="../plain.css?v=74a30021">
+<link rel="stylesheet" href="../plain.css?v=e0668a1c">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -95,7 +95,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </summary>
 
 
-    <pre class="code"><code><span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">PAGE_TITLES</span>[] = {<span class="c-string lit" data-lit="0" data-line="static const char *const PAGE_TITLES[] = {&quot;First page&quot;, &quot;Second page&quot;, &quot;Third page&quot;};">&quot;First page&quot;</span>, <span class="c-string lit" data-lit="1" data-line="static const char *const PAGE_TITLES[] = {&quot;First page&quot;, &quot;Second page&quot;, &quot;Third page&quot;};">&quot;Second page&quot;</span>, <span class="c-string lit" data-lit="2" data-line="static const char *const PAGE_TITLES[] = {&quot;First page&quot;, &quot;Second page&quot;, &quot;Third page&quot;};">&quot;Third page&quot;</span>};
+    <div class="code-wrap">
+      <button type="button" class="copy" aria-label="Copy this example">copy</button>
+      <pre class="code"><code><span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">PAGE_TITLES</span>[] = {<span class="c-string lit" data-lit="0" data-line="static const char *const PAGE_TITLES[] = {&quot;First page&quot;, &quot;Second page&quot;, &quot;Third page&quot;};">&quot;First page&quot;</span>, <span class="c-string lit" data-lit="1" data-line="static const char *const PAGE_TITLES[] = {&quot;First page&quot;, &quot;Second page&quot;, &quot;Third page&quot;};">&quot;Second page&quot;</span>, <span class="c-string lit" data-lit="2" data-line="static const char *const PAGE_TITLES[] = {&quot;First page&quot;, &quot;Second page&quot;, &quot;Third page&quot;};">&quot;Third page&quot;</span>};
 <span class="c-keyword">static</span> <span class="c-keyword">const</span> <span class="c-keyword">char</span> *<span class="c-keyword">const</span> <span class="c-const">PAGE_TEXTS</span>[] = {
     <span class="c-string lit" data-lit="3" data-line="&quot;This use case lets the app fill each page on demand.&quot;,">&quot;This use case lets the app fill each page on demand.&quot;</span>,
     <span class="c-string lit" data-lit="4" data-line="&quot;The navigation bar and the back arrow come for free.&quot;,">&quot;The navigation bar and the back arrow come for free.&quot;</span>,
@@ -125,6 +127,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                                  uc_navigable_content_nav,
                                  <span class="c-const">NULL</span>);
 }</code></pre>
+    </div>
 
     <div class="shot-rows">
       <div class="shot-row" data-product="flex">
@@ -313,6 +316,47 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     addEventListener("scroll", sync, { passive: true });
     addEventListener("resize", sync);
     sync();
+}());
+</script>
+<script>
+(function () {
+    /* Trying an example should not mean dragging over forty lines. The text
+       is taken from the block itself, folds included, minus the one line
+       each fold puts in their place — that line is the page talking, not the
+       example. */
+    document.querySelectorAll(".copy").forEach(function (button) {
+        button.addEventListener("click", function () {
+            var block = button.parentNode.querySelector("pre.code").cloneNode(true);
+            block.querySelectorAll("summary").forEach(function (s) { s.remove(); });
+            var said = button.textContent;
+            var text = block.textContent.trim();
+
+            function fallback() {
+                /* Refused, which happens off a secure page: select the
+                   example so the keystroke offered actually copies it.
+                   Telling someone to press a key over nothing would be
+                   worse than saying nothing. */
+                var range = document.createRange();
+                range.selectNodeContents(
+                    button.parentNode.querySelector("pre.code")
+                );
+                var picked = getSelection();
+                picked.removeAllRanges();
+                picked.addRange(range);
+                button.textContent = "press \u2318C";
+            }
+
+            try {
+                navigator.clipboard.writeText(text).then(
+                    function () { button.textContent = "copied"; },
+                    fallback
+                );
+            } catch (error) {
+                fallback();
+            }
+            setTimeout(function () { button.textContent = said; }, 1400);
+        });
+    });
 }());
 </script>
 <script>
