@@ -12,6 +12,10 @@
     --text-3: #8a8a94;
     --accent: #1b1b1f;
     --radius-sm: 10px;
+    /* Height of the sticky header. Everything else that sticks hangs off it,
+       so the bar that leads back to the list is never covered and never
+       covers anything. */
+    --header-h: 54px;
     /* What ties a value of an example to the place it is drawn, and what the
        SDK drew because the example asked for it. Deliberately apart from the
        syntax palette below: a highlight that reuses the colour a token
@@ -42,13 +46,33 @@ a { color: inherit; }
 /* ---------------- chrome ---------------- */
 
 header {
+    position: sticky;
+    top: 0;
+    z-index: 4;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
     padding: 14px 32px;
+    background: var(--bg);
     border-bottom: 1px solid var(--border);
 }
+
+/* The header is the way back to the list, so the whole left side is the
+   link, arrow included. */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.header-left svg { width: 15px; height: 15px; color: var(--text-3); }
+
+.header-left:hover .header-label { text-decoration: underline; }
+
+.header-left:hover svg { color: var(--text-1); }
 
 .header-label { font-family: var(--mono); font-size: 13px; font-weight: 600; }
 
@@ -85,11 +109,11 @@ footer {
 
 .toc {
     position: sticky;
-    top: 24px;
+    top: calc(var(--header-h) + 24px);
     display: flex;
     flex-direction: column;
     gap: 2px;
-    max-height: calc(100vh - 48px);
+    max-height: calc(100vh - var(--header-h) - 48px);
     overflow-y: auto;
 }
 
@@ -124,18 +148,6 @@ footer {
 /* ---------------- prose ---------------- */
 
 .body { min-width: 0; }
-
-.back-link {
-    display: inline-block;
-    margin-bottom: 20px;
-    color: var(--text-3);
-    text-decoration: none;
-    font-size: 13px;
-}
-
-.back-link:hover { color: var(--text-1); }
-
-.back-link svg { display: none; }
 
 .hero h1 { margin: 0 0 10px; font-size: 26px; letter-spacing: -0.01em; }
 
@@ -372,7 +384,8 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 
 /* The value in the code, marked from the same lookup. */
 /* Scrolled to from the other end, neither must land under the tab bar. */
-.lit, .cause, .hot { scroll-margin: 64px 0 16px; }
+/* Clear of both sticky bars, the header and the product tabs. */
+.lit, .cause, .hot { scroll-margin: calc(var(--header-h) + 60px) 0 16px; }
 
 
 .lit:hover { background: var(--link-wash); }
@@ -392,7 +405,7 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 /* One product at a time, picked once for the whole page and kept in view. */
 .tabs {
     position: sticky;
-    top: 0;
+    top: var(--header-h);
     z-index: 2;
     display: flex;
     flex-wrap: wrap;
