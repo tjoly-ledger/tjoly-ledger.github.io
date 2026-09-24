@@ -12,12 +12,14 @@
     --text-3: #8a8a94;
     --accent: #1b1b1f;
     --radius-sm: 10px;
-    /* What ties a value of an example to the place it is drawn. */
-    --link: #1c5fa8;
-    --link-wash: rgba(28, 95, 168, 0.14);
-    /* And what the SDK drew because the example asked for it. */
-    --cause: #b25000;
-    --cause-wash: rgba(178, 80, 0, 0.16);
+    /* What ties a value of an example to the place it is drawn, and what the
+       SDK drew because the example asked for it. Deliberately apart from the
+       syntax palette below: a highlight that reuses the colour a token
+       already has says nothing. */
+    --link: #1d4ed8;
+    --link-wash: rgba(29, 78, 216, 0.15);
+    --cause: #c2410c;
+    --cause-wash: rgba(194, 65, 12, 0.17);
     --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     /* Fraction of a device pixel used to draw a screenshot. Every product is
        drawn at the same scale, so the pages show how much room a use case
@@ -344,7 +346,14 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 
 .hot[data-cause]:hover { border-color: var(--cause); }
 
-.cause { cursor: pointer; border-radius: 3px; }
+/* What tells a token apart from one that does nothing: a token that leads
+   somewhere is underlined, faintly, in its own colour. Hue alone could not
+   do it — the syntax palette already spends every colour. */
+.lit, .cause {
+    cursor: pointer;
+    border-radius: 3px;
+    border-bottom: 1px dotted currentColor;
+}
 
 .cause:hover { background: var(--cause-wash); }
 
@@ -361,7 +370,6 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 /* Scrolled to from the other end, neither must land under the tab bar. */
 .lit, .cause, .hot { scroll-margin: 64px 0 16px; }
 
-.lit { cursor: pointer; border-radius: 3px; }
 
 .lit:hover { background: var(--link-wash); }
 
@@ -491,10 +499,10 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
         --text-2: #9a9aa6;
         --text-3: #74747e;
         --accent: #ececf0;
-        --link: #7fb4ea;
-        --link-wash: rgba(127, 180, 234, 0.2);
-        --cause: #e0a06a;
-        --cause-wash: rgba(224, 160, 106, 0.22);
+        --link: #9ec5ff;
+        --link-wash: rgba(158, 197, 255, 0.22);
+        --cause: #ffab70;
+        --cause-wash: rgba(255, 171, 112, 0.22);
     }
     :root:not([data-theme="light"]) .c-comment { color: #8a8a96; }
     :root:not([data-theme="light"]) .c-string { color: #6ec7a8; }
