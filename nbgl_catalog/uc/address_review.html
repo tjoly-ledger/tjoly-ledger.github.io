@@ -5,10 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseAddressReview &mdash; NBGL use cases</title>
 <meta name="description" content="Shows an address for the user to check against their wallet, with optional extra pairs. The address page also carries a button to display it as a QR code, which is not captured here: it is an icon with no label, so it cannot be located the same way on every product.">
-<link rel="stylesheet" href="../plain.css?v=531e6523">
+<link rel="stylesheet" href="../plain.css?v=390585b7">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
-html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
+html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
+.shot-row[data-product="flex"] { --shot-scale: 0.4271; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }
+.shot-row[data-product="apex_p"] { --shot-scale: 0.6833; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }
+.shot-row[data-product="stax"] { --shot-scale: 0.5125; }</style>
 <script>
 /* Picks the product the page opens on, before the body is parsed, so the page
    never shows the three of them and then folds back to one. Without this

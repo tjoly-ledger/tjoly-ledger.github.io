@@ -25,9 +25,9 @@
     --cause: #c2410c;
     --cause-wash: rgba(194, 65, 12, 0.17);
     --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    /* Fraction of a device pixel used to draw a screenshot. Every product is
-       drawn at the same scale, so the pages show how much room a use case
-       really has on each screen. */
+    /* Fraction of a device pixel used to draw a screenshot. The fallback:
+       each use case page overrides it per product, so every product comes out
+       about as wide and none is too small to read. */
     --shot-scale: 0.42;
 }
 
@@ -356,7 +356,25 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 .shots a { display: block; line-height: 0; }
 
 /* A picture and the boxes of the texts Speculos read on it. */
-.shot { position: relative; display: block; line-height: 0; }
+.shot {
+    position: relative;
+    display: block;
+    line-height: 0;
+    transition: transform 120ms ease;
+}
+
+/* Under the pointer, a screen lifts. Deliberately a small lift and not a
+   magnifying glass: the boxes over it are children, so they travel with the
+   scale, and the smallest of them is 15px tall while a readable x1.45 moves
+   them 59px — four times their own height, which puts what you were aiming
+   at out from under the pointer. At x1.06 they move 8px, half a box, and
+   aiming still works. Reading a screen is what the click is for: it opens at
+   the size the device drew it. */
+.shots .shot:hover {
+    transform: scale(1.06);
+    z-index: 3;
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.18));
+}
 
 .hot {
     position: absolute;
