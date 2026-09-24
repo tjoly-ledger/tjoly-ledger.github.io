@@ -336,6 +336,9 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 .show-origin .hot.sdk { border-color: var(--text-3); border-style: dashed; }
 
 /* The value in the code, marked from the same lookup. */
+/* Scrolled to from the other end, neither must land under the tab bar. */
+.lit, .hot { scroll-margin: 64px 0 16px; }
+
 .lit { cursor: pointer; border-radius: 3px; }
 
 .lit:hover { background: var(--link-wash); }

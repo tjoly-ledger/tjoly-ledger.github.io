@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseNavigableContent &mdash; NBGL use cases</title>
 <meta name="description" content="One level of generic pages with a touchable header, where the app fills each page on demand through a navigation callback.">
-<link rel="stylesheet" href="../plain.css">
+<link rel="stylesheet" href="../plain.css?v=827a4ab2">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -322,6 +322,33 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
     var pinned = null;
 
+    /* Marking the other end is no use if it sits off screen: a value set at
+       the top of a long example is out of view by the time its screen is.
+       Only on a click, and only when it really is out of view: scrolling
+       under a passing pointer would be worse than not scrolling at all. */
+    function reveal(element) {
+        if (!element) { return; }
+        var box = element.getBoundingClientRect();
+        // The tab bar is sticky, so the top of the viewport is under it: an
+        // element at y=0 is on screen and behind the bar, which is not being
+        // shown at all. `scroll-margin` keeps the scroll clear of it too.
+        var bar = document.querySelector(".tabs");
+        var ceiling = bar ? bar.getBoundingClientRect().bottom : 0;
+        if (box.top >= ceiling && box.bottom <= innerHeight) { return; }
+        // Plainly, not smoothly: a smooth scroll is silently dropped in some
+        // browsers, and a jump answering a click is no worse than one.
+        // The least scrolling that brings it in, so the end that was clicked
+        // stays as close as the viewport allows.
+        element.scrollIntoView({block: "nearest"});
+    }
+
+    function firstVisible(nodes) {
+        for (var i = 0; i < nodes.length; i++) {
+            if (nodes[i].getBoundingClientRect().width > 0) { return nodes[i]; }
+        }
+        return null;
+    }
+
     function light(key) {
         document.querySelectorAll(".hot.on").forEach(function (box) {
             box.classList.remove("on");
@@ -361,6 +388,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             var key = box.closest(".variant").id + "/" + box.dataset.lit;
             pinned = pinned === key ? null : key;
             light(pinned || key);
+            reveal(document.querySelector(".lit.on"));
         });
     });
 
@@ -375,6 +403,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             var key = keyOf(span);
             pinned = pinned === key ? null : key;
             light(pinned || key);
+            reveal(firstVisible(document.querySelectorAll(".hot.on")));
         });
     });
 
