@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseSpinner &mdash; NBGL use cases</title>
 <meta name="description" content="A waiting page with no control, whose spinner turns on its own every 800 ms. Freezing the emulated time holds the page still long enough to capture, but not at a fixed phase of the glyph, so this is the one screen of the catalog that comes out differently from one run to the next.">
-<link rel="stylesheet" href="../plain.css?v=390585b7">
+<link rel="stylesheet" href="../plain.css?v=17b08587">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
 .shot-row[data-product="flex"] { --shot-scale: 0.4271; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }
 .shot-row[data-product="apex_p"] { --shot-scale: 0.6833; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }
-.shot-row[data-product="stax"] { --shot-scale: 0.5125; }</style>
+.shot-row[data-product="stax"] { --shot-scale: 0.5125; }@media (max-width: 900px) {.shot-row[data-product="flex"] { --shot-scale: 0.3125; }.shot-row[data-product="apex_p"] { --shot-scale: 0.5000; }.shot-row[data-product="stax"] { --shot-scale: 0.3750; }}
+</style>
 <script>
 /* Picks the product the page opens on, before the body is parsed, so the page
    never shows the three of them and then folds back to one. Without this

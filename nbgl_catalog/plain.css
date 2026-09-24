@@ -31,6 +31,11 @@
     --shot-scale: 0.42;
 }
 
+/* Light only, on purpose: the screenshots are white because the devices
+   are, and a dark page around them was a frame nobody asked for. Declaring
+   it stops a browser offering to invert the page. */
+:root { color-scheme: light; }
+
 * { box-sizing: border-box; }
 
 body {
@@ -607,29 +612,4 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
     .shot-row { grid-template-columns: 1fr; gap: 8px; }
     .tabs { padding: 8px 4px; margin-bottom: 16px; }
     .tab small { display: none; }
-    :root { --shot-scale: 0.32; }
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-        --bg: #17171a;
-        --surface: #1f1f24;
-        --border: #34343c;
-        --border-hover: #ececf0;
-        --text-1: #ececf0;
-        --text-2: #9a9aa6;
-        --text-3: #74747e;
-        --accent: #ececf0;
-        --link: #9ec5ff;
-        --link-wash: rgba(158, 197, 255, 0.22);
-        --cause: #ffab70;
-        --cause-wash: rgba(255, 171, 112, 0.22);
-    }
-    :root:not([data-theme="light"]) .c-comment { color: #8a8a96; }
-    :root:not([data-theme="light"]) .c-string { color: #6ec7a8; }
-    :root:not([data-theme="light"]) .c-keyword,
-    :root:not([data-theme="light"]) .c-pp { color: #d98cd9; }
-    :root:not([data-theme="light"]) .c-type { color: #7fb4ea; }
-    :root:not([data-theme="light"]) .c-const,
-    :root:not([data-theme="light"]) .c-number { color: #e0a06a; }
 }
