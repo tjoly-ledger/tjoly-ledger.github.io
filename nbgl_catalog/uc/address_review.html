@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseAddressReview &mdash; NBGL use cases</title>
 <meta name="description" content="Shows an address for the user to check against their wallet, with optional extra pairs. The address page also carries a button to display it as a QR code, which is not captured here: it is an icon with no label, so it cannot be located the same way on every product.">
-<link rel="stylesheet" href="../plain.css?v=827a4ab2">
+<link rel="stylesheet" href="../plain.css?v=d5eff69a">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -87,8 +87,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       <small>400&times;672</small>
     </button>
     <button type="button" class="tab origin" aria-pressed="false"
-            title="Frame every text, saying which ones the example provides and which the SDK writes on its own">
-      What the app provides
+            title="Frame every text: blue, what the example wrote; amber, what the SDK drew because the example asked for it; grey, what it draws on its own">
+      Where the text comes from
     </button>
   </div>
 
@@ -114,12 +114,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-comment">/** The status page an app shows once the user has answered. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_address_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
-        confirm ? <span class="c-const">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
+        confirm ? <span class="c-const cause" data-cause="1">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const cause" data-cause="2">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
 }
 
 <span class="c-comment">// The address page carries a button to show the same address as a QR code,</span>
 <span class="c-comment">// which needs the app to be built with ENABLE_NBGL_QRCODE = 1.</span>
-<span class="c-usecase">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
+<span class="c-usecase cause" data-cause="0">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
                           <span class="c-const">NULL</span>,
                           &amp;<span class="c-const">CATALOG_ICON_APP</span>,
                           <span class="c-string lit" data-lit="1">&quot;Verify BOL address&quot;</span>,
@@ -141,8 +141,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseAddressReview, Address only, Flex, screen 1">
             </a>
             <b class="hot" data-lit="1" style="left: calc(73px * var(--shot-scale)); top: calc(262px * var(--shot-scale)); width: calc(334px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(121px * var(--shot-scale)); top: calc(326px * var(--shot-scale)); width: calc(238px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -156,10 +158,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(394px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(403px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(45px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(237px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(243px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(40px * var(--shot-scale)); width: calc(109px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(237px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(243px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
           <span class="shot">
@@ -169,7 +175,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseAddressReview, Address only, Flex, screen 3">
             </a>
-            <b class="hot sdk" style="left: calc(98px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(284px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_VERIFIED"
+               style="left: calc(98px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(284px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -187,8 +195,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseAddressReview, Address only, Apex P, screen 1">
             </a>
             <b class="hot" data-lit="1" style="left: calc(38px * var(--shot-scale)); top: calc(173px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(72px * var(--shot-scale)); top: calc(225px * var(--shot-scale)); width: calc(155px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -202,10 +212,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(253px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(78px * var(--shot-scale)); width: calc(266px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(106px * var(--shot-scale)); width: calc(51px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(144px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(156px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(156px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
           <span class="shot">
@@ -215,7 +229,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseAddressReview, Address only, Apex P, screen 3">
             </a>
-            <b class="hot sdk" style="left: calc(55px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(189px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_VERIFIED"
+               style="left: calc(55px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(189px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -233,8 +249,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseAddressReview, Address only, Stax, screen 1">
             </a>
             <b class="hot" data-lit="1" style="left: calc(53px * var(--shot-scale)); top: calc(298px * var(--shot-scale)); width: calc(294px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(97px * var(--shot-scale)); top: calc(362px * var(--shot-scale)); width: calc(205px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -248,10 +266,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(92px * var(--shot-scale)); width: calc(350px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(132px * var(--shot-scale)); width: calc(330px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(172px * var(--shot-scale)); width: calc(68px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(200px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(200px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
           <span class="shot">
@@ -261,7 +283,9 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseAddressReview, Address only, Stax, screen 3">
             </a>
-            <b class="hot sdk" style="left: calc(74px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(251px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_VERIFIED"
+               style="left: calc(74px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(251px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -282,12 +306,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-comment">/** The status page an app shows once the user has answered. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_address_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
-        confirm ? <span class="c-const">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
+        confirm ? <span class="c-const cause" data-cause="1">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const cause" data-cause="2">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
 }
 
 <span class="c-comment">// The address page carries a button to show the same address as a QR code,</span>
 <span class="c-comment">// which needs the app to be built with ENABLE_NBGL_QRCODE = 1.</span>
-<span class="c-usecase">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
+<span class="c-usecase cause" data-cause="0">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
                           <span class="c-const">NULL</span>,
                           &amp;<span class="c-const">CATALOG_ICON_APP</span>,
                           <span class="c-string lit" data-lit="1">&quot;Verify BOL address&quot;</span>,
@@ -309,8 +333,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseAddressReview, Declining it, Flex, screen 1">
             </a>
             <b class="hot" data-lit="1" style="left: calc(73px * var(--shot-scale)); top: calc(262px * var(--shot-scale)); width: calc(334px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(121px * var(--shot-scale)); top: calc(326px * var(--shot-scale)); width: calc(238px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “Cancel”</span>
@@ -321,8 +347,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseAddressReview, Declining it, Flex, screen 2">
             </a>
-            <b class="hot sdk" style="left: calc(66px * var(--shot-scale)); top: calc(304px * var(--shot-scale)); width: calc(347px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(156px * var(--shot-scale)); top: calc(344px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_REJECTED"
+               style="left: calc(66px * var(--shot-scale)); top: calc(304px * var(--shot-scale)); width: calc(347px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_REJECTED"
+               style="left: calc(156px * var(--shot-scale)); top: calc(344px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -340,8 +370,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseAddressReview, Declining it, Apex P, screen 1">
             </a>
             <b class="hot" data-lit="1" style="left: calc(38px * var(--shot-scale)); top: calc(173px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(72px * var(--shot-scale)); top: calc(225px * var(--shot-scale)); width: calc(155px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “Cancel”</span>
@@ -352,8 +384,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseAddressReview, Declining it, Apex P, screen 2">
             </a>
-            <b class="hot sdk" style="left: calc(34px * var(--shot-scale)); top: calc(204px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(93px * var(--shot-scale)); top: calc(232px * var(--shot-scale)); width: calc(114px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_REJECTED"
+               style="left: calc(34px * var(--shot-scale)); top: calc(204px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_REJECTED"
+               style="left: calc(93px * var(--shot-scale)); top: calc(232px * var(--shot-scale)); width: calc(114px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -371,8 +407,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseAddressReview, Declining it, Stax, screen 1">
             </a>
             <b class="hot" data-lit="1" style="left: calc(53px * var(--shot-scale)); top: calc(298px * var(--shot-scale)); width: calc(294px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(97px * var(--shot-scale)); top: calc(362px * var(--shot-scale)); width: calc(205px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “Cancel”</span>
@@ -383,8 +421,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseAddressReview, Declining it, Stax, screen 2">
             </a>
-            <b class="hot sdk" style="left: calc(47px * var(--shot-scale)); top: calc(340px * var(--shot-scale)); width: calc(306px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(125px * var(--shot-scale)); top: calc(380px * var(--shot-scale)); width: calc(149px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_REJECTED"
+               style="left: calc(47px * var(--shot-scale)); top: calc(340px * var(--shot-scale)); width: calc(306px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="2"
+               title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_REJECTED"
+               style="left: calc(125px * var(--shot-scale)); top: calc(380px * var(--shot-scale)); width: calc(149px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -405,12 +447,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-comment">/** The status page an app shows once the user has answered. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_address_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
-        confirm ? <span class="c-const">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
+        confirm ? <span class="c-const cause" data-cause="1">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const cause" data-cause="2">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
 }
 
 <span class="c-comment">// The address page carries a button to show the same address as a QR code,</span>
 <span class="c-comment">// which needs the app to be built with ENABLE_NBGL_QRCODE = 1.</span>
-<span class="c-usecase">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
+<span class="c-usecase cause" data-cause="0">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
                           <span class="c-const">NULL</span>,
                           &amp;<span class="c-const">CATALOG_ICON_APP</span>,
                           <span class="c-string lit" data-lit="1">&quot;Verify BOL address&quot;</span>,
@@ -432,8 +474,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseAddressReview, As a QR code, Flex, screen 1">
             </a>
             <b class="hot" data-lit="1" style="left: calc(73px * var(--shot-scale)); top: calc(262px * var(--shot-scale)); width: calc(334px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(121px * var(--shot-scale)); top: calc(326px * var(--shot-scale)); width: calc(238px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -447,10 +491,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(394px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(403px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(45px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(237px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(243px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(40px * var(--shot-scale)); width: calc(109px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(237px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(243px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">QR code button</span>
           <span class="shot">
@@ -475,10 +523,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(394px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(403px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(45px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(237px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(243px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(40px * var(--shot-scale)); width: calc(109px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(237px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(243px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -496,8 +548,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseAddressReview, As a QR code, Apex P, screen 1">
             </a>
             <b class="hot" data-lit="1" style="left: calc(38px * var(--shot-scale)); top: calc(173px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(72px * var(--shot-scale)); top: calc(225px * var(--shot-scale)); width: calc(155px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -511,10 +565,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(253px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(78px * var(--shot-scale)); width: calc(266px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(106px * var(--shot-scale)); width: calc(51px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(144px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(156px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(156px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">QR code button</span>
           <span class="shot">
@@ -539,10 +597,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(253px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(78px * var(--shot-scale)); width: calc(266px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(106px * var(--shot-scale)); width: calc(51px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(144px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(156px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(156px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -560,8 +622,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseAddressReview, As a QR code, Stax, screen 1">
             </a>
             <b class="hot" data-lit="1" style="left: calc(53px * var(--shot-scale)); top: calc(298px * var(--shot-scale)); width: calc(294px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(97px * var(--shot-scale)); top: calc(362px * var(--shot-scale)); width: calc(205px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -575,10 +639,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(92px * var(--shot-scale)); width: calc(350px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(132px * var(--shot-scale)); width: calc(330px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(172px * var(--shot-scale)); width: calc(68px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(200px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(200px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">QR code button</span>
           <span class="shot">
@@ -603,10 +671,14 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(92px * var(--shot-scale)); width: calc(350px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(132px * var(--shot-scale)); width: calc(330px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(172px * var(--shot-scale)); width: calc(68px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(200px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(200px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -627,7 +699,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 <span class="c-comment">/** The status page an app shows once the user has answered. */</span>
 <span class="c-keyword">static</span> <span class="c-keyword">void</span> uc_address_review_choice(<span class="c-keyword">bool</span> confirm) {
     <span class="c-usecase">nbgl_useCaseReviewStatus</span>(
-        confirm ? <span class="c-const">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
+        confirm ? <span class="c-const cause" data-cause="1">STATUS_TYPE_ADDRESS_VERIFIED</span> : <span class="c-const cause" data-cause="2">STATUS_TYPE_ADDRESS_REJECTED</span>, catalog_on_quit);
 }
 
 pairs[<span class="c-number">0</span>].item = <span class="c-string lit" data-lit="1">&quot;Account&quot;</span>;
@@ -639,7 +711,7 @@ pairList.pairs = pairs;
 pairList.nbPairs = <span class="c-number">2</span>;
 pairList.wrapping = <span class="c-keyword">true</span>;
 
-<span class="c-usecase">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
+<span class="c-usecase cause" data-cause="0">nbgl_useCaseAddressReview</span>(<span class="c-const">ADDRESS</span>,
                           &amp;pairList,
                           &amp;<span class="c-const">CATALOG_ICON_APP</span>,
                           <span class="c-string lit" data-lit="5">&quot;Verify BOL address&quot;</span>,
@@ -663,8 +735,10 @@ pairList.wrapping = <span class="c-keyword">true</span>;
             <b class="hot" data-lit="5" style="left: calc(73px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(334px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(44px * var(--shot-scale)); top: calc(274px * var(--shot-scale)); width: calc(392px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(147px * var(--shot-scale)); top: calc(310px * var(--shot-scale)); width: calc(185px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(121px * var(--shot-scale)); top: calc(370px * var(--shot-scale)); width: calc(238px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(74px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -678,9 +752,11 @@ pairList.wrapping = <span class="c-keyword">true</span>;
             <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(394px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(403px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(32px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(45px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(40px * var(--shot-scale)); width: calc(109px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(186px * var(--shot-scale)); top: calc(226px * var(--shot-scale)); width: calc(224px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(78px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -695,9 +771,13 @@ pairList.wrapping = <span class="c-keyword">true</span>;
             <b class="hot" data-lit="2" style="left: calc(32px * var(--shot-scale)); top: calc(80px * var(--shot-scale)); width: calc(233px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(144px * var(--shot-scale)); width: calc(203px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="4" style="left: calc(32px * var(--shot-scale)); top: calc(184px * var(--shot-scale)); width: calc(261px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(48px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(185px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(295px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(296px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(79px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(295px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
           <span class="shot">
@@ -707,7 +787,9 @@ pairList.wrapping = <span class="c-keyword">true</span>;
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseAddressReview, With extra pairs, Flex, screen 4">
             </a>
-            <b class="hot sdk" style="left: calc(98px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(284px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_VERIFIED"
+               style="left: calc(98px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(284px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -727,8 +809,10 @@ pairList.wrapping = <span class="c-keyword">true</span>;
             <b class="hot" data-lit="5" style="left: calc(38px * var(--shot-scale)); top: calc(145px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(22px * var(--shot-scale)); top: calc(185px * var(--shot-scale)); width: calc(256px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(89px * var(--shot-scale)); top: calc(207px * var(--shot-scale)); width: calc(121px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(72px * var(--shot-scale)); top: calc(253px * var(--shot-scale)); width: calc(155px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -742,9 +826,11 @@ pairList.wrapping = <span class="c-keyword">true</span>;
             <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(253px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(78px * var(--shot-scale)); width: calc(266px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="0" style="left: calc(16px * var(--shot-scale)); top: calc(106px * var(--shot-scale)); width: calc(51px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(24px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(114px * var(--shot-scale)); top: calc(155px * var(--shot-scale)); width: calc(147px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -759,9 +845,13 @@ pairList.wrapping = <span class="c-keyword">true</span>;
             <b class="hot" data-lit="2" style="left: calc(16px * var(--shot-scale)); top: calc(50px * var(--shot-scale)); width: calc(157px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(94px * var(--shot-scale)); width: calc(130px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="4" style="left: calc(16px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(186px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(27px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(65px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(113px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(187px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(113px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(187px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
           <span class="shot">
@@ -771,7 +861,9 @@ pairList.wrapping = <span class="c-keyword">true</span>;
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseAddressReview, With extra pairs, Apex P, screen 4">
             </a>
-            <b class="hot sdk" style="left: calc(55px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(189px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_VERIFIED"
+               style="left: calc(55px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(189px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -791,8 +883,10 @@ pairList.wrapping = <span class="c-keyword">true</span>;
             <b class="hot" data-lit="5" style="left: calc(53px * var(--shot-scale)); top: calc(258px * var(--shot-scale)); width: calc(294px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(30px * var(--shot-scale)); top: calc(314px * var(--shot-scale)); width: calc(339px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(120px * var(--shot-scale)); top: calc(346px * var(--shot-scale)); width: calc(160px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(97px * var(--shot-scale)); top: calc(402px * var(--shot-scale)); width: calc(205px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -810,10 +904,14 @@ pairList.wrapping = <span class="c-keyword">true</span>;
             <b class="hot" data-lit="2" style="left: calc(24px * var(--shot-scale)); top: calc(260px * var(--shot-scale)); width: calc(205px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(175px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="4" style="left: calc(24px * var(--shot-scale)); top: calc(348px * var(--shot-scale)); width: calc(235px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseAddressReview"
+               style="left: calc(200px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(56px * var(--shot-scale)); width: calc(95px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(200px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “Confirm”</span>
           <span class="shot">
@@ -823,7 +921,9 @@ pairList.wrapping = <span class="c-keyword">true</span>;
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseAddressReview, With extra pairs, Stax, screen 3">
             </a>
-            <b class="hot sdk" style="left: calc(74px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(251px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_VERIFIED"
+               style="left: calc(74px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(251px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -871,14 +971,24 @@ pairList.wrapping = <span class="c-keyword">true</span>;
     // Every box carries the number of the value it holds, so lighting one up
     // is a lookup rather than a search. Hover shows it, a click keeps it.
     var byValue = new Map();
-    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
-        var group = box.closest(".variant");
-        var key = group.id + "/" + box.dataset.lit;
-        if (!byValue.has(key)) { byValue.set(key, []); }
-        byValue.get(key).push(box);
-    });
+    document.querySelectorAll(".hot[data-lit], .hot[data-cause]").forEach(
+        function (box) {
+            var key = keyOf(box);
+            if (!byValue.has(key)) { byValue.set(key, []); }
+            byValue.get(key).push(box);
+        }
+    );
 
     var pinned = null;
+
+    /* A value of the example and a consequence of it are two different
+       relations, so they are two different families of box; the key says
+       which, so one index and one lookup serve both. */
+    function keyOf(node) {
+        var kind = node.dataset.lit !== undefined ? "lit" : "cause";
+        return node.closest(".variant").id + "/" + kind + "/" +
+               (node.dataset.lit !== undefined ? node.dataset.lit : node.dataset.cause);
+    }
 
     /* Marking the other end is no use if it sits off screen: a value set at
        the top of a long example is out of view by the time its screen is.
@@ -920,22 +1030,22 @@ pairList.wrapping = <span class="c-keyword">true</span>;
         });
         // The value is marked in the code too, so a literal written as
         // several adjacent chunks lights up whole.
-        var group = key.slice(0, key.lastIndexOf("/"));
-        var value = key.slice(key.lastIndexOf("/") + 1);
+        var parts = key.split("/");
+        var attribute = parts[1] === "lit" ? "data-lit" : "data-cause";
+        // parts[1] is the family, which is also the class of its spans.
         document.querySelectorAll(
-            "#" + CSS.escape(group) + ' .lit[data-lit="' + value + '"]'
+            "#" + CSS.escape(parts[0]) + " ." + parts[1] +
+            "[" + attribute + '="' + parts[2] + '"]'
         ).forEach(function (span) { span.classList.add("on"); });
     }
 
-    function keyOf(span) {
-        return span.closest(".variant").id + "/" + span.dataset.lit;
-    }
+
 
     // The other way round, now that the boxes are there: pointing at a text
     // on a screen says which value of the example wrote it.
-    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+    document.querySelectorAll(".hot[data-lit], .hot[data-cause]").forEach(function (box) {
         box.addEventListener("mouseenter", function () {
-            if (!pinned) { light(box.closest(".variant").id + "/" + box.dataset.lit); }
+            if (!pinned) { light(keyOf(box)); }
         });
         box.addEventListener("mouseleave", function () {
             if (!pinned) { light(null); }
@@ -943,14 +1053,14 @@ pairList.wrapping = <span class="c-keyword">true</span>;
         box.addEventListener("click", function (event) {
             // The picture underneath is a link to the full size one.
             event.preventDefault();
-            var key = box.closest(".variant").id + "/" + box.dataset.lit;
+            var key = keyOf(box);
             pinned = pinned === key ? null : key;
             light(pinned || key);
-            reveal(document.querySelector(".lit.on"));
+            reveal(document.querySelector(".lit.on, .cause.on"));
         });
     });
 
-    document.querySelectorAll(".lit").forEach(function (span) {
+    document.querySelectorAll(".lit, .cause").forEach(function (span) {
         span.addEventListener("mouseenter", function () {
             if (!pinned) { light(keyOf(span)); }
         });

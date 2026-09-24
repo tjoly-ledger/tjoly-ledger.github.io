@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseAdvancedChoiceWithDetails &mdash; NBGL use cases</title>
 <meta name="description" content="The choice page with a title line and a header icon on top of the centered one, plus the details modal.">
-<link rel="stylesheet" href="../plain.css?v=827a4ab2">
+<link rel="stylesheet" href="../plain.css?v=d5eff69a">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -80,8 +80,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       <small>400&times;672</small>
     </button>
     <button type="button" class="tab origin" aria-pressed="false"
-            title="Frame every text, saying which ones the example provides and which the SDK writes on its own">
-      What the app provides
+            title="Frame every text: blue, what the example wrote; amber, what the SDK drew because the example asked for it; grey, what it draws on its own">
+      Where the text comes from
     </button>
   </div>
 
@@ -276,14 +276,24 @@ details.centeredInfo.description
     // Every box carries the number of the value it holds, so lighting one up
     // is a lookup rather than a search. Hover shows it, a click keeps it.
     var byValue = new Map();
-    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
-        var group = box.closest(".variant");
-        var key = group.id + "/" + box.dataset.lit;
-        if (!byValue.has(key)) { byValue.set(key, []); }
-        byValue.get(key).push(box);
-    });
+    document.querySelectorAll(".hot[data-lit], .hot[data-cause]").forEach(
+        function (box) {
+            var key = keyOf(box);
+            if (!byValue.has(key)) { byValue.set(key, []); }
+            byValue.get(key).push(box);
+        }
+    );
 
     var pinned = null;
+
+    /* A value of the example and a consequence of it are two different
+       relations, so they are two different families of box; the key says
+       which, so one index and one lookup serve both. */
+    function keyOf(node) {
+        var kind = node.dataset.lit !== undefined ? "lit" : "cause";
+        return node.closest(".variant").id + "/" + kind + "/" +
+               (node.dataset.lit !== undefined ? node.dataset.lit : node.dataset.cause);
+    }
 
     /* Marking the other end is no use if it sits off screen: a value set at
        the top of a long example is out of view by the time its screen is.
@@ -325,22 +335,22 @@ details.centeredInfo.description
         });
         // The value is marked in the code too, so a literal written as
         // several adjacent chunks lights up whole.
-        var group = key.slice(0, key.lastIndexOf("/"));
-        var value = key.slice(key.lastIndexOf("/") + 1);
+        var parts = key.split("/");
+        var attribute = parts[1] === "lit" ? "data-lit" : "data-cause";
+        // parts[1] is the family, which is also the class of its spans.
         document.querySelectorAll(
-            "#" + CSS.escape(group) + ' .lit[data-lit="' + value + '"]'
+            "#" + CSS.escape(parts[0]) + " ." + parts[1] +
+            "[" + attribute + '="' + parts[2] + '"]'
         ).forEach(function (span) { span.classList.add("on"); });
     }
 
-    function keyOf(span) {
-        return span.closest(".variant").id + "/" + span.dataset.lit;
-    }
+
 
     // The other way round, now that the boxes are there: pointing at a text
     // on a screen says which value of the example wrote it.
-    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+    document.querySelectorAll(".hot[data-lit], .hot[data-cause]").forEach(function (box) {
         box.addEventListener("mouseenter", function () {
-            if (!pinned) { light(box.closest(".variant").id + "/" + box.dataset.lit); }
+            if (!pinned) { light(keyOf(box)); }
         });
         box.addEventListener("mouseleave", function () {
             if (!pinned) { light(null); }
@@ -348,14 +358,14 @@ details.centeredInfo.description
         box.addEventListener("click", function (event) {
             // The picture underneath is a link to the full size one.
             event.preventDefault();
-            var key = box.closest(".variant").id + "/" + box.dataset.lit;
+            var key = keyOf(box);
             pinned = pinned === key ? null : key;
             light(pinned || key);
-            reveal(document.querySelector(".lit.on"));
+            reveal(document.querySelector(".lit.on, .cause.on"));
         });
     });
 
-    document.querySelectorAll(".lit").forEach(function (span) {
+    document.querySelectorAll(".lit, .cause").forEach(function (span) {
         span.addEventListener("mouseenter", function () {
             if (!pinned) { light(keyOf(span)); }
         });

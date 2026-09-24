@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseReviewBlindSigning &mdash; NBGL use cases</title>
 <meta name="description" content="The same review, preceded by a blind signing warning page. It also takes a tip-box, but never displays it: see the tip-box variant of nbgl_useCaseAdvancedReview() for that.">
-<link rel="stylesheet" href="../plain.css?v=827a4ab2">
+<link rel="stylesheet" href="../plain.css?v=d5eff69a">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -80,8 +80,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       <small>400&times;672</small>
     </button>
     <button type="button" class="tab origin" aria-pressed="false"
-            title="Frame every text, saying which ones the example provides and which the SDK writes on its own">
-      What the app provides
+            title="Frame every text: blue, what the example wrote; amber, what the SDK drew because the example asked for it; grey, what it draws on its own">
+      Where the text comes from
     </button>
   </div>
 
@@ -130,10 +130,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
 
 <span class="c-comment">// Same as nbgl_useCaseReview(), preceded by a blind signing warning page.</span>
 fill_transfer_pairs();
-signed_status = <span class="c-const">STATUS_TYPE_TRANSACTION_SIGNED</span>;
-rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
+signed_status = <span class="c-const cause" data-cause="1">STATUS_TYPE_TRANSACTION_SIGNED</span>;
+rejected_status = <span class="c-const cause" data-cause="2">STATUS_TYPE_TRANSACTION_REJECTED</span>;
 
-<span class="c-usecase">nbgl_useCaseReviewBlindSigning</span>(<span class="c-const">TYPE_TRANSACTION</span>,
+<span class="c-usecase cause" data-cause="0">nbgl_useCaseReviewBlindSigning</span>(<span class="c-const">TYPE_TRANSACTION</span>,
                                &amp;pairList,
                                &amp;<span class="c-const">CATALOG_ICON_APP</span>,
                                <span class="c-string lit" data-lit="6">&quot;Review transaction\nto send BOL&quot;</span>,
@@ -173,7 +173,9 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
             </a>
             <b class="hot" data-lit="6" style="left: calc(75px * var(--shot-scale)); top: calc(234px * var(--shot-scale)); width: calc(330px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(134px * var(--shot-scale)); top: calc(274px * var(--shot-scale)); width: calc(212px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseReviewBlindSigning"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(74px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(444px * var(--shot-scale)); width: calc(293px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
@@ -207,7 +209,9 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
             <b class="hot" data-lit="3" style="left: calc(32px * var(--shot-scale)); top: calc(264px * var(--shot-scale)); width: calc(124px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="4" style="left: calc(32px * var(--shot-scale)); top: calc(328px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(32px * var(--shot-scale)); top: calc(368px * var(--shot-scale)); width: calc(223px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseReviewBlindSigning"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(78px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -220,9 +224,13 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
             </a>
             <b class="hot" data-lit="7" style="left: calc(99px * var(--shot-scale)); top: calc(180px * var(--shot-scale)); width: calc(282px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(124px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseReviewBlindSigning"
+               style="left: calc(53px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseReviewBlindSigning"
+               style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(296px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(79px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(408px * var(--shot-scale)); width: calc(209px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <span class="shot">
@@ -232,7 +240,9 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewBlindSigning, Warning page, Flex, screen 6">
             </a>
-            <b class="hot sdk" style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
+               style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -266,7 +276,9 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
             </a>
             <b class="hot" data-lit="6" style="left: calc(40px * var(--shot-scale)); top: calc(163px * var(--shot-scale)); width: calc(220px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(80px * var(--shot-scale)); top: calc(191px * var(--shot-scale)); width: calc(140px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseReviewBlindSigning"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(306px * var(--shot-scale)); width: calc(193px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
@@ -300,7 +312,9 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
             <b class="hot" data-lit="3" style="left: calc(16px * var(--shot-scale)); top: calc(176px * var(--shot-scale)); width: calc(82px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="4" style="left: calc(16px * var(--shot-scale)); top: calc(220px * var(--shot-scale)); width: calc(43px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(16px * var(--shot-scale)); top: calc(246px * var(--shot-scale)); width: calc(151px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseReviewBlindSigning"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -313,9 +327,13 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
             </a>
             <b class="hot" data-lit="7" style="left: calc(56px * var(--shot-scale)); top: calc(130px * var(--shot-scale)); width: calc(188px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(73px * var(--shot-scale)); top: calc(158px * var(--shot-scale)); width: calc(153px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseReviewBlindSigning"
+               style="left: calc(30px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseReviewBlindSigning"
+               style="left: calc(16px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(282px * var(--shot-scale)); width: calc(138px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <span class="shot">
@@ -325,7 +343,9 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewBlindSigning, Warning page, Apex P, screen 6">
             </a>
-            <b class="hot sdk" style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
+               style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -359,7 +379,9 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
             </a>
             <b class="hot" data-lit="6" style="left: calc(54px * var(--shot-scale)); top: calc(270px * var(--shot-scale)); width: calc(291px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(107px * var(--shot-scale)); top: calc(310px * var(--shot-scale)); width: calc(186px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseReviewBlindSigning"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(524px * var(--shot-scale)); width: calc(257px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
@@ -393,7 +415,9 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
             <b class="hot" data-lit="3" style="left: calc(24px * var(--shot-scale)); top: calc(260px * var(--shot-scale)); width: calc(149px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="4" style="left: calc(24px * var(--shot-scale)); top: calc(312px * var(--shot-scale)); width: calc(55px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(24px * var(--shot-scale)); top: calc(348px * var(--shot-scale)); width: calc(200px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseReviewBlindSigning"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Next page</span>
@@ -406,9 +430,13 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
             </a>
             <b class="hot" data-lit="7" style="left: calc(76px * var(--shot-scale)); top: calc(230px * var(--shot-scale)); width: calc(248px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot" data-lit="7" style="left: calc(98px * var(--shot-scale)); top: calc(270px * var(--shot-scale)); width: calc(203px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseReviewBlindSigning"
+               style="left: calc(43px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="0"
+               title="Drawn by the SDK because of nbgl_useCaseReviewBlindSigning"
+               style="left: calc(24px * var(--shot-scale)); top: calc(496px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
             <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(496px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
           <span class="shot">
@@ -418,7 +446,9 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewBlindSigning, Warning page, Stax, screen 6">
             </a>
-            <b class="hot sdk" style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+            <b class="hot because" data-cause="1"
+               title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
+               style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -466,14 +496,24 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
     // Every box carries the number of the value it holds, so lighting one up
     // is a lookup rather than a search. Hover shows it, a click keeps it.
     var byValue = new Map();
-    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
-        var group = box.closest(".variant");
-        var key = group.id + "/" + box.dataset.lit;
-        if (!byValue.has(key)) { byValue.set(key, []); }
-        byValue.get(key).push(box);
-    });
+    document.querySelectorAll(".hot[data-lit], .hot[data-cause]").forEach(
+        function (box) {
+            var key = keyOf(box);
+            if (!byValue.has(key)) { byValue.set(key, []); }
+            byValue.get(key).push(box);
+        }
+    );
 
     var pinned = null;
+
+    /* A value of the example and a consequence of it are two different
+       relations, so they are two different families of box; the key says
+       which, so one index and one lookup serve both. */
+    function keyOf(node) {
+        var kind = node.dataset.lit !== undefined ? "lit" : "cause";
+        return node.closest(".variant").id + "/" + kind + "/" +
+               (node.dataset.lit !== undefined ? node.dataset.lit : node.dataset.cause);
+    }
 
     /* Marking the other end is no use if it sits off screen: a value set at
        the top of a long example is out of view by the time its screen is.
@@ -515,22 +555,22 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
         });
         // The value is marked in the code too, so a literal written as
         // several adjacent chunks lights up whole.
-        var group = key.slice(0, key.lastIndexOf("/"));
-        var value = key.slice(key.lastIndexOf("/") + 1);
+        var parts = key.split("/");
+        var attribute = parts[1] === "lit" ? "data-lit" : "data-cause";
+        // parts[1] is the family, which is also the class of its spans.
         document.querySelectorAll(
-            "#" + CSS.escape(group) + ' .lit[data-lit="' + value + '"]'
+            "#" + CSS.escape(parts[0]) + " ." + parts[1] +
+            "[" + attribute + '="' + parts[2] + '"]'
         ).forEach(function (span) { span.classList.add("on"); });
     }
 
-    function keyOf(span) {
-        return span.closest(".variant").id + "/" + span.dataset.lit;
-    }
+
 
     // The other way round, now that the boxes are there: pointing at a text
     // on a screen says which value of the example wrote it.
-    document.querySelectorAll(".hot[data-lit]").forEach(function (box) {
+    document.querySelectorAll(".hot[data-lit], .hot[data-cause]").forEach(function (box) {
         box.addEventListener("mouseenter", function () {
-            if (!pinned) { light(box.closest(".variant").id + "/" + box.dataset.lit); }
+            if (!pinned) { light(keyOf(box)); }
         });
         box.addEventListener("mouseleave", function () {
             if (!pinned) { light(null); }
@@ -538,14 +578,14 @@ rejected_status = <span class="c-const">STATUS_TYPE_TRANSACTION_REJECTED</span>;
         box.addEventListener("click", function (event) {
             // The picture underneath is a link to the full size one.
             event.preventDefault();
-            var key = box.closest(".variant").id + "/" + box.dataset.lit;
+            var key = keyOf(box);
             pinned = pinned === key ? null : key;
             light(pinned || key);
-            reveal(document.querySelector(".lit.on"));
+            reveal(document.querySelector(".lit.on, .cause.on"));
         });
     });
 
-    document.querySelectorAll(".lit").forEach(function (span) {
+    document.querySelectorAll(".lit, .cause").forEach(function (span) {
         span.addEventListener("mouseenter", function () {
             if (!pinned) { light(keyOf(span)); }
         });
