@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseReviewStatus &mdash; NBGL use cases</title>
 <meta name="description" content="The same transient page, pre-worded for each of the eight values of nbgl_reviewStatusType_t.">
-<link rel="stylesheet" href="../plain.css?v=f6258600">
+<link rel="stylesheet" href="../plain.css?v=cfc5f3f7">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -82,10 +82,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       Stax
       <small>400&times;672</small>
     </button>
-    <button type="button" class="tab origin" aria-pressed="false"
-            title="Frame every text: blue, what the example wrote; amber, what the SDK drew because the example asked for it; grey, what it draws on its own">
-      Where the text comes from
-    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseReviewStatus</span>(<span class="c-type">nbgl_reviewStatusType_t</span> reviewStatusType,
@@ -114,7 +110,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_SIGNED, Flex, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(208px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
@@ -134,7 +129,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_SIGNED, Apex P, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(126px * var(--shot-scale)); top: calc(154px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
@@ -154,7 +148,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_SIGNED, Stax, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(168px * var(--shot-scale)); top: calc(272px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
@@ -186,7 +179,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_REJECTED, Flex, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(208px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_REJECTED"
                style="left: calc(61px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(358px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
@@ -206,7 +198,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_REJECTED, Apex P, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(126px * var(--shot-scale)); top: calc(154px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_REJECTED"
                style="left: calc(30px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(239px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
@@ -226,7 +217,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_TRANSACTION_REJECTED, Stax, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(168px * var(--shot-scale)); top: calc(272px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_REJECTED"
                style="left: calc(42px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(316px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
@@ -258,7 +248,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_SIGNED, Flex, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(208px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_MESSAGE_SIGNED"
                style="left: calc(99px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(281px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
@@ -278,7 +267,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_SIGNED, Apex P, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(126px * var(--shot-scale)); top: calc(154px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_MESSAGE_SIGNED"
                style="left: calc(56px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(188px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
@@ -298,7 +286,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_SIGNED, Stax, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(168px * var(--shot-scale)); top: calc(272px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_MESSAGE_SIGNED"
                style="left: calc(75px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(250px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
@@ -330,7 +317,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_REJECTED, Flex, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(208px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_MESSAGE_REJECTED"
                style="left: calc(86px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(307px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
@@ -350,7 +336,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_REJECTED, Apex P, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(126px * var(--shot-scale)); top: calc(154px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_MESSAGE_REJECTED"
                style="left: calc(47px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(206px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
@@ -370,7 +355,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_MESSAGE_REJECTED, Stax, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(168px * var(--shot-scale)); top: calc(272px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_MESSAGE_REJECTED"
                style="left: calc(63px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(274px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
@@ -402,7 +386,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_SIGNED, Flex, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(208px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_OPERATION_SIGNED"
                style="left: calc(91px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(298px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
@@ -422,7 +405,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_SIGNED, Apex P, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(126px * var(--shot-scale)); top: calc(154px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_OPERATION_SIGNED"
                style="left: calc(51px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(197px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
@@ -442,8 +424,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_SIGNED, Stax, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(168px * var(--shot-scale)); top: calc(272px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(95px * var(--shot-scale)); top: calc(375px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_OPERATION_SIGNED"
                style="left: calc(68px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(263px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
@@ -475,7 +455,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_REJECTED, Flex, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(208px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_OPERATION_REJECTED"
                style="left: calc(78px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(324px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
@@ -495,7 +474,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_REJECTED, Apex P, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(126px * var(--shot-scale)); top: calc(154px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_OPERATION_REJECTED"
                style="left: calc(42px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(215px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
@@ -515,8 +493,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_OPERATION_REJECTED, Stax, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(168px * var(--shot-scale)); top: calc(272px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(83px * var(--shot-scale)); top: calc(375px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_OPERATION_REJECTED"
                style="left: calc(56px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(287px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
@@ -548,7 +524,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_VERIFIED, Flex, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(208px * var(--shot-scale)); top: calc(236px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_VERIFIED"
                style="left: calc(98px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(284px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
@@ -568,7 +543,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_VERIFIED, Apex P, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(126px * var(--shot-scale)); top: calc(154px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_VERIFIED"
                style="left: calc(55px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(189px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
@@ -588,7 +562,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_VERIFIED, Stax, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(168px * var(--shot-scale)); top: calc(272px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_VERIFIED"
                style="left: calc(74px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(251px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
@@ -620,7 +593,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(480px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_REJECTED, Flex, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(208px * var(--shot-scale)); top: calc(216px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_REJECTED"
                style="left: calc(66px * var(--shot-scale)); top: calc(304px * var(--shot-scale)); width: calc(347px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
@@ -643,7 +615,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(300px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_REJECTED, Apex P, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(126px * var(--shot-scale)); top: calc(140px * var(--shot-scale)); width: calc(48px * var(--shot-scale)); height: calc(48px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_REJECTED"
                style="left: calc(34px * var(--shot-scale)); top: calc(204px * var(--shot-scale)); width: calc(231px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
@@ -666,7 +637,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  style="width: calc(400px * var(--shot-scale))"
                  alt="nbgl_useCaseReviewStatus, STATUS_TYPE_ADDRESS_REJECTED, Stax, screen 1">
             </a>
-            <b class="hot sdk" style="left: calc(168px * var(--shot-scale)); top: calc(252px * var(--shot-scale)); width: calc(64px * var(--shot-scale)); height: calc(64px * var(--shot-scale))"></b>
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of STATUS_TYPE_ADDRESS_REJECTED"
                style="left: calc(47px * var(--shot-scale)); top: calc(340px * var(--shot-scale)); width: calc(306px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
@@ -820,23 +790,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         });
     });
 
-    // Telling apart what the example passed from what the SDK added.
-    var origin = document.querySelector(".tab.origin");
-    if (origin) {
-        origin.addEventListener("click", function () {
-            var on = origin.getAttribute("aria-pressed") !== "true";
-            origin.setAttribute("aria-pressed", on ? "true" : "false");
-            document.documentElement.classList.toggle("show-origin", on);
-        });
-    }
 }());
 
 (function () {
     // The product tabs. The page already opened on the right one, thanks to
     // the head script: this only follows the clicks and remembers the choice,
     // so the next use case page opens on the same product.
-    // Only the product tabs: the bar also holds the origin toggle, which
-    // wears the same class for the look but selects no product.
     var tabs = Array.prototype.slice.call(
         document.querySelectorAll(".tab[data-product]")
     );

@@ -149,6 +149,17 @@ footer {
 
 .body { min-width: 0; }
 
+/* Out of the catalog and back to the rest of the site. */
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--text-3);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.back-link:hover { color: var(--text-1); }
+
 .hero h1 { margin: 0 0 10px; font-size: 26px; letter-spacing: -0.01em; }
 
 .hero p { margin: 0; max-width: 62ch; color: var(--text-2); line-height: 1.65; }
@@ -376,12 +387,6 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 .cause.on { background: var(--cause-wash); outline: 1px solid var(--cause); }
 
 /* Asked for: what the example passes, against what the SDK writes alone. */
-.show-origin .hot { border-color: var(--link); }
-
-.show-origin .hot.because { border-color: var(--cause); }
-
-.show-origin .hot.sdk { border-color: var(--text-3); border-style: dashed; }
-
 /* The value in the code, marked from the same lookup. */
 /* Scrolled to from the other end, neither must land under the tab bar. */
 /* Clear of both sticky bars, the header and the product tabs. */
@@ -439,13 +444,6 @@ pre.code code { padding: 0; border: 0; background: none; font-size: inherit; }
 }
 
 .tab[aria-selected="true"] small { color: var(--bg); opacity: 0.7; }
-
-.tab.origin { margin-left: auto; }
-
-.tab.origin[aria-pressed="true"] {
-    border-color: var(--link);
-    color: var(--link);
-}
 
 .shot-soon {
     display: flex;

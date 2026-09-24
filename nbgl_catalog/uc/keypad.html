@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseKeypad &mdash; NBGL use cases</title>
 <meta name="description" content="A PIN entry page. The digits can be hidden and the key layout shuffled.">
-<link rel="stylesheet" href="../plain.css?v=f6258600">
+<link rel="stylesheet" href="../plain.css?v=cfc5f3f7">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -81,10 +81,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       Stax
       <small>400&times;672</small>
     </button>
-    <button type="button" class="tab origin" aria-pressed="false"
-            title="Frame every text: blue, what the example wrote; amber, what the SDK drew because the example asked for it; grey, what it draws on its own">
-      Where the text comes from
-    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseKeypad</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span>             *title,
@@ -127,19 +123,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Flex, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(142px * var(--shot-scale)); top: calc(104px * var(--shot-scale)); width: calc(195px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(73px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(539px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “1”</span>
           <span class="shot">
@@ -150,21 +133,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Flex, screen 2">
             </a>
             <b class="hot" data-lit="0" style="left: calc(142px * var(--shot-scale)); top: calc(104px * var(--shot-scale)); width: calc(195px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(73px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(539px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(140px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “2”</span>
           <span class="shot">
@@ -175,22 +143,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Flex, screen 3">
             </a>
             <b class="hot" data-lit="0" style="left: calc(142px * var(--shot-scale)); top: calc(104px * var(--shot-scale)); width: calc(195px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(73px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(539px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(140px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(140px * var(--shot-scale)); width: calc(39px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “3”</span>
           <span class="shot">
@@ -201,23 +153,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Flex, screen 4">
             </a>
             <b class="hot" data-lit="0" style="left: calc(142px * var(--shot-scale)); top: calc(104px * var(--shot-scale)); width: calc(195px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(73px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(539px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(140px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(140px * var(--shot-scale)); width: calc(39px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(140px * var(--shot-scale)); width: calc(62px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “4”</span>
           <span class="shot">
@@ -228,26 +163,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Flex, screen 5">
             </a>
             <b class="hot" data-lit="0" style="left: calc(142px * var(--shot-scale)); top: calc(104px * var(--shot-scale)); width: calc(195px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(73px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(539px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(380px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(140px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(140px * var(--shot-scale)); width: calc(39px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(140px * var(--shot-scale)); width: calc(62px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(140px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -265,18 +180,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Apex P, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(86px * var(--shot-scale)); top: calc(73px * var(--shot-scale)); width: calc(128px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(7px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(244px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(44px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(142px * var(--shot-scale)); top: calc(356px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “1”</span>
           <span class="shot">
@@ -287,20 +190,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Apex P, screen 2">
             </a>
             <b class="hot" data-lit="0" style="left: calc(86px * var(--shot-scale)); top: calc(73px * var(--shot-scale)); width: calc(128px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(7px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(244px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(44px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(142px * var(--shot-scale)); top: calc(356px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(95px * var(--shot-scale)); width: calc(10px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “2”</span>
           <span class="shot">
@@ -311,21 +200,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Apex P, screen 3">
             </a>
             <b class="hot" data-lit="0" style="left: calc(86px * var(--shot-scale)); top: calc(73px * var(--shot-scale)); width: calc(128px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(7px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(244px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(44px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(142px * var(--shot-scale)); top: calc(356px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(95px * var(--shot-scale)); width: calc(10px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(95px * var(--shot-scale)); width: calc(25px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “3”</span>
           <span class="shot">
@@ -336,22 +210,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Apex P, screen 4">
             </a>
             <b class="hot" data-lit="0" style="left: calc(86px * var(--shot-scale)); top: calc(73px * var(--shot-scale)); width: calc(128px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(7px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(244px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(44px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(142px * var(--shot-scale)); top: calc(356px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(95px * var(--shot-scale)); width: calc(10px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(95px * var(--shot-scale)); width: calc(25px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(95px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “4”</span>
           <span class="shot">
@@ -362,26 +220,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Apex P, screen 5">
             </a>
             <b class="hot" data-lit="0" style="left: calc(86px * var(--shot-scale)); top: calc(73px * var(--shot-scale)); width: calc(128px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(7px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(244px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(44px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(238px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(200px * var(--shot-scale)); top: calc(336px * var(--shot-scale)); width: calc(1px * var(--shot-scale)); height: calc(8px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(142px * var(--shot-scale)); top: calc(356px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(95px * var(--shot-scale)); width: calc(10px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(95px * var(--shot-scale)); width: calc(25px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(95px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(95px * var(--shot-scale)); width: calc(56px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -399,19 +237,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Stax, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(116px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(324px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(396px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(500px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(605px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(596px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “1”</span>
           <span class="shot">
@@ -422,21 +247,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Stax, screen 2">
             </a>
             <b class="hot" data-lit="0" style="left: calc(116px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(324px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(396px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(500px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(605px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(596px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(152px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “2”</span>
           <span class="shot">
@@ -447,22 +257,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Stax, screen 3">
             </a>
             <b class="hot" data-lit="0" style="left: calc(116px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(324px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(396px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(500px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(605px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(596px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(152px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(152px * var(--shot-scale)); width: calc(33px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “3”</span>
           <span class="shot">
@@ -473,23 +267,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Stax, screen 4">
             </a>
             <b class="hot" data-lit="0" style="left: calc(116px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(324px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(396px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(500px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(605px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(596px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(152px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(152px * var(--shot-scale)); width: calc(33px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(152px * var(--shot-scale)); width: calc(53px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “4”</span>
           <span class="shot">
@@ -500,26 +277,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Visible digits, Stax, screen 5">
             </a>
             <b class="hot" data-lit="0" style="left: calc(116px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(324px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(396px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(500px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(605px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(316px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(596px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(152px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(152px * var(--shot-scale)); width: calc(33px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(152px * var(--shot-scale)); width: calc(53px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(24px * var(--shot-scale)); top: calc(152px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -557,27 +314,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Flex, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(142px * var(--shot-scale)); top: calc(104px * var(--shot-scale)); width: calc(195px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(102px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(138px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(174px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(210px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(282px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(318px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(354px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(73px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(539px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “1”</span>
           <span class="shot">
@@ -588,29 +324,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Flex, screen 2">
             </a>
             <b class="hot" data-lit="0" style="left: calc(142px * var(--shot-scale)); top: calc(104px * var(--shot-scale)); width: calc(195px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(102px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(138px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(174px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(210px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(282px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(318px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(354px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(73px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(539px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(102px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “2”</span>
           <span class="shot">
@@ -621,30 +334,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Flex, screen 3">
             </a>
             <b class="hot" data-lit="0" style="left: calc(142px * var(--shot-scale)); top: calc(104px * var(--shot-scale)); width: calc(195px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(102px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(138px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(174px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(210px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(282px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(318px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(354px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(73px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(539px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(102px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(138px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “3”</span>
           <span class="shot">
@@ -655,31 +344,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Flex, screen 4">
             </a>
             <b class="hot" data-lit="0" style="left: calc(142px * var(--shot-scale)); top: calc(104px * var(--shot-scale)); width: calc(195px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(102px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(138px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(174px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(210px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(282px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(318px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(354px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(73px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(539px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(102px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(138px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(174px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “4”</span>
           <span class="shot">
@@ -690,34 +354,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Flex, screen 5">
             </a>
             <b class="hot" data-lit="0" style="left: calc(142px * var(--shot-scale)); top: calc(104px * var(--shot-scale)); width: calc(195px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(102px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(138px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(174px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(210px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(282px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(318px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(354px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(73px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(231px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(388px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(539px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(102px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(138px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(174px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(210px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(380px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -735,26 +371,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Apex P, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(86px * var(--shot-scale)); top: calc(73px * var(--shot-scale)); width: calc(128px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(58px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(82px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(106px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(130px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(154px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(178px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(202px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(226px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(7px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(244px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(44px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(142px * var(--shot-scale)); top: calc(356px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “1”</span>
           <span class="shot">
@@ -765,28 +381,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Apex P, screen 2">
             </a>
             <b class="hot" data-lit="0" style="left: calc(86px * var(--shot-scale)); top: calc(73px * var(--shot-scale)); width: calc(128px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(58px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(82px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(106px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(130px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(154px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(178px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(202px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(226px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(7px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(244px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(44px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(58px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(142px * var(--shot-scale)); top: calc(356px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “2”</span>
           <span class="shot">
@@ -797,29 +391,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Apex P, screen 3">
             </a>
             <b class="hot" data-lit="0" style="left: calc(86px * var(--shot-scale)); top: calc(73px * var(--shot-scale)); width: calc(128px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(58px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(82px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(106px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(130px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(154px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(178px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(202px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(226px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(7px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(244px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(44px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(58px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(82px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(142px * var(--shot-scale)); top: calc(356px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “3”</span>
           <span class="shot">
@@ -830,30 +401,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Apex P, screen 4">
             </a>
             <b class="hot" data-lit="0" style="left: calc(86px * var(--shot-scale)); top: calc(73px * var(--shot-scale)); width: calc(128px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(58px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(82px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(106px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(130px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(154px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(178px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(202px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(226px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(7px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(244px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(44px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(58px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(82px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(106px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(142px * var(--shot-scale)); top: calc(356px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “4”</span>
           <span class="shot">
@@ -864,34 +411,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Apex P, screen 5">
             </a>
             <b class="hot" data-lit="0" style="left: calc(86px * var(--shot-scale)); top: calc(73px * var(--shot-scale)); width: calc(128px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(58px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(82px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(106px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(130px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(154px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(178px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(202px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(226px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(46px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(7px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(244px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(144px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(44px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(243px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(58px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(82px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(106px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(130px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(238px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(200px * var(--shot-scale)); top: calc(336px * var(--shot-scale)); width: calc(1px * var(--shot-scale)); height: calc(8px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(142px * var(--shot-scale)); top: calc(356px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -909,27 +428,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Stax, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(116px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(103px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(137px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(171px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(205px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(239px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(273px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(307px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(324px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(396px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(500px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(605px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(596px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “1”</span>
           <span class="shot">
@@ -940,29 +438,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Stax, screen 2">
             </a>
             <b class="hot" data-lit="0" style="left: calc(116px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(103px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(137px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(171px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(205px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(239px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(273px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(307px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(324px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(396px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(500px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(605px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(596px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “2”</span>
           <span class="shot">
@@ -973,30 +448,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Stax, screen 3">
             </a>
             <b class="hot" data-lit="0" style="left: calc(116px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(103px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(137px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(171px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(205px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(239px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(273px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(307px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(324px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(396px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(500px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(605px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(103px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(596px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “3”</span>
           <span class="shot">
@@ -1007,31 +458,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Stax, screen 4">
             </a>
             <b class="hot" data-lit="0" style="left: calc(116px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(103px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(137px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(171px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(205px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(239px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(273px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(307px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(324px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(396px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(500px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(605px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(103px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(137px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(596px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
           <span class="shot-step" aria-label="then">Tap “4”</span>
           <span class="shot">
@@ -1042,34 +468,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Hidden digits, Stax, screen 5">
             </a>
             <b class="hot" data-lit="0" style="left: calc(116px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(103px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(137px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(171px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(205px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(239px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(273px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(307px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(324px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(396px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(500px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(323px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(605px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(103px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(137px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(171px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(316px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(596px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -1107,27 +505,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Shuffled and hidden, Flex, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(142px * var(--shot-scale)); top: calc(104px * var(--shot-scale)); width: calc(195px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(32px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(102px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(138px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(174px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(210px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(282px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(318px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(354px * var(--shot-scale)); top: calc(160px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(68px * var(--shot-scale)); top: calc(275px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(229px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(391px * var(--shot-scale)); top: calc(276px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(21px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(363px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(393px * var(--shot-scale)); top: calc(364px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(68px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(451px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(391px * var(--shot-scale)); top: calc(452px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(60px * var(--shot-scale)); top: calc(536px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(539px * var(--shot-scale)); width: calc(23px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(228px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(40px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -1145,26 +522,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Shuffled and hidden, Apex P, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(86px * var(--shot-scale)); top: calc(73px * var(--shot-scale)); width: calc(128px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(16px * var(--shot-scale)); top: calc(18px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(58px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(82px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(106px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(130px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(154px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(178px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(202px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(226px * var(--shot-scale)); top: calc(107px * var(--shot-scale)); width: calc(16px * var(--shot-scale)); height: calc(16px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(44px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(14px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(244px * var(--shot-scale)); top: calc(182px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(44px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(246px * var(--shot-scale)); top: calc(242px * var(--shot-scale)); width: calc(7px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(43px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(143px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(13px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(244px * var(--shot-scale)); top: calc(302px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(17px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(38px * var(--shot-scale)); top: calc(358px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(142px * var(--shot-scale)); top: calc(356px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -1182,27 +539,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseKeypad, Shuffled and hidden, Stax, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(116px * var(--shot-scale)); top: calc(96px * var(--shot-scale)); width: calc(168px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(28px * var(--shot-scale)); top: calc(28px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(69px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(103px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(137px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(171px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(205px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(239px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(273px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(307px * var(--shot-scale)); top: calc(142px * var(--shot-scale)); width: calc(24px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(58px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(17px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(293px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(322px * var(--shot-scale)); top: calc(292px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(396px * var(--shot-scale)); width: calc(19px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(326px * var(--shot-scale)); top: calc(397px * var(--shot-scale)); width: calc(11px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(57px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(501px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(322px * var(--shot-scale)); top: calc(500px * var(--shot-scale)); width: calc(20px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(50px * var(--shot-scale)); top: calc(604px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(190px * var(--shot-scale)); top: calc(605px * var(--shot-scale)); width: calc(18px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(189px * var(--shot-scale)); top: calc(596px * var(--shot-scale)); width: calc(32px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -1350,23 +686,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         });
     });
 
-    // Telling apart what the example passed from what the SDK added.
-    var origin = document.querySelector(".tab.origin");
-    if (origin) {
-        origin.addEventListener("click", function () {
-            var on = origin.getAttribute("aria-pressed") !== "true";
-            origin.setAttribute("aria-pressed", on ? "true" : "false");
-            document.documentElement.classList.toggle("show-origin", on);
-        });
-    }
 }());
 
 (function () {
     // The product tabs. The page already opened on the right one, thanks to
     // the head script: this only follows the clicks and remembers the choice,
     // so the next use case page opens on the same product.
-    // Only the product tabs: the bar also holds the origin toggle, which
-    // wears the same class for the look but selects no product.
     var tabs = Array.prototype.slice.call(
         document.querySelectorAll(".tab[data-product]")
     );

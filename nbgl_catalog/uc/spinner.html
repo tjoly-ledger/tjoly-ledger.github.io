@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseSpinner &mdash; NBGL use cases</title>
 <meta name="description" content="A waiting page with no control, whose spinner turns on its own every 800 ms. Freezing the emulated time holds the page still long enough to capture, but not at a fixed phase of the glyph, so this is the one screen of the catalog that comes out differently from one run to the next.">
-<link rel="stylesheet" href="../plain.css?v=f6258600">
+<link rel="stylesheet" href="../plain.css?v=cfc5f3f7">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }</style>
@@ -75,10 +75,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
       Stax
       <small>400&times;672</small>
     </button>
-    <button type="button" class="tab origin" aria-pressed="false"
-            title="Frame every text: blue, what the example wrote; amber, what the SDK drew because the example asked for it; grey, what it draws on its own">
-      Where the text comes from
-    </button>
   </div>
 
   <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseSpinner</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span> *text);</code></pre>
@@ -143,8 +139,6 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                  alt="nbgl_useCaseSpinner, Waiting, Stax, screen 1">
             </a>
             <b class="hot" data-lit="0" style="left: calc(89px * var(--shot-scale)); top: calc(352px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(111px * var(--shot-scale)); top: calc(362px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
-            <b class="hot sdk" style="left: calc(160px * var(--shot-scale)); top: calc(362px * var(--shot-scale)); width: calc(12px * var(--shot-scale)); height: calc(24px * var(--shot-scale))"></b>
           </span>
         </div>
       </div>
@@ -292,23 +286,12 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         });
     });
 
-    // Telling apart what the example passed from what the SDK added.
-    var origin = document.querySelector(".tab.origin");
-    if (origin) {
-        origin.addEventListener("click", function () {
-            var on = origin.getAttribute("aria-pressed") !== "true";
-            origin.setAttribute("aria-pressed", on ? "true" : "false");
-            document.documentElement.classList.toggle("show-origin", on);
-        });
-    }
 }());
 
 (function () {
     // The product tabs. The page already opened on the right one, thanks to
     // the head script: this only follows the clicks and remembers the choice,
     // so the next use case page opens on the same product.
-    // Only the product tabs: the bar also holds the origin toggle, which
-    // wears the same class for the look but selects no product.
     var tabs = Array.prototype.slice.call(
         document.querySelectorAll(".tab[data-product]")
     );
