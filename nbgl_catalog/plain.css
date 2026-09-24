@@ -364,21 +364,9 @@ html[data-product] .shot-row { grid-template-columns: minmax(0, 1fr); }
 
 .shot-rows.compact .shot-label { padding-top: 0; }
 
-/* A flow is a sequence, so it stays on one line and scrolls. It used to
-   wrap: the longest strip is 1370px in a 1000px column, which turned every
-   flow into a chequerboard. The vertical padding is for the lift on hover —
-   setting overflow-x alone makes overflow-y compute to auto, which would
-   clip it and add a scrollbar nobody asked for. */
-.shots {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 10px;
-    padding: 10px 0;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-}
-
-.shots > * { flex: none; }
+/* Wraps when it does not fit. A strip that scrolled sideways kept a flow on
+   one line, which read better on paper and worse in the hand. */
+.shots { display: flex; flex-wrap: wrap; gap: 10px; }
 
 .shots a { display: block; line-height: 0; }
 
