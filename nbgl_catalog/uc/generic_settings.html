@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseGenericSettings &mdash; NBGL use cases</title>
 <meta name="description" content="The settings and info pages of nbgl_useCaseHomeAndSettings(), without the home page, for an app that draws its own.">
-<link rel="stylesheet" href="../plain.css?v=6a13db27">
+<link rel="stylesheet" href="../plain.css?v=925d5145">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -81,11 +81,57 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </button>
   </div>
 
-  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseGenericSettings</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span>                   *appName,
-                                 <span class="c-type">uint8_t</span>                       initPage,
-                                 <span class="c-keyword">const</span> <span class="c-type">nbgl_genericContents_t</span> *settingContents,
-                                 <span class="c-keyword">const</span> <span class="c-type">nbgl_contentInfoList_t</span> *infosList,
-                                 <span class="c-type">nbgl_callback_t</span>               quitCallback);</code></pre>
+  <div class="code-wrap">
+    <a class="source" href="https://github.com/LedgerHQ/ledger-secure-sdk/blob/master/lib_nbgl/include/nbgl_use_case.h#L556-L560" target="_blank" rel="noopener"
+       title="Read this declaration in the SDK">nbgl_use_case.h &#8599;</a>
+    <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseGenericSettings</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span>                   *<span class="c-param param" data-param="0">appName</span>,
+                                 <span class="c-type">uint8_t</span>                       <span class="c-param param" data-param="1">initPage</span>,
+                                 <span class="c-keyword">const</span> <span class="c-type">nbgl_genericContents_t</span> *<span class="c-param param" data-param="2">settingContents</span>,
+                                 <span class="c-keyword">const</span> <span class="c-type">nbgl_contentInfoList_t</span> *<span class="c-param param" data-param="3">infosList</span>,
+                                 <span class="c-type">nbgl_callback_t</span>               <span class="c-param param" data-param="4">quitCallback</span>);</code></pre>
+  </div>
+  <div class="params" hidden>
+    <div class="param-doc" data-param="0">
+      <p class="param-head"><code>const char *</code> <b>appName</b></p>
+<p class="param-desc">string to use as title</p>    </div>
+    <div class="param-doc" data-param="1">
+      <p class="param-head"><code>uint8_t</code> <b>initPage</b></p>
+<p class="param-desc">page on which to start, can be != 0 if you want to display a specific page after a setting confirmation change or something. Then the value should be taken from the nbgl_contentActionCallback_t callback call.</p>    </div>
+    <div class="param-doc" data-param="2">
+      <p class="param-head"><code>const nbgl_genericContents_t *</code> <b>settingContents</b></p>
+<p class="param-desc">contents to be displayed</p>      <ul class="param-items">
+        <li>
+          <code>callbackCallNeeded</code> <span class="param-type">bool</span><span class="param-what">indicates whether contents should be retrieved using contentsList or contentGetterCallback</span>        </li>
+        <li>
+          <code>contentsList</code> <span class="param-type">const nbgl_content_t *</span><span class="param-what">array of nbgl_content_t (nbContents items).</span>        </li>
+        <li>
+          <code>contentGetterCallback</code> <span class="param-type">nbgl_contentCallback_t</span><span class="param-what">function to call to retrieve a given content</span>        </li>
+        <li>
+          <code>nbContents</code> <span class="param-type">uint8_t</span><span class="param-what">number of contents</span>        </li>
+      </ul>
+    </div>
+    <div class="param-doc" data-param="3">
+      <p class="param-head"><code>const nbgl_contentInfoList_t *</code> <b>infosList</b></p>
+<p class="param-desc">infos to be displayed (version, license, developer, ...)</p><p class="param-aside">This structure contains data to build a INFOS_LIST content</p>      <ul class="param-items">
+        <li>
+          <code>infoTypes</code> <span class="param-type">const char *const *</span><span class="param-what">array of types of infos (in black/bold)</span>        </li>
+        <li>
+          <code>infoContents</code> <span class="param-type">const char *const *</span><span class="param-what">array of contents of infos (in black)</span>        </li>
+        <li>
+          <code>infoExtensions</code> <span class="param-type">const nbgl_contentValueExt_t *</span><span class="param-what">if not NULL, gives additional info on type field any {0} element of this array is considered as invalid</span>        </li>
+        <li>
+          <code>nbInfos</code> <span class="param-type">uint8_t</span><span class="param-what">number of elements in infoTypes and infoContents array</span>        </li>
+        <li>
+          <code>token</code> <span class="param-type">uint8_t</span><span class="param-what">token to use with extensions, if withExtensions is true and infoExtensions is not NULL</span>        </li>
+        <li>
+          <code>withExtensions</code> <span class="param-type">bool</span><span class="param-what">if set to TRUE and if infoExtensions is not NULL, use this infoExtensions field</span>        </li>
+      </ul>
+    </div>
+    <div class="param-doc" data-param="4">
+      <p class="param-head"><code>nbgl_callback_t</code> <b>quitCallback</b></p>
+<p class="param-desc">callback called when quit button (or title) is pressed</p><p class="param-aside">prototype of generic callback function</p>    </div>
+  </div>
+  <div class="param-panel" hidden></div>
 
   <details class="variant" id="plain" open>
     <summary>
@@ -579,6 +625,71 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         });
     });
 
+}());
+
+(function () {
+    /* What a parameter of the prototype holds, on hover. The panel is a
+       clone of what the generator already rendered, so nothing here builds
+       text: this only decides when it appears and where.
+
+       Everything opens on hover, so three things keep it out of the way —
+       a delay, so running the pointer along seven parameters lights none of
+       them; `pointer-events: none` in the stylesheet, so it never catches
+       the pointer it is standing next to; and a flip when there is no room
+       below, the same rule the `.peek` chip follows. */
+    var docs = document.querySelector(".params");
+    var panel = document.querySelector(".param-panel");
+    if (!docs || !panel) { return; }
+
+    var OPEN_DELAY = 120;
+    var timer = null;
+
+    function hide() {
+        clearTimeout(timer);
+        panel.hidden = true;
+        panel.textContent = "";
+    }
+
+    function show(span) {
+        var doc = docs.querySelector(
+            '.param-doc[data-param="' + span.dataset.param + '"]'
+        );
+        if (!doc) { return; }
+        panel.textContent = "";
+        panel.appendChild(doc.cloneNode(true));
+        panel.hidden = false;
+        /* A panel taller than its ceiling is cut, and a cut nobody can see
+           reads as the whole answer. Say so. It cannot be scrolled: the
+           panel does not take the pointer, by design. */
+        panel.classList.toggle(
+            "clipped", panel.scrollHeight > panel.clientHeight + 1
+        );
+
+        var at = span.getBoundingClientRect();
+        var size = panel.getBoundingClientRect();
+        var top = at.bottom + 8;
+        if (top + size.height > innerHeight) {
+            top = at.top - size.height - 8;
+        }
+        var bars = document.querySelector(".tabs");
+        var ceiling = (bars ? bars.getBoundingClientRect().bottom : 0) + 4;
+        panel.style.top = Math.max(ceiling, top) + "px";
+        panel.style.left = Math.max(
+            4, Math.min(at.left, innerWidth - size.width - 8)
+        ) + "px";
+    }
+
+    document.querySelectorAll(".signature [data-param]").forEach(function (span) {
+        span.addEventListener("mouseenter", function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () { show(span); }, OPEN_DELAY);
+        });
+        span.addEventListener("mouseleave", hide);
+    });
+    addEventListener("scroll", hide, { passive: true });
+    addEventListener("keydown", function (event) {
+        if (event.key === "Escape") { hide(); }
+    });
 }());
 
 (function () {

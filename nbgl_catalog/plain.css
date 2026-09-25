@@ -165,9 +165,23 @@ footer {
 
 .back-link:hover { color: var(--text-1); }
 
-.hero h1 { margin: 0 0 10px; font-size: 26px; letter-spacing: -0.01em; }
+/* `overflow-wrap` because a use case's name is its title, and an
+   underscore is no break opportunity: 44 characters run off a phone. */
+.hero h1 {
+    margin: 0 0 12px;
+    font-size: 34px;
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+}
 
-.hero p { margin: 0; max-width: 62ch; color: var(--text-2); line-height: 1.65; }
+/* The summary under a title reads as a lede: the width of the content it
+   introduces, not a column half as wide as the code below it. */
+.hero p {
+    margin: 0;
+    color: var(--text-2);
+    font-size: 17px;
+    line-height: 1.6;
+}
 
 .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
 
@@ -314,7 +328,10 @@ footer {
 
 .variant-tally { font-family: var(--mono); font-size: 11px; color: var(--text-3); }
 
-.variant-note { margin: 12px 0 16px; max-width: 62ch; color: var(--text-2); }
+/* Full width too, like the lede above it: half of these wrap at 62ch
+   beside a code block twice as wide. Left at the base size — a
+   variant's note is a note, not the page's subject. */
+.variant-note { margin: 12px 0 16px; color: var(--text-2); }
 
 /* ---------------- code blocks ---------------- */
 
@@ -587,6 +604,26 @@ html[data-product] .shot-row { grid-template-columns: minmax(0, 1fr); }
 
 .copy:hover { color: var(--text-1); border-color: var(--accent); }
 
+/* Where the prototype comes from. Shaped like the copy button beside it, but
+   it does not wait for a hover: a link nobody can see is a link nobody
+   follows, and this one leaves the page. */
+.source {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+    padding: 2px 8px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--text-3);
+    font-family: var(--mono);
+    font-size: 10px;
+    text-decoration: none;
+}
+
+.source:hover { color: var(--text-1); border-color: var(--accent); }
+
 /* The line of code a box answers to, said next to the box. */
 .peek {
     position: fixed;
@@ -607,6 +644,108 @@ html[data-product] .shot-row { grid-template-columns: minmax(0, 1fr); }
 }
 
 .peek[hidden] { display: none; }
+
+/* What a parameter of the prototype holds, on hover. Same vocabulary as the
+   chip above — fixed, bordered, never catching the pointer — but several
+   lines, so it has a width and a ceiling of its own. */
+.param { border-bottom: 1px dotted currentColor; cursor: help; }
+.c-param { color: var(--text-1); }
+
+.params { display: none; }
+
+.param-panel {
+    position: fixed;
+    z-index: 7;
+    width: 46ch;
+    max-width: calc(100vw - 16px);
+    max-height: 58vh;
+    overflow: hidden;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+    font-size: 12px;
+    line-height: 1.45;
+    pointer-events: none;
+}
+
+.param-panel[hidden] { display: none; }
+
+/* Cut, and saying so: the panel takes no pointer, so what is past the fold
+   cannot be scrolled to and must at least not look like the end. */
+.param-panel.clipped {
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 34px), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 34px), transparent);
+}
+
+.param-head {
+    margin: 0 0 4px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-2);
+}
+
+.param-head b { color: var(--text-1); }
+.param-head code { font-family: inherit; color: var(--link); }
+
+.param-desc { margin: 0 0 6px; color: var(--text-1); }
+
+.param-aside {
+    margin: 0 0 6px;
+    color: var(--text-2);
+    font-size: 11px;
+}
+
+.param-group {
+    margin: 8px 0 3px;
+    color: var(--text-2);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.param-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.param-items li {
+    margin: 0 0 3px;
+    padding-left: 0;
+    color: var(--text-2);
+    font-size: 11px;
+}
+
+.param-items code {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-1);
+}
+
+.param-type { color: var(--text-2); font-family: var(--mono); font-size: 10px; }
+.param-what::before { content: " — "; }
+
+/* Not in the header: what the catalog itself measured, which is the only
+   thing said about half of these values. Marked so it is never taken for a
+   quote from the SDK. */
+.param-seen {
+    display: inline-block;
+    margin-left: 4px;
+    padding: 0 5px;
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--cause) 12%, transparent);
+    color: var(--cause);
+    font-size: 10px;
+}
+
+.param-more {
+    margin: 6px 0 0;
+    color: var(--text-2);
+    font-size: 10px;
+    font-style: italic;
+}
 
 /* A screen at its own size. The clone inside is drawn at scale 1, which is
    all it takes for its boxes to land where the device put them. */
@@ -672,4 +811,6 @@ html[data-product] .shot-row { grid-template-columns: minmax(0, 1fr); }
     .shot-row { grid-template-columns: 1fr; gap: 8px; }
     .tabs { padding: 8px 4px; margin-bottom: 16px; }
     .tab small { display: none; }
+    .hero h1 { font-size: 26px; }
+    .hero p { font-size: 16px; }
 }

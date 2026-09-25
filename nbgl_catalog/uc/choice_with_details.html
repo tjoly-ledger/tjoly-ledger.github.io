@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseChoiceWithDetails &mdash; NBGL use cases</title>
 <meta name="description" content="The same choice page, plus a top-right button opening a details modal: either one centered page, or a list of bars drilling down into sub-pages.">
-<link rel="stylesheet" href="../plain.css?v=6a13db27">
+<link rel="stylesheet" href="../plain.css?v=925d5145">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -82,13 +82,69 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </button>
   </div>
 
-  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseChoiceWithDetails</span>(<span class="c-keyword">const</span> <span class="c-type">nbgl_icon_details_t</span> *icon,
-                                   <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *message,
-                                   <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *subMessage,
-                                   <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *confirmText,
-                                   <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *cancelText,
-                                   <span class="c-type">nbgl_warningDetails_t</span>     *details,
-                                   <span class="c-type">nbgl_choiceCallback_t</span>      callback);</code></pre>
+  <div class="code-wrap">
+    <a class="source" href="https://github.com/LedgerHQ/ledger-secure-sdk/blob/master/lib_nbgl/include/nbgl_use_case.h#L568-L574" target="_blank" rel="noopener"
+       title="Read this declaration in the SDK">nbgl_use_case.h &#8599;</a>
+    <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseChoiceWithDetails</span>(<span class="c-keyword">const</span> <span class="c-type">nbgl_icon_details_t</span> *<span class="c-param param" data-param="0">icon</span>,
+                                   <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *<span class="c-param param" data-param="1">message</span>,
+                                   <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *<span class="c-param param" data-param="2">subMessage</span>,
+                                   <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *<span class="c-param param" data-param="3">confirmText</span>,
+                                   <span class="c-keyword">const</span> <span class="c-keyword">char</span>                *<span class="c-param param" data-param="4">cancelText</span>,
+                                   <span class="c-type">nbgl_warningDetails_t</span>     *<span class="c-param param" data-param="5">details</span>,
+                                   <span class="c-type">nbgl_choiceCallback_t</span>      <span class="c-param param" data-param="6">callback</span>);</code></pre>
+  </div>
+  <div class="params" hidden>
+    <div class="param-doc" data-param="0">
+      <p class="param-head"><code>const nbgl_icon_details_t *</code> <b>icon</b></p>
+<p class="param-desc">icon to set in center of page</p><p class="param-aside">Represents all information about an icon</p>      <ul class="param-items">
+        <li>
+          <code>width</code> <span class="param-type">uint16_t</span><span class="param-what">width of the icon, in pixels</span>        </li>
+        <li>
+          <code>height</code> <span class="param-type">uint16_t</span><span class="param-what">height of the icon, in pixels</span>        </li>
+        <li>
+          <code>bpp</code> <span class="param-type">nbgl_bpp_t</span><span class="param-what">bits per pixel for this area</span>        </li>
+        <li>
+          <code>isFile</code> <span class="param-type">bool</span><span class="param-what">if true, the bitmap buffer contains an image file</span>        </li>
+        <li>
+          <code>bitmap</code> <span class="param-type">const uint8_t *</span><span class="param-what">buffer containing pixel values</span>        </li>
+      </ul>
+    </div>
+    <div class="param-doc" data-param="1">
+      <p class="param-head"><code>const char *</code> <b>message</b></p>
+<p class="param-desc">string to set in center of page (32px)</p>    </div>
+    <div class="param-doc" data-param="2">
+      <p class="param-head"><code>const char *</code> <b>subMessage</b></p>
+<p class="param-desc">string to set under message (24px) (can be NULL)</p>    </div>
+    <div class="param-doc" data-param="3">
+      <p class="param-head"><code>const char *</code> <b>confirmText</b></p>
+<p class="param-desc">string to set in button, to confirm (cannot be NULL)</p>    </div>
+    <div class="param-doc" data-param="4">
+      <p class="param-head"><code>const char *</code> <b>cancelText</b></p>
+<p class="param-desc">string to set in footer, to reject (cannot be NULL)</p>    </div>
+    <div class="param-doc" data-param="5">
+      <p class="param-head"><code>nbgl_warningDetails_t *</code> <b>details</b></p>
+<p class="param-desc">details to be displayed when pressing top-right button</p><p class="param-aside">The necessary parameters to build the page(s) displayed when the top-right button is touched in intro page (before review), or in a Choice with details use-case</p>      <ul class="param-items">
+        <li>
+          <code>title</code> <span class="param-type">const char *</span><span class="param-what">text of the page (used to go back)</span>        </li>
+        <li>
+          <code>type</code> <span class="param-type">nbgl_genericDetailsType_t</span><span class="param-what">type of content in the page, determining what to use in the following union</span>        </li>
+        <li>
+          <code>centeredInfo</code> <span class="param-type">nbgl_contentCenter_t</span><span class="param-what">centered info, if type == CENTERED_INFO_WARNING</span>        </li>
+        <li>
+          <code>qrCode</code> <span class="param-type">#ifdef NBGL_QRCODE nbgl_layoutQRCode_t</span><span class="param-what">QR code, if type == QRCODE_WARNING NBGL_QRCODE</span>        </li>
+        <li>
+          <code>barList</code> <span class="param-type">#endif nbgl_genericBarList_t</span><span class="param-what">touchable bars list, if type == BAR_LIST_WARNING</span>        </li>
+      </ul>
+    </div>
+    <div class="param-doc" data-param="6">
+      <p class="param-head"><code>nbgl_choiceCallback_t</code> <b>callback</b></p>
+<p class="param-desc">callback called when button or footer is touched</p><p class="param-aside">prototype of choice callback function</p><p class="param-group">arguments</p>      <ul class="param-items">
+        <li>
+          <code>confirm</code> <span class="param-type">bool</span><span class="param-what">if true, means that the confirmation button has been pressed</span>        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="param-panel" hidden></div>
 
   <details class="variant" id="centered" open>
     <summary>
@@ -878,6 +934,71 @@ details.barList.details = sub_details;
         });
     });
 
+}());
+
+(function () {
+    /* What a parameter of the prototype holds, on hover. The panel is a
+       clone of what the generator already rendered, so nothing here builds
+       text: this only decides when it appears and where.
+
+       Everything opens on hover, so three things keep it out of the way —
+       a delay, so running the pointer along seven parameters lights none of
+       them; `pointer-events: none` in the stylesheet, so it never catches
+       the pointer it is standing next to; and a flip when there is no room
+       below, the same rule the `.peek` chip follows. */
+    var docs = document.querySelector(".params");
+    var panel = document.querySelector(".param-panel");
+    if (!docs || !panel) { return; }
+
+    var OPEN_DELAY = 120;
+    var timer = null;
+
+    function hide() {
+        clearTimeout(timer);
+        panel.hidden = true;
+        panel.textContent = "";
+    }
+
+    function show(span) {
+        var doc = docs.querySelector(
+            '.param-doc[data-param="' + span.dataset.param + '"]'
+        );
+        if (!doc) { return; }
+        panel.textContent = "";
+        panel.appendChild(doc.cloneNode(true));
+        panel.hidden = false;
+        /* A panel taller than its ceiling is cut, and a cut nobody can see
+           reads as the whole answer. Say so. It cannot be scrolled: the
+           panel does not take the pointer, by design. */
+        panel.classList.toggle(
+            "clipped", panel.scrollHeight > panel.clientHeight + 1
+        );
+
+        var at = span.getBoundingClientRect();
+        var size = panel.getBoundingClientRect();
+        var top = at.bottom + 8;
+        if (top + size.height > innerHeight) {
+            top = at.top - size.height - 8;
+        }
+        var bars = document.querySelector(".tabs");
+        var ceiling = (bars ? bars.getBoundingClientRect().bottom : 0) + 4;
+        panel.style.top = Math.max(ceiling, top) + "px";
+        panel.style.left = Math.max(
+            4, Math.min(at.left, innerWidth - size.width - 8)
+        ) + "px";
+    }
+
+    document.querySelectorAll(".signature [data-param]").forEach(function (span) {
+        span.addEventListener("mouseenter", function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () { show(span); }, OPEN_DELAY);
+        });
+        span.addEventListener("mouseleave", hide);
+    });
+    addEventListener("scroll", hide, { passive: true });
+    addEventListener("keydown", function (event) {
+        if (event.key === "Escape") { hide(); }
+    });
 }());
 
 (function () {

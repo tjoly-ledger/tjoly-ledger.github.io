@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseNavigableContent &mdash; NBGL use cases</title>
 <meta name="description" content="One level of generic pages with a touchable header, where the app fills each page on demand through a navigation callback.">
-<link rel="stylesheet" href="../plain.css?v=6a13db27">
+<link rel="stylesheet" href="../plain.css?v=925d5145">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -81,12 +81,49 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </button>
   </div>
 
-  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseNavigableContent</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span>                *title,
-                                  <span class="c-type">uint8_t</span>                    initPage,
-                                  <span class="c-type">uint8_t</span>                    nbPages,
-                                  <span class="c-type">nbgl_callback_t</span>            quitCallback,
-                                  <span class="c-type">nbgl_navCallback_t</span>         navCallback,
-                                  <span class="c-type">nbgl_layoutTouchCallback_t</span> controlsCallback);</code></pre>
+  <div class="code-wrap">
+    <a class="source" href="https://github.com/LedgerHQ/ledger-secure-sdk/blob/master/lib_nbgl/include/nbgl_use_case.h#L599-L604" target="_blank" rel="noopener"
+       title="Read this declaration in the SDK">nbgl_use_case.h &#8599;</a>
+    <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseNavigableContent</span>(<span class="c-keyword">const</span> <span class="c-keyword">char</span>                *<span class="c-param param" data-param="0">title</span>,
+                                  <span class="c-type">uint8_t</span>                    <span class="c-param param" data-param="1">initPage</span>,
+                                  <span class="c-type">uint8_t</span>                    <span class="c-param param" data-param="2">nbPages</span>,
+                                  <span class="c-type">nbgl_callback_t</span>            <span class="c-param param" data-param="3">quitCallback</span>,
+                                  <span class="c-type">nbgl_navCallback_t</span>         <span class="c-param param" data-param="4">navCallback</span>,
+                                  <span class="c-type">nbgl_layoutTouchCallback_t</span> <span class="c-param param" data-param="5">controlsCallback</span>);</code></pre>
+  </div>
+  <div class="params" hidden>
+    <div class="param-doc" data-param="0">
+      <p class="param-head"><code>const char *</code> <b>title</b></p>
+<p class="param-desc">string to set in touchable title (header)</p>    </div>
+    <div class="param-doc" data-param="1">
+      <p class="param-head"><code>uint8_t</code> <b>initPage</b></p>
+<p class="param-desc">page on which to start [0-&gt;(nbPages-1)]</p>    </div>
+    <div class="param-doc" data-param="2">
+      <p class="param-head"><code>uint8_t</code> <b>nbPages</b></p>
+<p class="param-desc">number of pages</p>    </div>
+    <div class="param-doc" data-param="3">
+      <p class="param-head"><code>nbgl_callback_t</code> <b>quitCallback</b></p>
+<p class="param-desc">callback called title is pressed</p><p class="param-aside">prototype of generic callback function</p>    </div>
+    <div class="param-doc" data-param="4">
+      <p class="param-head"><code>nbgl_navCallback_t</code> <b>navCallback</b></p>
+<p class="param-desc">callback called when navigation arrows are pressed</p><p class="param-aside">prototype of navigation callback function</p><p class="param-group">arguments</p>      <ul class="param-items">
+        <li>
+          <code>page</code> <span class="param-type">uint8_t</span><span class="param-what">page index (0-&gt;(nb_pages-1)) on which we go</span>        </li>
+        <li>
+          <code>content</code> <span class="param-type">nbgl_pageContent_t *</span><span class="param-what">content to fill (only type and union)</span>        </li>
+      </ul>
+    </div>
+    <div class="param-doc" data-param="5">
+      <p class="param-head"><code>nbgl_layoutTouchCallback_t</code> <b>controlsCallback</b></p>
+<p class="param-desc">callback called when any controls in the settings (radios, switches) is called (the tokens must be &gt;= FIRST_USER_TOKEN)</p><p class="param-aside">prototype of function to be called when an object is touched</p><p class="param-group">arguments</p>      <ul class="param-items">
+        <li>
+          <code>token</code> <span class="param-type">int</span><span class="param-what">integer passed when registering callback</span>        </li>
+        <li>
+          <code>index</code> <span class="param-type">uint8_t</span><span class="param-what">when the object touched is a list of radio buttons, gives the index of the activated button</span>        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="param-panel" hidden></div>
 
   <details class="variant" id="three_pages" open>
     <summary>
@@ -584,6 +621,71 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         });
     });
 
+}());
+
+(function () {
+    /* What a parameter of the prototype holds, on hover. The panel is a
+       clone of what the generator already rendered, so nothing here builds
+       text: this only decides when it appears and where.
+
+       Everything opens on hover, so three things keep it out of the way —
+       a delay, so running the pointer along seven parameters lights none of
+       them; `pointer-events: none` in the stylesheet, so it never catches
+       the pointer it is standing next to; and a flip when there is no room
+       below, the same rule the `.peek` chip follows. */
+    var docs = document.querySelector(".params");
+    var panel = document.querySelector(".param-panel");
+    if (!docs || !panel) { return; }
+
+    var OPEN_DELAY = 120;
+    var timer = null;
+
+    function hide() {
+        clearTimeout(timer);
+        panel.hidden = true;
+        panel.textContent = "";
+    }
+
+    function show(span) {
+        var doc = docs.querySelector(
+            '.param-doc[data-param="' + span.dataset.param + '"]'
+        );
+        if (!doc) { return; }
+        panel.textContent = "";
+        panel.appendChild(doc.cloneNode(true));
+        panel.hidden = false;
+        /* A panel taller than its ceiling is cut, and a cut nobody can see
+           reads as the whole answer. Say so. It cannot be scrolled: the
+           panel does not take the pointer, by design. */
+        panel.classList.toggle(
+            "clipped", panel.scrollHeight > panel.clientHeight + 1
+        );
+
+        var at = span.getBoundingClientRect();
+        var size = panel.getBoundingClientRect();
+        var top = at.bottom + 8;
+        if (top + size.height > innerHeight) {
+            top = at.top - size.height - 8;
+        }
+        var bars = document.querySelector(".tabs");
+        var ceiling = (bars ? bars.getBoundingClientRect().bottom : 0) + 4;
+        panel.style.top = Math.max(ceiling, top) + "px";
+        panel.style.left = Math.max(
+            4, Math.min(at.left, innerWidth - size.width - 8)
+        ) + "px";
+    }
+
+    document.querySelectorAll(".signature [data-param]").forEach(function (span) {
+        span.addEventListener("mouseenter", function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () { show(span); }, OPEN_DELAY);
+        });
+        span.addEventListener("mouseleave", hide);
+    });
+    addEventListener("scroll", hide, { passive: true });
+    addEventListener("keydown", function (event) {
+        if (event.key === "Escape") { hide(); }
+    });
 }());
 
 (function () {

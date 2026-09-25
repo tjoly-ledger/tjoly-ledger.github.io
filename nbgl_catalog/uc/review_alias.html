@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseReview &mdash; NBGL use cases</title>
 <meta name="description" content="A tag/value pair whose value is an alias: the review shows the short name with a chevron, and the page behind it justifies the alias. The aliasType of nbgl_contentValueExt_t picks that page.">
-<link rel="stylesheet" href="../plain.css?v=6a13db27">
+<link rel="stylesheet" href="../plain.css?v=925d5145">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
@@ -89,13 +89,99 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     </button>
   </div>
 
-  <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-type">nbgl_operationType_t</span>              operationType,
-                        <span class="c-keyword">const</span> <span class="c-type">nbgl_contentTagValueList_t</span> *tagValueList,
-                        <span class="c-keyword">const</span> <span class="c-type">nbgl_icon_details_t</span>        *icon,
-                        <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *reviewTitle,
-                        <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *reviewSubTitle,
-                        <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *finishTitle,
-                        <span class="c-type">nbgl_choiceCallback_t</span>             choiceCallback);</code></pre>
+  <div class="code-wrap">
+    <a class="source" href="https://github.com/LedgerHQ/ledger-secure-sdk/blob/master/lib_nbgl/include/nbgl_use_case.h#L474-L480" target="_blank" rel="noopener"
+       title="Read this declaration in the SDK">nbgl_use_case.h &#8599;</a>
+    <pre class="code signature"><code><span class="c-keyword">void</span> <span class="c-usecase">nbgl_useCaseReview</span>(<span class="c-type">nbgl_operationType_t</span>              <span class="c-param param" data-param="0">operationType</span>,
+                        <span class="c-keyword">const</span> <span class="c-type">nbgl_contentTagValueList_t</span> *<span class="c-param param" data-param="1">tagValueList</span>,
+                        <span class="c-keyword">const</span> <span class="c-type">nbgl_icon_details_t</span>        *<span class="c-param param" data-param="2">icon</span>,
+                        <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *<span class="c-param param" data-param="3">reviewTitle</span>,
+                        <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *<span class="c-param param" data-param="4">reviewSubTitle</span>,
+                        <span class="c-keyword">const</span> <span class="c-keyword">char</span>                       *<span class="c-param param" data-param="5">finishTitle</span>,
+                        <span class="c-type">nbgl_choiceCallback_t</span>             <span class="c-param param" data-param="6">choiceCallback</span>);</code></pre>
+  </div>
+  <div class="params" hidden>
+    <div class="param-doc" data-param="0">
+      <p class="param-head"><code>nbgl_operationType_t</code> <b>operationType</b></p>
+<p class="param-desc">type of operation (Operation, Transaction, Message)</p><p class="param-group">base type</p>      <ul class="param-items">
+        <li>
+          <code>TYPE_TRANSACTION</code><span class="param-what">For operations transferring a coin or taken from an account to another</span>        </li>
+        <li>
+          <code>TYPE_MESSAGE</code><span class="param-what">For operations signing a message that will not be broadcast on the blockchain</span>        </li>
+        <li>
+          <code>TYPE_OPERATION</code><span class="param-what">For other types of operation (generic type)</span>        </li>
+      </ul>
+<p class="param-group">flags, combined with |</p>      <ul class="param-items">
+        <li>
+          <code>SKIPPABLE_OPERATION</code><span class="param-what">This is to use in nbgl_operationType_t when the operation is skippable. This is used to add a *Skip* button on the first review page.</span><span class="param-seen">draws &ldquo;Skip&rdquo;</span>        </li>
+        <li>
+          <code>BLIND_OPERATION</code><span class="param-what">This is to use in nbgl_operationType_t when the operation is &#34;blind&#34; This is used to indicate a warning with a top-right button in review first &amp; last page</span>        </li>
+        <li>
+          <code>RISKY_OPERATION</code><span class="param-what">This is to use in nbgl_operationType_t when the operation is concerned by an internal warning. This is used to indicate a warning with a top-right button in review first &amp; last page</span>        </li>
+        <li>
+          <code>NO_THREAT_OPERATION</code><span class="param-what">This is to use in nbgl_operationType_t when the operation is concerned by an internal information. This is used to indicate an info with a top-right button in review first &amp; last page</span>        </li>
+        <li>
+          <code>ADDRESS_BOOK_OPERATION</code><span class="param-what">This is to use in nbgl_operationType_t when the operation is related to &#34;Address Book&#34; to adapt wordings.</span>        </li>
+      </ul>
+    </div>
+    <div class="param-doc" data-param="1">
+      <p class="param-head"><code>const nbgl_contentTagValueList_t *</code> <b>tagValueList</b></p>
+<p class="param-desc">list of tag/value pairs</p><p class="param-aside">This structure contains a list of [tag,value] pairs</p>      <ul class="param-items">
+        <li>
+          <code>pairs</code> <span class="param-type">const nbgl_contentTagValue_t *</span><span class="param-what">array of [tag,value] pairs (nbPairs items). If NULL, callback is used instead</span>        </li>
+        <li>
+          <code>callback</code> <span class="param-type">nbgl_contentTagValueCallback_t</span><span class="param-what">function to call to retrieve a given pair</span>        </li>
+        <li>
+          <code>nbPairs</code> <span class="param-type">uint8_t</span><span class="param-what">number of pairs in pairs array (or max number of pairs to retrieve with callback)</span>        </li>
+        <li>
+          <code>startIndex</code> <span class="param-type">uint8_t</span><span class="param-what">index of the first pair to get with callback</span>        </li>
+        <li>
+          <code>hideEndOfLastLine</code> <span class="param-type">bool</span><span class="param-what">if set to true, replace 3 last chars of last line by &#34;...&#34;</span>        </li>
+        <li>
+          <code>nbMaxLinesForValue</code> <span class="param-type">uint8_t</span><span class="param-what">if &gt; 0, set the max number of lines for value field.</span>        </li>
+        <li>
+          <code>token</code> <span class="param-type">uint8_t</span><span class="param-what">the token that will be used as argument of the callback if icon in any tag/value pair is touched (index is the index of the pair in pairs[])</span>        </li>
+        <li>
+          <code>smallCaseForValue</code> <span class="param-type">bool</span><span class="param-what">if set to true, a 24px font is used for value text, otherwise a 32px font is used</span>        </li>
+        <li>
+          <code>wrapping</code> <span class="param-type">bool</span><span class="param-what">if set to true, value text will be wrapped on &#39; &#39; to avoid cutting words</span>        </li>
+        <li>
+          <code>actionCallback</code> <span class="param-type">nbgl_contentActionCallback_t</span><span class="param-what">called when a valueIcon is touched on a given pair</span>        </li>
+      </ul>
+    </div>
+    <div class="param-doc" data-param="2">
+      <p class="param-head"><code>const nbgl_icon_details_t *</code> <b>icon</b></p>
+<p class="param-desc">icon used on first and last review page</p><p class="param-aside">Represents all information about an icon</p>      <ul class="param-items">
+        <li>
+          <code>width</code> <span class="param-type">uint16_t</span><span class="param-what">width of the icon, in pixels</span>        </li>
+        <li>
+          <code>height</code> <span class="param-type">uint16_t</span><span class="param-what">height of the icon, in pixels</span>        </li>
+        <li>
+          <code>bpp</code> <span class="param-type">nbgl_bpp_t</span><span class="param-what">bits per pixel for this area</span>        </li>
+        <li>
+          <code>isFile</code> <span class="param-type">bool</span><span class="param-what">if true, the bitmap buffer contains an image file</span>        </li>
+        <li>
+          <code>bitmap</code> <span class="param-type">const uint8_t *</span><span class="param-what">buffer containing pixel values</span>        </li>
+      </ul>
+    </div>
+    <div class="param-doc" data-param="3">
+      <p class="param-head"><code>const char *</code> <b>reviewTitle</b></p>
+<p class="param-desc">string used in the first review page</p>    </div>
+    <div class="param-doc" data-param="4">
+      <p class="param-head"><code>const char *</code> <b>reviewSubTitle</b></p>
+<p class="param-desc">string to set under reviewTitle (can be NULL)</p>    </div>
+    <div class="param-doc" data-param="5">
+      <p class="param-head"><code>const char *</code> <b>finishTitle</b></p>
+<p class="param-desc">string used in the last review page</p>    </div>
+    <div class="param-doc" data-param="6">
+      <p class="param-head"><code>nbgl_choiceCallback_t</code> <b>choiceCallback</b></p>
+<p class="param-desc">callback called when operation is accepted (param is true) or rejected (param is false)</p><p class="param-aside">prototype of choice callback function</p><p class="param-group">arguments</p>      <ul class="param-items">
+        <li>
+          <code>confirm</code> <span class="param-type">bool</span><span class="param-what">if true, means that the confirmation button has been pressed</span>        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="param-panel" hidden></div>
 
   <details class="variant" id="ens" open>
     <summary>
@@ -2607,6 +2693,71 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         });
     });
 
+}());
+
+(function () {
+    /* What a parameter of the prototype holds, on hover. The panel is a
+       clone of what the generator already rendered, so nothing here builds
+       text: this only decides when it appears and where.
+
+       Everything opens on hover, so three things keep it out of the way —
+       a delay, so running the pointer along seven parameters lights none of
+       them; `pointer-events: none` in the stylesheet, so it never catches
+       the pointer it is standing next to; and a flip when there is no room
+       below, the same rule the `.peek` chip follows. */
+    var docs = document.querySelector(".params");
+    var panel = document.querySelector(".param-panel");
+    if (!docs || !panel) { return; }
+
+    var OPEN_DELAY = 120;
+    var timer = null;
+
+    function hide() {
+        clearTimeout(timer);
+        panel.hidden = true;
+        panel.textContent = "";
+    }
+
+    function show(span) {
+        var doc = docs.querySelector(
+            '.param-doc[data-param="' + span.dataset.param + '"]'
+        );
+        if (!doc) { return; }
+        panel.textContent = "";
+        panel.appendChild(doc.cloneNode(true));
+        panel.hidden = false;
+        /* A panel taller than its ceiling is cut, and a cut nobody can see
+           reads as the whole answer. Say so. It cannot be scrolled: the
+           panel does not take the pointer, by design. */
+        panel.classList.toggle(
+            "clipped", panel.scrollHeight > panel.clientHeight + 1
+        );
+
+        var at = span.getBoundingClientRect();
+        var size = panel.getBoundingClientRect();
+        var top = at.bottom + 8;
+        if (top + size.height > innerHeight) {
+            top = at.top - size.height - 8;
+        }
+        var bars = document.querySelector(".tabs");
+        var ceiling = (bars ? bars.getBoundingClientRect().bottom : 0) + 4;
+        panel.style.top = Math.max(ceiling, top) + "px";
+        panel.style.left = Math.max(
+            4, Math.min(at.left, innerWidth - size.width - 8)
+        ) + "px";
+    }
+
+    document.querySelectorAll(".signature [data-param]").forEach(function (span) {
+        span.addEventListener("mouseenter", function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () { show(span); }, OPEN_DELAY);
+        });
+        span.addEventListener("mouseleave", hide);
+    });
+    addEventListener("scroll", hide, { passive: true });
+    addEventListener("keydown", function (event) {
+        if (event.key === "Escape") { hide(); }
+    });
 }());
 
 (function () {
