@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseGenericReview &mdash; NBGL use cases</title>
 <meta name="description" content="Any mix of content types paginated as a review, with a reject footer, when the predefined reviews do not fit.">
-<link rel="stylesheet" href="../plain.css?v=925d5145">
+<link rel="stylesheet" href="../plain.css?v=ea7d22ea">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
-.shot-row[data-product="flex"] { --shot-scale: 0.4271; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }
-.shot-row[data-product="apex_p"] { --shot-scale: 0.6833; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }
-.shot-row[data-product="stax"] { --shot-scale: 0.5125; }@media (max-width: 900px) {.shot-row[data-product="flex"] { --shot-scale: 0.3125; }.shot-row[data-product="apex_p"] { --shot-scale: 0.5000; }.shot-row[data-product="stax"] { --shot-scale: 0.3750; }}
+.shot-row[data-product="flex"] { --shot-scale: 0.5000; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }
+.shot-row[data-product="apex_p"] { --shot-scale: 0.8000; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }
+.shot-row[data-product="stax"] { --shot-scale: 0.6000; }@media (max-width: 900px) {.shot-row[data-product="flex"] { --shot-scale: 0.3125; }.shot-row[data-product="apex_p"] { --shot-scale: 0.5000; }.shot-row[data-product="stax"] { --shot-scale: 0.3750; }}
 </style>
 <script>
 /* Picks the product the page opens on, before the body is parsed, so the page
@@ -206,7 +206,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"apex_p": 0, "stax": 0}'>
             <a href="../screens/flex/generic_review/plain/00.png" title="Open at full size">
             <img src="../screens/flex/generic_review/plain/00.png" width="480"
                  height="600" loading="lazy"
@@ -226,8 +227,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Next page</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 1, "stax": 1}'>
             <a href="../screens/flex/generic_review/plain/01.png" title="Open at full size">
             <img src="../screens/flex/generic_review/plain/01.png" width="480"
                  height="600" loading="lazy"
@@ -245,8 +248,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 2, "stax": 2}'>
             <a href="../screens/flex/generic_review/plain/02.png" title="Open at full size">
             <img src="../screens/flex/generic_review/plain/02.png" width="480"
                  height="600" loading="lazy"
@@ -257,6 +262,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -265,7 +271,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"flex": 0, "stax": 0}'>
             <a href="../screens/apex_p/generic_review/plain/00.png" title="Open at full size">
             <img src="../screens/apex_p/generic_review/plain/00.png" width="300"
                  height="400" loading="lazy"
@@ -285,8 +292,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Next page</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"flex": 1, "stax": 1}'>
             <a href="../screens/apex_p/generic_review/plain/01.png" title="Open at full size">
             <img src="../screens/apex_p/generic_review/plain/01.png" width="300"
                  height="400" loading="lazy"
@@ -304,8 +313,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"flex": 2, "stax": 2}'>
             <a href="../screens/apex_p/generic_review/plain/02.png" title="Open at full size">
             <img src="../screens/apex_p/generic_review/plain/02.png" width="300"
                  height="400" loading="lazy"
@@ -316,6 +327,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -324,7 +336,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"apex_p": 0, "flex": 0}'>
             <a href="../screens/stax/generic_review/plain/00.png" title="Open at full size">
             <img src="../screens/stax/generic_review/plain/00.png" width="400"
                  height="672" loading="lazy"
@@ -344,8 +357,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Next page</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 1, "flex": 1}'>
             <a href="../screens/stax/generic_review/plain/01.png" title="Open at full size">
             <img src="../screens/stax/generic_review/plain/01.png" width="400"
                  height="672" loading="lazy"
@@ -363,8 +378,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 2, "flex": 2}'>
             <a href="../screens/stax/generic_review/plain/02.png" title="Open at full size">
             <img src="../screens/stax/generic_review/plain/02.png" width="400"
                  height="672" loading="lazy"
@@ -374,6 +391,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot because" data-cause="1"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
           </span>
         </div>
       </div>
@@ -468,7 +486,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"apex_p": 0, "stax": 0}'>
             <a href="../screens/flex/generic_review/tag_value_confirm/00.png" title="Open at full size">
             <img src="../screens/flex/generic_review/tag_value_confirm/00.png" width="480"
                  height="600" loading="lazy"
@@ -482,8 +501,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="4" style="left: calc(129px * var(--shot-scale)); top: calc(418px * var(--shot-scale)); width: calc(351px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(197px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(86px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Tap “Sign transaction”</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 1, "stax": 1}'>
             <a href="../screens/flex/generic_review/tag_value_confirm/01.png" title="Open at full size">
             <img src="../screens/flex/generic_review/tag_value_confirm/01.png" width="480"
                  height="600" loading="lazy"
@@ -494,6 +515,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -502,7 +524,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"flex": 0, "stax": 0}'>
             <a href="../screens/apex_p/generic_review/tag_value_confirm/00.png" title="Open at full size">
             <img src="../screens/apex_p/generic_review/tag_value_confirm/00.png" width="300"
                  height="400" loading="lazy"
@@ -516,8 +539,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="4" style="left: calc(75px * var(--shot-scale)); top: calc(285px * var(--shot-scale)); width: calc(225px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(120px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(60px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Tap “Sign transaction”</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"flex": 1, "stax": 1}'>
             <a href="../screens/apex_p/generic_review/tag_value_confirm/01.png" title="Open at full size">
             <img src="../screens/apex_p/generic_review/tag_value_confirm/01.png" width="300"
                  height="400" loading="lazy"
@@ -528,6 +553,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -536,7 +562,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"apex_p": 0, "flex": 0}'>
             <a href="../screens/stax/generic_review/tag_value_confirm/00.png" title="Open at full size">
             <img src="../screens/stax/generic_review/tag_value_confirm/00.png" width="400"
                  height="672" loading="lazy"
@@ -550,8 +577,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="4" style="left: calc(104px * var(--shot-scale)); top: calc(504px * var(--shot-scale)); width: calc(296px * var(--shot-scale)); height: calc(32px * var(--shot-scale))"></b>
             <b class="hot" data-lit="5" style="left: calc(163px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Tap “Sign transaction”</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 1, "flex": 1}'>
             <a href="../screens/stax/generic_review/tag_value_confirm/01.png" title="Open at full size">
             <img src="../screens/stax/generic_review/tag_value_confirm/01.png" width="400"
                  height="672" loading="lazy"
@@ -561,6 +590,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot because" data-cause="1"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
           </span>
         </div>
       </div>
@@ -658,7 +688,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"apex_p": 0, "stax": 0}'>
             <a href="../screens/flex/generic_review/info_button/00.png" title="Open at full size">
             <img src="../screens/flex/generic_review/info_button/00.png" width="480"
                  height="600" loading="lazy"
@@ -678,8 +709,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Next page</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 1, "stax": 1}'>
             <a href="../screens/flex/generic_review/info_button/01.png" title="Open at full size">
             <img src="../screens/flex/generic_review/info_button/01.png" width="480"
                  height="600" loading="lazy"
@@ -698,6 +731,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -706,7 +740,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"flex": 0, "stax": 0}'>
             <a href="../screens/apex_p/generic_review/info_button/00.png" title="Open at full size">
             <img src="../screens/apex_p/generic_review/info_button/00.png" width="300"
                  height="400" loading="lazy"
@@ -726,8 +761,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Next page</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"flex": 1, "stax": 1}'>
             <a href="../screens/apex_p/generic_review/info_button/01.png" title="Open at full size">
             <img src="../screens/apex_p/generic_review/info_button/01.png" width="300"
                  height="400" loading="lazy"
@@ -746,6 +783,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -754,7 +792,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"apex_p": 0, "flex": 0}'>
             <a href="../screens/stax/generic_review/info_button/00.png" title="Open at full size">
             <img src="../screens/stax/generic_review/info_button/00.png" width="400"
                  height="672" loading="lazy"
@@ -774,8 +813,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Next page</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 1, "flex": 1}'>
             <a href="../screens/stax/generic_review/info_button/01.png" title="Open at full size">
             <img src="../screens/stax/generic_review/info_button/01.png" width="400"
                  height="672" loading="lazy"
@@ -793,6 +834,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot because" data-cause="0"
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           </span>
         </div>
       </div>
@@ -877,7 +919,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"apex_p": 0, "stax": 0}'>
             <a href="../screens/flex/generic_review/extended_center/00.png" title="Open at full size">
             <img src="../screens/flex/generic_review/extended_center/00.png" width="480"
                  height="600" loading="lazy"
@@ -901,8 +944,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(299px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(73px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Next page</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 1, "stax": 1}'>
             <a href="../screens/flex/generic_review/extended_center/01.png" title="Open at full size">
             <img src="../screens/flex/generic_review/extended_center/01.png" width="480"
                  height="600" loading="lazy"
@@ -920,8 +965,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(297px * var(--shot-scale)); top: calc(534px * var(--shot-scale)); width: calc(77px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 2, "stax": 2}'>
             <a href="../screens/flex/generic_review/extended_center/02.png" title="Open at full size">
             <img src="../screens/flex/generic_review/extended_center/02.png" width="480"
                  height="600" loading="lazy"
@@ -932,6 +979,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(74px * var(--shot-scale)); top: calc(324px * var(--shot-scale)); width: calc(332px * var(--shot-scale)); height: calc(44px * var(--shot-scale))"></b>
           </span>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -940,7 +988,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"flex": 0, "stax": 0}'>
             <a href="../screens/apex_p/generic_review/extended_center/00.png" title="Open at full size">
             <img src="../screens/apex_p/generic_review/extended_center/00.png" width="300"
                  height="400" loading="lazy"
@@ -964,8 +1013,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(187px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(46px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Next page</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"flex": 1, "stax": 1}'>
             <a href="../screens/apex_p/generic_review/extended_center/01.png" title="Open at full size">
             <img src="../screens/apex_p/generic_review/extended_center/01.png" width="300"
                  height="400" loading="lazy"
@@ -983,8 +1034,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(185px * var(--shot-scale)); top: calc(359px * var(--shot-scale)); width: calc(50px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"flex": 2, "stax": 2}'>
             <a href="../screens/apex_p/generic_review/extended_center/02.png" title="Open at full size">
             <img src="../screens/apex_p/generic_review/extended_center/02.png" width="300"
                  height="400" loading="lazy"
@@ -995,6 +1048,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(39px * var(--shot-scale)); top: calc(218px * var(--shot-scale)); width: calc(221px * var(--shot-scale)); height: calc(28px * var(--shot-scale))"></b>
           </span>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -1003,7 +1057,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"apex_p": 0, "flex": 0}'>
             <a href="../screens/stax/generic_review/extended_center/00.png" title="Open at full size">
             <img src="../screens/stax/generic_review/extended_center/00.png" width="400"
                  height="672" loading="lazy"
@@ -1027,8 +1082,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(248px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(63px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Next page</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 1, "flex": 1}'>
             <a href="../screens/stax/generic_review/extended_center/01.png" title="Open at full size">
             <img src="../screens/stax/generic_review/extended_center/01.png" width="400"
                  height="672" loading="lazy"
@@ -1046,8 +1103,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
                title="Drawn by the SDK because of nbgl_useCaseGenericReview"
                style="left: calc(246px * var(--shot-scale)); top: calc(610px * var(--shot-scale)); width: calc(67px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Hold “Hold to sign”</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 2, "flex": 2}'>
             <a href="../screens/stax/generic_review/extended_center/02.png" title="Open at full size">
             <img src="../screens/stax/generic_review/extended_center/02.png" width="400"
                  height="672" loading="lazy"
@@ -1057,6 +1116,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot because" data-cause="1"
                title="Drawn by the SDK because of STATUS_TYPE_TRANSACTION_SIGNED"
                style="left: calc(54px * var(--shot-scale)); top: calc(360px * var(--shot-scale)); width: calc(292px * var(--shot-scale)); height: calc(40px * var(--shot-scale))"></b>
+          </span>
           </span>
         </div>
       </div>
@@ -1074,6 +1134,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     <button type="button" class="viewer-step" data-step="-1" aria-label="Previous screen">&#8592;</button>
     <span class="viewer-say"></span>
     <button type="button" class="viewer-step" data-step="1" aria-label="Next screen">&#8594;</button>
+    <button type="button" class="viewer-compare" aria-pressed="false"
+            title="The same screen on every product (C)">All products</button>
     <button type="button" class="viewer-close" aria-label="Close">&#10005;</button>
   </div>
 </div>
@@ -1164,21 +1226,92 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     var strip = [];
     var at = 0;
 
+    var compare = false;
+    var toggle = viewer.querySelector(".viewer-compare");
+
+    /* The same screen on every product of the variant, the one opened first.
+       The rows of the other products are in the page already, only hidden by
+       the tab, and each screen says which of their screens is its own: by
+       position when the flows paginate alike, by what they show when not. */
+    function twinsOf(shot) {
+        var mine = shot.closest(".shot-row").dataset.product;
+        var map = {};
+        try { map = JSON.parse(shot.dataset.twins || "{}"); } catch (e) { map = {}; }
+        var found = [];
+        shot.closest(".shot-rows").querySelectorAll(".shot-row").forEach(function (row) {
+            var key = row.dataset.product;
+            var pick = key === mine
+                ? shot
+                : row.querySelectorAll(".shots .shot")[map[key]];
+            if (!pick) { return; }
+            var label = row.querySelector(".shot-label");
+            found.push({
+                key: key,
+                label: label ? label.firstChild.textContent.trim() : key,
+                shot: pick,
+                current: key === mine
+            });
+        });
+        return found;
+    }
+
+    function side(shot) {
+        var twins = twinsOf(shot);
+        var size = function (item, name) {
+            return Number(item.shot.querySelector("img").getAttribute(name)) || 1;
+        };
+        var gap = 36;
+        var wide = twins.reduce(function (sum, t) { return sum + size(t, "width"); }, 0);
+        var tall = Math.max.apply(null, twins.map(function (t) { return size(t, "height"); }));
+        // Fit all of them, never above the size the device drew them at.
+        var scale = Math.min(
+            1,
+            (innerWidth - 64 - gap * (twins.length - 1)) / wide,
+            (innerHeight - 150) / tall
+        );
+        twins.forEach(function (twin) {
+            var figure = document.createElement("figure");
+            figure.className = "viewer-twin" + (twin.current ? " current" : "");
+            figure.style.setProperty("--shot-scale", scale.toFixed(4));
+            // The name above the screen: below, it ran into the bar.
+            var caption = document.createElement("figcaption");
+            caption.textContent = twin.label;
+            figure.appendChild(caption);
+            figure.appendChild(twin.shot.cloneNode(true));
+            stage.appendChild(figure);
+        });
+    }
+
     function show(index) {
         if (index < 0 || index >= strip.length) { return; }
         at = index;
         stage.textContent = "";
-        stage.appendChild(strip[at].shot.cloneNode(true));
+        stage.classList.toggle("compare", compare);
+        if (compare) {
+            side(strip[at].shot);
+        } else {
+            stage.appendChild(strip[at].shot.cloneNode(true));
+        }
         say.textContent = "Screen " + (at + 1) + " of " + strip.length
             + (strip[at].lead ? " \u2014 " + strip[at].lead : "");
         viewer.hidden = false;
     }
 
+    function flip() {
+        compare = !compare;
+        if (toggle) { toggle.setAttribute("aria-pressed", String(compare)); }
+        if (!viewer.hidden) { show(at); }
+    }
+
+    if (toggle) { toggle.addEventListener("click", flip); }
+
     function open(shot) {
-        var shots = shot.parentNode;
+        var shots = shot.closest(".shots");
         strip = [];
         var lead = "";
-        Array.prototype.forEach.call(shots.children, function (node) {
+        // In document order: each screen sits in a pair with the step that
+        // leads to it, so the two are no longer siblings of the strip.
+        shots.querySelectorAll(".shot-step, .shot").forEach(function (node) {
             if (node.classList.contains("shot-step")) {
                 lead = node.textContent.trim();
             } else if (node.classList.contains("shot")) {
@@ -1217,6 +1350,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         if (event.key === "Escape") { close(); }
         if (event.key === "ArrowLeft") { show(at - 1); }
         if (event.key === "ArrowRight") { show(at + 1); }
+        if (event.key === "c" || event.key === "C") { flip(); }
     });
 }());
 </script>

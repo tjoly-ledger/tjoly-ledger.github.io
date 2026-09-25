@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nbgl_useCaseGenericSettings &mdash; NBGL use cases</title>
 <meta name="description" content="The settings and info pages of nbgl_useCaseHomeAndSettings(), without the home page, for an app that draws its own.">
-<link rel="stylesheet" href="../plain.css?v=925d5145">
+<link rel="stylesheet" href="../plain.css?v=ea7d22ea">
 <meta name="nbgl-products" content="flex apex_p stax">
 <style>
 html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; }
-.shot-row[data-product="flex"] { --shot-scale: 0.4271; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }
-.shot-row[data-product="apex_p"] { --shot-scale: 0.6833; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }
-.shot-row[data-product="stax"] { --shot-scale: 0.5125; }@media (max-width: 900px) {.shot-row[data-product="flex"] { --shot-scale: 0.3125; }.shot-row[data-product="apex_p"] { --shot-scale: 0.5000; }.shot-row[data-product="stax"] { --shot-scale: 0.3750; }}
+.shot-row[data-product="flex"] { --shot-scale: 0.5000; }html[data-product="apex_p"] .shot-row:not([data-product="apex_p"]) { display: none; }
+.shot-row[data-product="apex_p"] { --shot-scale: 0.8000; }html[data-product="stax"] .shot-row:not([data-product="stax"]) { display: none; }
+.shot-row[data-product="stax"] { --shot-scale: 0.6000; }@media (max-width: 900px) {.shot-row[data-product="flex"] { --shot-scale: 0.3125; }.shot-row[data-product="apex_p"] { --shot-scale: 0.5000; }.shot-row[data-product="stax"] { --shot-scale: 0.3750; }}
 </style>
 <script>
 /* Picks the product the page opens on, before the body is parsed, so the page
@@ -213,7 +213,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>480&times;600</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"apex_p": 0, "stax": 0}'>
             <a href="../screens/flex/generic_settings/plain/00.png" title="Open at full size">
             <img src="../screens/flex/generic_settings/plain/00.png" width="480"
                  height="600" loading="lazy"
@@ -227,8 +228,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="6" style="left: calc(32px * var(--shot-scale)); top: calc(350px * var(--shot-scale)); width: calc(215px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(32px * var(--shot-scale)); top: calc(386px * var(--shot-scale)); width: calc(195px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Next page</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 1, "stax": 1}'>
             <a href="../screens/flex/generic_settings/plain/01.png" title="Open at full size">
             <img src="../screens/flex/generic_settings/plain/01.png" width="480"
                  height="600" loading="lazy"
@@ -239,6 +242,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="1" style="left: calc(32px * var(--shot-scale)); top: calc(264px * var(--shot-scale)); width: calc(140px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
             <b class="hot" data-lit="2" style="left: calc(32px * var(--shot-scale)); top: calc(314px * var(--shot-scale)); width: calc(92px * var(--shot-scale)); height: calc(36px * var(--shot-scale))"></b>
           </span>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="apex_p">
@@ -247,7 +251,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>300&times;400</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"flex": 0, "stax": 0}'>
             <a href="../screens/apex_p/generic_settings/plain/00.png" title="Open at full size">
             <img src="../screens/apex_p/generic_settings/plain/00.png" width="300"
                  height="400" loading="lazy"
@@ -261,8 +266,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="6" style="left: calc(16px * var(--shot-scale)); top: calc(234px * var(--shot-scale)); width: calc(141px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(16px * var(--shot-scale)); top: calc(256px * var(--shot-scale)); width: calc(126px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Next page</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"flex": 1, "stax": 1}'>
             <a href="../screens/apex_p/generic_settings/plain/01.png" title="Open at full size">
             <img src="../screens/apex_p/generic_settings/plain/01.png" width="300"
                  height="400" loading="lazy"
@@ -273,6 +280,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="1" style="left: calc(16px * var(--shot-scale)); top: calc(181px * var(--shot-scale)); width: calc(97px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
             <b class="hot" data-lit="2" style="left: calc(16px * var(--shot-scale)); top: calc(212px * var(--shot-scale)); width: calc(61px * var(--shot-scale)); height: calc(22px * var(--shot-scale))"></b>
           </span>
+          </span>
         </div>
       </div>
       <div class="shot-row" data-product="stax">
@@ -281,7 +289,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
           <small>400&times;672</small>
         </div>
         <div class="shots">
-          <span class="shot">
+          <span class="shot-pair">
+          <span class="shot" data-twins='{"apex_p": 0, "flex": 0}'>
             <a href="../screens/stax/generic_settings/plain/00.png" title="Open at full size">
             <img src="../screens/stax/generic_settings/plain/00.png" width="400"
                  height="672" loading="lazy"
@@ -295,8 +304,10 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="6" style="left: calc(24px * var(--shot-scale)); top: calc(340px * var(--shot-scale)); width: calc(183px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="6" style="left: calc(24px * var(--shot-scale)); top: calc(372px * var(--shot-scale)); width: calc(169px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
           </span>
+          </span>
+          <span class="shot-pair">
           <span class="shot-step" aria-label="then">Next page</span>
-          <span class="shot">
+          <span class="shot" data-twins='{"apex_p": 1, "flex": 1}'>
             <a href="../screens/stax/generic_settings/plain/01.png" title="Open at full size">
             <img src="../screens/stax/generic_settings/plain/01.png" width="400"
                  height="672" loading="lazy"
@@ -306,6 +317,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
             <b class="hot" data-lit="0" style="left: calc(24px * var(--shot-scale)); top: calc(120px * var(--shot-scale)); width: calc(90px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="1" style="left: calc(24px * var(--shot-scale)); top: calc(260px * var(--shot-scale)); width: calc(120px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
             <b class="hot" data-lit="2" style="left: calc(24px * var(--shot-scale)); top: calc(308px * var(--shot-scale)); width: calc(81px * var(--shot-scale)); height: calc(31px * var(--shot-scale))"></b>
+          </span>
           </span>
         </div>
       </div>
@@ -323,6 +335,8 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     <button type="button" class="viewer-step" data-step="-1" aria-label="Previous screen">&#8592;</button>
     <span class="viewer-say"></span>
     <button type="button" class="viewer-step" data-step="1" aria-label="Next screen">&#8594;</button>
+    <button type="button" class="viewer-compare" aria-pressed="false"
+            title="The same screen on every product (C)">All products</button>
     <button type="button" class="viewer-close" aria-label="Close">&#10005;</button>
   </div>
 </div>
@@ -413,21 +427,92 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
     var strip = [];
     var at = 0;
 
+    var compare = false;
+    var toggle = viewer.querySelector(".viewer-compare");
+
+    /* The same screen on every product of the variant, the one opened first.
+       The rows of the other products are in the page already, only hidden by
+       the tab, and each screen says which of their screens is its own: by
+       position when the flows paginate alike, by what they show when not. */
+    function twinsOf(shot) {
+        var mine = shot.closest(".shot-row").dataset.product;
+        var map = {};
+        try { map = JSON.parse(shot.dataset.twins || "{}"); } catch (e) { map = {}; }
+        var found = [];
+        shot.closest(".shot-rows").querySelectorAll(".shot-row").forEach(function (row) {
+            var key = row.dataset.product;
+            var pick = key === mine
+                ? shot
+                : row.querySelectorAll(".shots .shot")[map[key]];
+            if (!pick) { return; }
+            var label = row.querySelector(".shot-label");
+            found.push({
+                key: key,
+                label: label ? label.firstChild.textContent.trim() : key,
+                shot: pick,
+                current: key === mine
+            });
+        });
+        return found;
+    }
+
+    function side(shot) {
+        var twins = twinsOf(shot);
+        var size = function (item, name) {
+            return Number(item.shot.querySelector("img").getAttribute(name)) || 1;
+        };
+        var gap = 36;
+        var wide = twins.reduce(function (sum, t) { return sum + size(t, "width"); }, 0);
+        var tall = Math.max.apply(null, twins.map(function (t) { return size(t, "height"); }));
+        // Fit all of them, never above the size the device drew them at.
+        var scale = Math.min(
+            1,
+            (innerWidth - 64 - gap * (twins.length - 1)) / wide,
+            (innerHeight - 150) / tall
+        );
+        twins.forEach(function (twin) {
+            var figure = document.createElement("figure");
+            figure.className = "viewer-twin" + (twin.current ? " current" : "");
+            figure.style.setProperty("--shot-scale", scale.toFixed(4));
+            // The name above the screen: below, it ran into the bar.
+            var caption = document.createElement("figcaption");
+            caption.textContent = twin.label;
+            figure.appendChild(caption);
+            figure.appendChild(twin.shot.cloneNode(true));
+            stage.appendChild(figure);
+        });
+    }
+
     function show(index) {
         if (index < 0 || index >= strip.length) { return; }
         at = index;
         stage.textContent = "";
-        stage.appendChild(strip[at].shot.cloneNode(true));
+        stage.classList.toggle("compare", compare);
+        if (compare) {
+            side(strip[at].shot);
+        } else {
+            stage.appendChild(strip[at].shot.cloneNode(true));
+        }
         say.textContent = "Screen " + (at + 1) + " of " + strip.length
             + (strip[at].lead ? " \u2014 " + strip[at].lead : "");
         viewer.hidden = false;
     }
 
+    function flip() {
+        compare = !compare;
+        if (toggle) { toggle.setAttribute("aria-pressed", String(compare)); }
+        if (!viewer.hidden) { show(at); }
+    }
+
+    if (toggle) { toggle.addEventListener("click", flip); }
+
     function open(shot) {
-        var shots = shot.parentNode;
+        var shots = shot.closest(".shots");
         strip = [];
         var lead = "";
-        Array.prototype.forEach.call(shots.children, function (node) {
+        // In document order: each screen sits in a pair with the step that
+        // leads to it, so the two are no longer siblings of the strip.
+        shots.querySelectorAll(".shot-step, .shot").forEach(function (node) {
             if (node.classList.contains("shot-step")) {
                 lead = node.textContent.trim();
             } else if (node.classList.contains("shot")) {
@@ -466,6 +551,7 @@ html[data-product="flex"] .shot-row:not([data-product="flex"]) { display: none; 
         if (event.key === "Escape") { close(); }
         if (event.key === "ArrowLeft") { show(at - 1); }
         if (event.key === "ArrowRight") { show(at + 1); }
+        if (event.key === "c" || event.key === "C") { flip(); }
     });
 }());
 </script>

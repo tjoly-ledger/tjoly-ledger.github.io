@@ -12,6 +12,12 @@
     --text-3: #8a8a94;
     --accent: #1b1b1f;
     --radius-sm: 10px;
+    /* The device around a screen: a dark bezel, drawn as a shadow so that it
+       takes no room in the layout and the boxes over a screen stay where
+       they are. One thickness for every product, since the screens are
+       already drawn about as wide. */
+    --bezel: #1d1d21;
+    --bezel-w: 7px;
     /* Height of the sticky header. Everything else that sticks hangs off it,
        so the bar that leads back to the list is never covered and never
        covers anything. */
@@ -246,6 +252,9 @@ footer {
 .uc-card {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
+    /* The thumbnail spans both rows and is taller than the text: the second
+       row takes the slack, so the description stays under its title. */
+    grid-template-rows: auto 1fr;
     align-items: start;
     column-gap: 14px;
     padding: 14px 16px;
@@ -258,14 +267,18 @@ footer {
    keypad at a glance, which no amount of prose does. */
 .uc-thumb {
     grid-row: 1 / 3;
-    width: 34px;
-    height: auto;
-    border: 1px solid var(--border);
-    border-radius: 3px;
+    /* By height, so the three products line up whatever their proportions.
+       At 34px wide a thumbnail only said there was a screen, not which. */
+    width: auto;
+    height: 88px;
+    /* The same bezel as the pages, at the size of a thumbnail. */
+    margin: 3px;
+    border-radius: 2px;
     background: #fff;
+    box-shadow: 0 0 0 3px var(--bezel);
 }
 
-.uc-card:hover .uc-thumb { border-color: var(--border-hover); }
+.uc-card:hover .uc-thumb { box-shadow: 0 0 0 3px var(--border-hover); }
 
 .uc-card:hover { border-color: var(--border-hover); background: var(--surface); }
 
@@ -290,9 +303,9 @@ footer {
 /* ---------------- variants ---------------- */
 
 .variant {
-    margin: 34px 0;
-    padding-top: 26px;
-    border-top: 1px solid var(--border);
+    margin: 44px 0;
+    padding-top: 30px;
+    border-top: 2px solid var(--border);
     scroll-margin-top: 20px;
 }
 
@@ -324,7 +337,9 @@ footer {
 
 .variant > summary:hover .variant-title { text-decoration: underline; }
 
-.variant-title { font-size: 17px; font-weight: 600; }
+/* Scaled with the page title above it: 17px under a 34px title read as
+   body text, and it is what separates one long variant from the next. */
+.variant-title { font-size: 22px; font-weight: 600; }
 
 .variant-tally { font-family: var(--mono); font-size: 11px; color: var(--text-3); }
 
@@ -383,9 +398,18 @@ html[data-product] .shot-row { grid-template-columns: minmax(0, 1fr); }
 
 /* Wraps when it does not fit. A strip that scrolled sideways kept a flow on
    one line, which read better on paper and worse in the hand. */
-.shots { display: flex; flex-wrap: wrap; gap: 10px; }
+.shots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(10px + 2 * var(--bezel-w));
+    /* So the outer edge of the first bezel lines up with the code above. */
+    padding: var(--bezel-w);
+}
 
 .shots a { display: block; line-height: 0; }
+
+/* A screen and the step that leads to it, wrapped as one. */
+.shot-pair { display: flex; align-items: center; gap: calc(10px + var(--bezel-w)); }
 
 /* A picture and the boxes of the texts Speculos read on it. */
 .shot {
@@ -466,15 +490,16 @@ html[data-product] .shot-row { grid-template-columns: minmax(0, 1fr); }
 
 .lit.on { background: var(--link-wash); outline: 1px solid var(--link); }
 
-.shots img {
+.shots img,
+.viewer-stage img {
     display: block;
     height: auto;
-    border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 4px;
     background: #fff;
+    box-shadow:
+        0 0 0 var(--bezel-w) var(--bezel),
+        0 calc(var(--bezel-w) + 3px) 16px rgba(0, 0, 0, 0.16);
 }
-
-.shots a:hover img { border-color: var(--border-hover); }
 
 /* One product at a time, picked once for the whole page and kept in view. */
 .tabs {
@@ -527,17 +552,19 @@ html[data-product] .shot-row { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* What leads from one screen to the next, between the two. */
+/* They are the thread of the flow, so they are read, not glanced at:
+   the body's grey rather than the faintest one, and a size one can read. */
 .shot-step {
     align-self: center;
-    max-width: 92px;
-    color: var(--text-3);
+    max-width: 104px;
+    color: var(--text-2);
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.35;
     text-align: center;
 }
 
-.shot-step::before { content: "\2192"; display: block; font-size: 13px; }
+.shot-step::before { content: "\2192"; display: block; font-size: 15px; }
 
 .flags { margin-top: 14px; font-size: 13px; color: var(--text-2); }
 
@@ -759,14 +786,53 @@ html[data-product] .shot-row { grid-template-columns: minmax(0, 1fr); }
     justify-content: center;
     gap: 14px;
     padding: 24px;
-    background: rgba(0, 0, 0, 0.55);
+    /* Dark enough that a white screen stands off a white page: at 0.55 three
+       of them side by side read as part of the page behind. */
+    background: rgba(12, 12, 16, 0.82);
 }
 
 .viewer[hidden] { display: none; }
 
-.viewer-stage { --shot-scale: 1; line-height: 0; }
+.viewer-stage { --shot-scale: 1; --bezel-w: 14px; line-height: 0; }
 
-.viewer-stage img { border-radius: 8px; }
+/* Every product side by side, the one the strip was opened on marked. */
+.viewer-stage.compare {
+    display: flex;
+    align-items: flex-end;
+    gap: 36px;
+}
+
+.viewer-twin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(14px + var(--bezel-w));
+    margin: 0;
+    line-height: 1.4;
+    --bezel-w: calc(14px * var(--shot-scale));
+}
+
+.viewer-twin figcaption {
+    padding: 3px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 13px;
+}
+
+/* The product the strip was opened on. */
+.viewer-twin.current figcaption {
+    border-color: #fff;
+    background: #fff;
+    color: var(--text-1);
+}
+
+.viewer-compare[aria-pressed="true"] {
+    background: var(--text-1);
+    border-color: var(--text-1);
+    color: var(--bg);
+}
 
 .viewer-bar {
     display: flex;
